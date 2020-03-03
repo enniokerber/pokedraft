@@ -1,0 +1,22 @@
+{
+  "npmScope": "pokedraft-fire",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "pokedraft": {
+      "tags": []
+    },
+    "pokedraft-e2e": {
+      "tags": [],
+      "implicitDependencies": ["pokedraft"]
+    }
+  }
+}
