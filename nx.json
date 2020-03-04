@@ -17,6 +17,9 @@
     "pokedraft-e2e": {
       "tags": [],
       "implicitDependencies": ["pokedraft"]
+    },
+    "models": {
+      "tags": []
     }
   }
 }

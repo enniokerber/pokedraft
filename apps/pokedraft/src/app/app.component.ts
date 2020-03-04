@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'pokedraft-fire-root',
+  selector: 'pokedraft-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
