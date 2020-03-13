@@ -1,1 +1,1 @@
-export * from './lib/PokedraftUser';
+export * from './lib/IPokedraftUser';

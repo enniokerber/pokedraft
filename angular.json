@@ -25,7 +25,9 @@
               "apps/pokedraft/src/favicon.ico",
               "apps/pokedraft/src/assets"
             ],
-            "styles": ["apps/pokedraft/src/styles.scss"],
+            "styles": [
+              "apps/pokedraft/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -83,7 +85,10 @@
               "apps/pokedraft/tsconfig.app.json",
               "apps/pokedraft/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/pokedraft/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/pokedraft/**"
+            ]
           }
         },
         "test": {
@@ -118,8 +123,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/pokedraft-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/pokedraft-e2e/**"]
+            "tsConfig": [
+              "apps/pokedraft-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/pokedraft-e2e/**"
+            ]
           }
         }
       }
@@ -137,7 +147,10 @@
               "libs/models/tsconfig.lib.json",
               "libs/models/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/models/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/models/**"
+            ]
           }
         },
         "test": {
@@ -153,6 +166,66 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "functions": {
+      "root": "apps/functions",
+      "sourceRoot": "apps/functions/src",
+      "projectType": "application",
+      "prefix": "functions",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/functions",
+            "main": "apps/functions/src/main.ts",
+            "tsConfig": "apps/functions/tsconfig.app.json",
+            "assets": [
+              "apps/functions/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/functions/src/environments/environment.ts",
+                  "with": "apps/functions/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "functions:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/functions/tsconfig.app.json",
+              "apps/functions/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/functions/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/functions/jest.config.js",
+            "tsConfig": "apps/functions/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
         }
       }
     }

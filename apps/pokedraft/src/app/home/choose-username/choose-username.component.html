@@ -1,0 +1,48 @@
+<form class="pd-container --home-container"
+      [formGroup]="usernameForm">
+
+  <pd-logo forFormContainer="true"></pd-logo>
+
+  <div class="pd-container-row">
+    <h1>Pick a Username</h1>
+  </div>
+  <div class="pd-container-row --heading-line">
+    <h2> You can do it </h2>
+  </div>
+
+  <div class="pd-container-row flex-align-right">
+    <a routerLink="../login"> Login with other profile </a>
+  </div>
+
+  <div class="pd-container-row">
+    <pd-input type="text"
+              formControlName="username"
+              autofocus="true">
+      Username
+    </pd-input>
+  </div>
+
+  <div class="pd-container-row --large-row-margin-bottom"
+       *ngIf="username.errors?.minlength && (username.touched && username.dirty)">
+    <pd-error>The username must be at least 3 characters</pd-error>
+  </div>
+  <div class="pd-container-row --large-row-margin-bottom"
+       *ngIf="username.errors?.maxlength && (username.touched && username.dirty)">
+    <pd-error>Max. Length: 20 characters</pd-error>
+  </div>
+
+  <div class="pd-container-row">
+    <pd-button icon="assets\icons\save_alt.png"
+               [disabled]="usernameForm.invalid || success"
+               (leftclick)="saveUsername()">Save</pd-button>
+    <pd-loader *ngIf="loading$ | async"></pd-loader>
+    <div class="pd-success-icon --icon-margin-left" *ngIf="success"></div>
+  </div>
+
+  <div class="pd-container-row" *ngIf="success">
+    <ul class="no-margin-bottom">
+      <li> Successfully changed your username </li>
+    </ul>
+  </div>
+
+</form>

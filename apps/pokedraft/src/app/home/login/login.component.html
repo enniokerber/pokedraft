@@ -1,0 +1,42 @@
+<form class="pd-container --home-container"
+      [formGroup]="loginForm">
+
+  <pd-logo forFormContainer="true"></pd-logo>
+
+  <div class="pd-container-row">
+    <h1>Login</h1>
+  </div>
+  <div class="pd-container-row --heading-line">
+    <h2>Access your profile</h2>
+  </div>
+
+  <div class="pd-container-row flex-align-right">
+    <a routerLink="../signup"> + create account + </a>
+  </div>
+
+  <div class="pd-container-row">
+    <pd-input formControlName="email"
+              autofocus="true"
+              type="email">
+      E-Mail
+    </pd-input>
+  </div>
+  <div class="pd-container-row">
+    <pd-input
+      type="password"
+      formControlName="password">Password</pd-input>
+  </div>
+
+  <div class="pd-container-row">
+    <pd-button icon="assets\icons\send_18px.png"
+               [disabled]="loginForm.invalid || success"
+               (leftclick)="login()">Login</pd-button>
+    <pd-loader *ngIf="loading$ | async"></pd-loader>
+    <div class="pd-success-icon --icon-margin-left" *ngIf="success"></div>
+  </div>
+
+  <div class="pd-container-row" *ngIf="loginError">
+    <pd-error>{{loginError}}</pd-error>
+  </div>
+
+</form>

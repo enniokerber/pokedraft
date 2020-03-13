@@ -1,0 +1,31 @@
+@import "../utils";
+
+$error-arrow-size: 8px;
+
+.pd-error {
+  position: relative;
+  width: 100%;
+  font-size: $font-size-s;
+  color: $red-1;
+  text-align: center;
+  padding-left: $padding-l;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: calc(50% - 1px);
+    left: 0;
+    width: $error-arrow-size;
+    height: $error-arrow-size;
+    border-top: 1px solid $red-1;
+    border-right: 1px solid $red-1;
+    transform: rotate(45deg) translateY(-50%);
+  }
+}
+
+.pd-message {
+  width: 100%;
+  text-align: center;
+  color: $green-1;
+  font-size: $font-size-xs;
+}

@@ -1,4 +1,9 @@
-<button matRipple class="pd-button">
-  <ng-content></ng-content>
+<button class="pd-button"
+        [title]="title"
+        [disabled]="disabled"
+        (click)="emitLeftClick()"
+        (contextmenu)="emitRightClick($event)">
+  <span class="pd-button-text"><ng-content></ng-content></span>
+  <img class="pd-button-icon" [src]="icon" [alt]="alt" *ngIf="icon">
 </button>
 

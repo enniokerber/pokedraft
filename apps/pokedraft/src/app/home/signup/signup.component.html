@@ -1,0 +1,63 @@
+<form class="pd-container --home-container"
+      [formGroup]="signUpForm">
+
+  <pd-logo forFormContainer="true"></pd-logo>
+
+  <div class="pd-container-row">
+    <h1>Sign Up</h1>
+  </div>
+  <div class="pd-container-row --heading-line">
+    <h2>Create a new profile</h2>
+  </div>
+
+  <div class="pd-container-row flex-align-right">
+    <a routerLink="../login"> Login with existing profile </a>
+  </div>
+
+  <div class="pd-container-row">
+    <pd-input type="email"
+              formControlName="email"
+              autofocus="true">
+      E-Mail
+    </pd-input>
+  </div>
+  <div class="pd-container-row --large-row-margin-bottom" *ngIf="email.errors?.email && (email.touched && email.dirty)">
+    <pd-error>This is not a valid E-Mail</pd-error>
+  </div>
+
+
+
+  <div class="pd-container-row">
+    <pd-input
+      type="password"
+      formControlName="password">Password (min. 8 chars)</pd-input>
+  </div>
+  <div class="pd-container-row --large-row-margin-bottom" *ngIf="password.errors?.minlength && (password.touched && password.dirty)">
+    <pd-error>Password must be at least 8 characters</pd-error>
+  </div>
+
+
+  <div class="pd-container-row">
+    <pd-input
+      type="password"
+      formControlName="repeatedPassword">Repeat Password</pd-input>
+  </div>
+  <div class="pd-container-row --large-row-margin-bottom" *ngIf="signUpForm.errors?.doesNotMatchPassword && (repeatedPassword.touched && repeatedPassword.dirty)">
+    <pd-error>Does not match password</pd-error>
+  </div>
+
+  <div class="pd-container-row">
+    <pd-button icon="assets\icons\send_18px.png"
+               [disabled]="signUpForm.invalid || success"
+               (leftclick)="signUp()">Sign Up</pd-button>
+    <pd-loader *ngIf="(loading$ | async) || (!profileCreated && success)"></pd-loader>
+    <div class="pd-success-icon --icon-margin-left" *ngIf="profileCreated && success"></div>
+  </div>
+
+  <div class="pd-container-row" *ngIf="success && !profileCreated">
+    <ul class="no-margin-bottom">
+      <li> Successfully signed up. Wait until your profile is created ... </li>
+    </ul>
+  </div>
+
+</form>

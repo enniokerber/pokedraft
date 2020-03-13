@@ -1,0 +1,40 @@
+@import "../utils";
+
+
+.pd-button {
+  @include flex-center;
+  height: 40px;
+  background-color: $primary;
+  border-radius: $radius;
+  border: none;
+  padding: $padding $padding-m $padding $padding-m;
+  color: $white;
+  font-size: $font-size;
+  outline: none;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    opacity: .9;
+    box-shadow: $floating-shadow;
+  }
+
+  &:active:not(:disabled) {
+    transition: 0s;
+    background-color: $primary2;
+    opacity: 1;
+  }
+
+  &:disabled {
+    opacity: .7;
+    cursor: default;
+  }
+}
+
+.pd-button-text {
+  padding-top: $padding-xxs;
+}
+
+.pd-button-icon {
+  margin-left: $margin;
+}

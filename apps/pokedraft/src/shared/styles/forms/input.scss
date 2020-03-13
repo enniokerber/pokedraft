@@ -1,0 +1,132 @@
+@import "../utils";
+
+.pd-input-container {
+  position: relative;
+  width: 100%;
+  height: 36px;
+}
+
+.pd-input {
+  @include take-up-full-space;
+  border: 1px solid $grey-lighter;
+  border-radius: $radius;
+  padding: 10px 10px 7px 10px;
+
+  color: $grey-dark;
+  font-size: $font-size-s;
+  outline: none;
+  z-index: 1;
+  transition: $transition-s;
+  cursor: text;
+
+  &:focus, &:valid, &:focus:valid {
+    border: 2px solid $primary;
+
+    & ~ .pd-input-placeholder {
+      @include no-word-break;
+      top: 0;
+      font-size: $font-size-xs;
+      color: $primary;
+      background-color: $white;
+    }
+  }
+
+  &:invalid {
+    box-shadow: none;
+  }
+
+  &:valid, &:disabled {
+    border-color: $grey-light;
+    & ~ .pd-input-placeholder {
+      color: $grey-light;
+    }
+
+    & ~ .pd-input-clearer {
+      &::before, &::after {
+        background-color: $grey;
+      }
+
+      &:active {
+        &::before, &::after {
+          background-color: $primary;
+        }
+      }
+    }
+  }
+
+  &:disabled {
+    background-color: $grey-lightest;
+    cursor: not-allowed;
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    & ~ .pd-input-placeholder {
+      @include no-word-break;
+      top: -9px;
+      line-height: 17px;
+      font-size: $font-size-xs;
+    }
+
+  }
+
+  &:hover, &:focus {
+    // box-shadow: $shadow-inset-s;
+
+    & ~ .pd-input-clearer {
+      opacity: 1;
+    }
+  }
+
+  &:focus {
+    & ~ .pd-input-clearer {
+      &::before, &::after {
+        background-color: $primary;
+      }
+    }
+
+    &:hover {
+      &::before, &::after {
+        background-color: $primary;
+      }
+    }
+  }
+
+  &:valid:focus {
+    &:hover ~ .pd-input-clearer {
+      &::before, &::after {
+        background-color: $primary;
+      }
+    }
+  }
+
+}
+
+.pd-input-has-content {
+  border-color: $grey-light;
+
+  & ~ .pd-input-placeholder {
+    @include no-word-break;
+    top: 0;
+    font-size: $font-size-xs;
+    color: $grey-light;
+    background-color: $white;
+  }
+}
+
+.pd-input-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+
+  padding: 0 5px;
+  border-radius: $radius;
+
+  font-size: $font-size;
+  color: $grey;
+
+  transition: $transition;
+  pointer-events: none;
+}

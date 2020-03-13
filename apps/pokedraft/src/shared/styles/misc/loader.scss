@@ -1,0 +1,153 @@
+@import "../utils";
+
+pd-loader {
+  max-height: 40px;
+}
+
+.pd-loader {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 38px;
+  margin: 0 $margin-l;
+}
+
+.pd-loader div {
+  position: absolute;
+  top: 15px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: $primary;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.pd-loader div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.5s infinite;
+}
+.pd-loader div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.5s infinite;
+}
+.pd-loader div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.5s infinite;
+}
+.pd-loader div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.5s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+
+.pd-loader-text {
+  position: absolute;
+  left: 50%;
+  bottom: -16px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  color: $primary;
+  font-size: $font-size-s;
+}
+
+
+.pd-success-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid $green-1;
+  transition: $transition;
+
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    height: 3px;
+    background-color: $green-1;
+  }
+
+  &::before {
+    top: 15px;
+    left: 7px;
+    transform: rotate(-45deg);
+    width: 24px;
+  }
+
+  &::after {
+    top: 19px;
+    left: 3px;
+    transform: rotate(45deg);
+    width: 10px;
+  }
+}
+
+.pd-error-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid $red-2;
+
+  &--smaller-margin {
+    margin-right: 10px;
+  }
+
+  &--no-margin {
+    margin: 0;
+  }
+
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    height: 2px;
+    background-color: $red-2;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.--icon-margin-left {
+  margin-left: $margin-l;
+}
+
+.--icon-margin-right {
+  margin-right: $margin-l;
+}
+
+.pd-error-text {
+  color: $red-2;
+  font-size: $font-size-s;
+}

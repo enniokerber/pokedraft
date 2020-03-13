@@ -1,0 +1,13 @@
+@import "../../utils";
+
+.pd-header {
+  position: relative;
+  width: 100%;
+  height: $header-height;
+}
+
+.pd-header-logo {
+  position: absolute;
+  @include center-relatively;
+  max-height: 60px;
+}

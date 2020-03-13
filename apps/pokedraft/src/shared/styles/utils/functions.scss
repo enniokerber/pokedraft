@@ -1,0 +1,8 @@
+
+@function solid-border($width, $color) {
+  @return $width solid $color;
+}
+
+@function dashed-border($width, $color) {
+  @return $width dashed $color;
+}

@@ -1,0 +1,86 @@
+
+// COLORS
+
+$primary: rgb(83, 148, 234);
+$primary2: rgb(35, 95, 151);
+$primary3: #123453;
+
+$secondary: orange;
+$secondary2: darkorange;
+$secondary3: yellow;
+
+$grey: #5f6368;
+$grey-light: #a0a4ac;
+$grey-lighter: #cbcfd6;
+$grey-lightest: #f4f4f4;
+$grey-dark: #202124;
+
+$grey-900: rgba(95, 99, 104, 0.9);
+$grey-800: rgba(95, 99, 104, 0.8);
+$grey-700: rgba(95, 99, 104, 0.7);
+$grey-600: rgba(95, 99, 104, 0.6);
+$grey-500: rgba(95, 99, 104, 0.5);
+$grey-400: rgba(95, 99, 104, 0.4);
+$grey-300: rgba(95, 99, 104, 0.3);
+$grey-200: rgba(95, 99, 104, 0.2);
+$grey-100: rgba(95, 99, 104, 0.1);
+
+$white: white;
+$black: black;
+
+$green-1: #34aa95;
+$green-2: #00cd7f;
+$green-3: #81ff00;
+
+$red-1: #dd5047;
+$red-2: #ff5d53;
+$red-3: #be4b43;
+$red-disabled: rgba(255, 93, 83, 0.33);
+
+// FONT
+
+$family-sans-serif: 'Roboto', sans-serif;
+
+$font-size-xxs: 0.6em;
+$font-size-xs: 0.8em;
+$font-size-s: 0.9em;
+$font-size: 1em;
+$font-size-m: 1.1em;
+$font-size-l: 1.25em;
+$font-size-xl: 1.8em;
+$font-size-xxl: 2.5em;
+
+// OTHER
+
+$radius: 4px;
+
+$padding-xl: 50px;
+$padding-l: 20px;
+$padding-m: 12px;
+$padding: 8px;
+$padding-s: 6px;
+$padding-xs: 4px;
+$padding-xxs: 2px;
+
+$margin-xl: 50px;
+$margin-l: 20px;
+$margin-m: 12px;
+$margin: 8px;
+$margin-s: 6px;
+$margin-xs: 4px;
+$margin-xxs: 2px;
+
+$floating-shadow:
+  0 3px 1px -2px rgba(0,0,0,.2),
+  0 2px 2px 0 rgba(0,0,0,.14),
+  0 1px 5px 0 rgba(0,0,0,.12);
+
+$floating-shadow-hover:
+  0 3px 3px -2px rgba(0,0,0,.4),
+  0 2px 4px 0 rgba(0,0,0,.28),
+  0 1px 7px 0 rgba(0,0,0,.24);
+
+$transition-l: .8s;
+$transition-m: .4s;
+$transition: .2s;
+$transition-s: .1s;
