@@ -1,0 +1,75 @@
+@import "../../../utils";
+
+.pd-message-container {
+  padding: $padding-m;
+
+  &--unvisited {
+    border: 2px solid $primary-light;
+  }
+}
+
+.pd-message-row {
+  width: 100%;
+}
+
+.pd-message-container-head {
+  @include flex-center-vertically;
+  @extend .pd-message-row;
+  height: 50px;
+}
+
+.pd-message-container-subject {
+  flex-grow: 1;
+  color: $primary;
+  font-size: $font-size-m;
+  @extend .pd-message-row;
+}
+
+.pd-message-container-text {
+  @extend .pd-message-row;
+  color: $grey;
+  font-size: $font-size-s;
+  margin: $margin-m 0;
+  padding: $padding-m 0;
+  border-top: 1px dashed $grey-300;
+}
+
+.pd-message-container-assets {
+  @include flex-center;
+  @extend .pd-message-row;
+  font-size: $font-size-m;
+  outline: none;
+}
+
+.pd-league-link {
+  @include flex-center;
+  color: $grey;
+  padding: $padding $padding-m;
+  border: 1px solid $primary-light;
+  border-radius: 40px;
+  outline: none;
+  cursor: pointer;
+
+  &:active {
+    color: $primary2;
+    border-color: $primary2;
+  }
+}
+
+.pd-reward-container {
+  @include flex-center-vertically;
+  border: none;
+  padding: 10px;
+  background-color: $primary-light;
+  color: $white;
+  font-size: $font-size-xs;
+}
+
+.pd-reward-container-text {
+  flex-grow: 1;
+}
+
+.pd-reward-container-reward {
+
+}
+

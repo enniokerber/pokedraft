@@ -1,0 +1,29 @@
+<div class="pd-container --league-form-container">
+
+  <div class="pd-container-row --heading-line --large-row-margin-bottom">
+    <h2 class="no-margin left-space"> Your Leagues </h2>
+  </div>
+
+  <div class="pd-container-row flex-align-center --large-row-margin-bottom">
+    <pd-button icon="assets/icons/add.png"
+               alt="Create League Icon"
+               routerLink="create"> Create League </pd-button>
+    <pd-button class="left-space"
+               icon="assets/icons/forward.png"
+               alt="Enter League Icon"
+               routerLink="enter/"> Enter League </pd-button>
+  </div>
+
+  <ng-container *ngIf="leagues$ | async as leagues">
+    <div class="pd-container-row no-margin-bottom" *ngIf="leagues.length > 0; else noLeagues">
+      <pd-league-list [leagues]="leagues"></pd-league-list>
+    </div>
+
+    <ng-template #noLeagues>
+      <div class="pd-container-row flex-align-center">
+        <span class="pd-text"> Du bist noch in keiner Liga </span>
+      </div>
+    </ng-template>
+  </ng-container>
+
+</div>

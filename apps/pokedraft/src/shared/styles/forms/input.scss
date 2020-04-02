@@ -2,8 +2,21 @@
 
 .pd-input-container {
   position: relative;
-  width: 100%;
+  max-width: 100%;
   height: 36px;
+}
+
+.--large-input {
+  height: 44px;
+
+  .pd-input {
+    font-size: $font-size-m;
+  }
+}
+
+.--textarea-container {
+  width: 100vh;
+  height: 200px;
 }
 
 .pd-input {
@@ -101,6 +114,14 @@
     }
   }
 
+}
+
+.--textarea-input {
+  resize: none;
+
+  & ~ .pd-input-placeholder {
+    top: 20px;
+  }
 }
 
 .pd-input-has-content {

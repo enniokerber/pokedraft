@@ -1,0 +1,20 @@
+
+export const PokedraftConfig = {
+  editor: {
+    league: {
+      NAME_MINLENGTH: 10,
+      NAME_MAXLENGTH: 50,
+      ABBREVIATION_MINLENGTH: 3,
+      ABBREVIATION_MAXLENGTH: 10,
+      DESCRIPTION_MAXLENGTH: 250,
+      PARTICIPATORS_MAXCOUNT: 28,
+      PARTICIPATORS_MINCOUNT: 2,
+      DRAFTPICKS_MAXCOUNT: 20,
+      DRAFTPICKS_MINCOUNT: 6
+    },
+    user: {
+      USERNAME_MINLENGTH: 3,
+      USERNAME_MAXLENGTH: 12
+    }
+  }
+};

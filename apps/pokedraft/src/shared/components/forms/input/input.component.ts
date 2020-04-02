@@ -31,6 +31,8 @@ export class InputComponent implements OnInit, AfterViewInit, ControlValueAccess
 
   @Input() disabled: boolean;
 
+  @Input() size: 'normal' | 'small' | 'large';
+
   @Input() autofocus: boolean;
 
   @Output() valueChange: EventEmitter<string>;
@@ -38,6 +40,7 @@ export class InputComponent implements OnInit, AfterViewInit, ControlValueAccess
   constructor() {
     this.value = '';
     this.disabled = false;
+    this.size = 'normal';
     this.autofocus = false;
     this.valueChange = new EventEmitter<string>();
   }
@@ -46,8 +49,12 @@ export class InputComponent implements OnInit, AfterViewInit, ControlValueAccess
 
   ngAfterViewInit(): void {
     if (this.autofocus) {
-      this.element.nativeElement.focus();
+      this.focus();
     }
+  }
+
+  focus(): void {
+    this.element.nativeElement.focus();
   }
 
   changeValue(to: string): void {

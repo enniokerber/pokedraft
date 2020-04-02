@@ -1,0 +1,24 @@
+@import "../../../utils";
+
+.pd-list-container {
+  width: 100%;
+  border: 1px solid $grey-light;
+  border-radius: $radius;
+  background-color: $white-bis;
+  padding: $padding-l;
+  transition: $transition;
+  margin-bottom: $margin-l;
+
+  &:hover {
+    box-shadow: $floating-shadow;
+  }
+}
+
+.--grid-side-border {
+  padding: 0 $padding;
+  border-left: 1px dashed $grey-light;
+  border-right: 1px dashed $grey-light;
+}
+
+@import "league";
+@import "message";

@@ -1,0 +1,22 @@
+@import "../utils";
+
+$logoHeight: 150px;
+
+.pd-league-logo-container {
+  position: relative;
+  min-width: 300px;
+  height: $logoHeight;
+  border: 1px dashed $grey-light;
+}
+
+.pd-league-logo {
+  position: absolute;
+  @include center-relatively;
+  max-height: $logoHeight;
+}
+
+.pd-league-logo-default-label {
+  position: absolute;
+  @include center-relatively;
+  color: $grey-light;
+}

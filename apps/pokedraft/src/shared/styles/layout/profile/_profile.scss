@@ -1,0 +1,29 @@
+@import "../../utils";
+
+$picSize: 60px;
+
+pd-profile-picture {
+  height: $picSize;
+}
+
+.pd-profile-picture {
+  width: $picSize;
+  height: $picSize;
+  border-radius: 50%;
+  border: 1px solid $grey;
+  box-shadow: $floating-shadow;
+  font-size: $font-size-xxs;
+}
+
+.pd-user-snippet {
+  color: $grey;
+  font-size: $font-size-m;
+  @include flex-center-vertically;
+  @include take-up-full-space;
+  justify-content: flex-end;
+}
+
+.pd-user-snippet-username {
+  height: 100%;
+  @include flex-center;
+}

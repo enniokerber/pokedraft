@@ -2,12 +2,10 @@
   "name": "pokedraft-fire",
   "version": "0.0.0",
   "license": "MIT",
-
   "main": "dist/apps/functions/main.js",
   "engines": {
     "node": "8"
   },
-
   "scripts": {
     "ng": "ng",
     "nx": "nx",

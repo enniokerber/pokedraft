@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'pd-loader',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() forButton: boolean;
+
+  constructor() {
+    this.forButton = false;
+  }
 
   ngOnInit(): void {
   }

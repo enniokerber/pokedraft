@@ -1,9 +1,15 @@
 <button class="pd-button"
         [title]="title"
-        [disabled]="disabled"
+        [disabled]="disabled || loading"
         (click)="emitLeftClick()"
         (contextmenu)="emitRightClick($event)">
-  <span class="pd-button-text"><ng-content></ng-content></span>
-  <img class="pd-button-icon" [src]="icon" [alt]="alt" *ngIf="icon">
+  <ng-container *ngIf="!loading; else loader">
+    <span class="pd-button-text"><ng-content></ng-content></span>
+    <img class="pd-button-icon" [src]="icon" [alt]="alt" *ngIf="icon">
+  </ng-container>
+
+  <ng-template #loader>
+    <pd-loader forButton="true"></pd-loader>
+  </ng-template>
 </button>
 

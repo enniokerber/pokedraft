@@ -1,0 +1,100 @@
+@import "../../utils";
+
+.pd-popup-container {
+  position: absolute;
+  @include center-relatively;
+  width: 300px;
+  max-height: 400px;
+  border: 1px solid $grey-lighter;
+  border-radius: $radius;
+  padding: $padding-m;
+  background-color: $white;
+  box-shadow: $floating-shadow-hover;
+  z-index: 10;
+}
+
+.pd-popup-container-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include take-up-full-space;
+  border-radius: $radius;
+  background-color: $grey-500;
+  z-index: 5;
+}
+
+.pd-popup-container-list {
+  width: 100%;
+  max-height: 200px;
+  margin-bottom: $margin-l;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pd-popup-container-list-entry {
+  @include flex-center-vertically;
+  width: 100%;
+  padding: $padding-s $padding;
+  border-radius: $radius;
+  color: $primary;
+  font-size: $font-size-xxs;
+  word-break: break-all;
+  margin-bottom: $margin;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $grey-100;
+    text-decoration: underline $primary;
+  }
+
+  &:active {
+    color: $secondary;
+    text-decoration-color: $secondary;
+  }
+}
+
+.pd-image-preview {
+  max-height: 40px;
+}
+
+$closebtnsize: 20px;
+
+.pd-popup-container-close-button {
+  position: absolute;
+  top: -($closebtnsize / 2) + 2px;
+  right: -($closebtnsize / 2) + 2px;
+  width: $closebtnsize;
+  height: $closebtnsize;
+  border: 2px solid $white;
+  border-radius: 50%;
+  background-color: $primary;
+  outline: none;
+  cursor: pointer;
+
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    background-color: $white;
+    width: 80%;
+    height: 1px;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:active {
+    background-color: $primary2;
+  }
+
+}
+

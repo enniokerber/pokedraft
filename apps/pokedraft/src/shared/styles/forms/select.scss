@@ -1,0 +1,19 @@
+@import "../utils";
+
+.pd-select {
+  max-width: 300px;
+  border: 1px solid $grey-lighter;
+  border-radius: $radius;
+  padding: 10px 10px 7px 10px;
+
+  color: $grey-dark;
+  font-size: $font-size-s;
+  outline: none;
+  z-index: 1;
+  transition: $transition-s;
+  cursor: pointer;
+
+  &:focus {
+    border: 1px solid $primary;
+  }
+}

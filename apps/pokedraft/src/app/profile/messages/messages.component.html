@@ -1,0 +1,24 @@
+<div class="pd-container --league-form-container">
+
+  <div class="pd-container-row --heading-line">
+    <h2 class="no-margin left-space"> Messages
+      <span id="messages-count" *ngIf="(messages$ | async) as messages"> ({{messages.length}}) </span>
+    </h2>
+  </div>
+
+  <div class="pd-container-row flex-align-center --small-row-margin-bottom">
+    <ng-container *ngIf="(messages$ | async) as messages; else loading">
+      <ng-container *ngIf="messages.length > 0; else noMessages">
+        <pd-message-container [message]="message" *ngFor="let message of messages"></pd-message-container>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <ng-template #loading>
+    <pd-loader>Loading...</pd-loader>
+  </ng-template>
+
+  <ng-template #noMessages>
+    <div class="pd-text"> You have zero messages </div>
+  </ng-template>
+</div>  

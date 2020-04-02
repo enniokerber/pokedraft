@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PokedraftAuthService } from '../../../shared/services/auth/pokedraft-auth.service';
+import {Router} from "@angular/router";
+import {PokedraftConfig} from "../../../shared/pokedraft.config";
+import {IPokedraftUser} from "@pokedraft-fire/models";
 
 @Component({
   selector: 'pd-choose-username',
@@ -17,14 +20,21 @@ export class ChooseUsernameComponent implements OnInit {
 
   success: boolean;
 
+  authorized$: Observable<IPokedraftUser>;
+
+  config: any;
+
   constructor(private fb: FormBuilder,
-              private auth: PokedraftAuthService) {
+              private auth: PokedraftAuthService,
+              private router: Router) {
     this.usernameFormError = '';
+    this.config = PokedraftConfig.editor.user;
     this.usernameForm = this.fb.group({
-      username: ['Whatever', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+      username: ['Whatever', [Validators.required, Validators.minLength(this.config.USERNAME_MINLENGTH), Validators.maxLength(this.config.USERNAME_MAXLENGTH)]]
     });
     this.loading$ = this.auth.loading.asObservable();
     this.success = false;
+    this.authorized$ = this.auth.user$;
   }
 
   ngOnInit(): void {
@@ -33,11 +43,12 @@ export class ChooseUsernameComponent implements OnInit {
   get username(): AbstractControl { return this.usernameForm.get('username'); }
 
   saveUsername(): void {
-    if (this.usernameForm.valid && this.auth.activeUsersId) {
+    if (this.usernameForm.valid) {
       this.usernameFormError = '';
       this.auth.updateUsername(this.username.value)
         .then(() => {
           this.success = true;
+          this.router.navigateByUrl('profile');
         })
         .catch(error => {
           this.usernameFormError = 'Could not update the username.';

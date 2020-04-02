@@ -4,7 +4,6 @@ import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ChooseUsernameComponent } from './choose-username/choose-username.component';
-import { UserSignedInGuard } from '../../shared/guards/signedin/user-signed-in.guard';
 
 
 @NgModule({
@@ -31,7 +30,6 @@ import { UserSignedInGuard } from '../../shared/guards/signedin/user-signed-in.g
           {
             path: 'pickusername',
             component: ChooseUsernameComponent,
-            canActivate: [UserSignedInGuard],
             data: {
               animation: 'pickusername'
             }

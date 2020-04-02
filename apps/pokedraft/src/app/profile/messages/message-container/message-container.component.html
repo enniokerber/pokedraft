@@ -1,0 +1,44 @@
+<div class="pd-list-container pd-message-container" *ngIf="isLeagueInvitation; else rewardContainer">
+
+  <div class="pd-message-container-head flex-space-between">
+    <div class="pd-message-container-subject">
+      {{message.title}}
+    </div>
+
+    <pd-user-snippet [user]="message.from"></pd-user-snippet>
+  </div>
+
+  <div class="pd-message-container-text">
+    {{message.content.text}}
+  </div>
+
+  <div class="pd-message-container-assets"
+       routerLink="../leagues/enter/{{league.id}}"
+       *ngIf="message.content.league as league">
+    <div class="pd-league-link">
+      <span class="padding-top-adjustment">
+      {{league.name}}
+    </span>
+      <pd-round-button class="left-space"
+                       title="Enter League"
+                       icon="assets/icons/forward.png"
+                       alt="Arrow Icon"></pd-round-button>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #rewardContainer>
+
+  <div class="pd-list-container pd-reward-container"
+       [ngClass]="{
+          'bg-gold': message.content.reward.type === 'gold',
+          'bg-silver': message.content.reward.type === 'silver',
+          'bg-bronze': message.content.reward.type === 'bronze',
+          'bg-platinum': message.content.reward.type === 'platinum'
+       }">
+    <span class="pd-reward-container-text"> {{message.content.text}} </span>
+    <span *ngIf="message.content.reward.draftPoints as dp"> +{{dp}} DP </span>
+  </div>
+
+</ng-template>

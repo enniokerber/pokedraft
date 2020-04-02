@@ -1,0 +1,11 @@
+<button class="pd-round-button"
+        [ngClass]="{
+          'pd-round-button--active': active,
+          'pd-round-button--red': red
+        }"
+        [title]="title"
+        [disabled]="disabled"
+        (click)="emitLeftClick()"
+        (contextmenu)="emitRightClick($event)">
+  <img [src]="icon" [alt]="alt" *ngIf="icon">
+</button>

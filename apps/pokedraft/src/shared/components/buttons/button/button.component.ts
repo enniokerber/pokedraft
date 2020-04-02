@@ -15,6 +15,8 @@ export class ButtonComponent {
 
   @Input() disabled: boolean;
 
+  @Input() loading: boolean;
+
   @Output() leftclick: EventEmitter<{}>;
 
   @Output() rightclick: EventEmitter<{}>;

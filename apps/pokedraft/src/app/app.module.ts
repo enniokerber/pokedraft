@@ -8,15 +8,22 @@ import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig } from '../shared/data/firebase/firebase.config';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import { TrySignInComponent } from './try-sign-in/try-sign-in.component';
+import {LayoutModule} from "./layout/layout.module";
+import {PokedraftUtilsModule} from "../shared/components/misc/pokedraft-utils.module";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TrySignInComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    LayoutModule,
+    PokedraftUtilsModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

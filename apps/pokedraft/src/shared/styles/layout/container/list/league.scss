@@ -1,0 +1,87 @@
+@import "../../../utils";
+
+
+.pd-league-container {
+  display: grid;
+  grid-template-areas:
+    "name meta owner actions";
+  grid-template-columns: 1.5fr 136px .8fr 0.3fr;
+  grid-template-rows: 40px;
+  transition: $transition;
+  overflow: hidden;
+
+  &--open {
+    grid-template-areas:
+      "name meta     owner actions"
+      "desc settings logo  logo";
+    grid-template-rows: 40px minmax(0, 150px);
+    row-gap: 14px;
+  }
+}
+
+.pd-league-container-league-name {
+  grid-area: name;
+  @include flex-center-vertically;
+}
+
+.pd-league-container-league-meta-data {
+  grid-area: meta;
+}
+
+.pd-league-container-league-meta-data-entry {
+  width: 100%;
+  height: 33.3%;
+  @include flex-center;
+  color: $grey;
+  font-size: $font-size-s;
+
+  &--small {
+    font-size: $font-size-xs;
+  }
+}
+
+.pd-league-container-league-owner {
+  grid-area: owner;
+}
+
+.pd-league-container-league-actions {
+  grid-area: actions;
+  place-self: center end;
+}
+
+.pd-league-container-league-desc {
+  grid-area: desc;
+  color: $grey-light;
+  font-size: $font-size-xs;
+}
+
+.pd-league-container-league-settings {
+  grid-area: settings;
+  color: $grey-light;
+  font-size: $font-size-s;
+}
+
+.pd-league-container-league-settings-entry {
+  width: 100%;
+  @include flex-center;
+  justify-content: space-between;
+  color: $grey;
+  font-size: $font-size-s;
+}
+
+.pd-league-container-league-settings-title {
+  font-size: $font-size;
+  justify-content: center;
+}
+
+.pd-league-container-league-logo {
+  position: relative;
+  grid-area: logo;
+  border-right: 1px dashed $grey-light;
+
+  img {
+    position: absolute;
+    @include center-relatively;
+    max-height: 150px;
+  }
+}

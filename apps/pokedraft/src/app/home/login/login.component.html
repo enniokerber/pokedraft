@@ -3,10 +3,10 @@
 
   <pd-logo forFormContainer="true"></pd-logo>
 
-  <div class="pd-container-row">
+  <div class="pd-container-row no-margin-bottom">
     <h1>Login</h1>
   </div>
-  <div class="pd-container-row --heading-line">
+  <div class="pd-container-row --heading-line --small-row-margin-bottom">
     <h2>Access your profile</h2>
   </div>
 
@@ -27,15 +27,16 @@
       formControlName="password">Password</pd-input>
   </div>
 
-  <div class="pd-container-row">
+  <div class="pd-container-row"
+       [class.no-margin-bottom]="!loginError">
     <pd-button icon="assets\icons\send_18px.png"
+               [loading]="loading$ | async"
                [disabled]="loginForm.invalid || success"
                (leftclick)="login()">Login</pd-button>
-    <pd-loader *ngIf="loading$ | async"></pd-loader>
     <div class="pd-success-icon --icon-margin-left" *ngIf="success"></div>
   </div>
 
-  <div class="pd-container-row" *ngIf="loginError">
+  <div class="pd-container-row no-margin-bottom" *ngIf="loginError">
     <pd-error>{{loginError}}</pd-error>
   </div>
 

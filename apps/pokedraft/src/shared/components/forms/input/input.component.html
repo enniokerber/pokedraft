@@ -1,7 +1,12 @@
-<div class="pd-input-container">
+<div class="pd-input-container"
+     [ngClass]="{
+        '--large-input': size === 'large'
+     }">
   <input #inputElement
          class="pd-input"
-         [class.pd-input-has-content]="value !== ''"
+         [ngClass]="{
+            'pd-input-has-content': value !== ''
+         }"
          [type]="type"
          [ngModel]="value"
          (ngModelChange)="changeValue($event)"

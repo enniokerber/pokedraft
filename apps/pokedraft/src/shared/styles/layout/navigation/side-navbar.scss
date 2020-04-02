@@ -1,0 +1,101 @@
+@import "../../utils";
+
+
+.pd-side-navbar {
+  position: fixed;
+  top: $top-bar-height;
+  left: 0;
+  width: $side-navbar-width;
+  height: calc(100% - #{$top-bar-height});
+  padding: 12px 0;
+  background-color: $white;
+  border-right: 1px solid $layout-border-color;
+  transition: $transition;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 6;
+  overflow: visible scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &--active {
+    transform: scaleX(1);
+
+    .pd-side-navbar-item, .pd-side-navbar-link, .pd-side-navbar-title {
+      opacity: 1;
+    }
+  }
+}
+
+.pd-side-navbar-item {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  padding: 8px 20px;
+  color: $grey;
+  font-size: 1em;
+  cursor: pointer;
+  outline: 0;
+  opacity: 0;
+  transition: opacity .2s .2s;
+  @include flex-center-vertically;
+
+  svg {
+    position: absolute;
+    @include center-relatively-vertically;
+    right: 10px;
+    fill: $grey;
+  }
+
+  &--active {
+    background-color: $primary;
+    color: $white;
+    cursor: default;
+
+    svg {
+      fill: $white;
+    }
+  }
+
+  &:hover:not(.pd-side-navbar-item--active) {
+    color: $primary;
+    background-color: $white-bis;
+  }
+
+  &:active:not(.pd-side-navbar-item--active) {
+    transition: 0s;
+    color: $secondary;
+  }
+}
+
+.pd-side-navbar-link {
+  width: 100%;
+  height: 36px;
+  padding: 8px 20px;
+  font-size: $font-size;
+  cursor: pointer;
+  outline: 0;
+  opacity: 0;
+  transition: opacity .2s .2s;
+  margin-top: $margin;
+  @include flex-center;
+  @include no-user-select;
+}
+
+.pd-side-navbar-title {
+  width: 100%;
+  height: 36px;
+  padding: 8px 20px;
+  outline: 0;
+  opacity: 0;
+  transition: opacity .2s .2s;
+  @include flex-center;
+
+  h1 {
+    font-size: $font-size-l;
+  }
+}

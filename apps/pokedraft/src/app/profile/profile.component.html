@@ -1,0 +1,11 @@
+<pd-top-bar [navbarOpen]="navbarOpen"
+            (menuToggle)="toggleNavbar($event)"></pd-top-bar>
+
+<pd-profile-navbar [open]="navbarOpen"></pd-profile-navbar>
+
+<div class="pd-content-window"
+     [class.pd-content-window--navbar-active]="navbarOpen">
+  <div class="pd-component-frame">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="pd-list-container pd-league-container"
+     [class.pd-league-container--open]="showMore">
+
+  <div class="pd-league-container-league-name">
+    <a> {{league.name.long}} </a>
+    <span class="pd-success-icon pd-success-icon--primary-color-icon left-space"
+          title="You already take part in this league." *ngIf="isParticipator"></span>
+  </div>
+
+  <div class="pd-league-container-league-meta-data --grid-side-border">
+
+    <div class="pd-league-container-league-meta-data-entry" title="Battle Platform"> {{league.settings.general.platform}} </div>
+    <div class="pd-league-container-league-meta-data-entry pd-league-container-league-meta-data-entry--small" title="Battle Type"> {{league.settings.general.format.battleType}} </div>
+    <div class="pd-league-container-league-meta-data-entry pd-league-container-league-meta-data-entry--small" title="Team Member Count (x vs. x)"> {{league.settings.general.format.teamPokemon}}vs{{league.settings.general.format.teamPokemon}} </div>
+
+  </div>
+
+  <div class="pd-league-container-league-owner">
+    <pd-user-snippet [user]="league.owner"></pd-user-snippet>
+  </div>
+
+  <div class="pd-league-container-league-actions">
+    <pd-round-button icon="assets/icons/arrow_down.png"
+                     alt="More Information Icon"
+                     [active]="showMore"
+                     (leftclick)="toggleMoreInformation()">
+    </pd-round-button>
+  </div>
+
+  <ng-container *ngIf="showMore">
+    <div class="pd-league-container-league-desc">
+      {{league.description}}
+    </div>
+
+    <div class="pd-league-container-league-settings --grid-side-border">
+      <div class="pd-league-container-league-settings-entry pd-league-container-league-settings-title">
+        Settings
+      </div>
+      <div class="pd-league-container-league-settings-entry">
+        <span> Participators: </span>
+        <span> {{league.settings.general.participators}} </span>
+      </div>
+      <div class="pd-league-container-league-settings-entry">
+        <span> Draftpicks: </span>
+        <span> {{league.settings.draft.picks}} </span>
+      </div>
+      <div class="pd-league-container-league-settings-entry">
+        <span> Species Clause: </span>
+        <span> {{toYesNo(league.settings.draft.speciesClause)}} </span>
+      </div>
+      <div class="pd-league-container-league-settings-entry">
+        <span> Mirror Draft: </span>
+        <span> {{toYesNo(league.settings.draft.mirror)}} </span>
+      </div>
+    </div>
+
+    <div class="pd-league-container-league-logo">
+      <img [src]="league.logo"
+           alt="League Logo"
+           (load)="setLogoLoaded()"
+           *ngIf="league.logo; else noLogo">
+      <pd-loader class="center-relatively" *ngIf="league.logo && !logoLoaded"></pd-loader>
+      <ng-template #noLogo>
+        <span class="pd-text center-relatively color-grey-light small-font-size"> No League Logo </span>
+      </ng-template>
+    </div>
+  </ng-container>
+</div>
+
+<div class="pd-container-row flex-align-right --small-row-margin-bottom"
+     *ngIf="enterable && !isParticipator">
+  <pd-button icon="assets/icons/forward.png"
+             alt="Enter League Icon"
+             title="Enter {{league.name}}?">Enter</pd-button>
+</div>

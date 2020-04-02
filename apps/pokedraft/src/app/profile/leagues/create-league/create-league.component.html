@@ -1,0 +1,137 @@
+<form class="pd-container --league-form-container"
+      [formGroup]="leagueForm">
+
+  <div class="pd-container-row --heading-line">
+    <h2 class="no-margin left-space"> Create a new league </h2>
+  </div>
+
+  <div class="pd-container-row flex-align-right">
+    <a routerLink="../"> Back to your leagues </a>
+  </div>
+
+  <div class="pd-container-row flex-align-center">
+    <h3> <u> General </u> </h3>
+  </div>
+
+  <div class="pd-container-row --small-row-margin-bottom">
+    <pd-input size="large" autofocus="true" formControlName="name"> League Name </pd-input>
+    <pd-input class="left-space" size="large" formControlName="abbreviation"> Abbreviation </pd-input>
+  </div>
+
+  <div class="pd-container-row-group --small-row-margin-bottom">
+    <div class="pd-container-row --small-row-margin-bottom" *ngIf="name.errors?.minlength && (name.touched && name.dirty)">
+      <pd-error> League Name (minlength): {{config.NAME_MINLENGTH}} [Current: {{name.value.length}}] </pd-error>
+    </div>
+    <div class="pd-container-row --small-row-margin-bottom" *ngIf="name.errors?.maxlength && (name.touched && name.dirty)">
+      <pd-error> League Name (maxlength): {{config.NAME_MAXLENGTH}} [Current: {{name.value.length}}] </pd-error>
+    </div>
+    <div class="pd-container-row --small-row-margin-bottom" *ngIf="abbreviation.errors?.minlength && (abbreviation.touched && abbreviation.dirty)">
+      <pd-error> Abbreviation (minlength): {{config.ABBREVIATION_MINLENGTH}} [Current: {{abbreviation.value.length}}] </pd-error>
+    </div>
+    <div class="pd-container-row --small-row-margin-bottom" *ngIf="abbreviation.errors?.maxlength && (abbreviation.touched && abbreviation.dirty)">
+      <pd-error> Abbreviation (maxlength): {{config.ABBREVIATION_MAXLENGTH}} [Current: {{abbreviation.value.length}}] </pd-error>
+    </div>
+  </div>
+
+  <div class="pd-container-row --small-row-margin-bottom">
+    <pd-textarea formControlName="description"> League Description </pd-textarea>
+  </div>
+
+  <div class="pd-container-row-group --small-row-margin-bottom">
+    <div class="pd-container-row --small-row-margin-bottom" *ngIf="description.errors?.maxlength">
+      <pd-error> Description (maxlength): {{config.DESCRIPTION_MAXLENGTH}} [Current: {{description.value.length}}] </pd-error>
+    </div>
+  </div>
+
+  <div class="pd-container-row --row-has-border-bottom">
+    <label class="pd-container-row-label" for="platform"> Platform </label>
+    <div class="pd-container-row-content">
+      <select id="platform" class="pd-select" formControlName="platform">
+        <option [value]="platform" *ngFor="let platform of platforms"> {{platform}} </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="pd-container-row --row-has-border-bottom">
+    <label class="pd-container-row-label"> Format </label>
+    <div class="pd-container-row-content">
+      <select id="battletype" class="pd-select" formControlName="battleType">
+        <option [value]="battleType" *ngFor="let battleType of battleTypes"> {{battleType}} </option>
+      </select>
+      <select id="teammembers" class="pd-select left-space" formControlName="teamMembers">
+        <option [value]="n" *ngFor="let n of teammembers"> {{n}}vs{{n}} </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="pd-container-row --small-row-margin-bottom">
+    <pd-input type="number" size="large" formControlName="participators"> Participators </pd-input>
+  </div>
+
+  <div class="pd-container-row-group --small-row-margin-bottom">
+    <div class="pd-container-row --small-row-margin-bottom" *ngIf="participators.errors?.min">
+      <pd-error> Participators (min): {{config.PARTICIPATORS_MINCOUNT}} </pd-error>
+    </div>
+    <div class="pd-container-row --small-row-margin-bottom" *ngIf="participators.errors?.max">
+      <pd-error> Participators (max): {{config.PARTICIPATORS_MAXCOUNT}} </pd-error>
+    </div>
+  </div>
+
+  <div class="pd-container-row flex-align-center">
+    <h3> <u> Draft </u> </h3>
+  </div>
+
+  <div class="pd-container-row-group --small-row-margin-bottom --row-has-border-bottom">
+    <div class="pd-container-row --small-row-margin-bottom">
+      <label class="pd-container-row-label"> Draftpicks </label>
+      <div class="pd-container-row-content">
+        <pd-input type="number" size="large" formControlName="draftPicks"> </pd-input>
+      </div>
+    </div>
+
+    <div class="pd-container-row no-margin-bottom" *ngIf="draftPicks.errors?.min">
+      <pd-error> Draftpicks (min): {{config.DRAFTPICKS_MINCOUNT}} </pd-error>
+    </div>
+    <div class="pd-container-row no-margin-bottom" *ngIf="draftPicks.errors?.max">
+      <pd-error> Draftpicks (max): {{config.DRAFTPICKS_MAXCOUNT}} </pd-error>
+    </div>
+  </div>
+
+  <div class="pd-container-row --row-has-border-bottom">
+    <label class="pd-container-row-label"> Mirror Draft </label>
+    <div class="pd-container-row-content">
+      <input type="checkbox" formControlName="mirror">
+    </div>
+  </div>
+
+  <div class="pd-container-row --row-has-border-bottom">
+    <label class="pd-container-row-label"> Species Clause </label>
+    <div class="pd-container-row-content">
+      <input type="checkbox" formControlName="speciesClause">
+    </div>
+  </div>
+
+  <div class="pd-container-row --row-has-border-bottom">
+    <div class="pd-league-logo-container">
+      <span class="pd-league-logo-default-label" *ngIf="!logo"> League Logo </span>
+      <img class="pd-league-logo" [src]="logo" alt="League Logo" *ngIf="logo">
+    </div>
+    <pd-round-button class="left-space"
+               icon="assets/icons/edit.png"
+               alt="Edit League Logo Icon"
+               (leftclick)="showFilesList = true;"></pd-round-button>
+  </div>
+
+  <div class="pd-container-row flex-align-center">
+    <pd-button icon="assets/icons/add.png"
+               alt="Create League Icon"
+               [disabled]="leagueForm.invalid"
+               [loading]="loading$ | async"
+               (leftclick)="createLeague()"> Create League </pd-button>
+  </div>
+
+  <pd-choose-file [show]="showFilesList"
+                  (choose)="setLeagueLogo($event)"
+                  (onclose)="showFilesList = false;"></pd-choose-file>
+
+</form>

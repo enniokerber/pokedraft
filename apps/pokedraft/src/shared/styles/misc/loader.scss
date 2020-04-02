@@ -21,6 +21,17 @@ pd-loader {
   background: $primary;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
+
+.pd-loader--for-button {
+  height: 26px;
+  margin: 0;
+
+  div {
+    top: 7px;
+    background-color: $white;
+  }
+}
+
 .pd-loader div:nth-child(1) {
   left: 6px;
   animation: lds-ellipsis1 0.5s infinite;
@@ -102,6 +113,13 @@ pd-loader {
     transform: rotate(45deg);
     width: 10px;
   }
+
+  &--primary-color-icon {
+    border-color: $primary-light;
+    &::before, &::after {
+      background-color: $primary-light;
+    }
+  }
 }
 
 .pd-error-icon {
@@ -137,6 +155,10 @@ pd-loader {
   &::after {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
+}
+
+.--icon-margin-left-small {
+  margin-left: $margin-s;
 }
 
 .--icon-margin-left {

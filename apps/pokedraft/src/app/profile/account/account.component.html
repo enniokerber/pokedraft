@@ -1,0 +1,80 @@
+
+<div class="pd-container --league-form-container">
+
+  <div class="pd-container-row-group"
+       *ngIf="(authedUser$ | async) as authedUser; else noAuthorizedUser">
+
+    <div class="pd-container-row --heading-line">
+      <h2 class="no-margin left-space"> Hi, {{authedUser.username}}! </h2>
+    </div>
+
+    <div class="pd-container-row">
+      <pd-profile-picture [src]="authedUser.profilePicture"></pd-profile-picture>
+      <pd-round-button class="left-space"
+                       title="Edit your profile picture"
+                 icon="assets/icons/edit.png"
+                 (leftclick)="openFileChooser()"> Edit </pd-round-button>
+    </div>
+
+    <div class="pd-container-row">
+      <pd-input #usernameInput
+                type="text"
+                autofocus="on"
+                [(value)]="user.username"> Username </pd-input>
+      <pd-round-button class="left-space"
+                       icon="assets/icons/done.png"
+                       title="Save"
+                       [@PopUp]
+                       [disabled]="user.username === authedUser.username"
+                       (leftclick)="changeUsername()">
+      </pd-round-button>
+      <div class="pd-success-icon --icon-margin-left-small"
+           [@PopUp]
+           *ngIf="usernameSaveSuccess"></div>
+    </div>
+
+    <div class="pd-container-row flex-align-bottom">
+      <pd-textarea maxlength="400"
+                   [(value)]="user.profileDescription"> Profile Description </pd-textarea>
+      <pd-round-button class="left-space"
+                       icon="assets/icons/done.png"
+                       title="Save"
+                       [@PopUp]
+                       [disabled]="user.profileDescription === authedUser.profileDescription"
+                       (leftclick)="changeProfileDescription()">
+      </pd-round-button>
+      <div class="pd-success-icon --icon-margin-left-small"
+           [@PopUp]
+           *ngIf="descriptionSaveSuccess"></div>
+    </div>
+
+    <div class="pd-container-row" *ngIf="updateError">
+      <pd-error> {{updateError}} </pd-error>
+    </div>
+
+    <div class="pd-container-row">
+      <ul>
+        <li> Profile created: {{authedUser.createdAt | date : 'dd.MM.yyyy, hh:mm'}} Servertime </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <ng-template #noAuthorizedUser>
+
+    <div class="pd-container-row --heading-line">
+      <h2 class="no-margin left-space"> Account </h2>
+    </div>
+
+    <div class="pd-container-row flex-align-center">
+      <pd-loader> Loading User ... </pd-loader>
+    </div>
+  </ng-template>
+
+  <pd-choose-file
+    (choose)="changeProfilePicture($event)"
+    (onclose)="closeFileChooser()"
+    *ngIf="showChooseFileWindow">
+  </pd-choose-file>
+
+</div>

@@ -3,7 +3,7 @@
 
   <pd-logo forFormContainer="true"></pd-logo>
 
-  <div class="pd-container-row">
+  <div class="pd-container-row no-margin-bottom">
     <h1>Pick a Username</h1>
   </div>
   <div class="pd-container-row --heading-line">
@@ -14,7 +14,7 @@
     <a routerLink="../login"> Login with other profile </a>
   </div>
 
-  <div class="pd-container-row">
+  <div class="pd-container-row --small-row-margin-bottom">
     <pd-input type="text"
               formControlName="username"
               autofocus="true">
@@ -22,20 +22,21 @@
     </pd-input>
   </div>
 
-  <div class="pd-container-row --large-row-margin-bottom"
+  <div class="pd-container-row"
        *ngIf="username.errors?.minlength && (username.touched && username.dirty)">
-    <pd-error>The username must be at least 3 characters</pd-error>
+    <pd-error>The username must be at least {{config.USERNAME_MINLENGTH}} characters</pd-error>
   </div>
-  <div class="pd-container-row --large-row-margin-bottom"
+  <div class="pd-container-row"
        *ngIf="username.errors?.maxlength && (username.touched && username.dirty)">
-    <pd-error>Max. Length: 20 characters</pd-error>
+    <pd-error>Max. Length: {{config.USERNAME_MAXLENGTH}} characters</pd-error>
   </div>
 
-  <div class="pd-container-row">
+  <div class="pd-container-row"
+       [class.no-margin-bottom]="!success">
     <pd-button icon="assets\icons\save_alt.png"
-               [disabled]="usernameForm.invalid || success"
+               [loading]="!(authorized$ | async) || (loading$ | async)"
+               [disabled]="!(authorized$ | async) || usernameForm.invalid || success"
                (leftclick)="saveUsername()">Save</pd-button>
-    <pd-loader *ngIf="loading$ | async"></pd-loader>
     <div class="pd-success-icon --icon-margin-left" *ngIf="success"></div>
   </div>
 

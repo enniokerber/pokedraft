@@ -1,0 +1,23 @@
+@import "../../utils";
+
+.pd-achievement {
+  width: 100%;
+  height: 40px;
+  border-radius: $radius;
+  padding: $padding-m;
+  box-shadow: $floating-shadow;
+  border: 1px solid $grey-lighter;
+  @include flex-center-vertically;
+  margin-bottom: $margin-m;
+}
+
+.pd-achievement-name {
+  color: $grey;
+}
+
+.pd-achievement-icon {
+}
+
+.pd-platinum-achievement-icon {
+  stroke: $primary;
+}

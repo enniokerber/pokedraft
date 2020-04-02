@@ -37,6 +37,13 @@ h2 {
   z-index: 2;
 }
 
+h3 {
+  margin: 0;
+  color: $grey;
+  font-size: $font-size;
+  font-weight: 400;
+}
+
 a {
   color: $primary;
   cursor: pointer;
@@ -51,6 +58,7 @@ ul {
   margin: 0 0 20px 0;
   padding: 0;
   list-style-type: none;
+  word-break: break-all;
 
   li {
     position: relative;
@@ -89,4 +97,8 @@ ul {
   &::before, &::after {
     border-color: $red-1;
   }
+}
+
+pd-file-list, pd-file-upload, pd-league-list, pd-upload-task, pd-achievement, pd-league-container, pd-message-container {
+  width: 100%;
 }

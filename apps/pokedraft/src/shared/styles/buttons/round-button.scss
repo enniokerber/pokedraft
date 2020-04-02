@@ -1,0 +1,57 @@
+@import "../utils";
+
+$size: 37px;
+
+.pd-round-button {
+  @include flex-center;
+  width: $size;
+  height: $size;
+  background-color: $primary;
+  border-radius: 50%;
+  border: none;
+  color: $white;
+  font-size: $font-size;
+  outline: none;
+  transition: $transition;
+  cursor: pointer;
+  box-shadow: $floating-shadow;
+
+  img {
+    transition: $transition;
+    transform: rotate(0);
+  }
+
+  &:hover:not(:disabled) {
+    opacity: .9;
+    box-shadow: $floating-shadow;
+  }
+
+  &:active:not(:disabled) {
+    transition: 0s;
+    background-color: $primary2;
+    opacity: 1;
+  }
+
+  &:disabled {
+    opacity: .7;
+    cursor: default;
+  }
+
+  &--active {
+
+    background-color: $primary2;
+
+    img {
+      transition: $transition-l;
+      transform: rotate(180deg);
+    }
+  }
+
+  &--red {
+    background-color: $red-2;
+
+    &:active:not(:disabled) {
+      background-color: $red-1;
+    }
+  }
+}

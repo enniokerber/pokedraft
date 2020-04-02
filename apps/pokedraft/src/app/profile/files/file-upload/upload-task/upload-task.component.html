@@ -1,0 +1,27 @@
+<div class="pd-list-container">
+
+  <div class="pd-container-row flex-align-center">
+    <h3> {{file?.name}} </h3>
+  </div>
+
+  <div class="pd-container-row flex-align-center"
+       *ngIf="percentage$ | async as percentage">
+    <progress [value]="percentage" max="100"></progress>
+  </div>
+
+  <div class="pd-container-row flex-align-center no-margin-bottom"
+       *ngIf="error">
+    <pd-error> {{error}} </pd-error>
+    <pd-round-button class="left-space"
+                     icon="assets/icons/refresh.png"
+                     alt="Retry Button"
+                     (leftclick)="uploadFile()"
+                     *ngIf="!noImage"></pd-round-button>
+  </div>
+
+  <div class="pd-container-row flex-align-center no-margin-bottom"
+       *ngIf="url">
+    <a target="_blank"
+       [href]="url" > Download </a>
+  </div>
+</div>

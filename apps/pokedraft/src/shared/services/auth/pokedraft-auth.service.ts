@@ -1,38 +1,53 @@
-import { Injectable} from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import {Injectable, OnDestroy} from '@angular/core';
+import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
 import { IPokedraftUser } from '@pokedraft-fire/models';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { switchMap } from 'rxjs/operators';
+import {shareReplay, switchMap, tap} from 'rxjs/operators';
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root'
 })
-export class PokedraftAuthService {
+export class PokedraftAuthService implements OnDestroy {
 
-  activeUsersId: string;
-  user$: Observable<IPokedraftUser>;
+  activeUsersData: IPokedraftUser;
+
+  auth$: Observable<IPokedraftUser>; // used to check the auth state
+  user$: Observable<IPokedraftUser>; // used to share the current user
+
+  private userSubscription: Subscription;
 
   loading: BehaviorSubject<boolean>;
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore) {
-    this.activeUsersId = null;
-    this.user$ = this.afAuth.authState
-      .pipe(
-        switchMap(user => {
+    this.activeUsersData = null;
+    this.auth$ = this.afAuth.authState
+      .pipe(switchMap(user => {
           if (user !== null) {
-            this.activeUsersId = user.uid;
-            return this.afs.doc<IPokedraftUser>(`users/${user.uid}`).valueChanges();
+            return this.afs.doc<IPokedraftUser>(`users/${user.uid}`)
+              .valueChanges();
           } else {
+            console.log('Nobody signed in');
             return of(null);
           }
-        })
-      );
+        }));
+    this.user$ = this.auth$.pipe(
+      tap(userdoc => console.log('User: ', userdoc)),
+      shareReplay()
+    );
+    this.userSubscription = this.auth$.subscribe(user => {
+      this.activeUsersData = user;
+    });
     this.loading = new BehaviorSubject<boolean>(false);
   }
 
-  isLoading(): boolean {
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
+  }
+
+  get isLoading(): boolean {
     return this.loading.getValue();
   }
 
@@ -44,10 +59,17 @@ export class PokedraftAuthService {
     this.loading.next(false);
   }
 
-  login(email: string, password: string): Promise<string> {
+  getActiveUsersId(): string {
+    return this.activeUsersData ? this.activeUsersData.uid : null;
+  }
+
+  getActiveUsersData(): IPokedraftUser {
+    return this.activeUsersData;
+  }
+
+  login(email: string, password: string): Promise<UserCredential> {
     this.startLoading();
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(credentials => this.activeUsersId = credentials.user.uid)
       .finally(() => this.stopLoading());
   }
 
@@ -55,16 +77,27 @@ export class PokedraftAuthService {
     return this.afAuth.auth.signOut();
   }
 
-  emailSignUp(email: string, password: string): Promise<string> {
+  emailSignUp(email: string, password: string): Promise<UserCredential> {
     this.startLoading();
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(credentials => this.activeUsersId = credentials.user.uid)
       .finally(() => this.stopLoading());
   }
 
   updateUsername(username: string): Promise<void> {
     this.startLoading();
-    return this.afs.doc(`users/${this.activeUsersId}`).update({ username })
+    return this.afs.doc(`users/${this.getActiveUsersId()}`).update({ username })
+      .finally(() => this.stopLoading());
+  }
+
+  updateProfileDescription(profileDescription: string): Promise<void> {
+    this.startLoading();
+    return this.afs.doc(`users/${this.getActiveUsersId()}`).update({ profileDescription })
+      .finally(() => this.stopLoading());
+  }
+
+  updateProfilePicture(profilePicture: string): Promise<void> {
+    this.startLoading();
+    return this.afs.doc(`users/${this.getActiveUsersId()}`).update({ profilePicture })
       .finally(() => this.stopLoading());
   }
 }

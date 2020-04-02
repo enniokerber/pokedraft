@@ -1,0 +1,41 @@
+
+<ng-container *ngIf="show">
+  <div class="pd-popup-container">
+
+    <div class="pd-container-row --heading-line">
+      <h2 class="no-margin left-space"> Choose from your files </h2>
+    </div>
+
+    <button class="pd-popup-container-close-button" (click)="close()"></button>
+
+    <div class="pd-popup-container-list"
+         *ngIf="files$ | async as files; else notLoaded">
+      <div class="pd-popup-container-list-entry"
+           (click)="chooseFile('')">
+        No Profile Picture
+        <pd-profile-picture class="left-space"></pd-profile-picture>
+      </div>
+      <div class="pd-popup-container-list-entry"
+           (click)="chooseFile(file)"
+           *ngFor="let file of files">
+        {{file}}
+        <img class="pd-image-preview left-space" [src]="file">
+      </div>
+    </div>
+
+    <div class="pd-container-row flex-align-center">
+      <pd-button icon="assets/icons/upload.png"
+                 alt="Upload Button"
+                 routerLink="../files/upload"> Upload Files </pd-button>
+    </div>
+
+    <ng-template #notLoaded>
+      <div class="pd-container-row flex-align-center --large-row-margin-bottom">
+        <pd-loader> Loading files </pd-loader>
+      </div>
+    </ng-template>
+
+  </div>
+
+  <div class="pd-popup-container-shadow"></div>
+</ng-container>

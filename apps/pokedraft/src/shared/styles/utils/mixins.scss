@@ -17,6 +17,19 @@
   justify-content: center;
 }
 
+@mixin center-grid-item-content {
+  align-self: center;
+  justify-self: center;
+}
+
+@mixin center-grid-item-content-vertically {
+  align-self: center;
+}
+
+@mixin center-grid-item-content-horizontally {
+  justify-self: center;
+}
+
 @mixin no-word-break {
   overflow: hidden;
   white-space: nowrap;

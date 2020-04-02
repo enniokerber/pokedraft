@@ -2,10 +2,12 @@
 // COLORS
 
 $primary: rgb(83, 148, 234);
+$primary-light: rgb(83, 158, 244);
 $primary2: rgb(35, 95, 151);
 $primary3: #123453;
 
 $secondary: orange;
+$secondary-light: rgba(255, 165, 0, 0.5);
 $secondary2: darkorange;
 $secondary3: yellow;
 
@@ -14,6 +16,8 @@ $grey-light: #a0a4ac;
 $grey-lighter: #cbcfd6;
 $grey-lightest: #f4f4f4;
 $grey-dark: #202124;
+
+$layout-border-color: $grey-lighter;
 
 $grey-900: rgba(95, 99, 104, 0.9);
 $grey-800: rgba(95, 99, 104, 0.8);
@@ -26,6 +30,7 @@ $grey-200: rgba(95, 99, 104, 0.2);
 $grey-100: rgba(95, 99, 104, 0.1);
 
 $white: white;
+$white-bis: #f8f9fa;
 $black: black;
 
 $green-1: #34aa95;
@@ -36,6 +41,10 @@ $red-1: #dd5047;
 $red-2: #ff5d53;
 $red-3: #be4b43;
 $red-disabled: rgba(255, 93, 83, 0.33);
+
+$gold: #eac200;
+$silver: #b4b4b4;
+$bronze: #da874e;
 
 // FONT
 

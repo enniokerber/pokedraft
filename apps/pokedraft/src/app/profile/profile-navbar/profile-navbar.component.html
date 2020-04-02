@@ -1,0 +1,67 @@
+<pd-side-navbar
+  name="Profile"
+  [open]="open">
+
+  <div class="pd-side-navbar-item"
+       routerLink="account"
+       routerLinkActive="pd-side-navbar-item--active">
+    Account
+    <svg height="26" viewBox="0 0 20 20" width="26"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h20v20H0V0z" fill="none"></path>
+      <path d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"></path>
+    </svg>
+  </div>
+
+  <div class="pd-side-navbar-item"
+       routerLink="achievements"
+       routerLinkActive="pd-side-navbar-item--active">
+    Achievements
+    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="white"
+         width="24px" height="24px">
+      <g>
+        <rect fill="none" height="24" width="24"/>
+      </g>
+      <g>
+        <g/>
+        <path
+          d="M19,5h-2V3H7v2H5C3.9,5,3,5.9,3,7v1c0,2.55,1.92,4.63,4.39,4.94c0.63,1.5,1.98,2.63,3.61,2.96V19H7v2h10v-2h-4v-3.1 c1.63-0.33,2.98-1.46,3.61-2.96C19.08,12.63,21,10.55,21,8V7C21,5.9,20.1,5,19,5z M7,10.82C5.84,10.4,5,9.3,5,8V7h2V10.82z M19,8 c0,1.3-0.84,2.4-2,2.82V7h2V8z"/>
+      </g>
+    </svg>
+  </div>
+
+
+  <div class="pd-side-navbar-item"
+       routerLink="leagues"
+       routerLinkActive="pd-side-navbar-item--active">
+    Leagues
+    <svg height="24" viewBox="0 0 24 24" width="24"
+         xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"></path>
+      <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+  </div>
+
+  <div class="pd-side-navbar-item"
+       routerLink="files"
+       routerLinkActive="pd-side-navbar-item--active">
+    Files
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+      <path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="pd-side-navbar-item"
+       routerLink="messages"
+       routerLinkActive="pd-side-navbar-item--active">
+    Messages
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="24px" height="24px"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+  </div>
+
+  <div class="pd-side-navbar-link">
+    <a (click)="signOut()"> Sign Out </a>
+  </div>
+
+</pd-side-navbar>

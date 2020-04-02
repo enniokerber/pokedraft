@@ -1,0 +1,16 @@
+<div class="pd-input-container --textarea-container">
+  <textarea #textareaElement
+         class="pd-input --textarea-input"
+         [class.pd-input-has-content]="value !== ''"
+         [disabled]="disabled"
+         [maxLength]="maxlength"
+         [ngModel]="value"
+         (ngModelChange)="changeValue($event)"
+         (blur)="onTouch($event)"
+         autocomplete="off"
+         required>
+  </textarea>
+  <label class="pd-input-placeholder">
+    <ng-content></ng-content>
+  </label>
+</div>

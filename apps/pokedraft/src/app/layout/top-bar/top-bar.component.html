@@ -1,0 +1,16 @@
+<div class="pd-top-bar">
+  <pd-burger-menu [active]="navbarOpen"
+                  (toggle)="burgerMenuToggled($event)"
+                  *ngIf="showBurgerMenu">
+  </pd-burger-menu>
+
+  <img class="pd-top-bar-pokedraft-logo"
+       alt="Pokédraft Logo"
+       src="assets/pokedraftlogo.png"
+       routerLink="../home/login">
+
+  <img class="pd-quagior"
+       src="assets/quagior.png"
+       alt="Quagior"
+       *ngIf="showQuagior">
+</div>

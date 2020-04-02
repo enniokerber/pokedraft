@@ -1,0 +1,78 @@
+@import "../../utils";
+
+.pd-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $top-bar-height;
+  background-color: $white;
+  padding: 0 15px;
+  border-bottom: 1px solid $layout-border-color;
+  z-index: 5;
+  @include flex-center-vertically;
+  @include no-user-select;
+}
+
+.pd-top-bar-pokedraft-logo {
+  position: absolute;
+  @include center-relatively;
+  bottom: 5px;
+  max-height: $top-bar-height - 6px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.pd-quagior {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: default;
+  outline: 0;
+}
+
+.pd-burger-menu {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  padding: 5px;
+  cursor: pointer;
+
+  .pd-burger-menu-stripe {
+    &:nth-child(1) {
+      top: 10px;
+    }
+    &:nth-child(2) {
+      top: 22px;
+    }
+    &:nth-child(3) {
+      top: 34px;
+    }
+  }
+
+  &--active .pd-burger-menu-stripe {
+    height: 4px;
+
+    &:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      top: 50%;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+  }
+}
+
+.pd-burger-menu .pd-burger-menu-stripe {
+  position: absolute;
+  width: calc(100% - 10px);
+  height: 3px;
+  background-color: $primary;
+  transition: $transition;
+}

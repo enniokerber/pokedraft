@@ -1,0 +1,9 @@
+<img class="pd-profile-picture"
+     [src]="src"
+     [alt]="alt"
+     *ngIf="src; else defaultAvatar">
+<ng-template #defaultAvatar>
+  <img class="pd-profile-picture"
+       src="assets/images/pd_default_avatar.jpeg"
+       [alt]="alt"/>
+</ng-template>

@@ -1,0 +1,32 @@
+
+
+<link rel="stylesheet" href="../file-upload/upload-task/upload-task.component.scss">
+<div class="pd-container-row --heading-line">
+  <h2> Your Files </h2>
+</div>
+
+<div class="pd-container-row flex-align-center">
+  <pd-button routerLink="upload"
+             icon="assets/icons/upload.png"> Upload Files </pd-button>
+</div>
+
+<ng-container *ngIf="files$ | async as files; else notLoaded">
+  <div class="pd-container-row" *ngIf="files.length > 0">
+    <ul>
+      <li class="small-font-size"
+          *ngFor="let file of files">
+        <a [href]="file">
+          <img class="standard-image-size image-subtle-border"
+               [src]="file"
+               alt="Image">
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-container>
+
+<ng-template #notLoaded>
+  <div class="pd-container-row flex-align-center">
+    <pd-loader> Loading files </pd-loader>
+  </div>
+</ng-template>

@@ -1,0 +1,60 @@
+@import "../../utils";
+
+$chipHeight: 60px;
+
+.pd-chip {
+  @include flex-center;
+  padding: $padding $padding-m;
+  border: 1px solid transparent;
+  background-color: $white-bis;
+  box-shadow: $floating-shadow-hover;
+  transition: $transition-m;
+  cursor: default;
+
+  svg {
+    fill: $grey;
+    transition: $transition-m;
+  }
+
+  &:hover {
+    border-color: $secondary-light;
+
+    svg {
+      fill: $secondary;
+    }
+  }
+}
+
+.pd-round-chip {
+  width: $chipHeight;
+  height: $chipHeight;
+  border-radius: 50%;
+}
+
+.pd-chip-text {
+  margin-left: $margin-m;
+  font-size: $font-size-l;
+  color: $grey;
+}
+
+.pd-chip-text-border {
+  border-bottom: 1px solid $grey-light;
+}
+
+.pd-long-chip {
+  min-width: 172px;
+  height: $chipHeight;
+  border-radius: $chipHeight * .75;
+}
+
+.pd-rank-chip {
+  color: $primary;
+
+  svg {
+    fill: $primary;
+  }
+}
+
+.pd-rank-text {
+  font-size: $font-size-xl - 0.2em;
+}

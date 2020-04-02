@@ -1,0 +1,42 @@
+@import "../utils";
+
+$innerSize: calc(100% - 12px);
+
+.pd-dropzone {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border: 1px solid $primary;
+  border-radius: $radius;
+  background-color: $white;
+
+  &::before {
+    position: absolute;
+    content: '';
+    @include center-relatively;
+    width: $innerSize;
+    height: $innerSize;
+    border: 1px dashed $grey-light;
+    border-radius: $radius;
+    background-color: transparent;
+    box-shadow: 0 0 8px 0 $grey-light inset;
+  }
+}
+
+.pd-dropzone-content {
+  position: absolute;
+  @include center-relatively;
+  text-align: center;
+  border: 1px dashed $grey-lighter;
+  border-radius: $radius;
+  padding: $padding-m;
+
+  svg {
+    fill: $grey-light;
+  }
+
+  div {
+    font-size: $font-size-xs;
+    color: $grey;
+  }
+}

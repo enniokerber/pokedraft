@@ -24,15 +24,37 @@
   @include center-relatively;
 }
 
+.--league-form-container {
+  flex-basis: 100%;
+  max-width: 800px;
+  padding: $padding-l;
+  overflow: hidden;
+}
+
 .pd-container-row {
   @include flex-center-vertically;
+  flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   outline: none;
 }
 
+.pd-container-row-item {
+  flex-shrink: 1;
+  @include flex-center-vertically;
+}
+
 .--large-row-margin-bottom {
-  margin-bottom: 24px;
+  margin-bottom: 36px;
+}
+
+.--small-row-margin-bottom {
+  margin-bottom: 12px;
+}
+
+.--row-has-border-bottom {
+  padding-bottom: 12px;
+  border-bottom: 1px solid $grey-lighter;
 }
 
 .pd-container-row-group {
@@ -64,4 +86,23 @@
   max-height: 54px;
   opacity: 1;
   transition: $transition;
+}
+
+
+.pd-container-row-label {
+  flex: 0 1 300px;
+  height: 100%;
+  min-width: 120px;
+  font-size: $font-size-l;
+  color: $grey;
+  padding: 0 $padding-l;
+  line-height: $font-size;
+  @include flex-center-vertically;
+  cursor: pointer;
+}
+
+.pd-container-row-content {
+  flex: 1 1;
+  height: 100%;
+  @include flex-center-vertically;
 }

@@ -1,0 +1,33 @@
+<div class="pd-container --league-form-container">
+
+  <div class="pd-container-row --heading-line --small-row-margin-bottom">
+    <h2 class="no-margin left-space"> Enter Leagues </h2>
+  </div>
+
+  <div class="pd-container-row">
+    <ul>
+      <li> Enter a league id to see more information about the league. </li>
+      <li> If you have been verified as a participator or the league is public, you can enter the league. </li>
+    </ul>
+  </div>
+
+  <div class="pd-container-row flex-align-center">
+    <pd-input style="width: 250px;"
+              autofocus="on"
+              [(value)]="id"
+              (valueChange)="searchLeague()"> League ID </pd-input>
+  </div>
+
+  <div class="pd-container-row flex-align-center --large-row-margin-bottom" *ngIf="loading">
+    <pd-loader> Looking for league ... </pd-loader>
+  </div>
+
+  <div class="pd-container-row flex-align-center" *ngIf="notFound">
+    <div class="pd-text small-font-size"> No league was found with that id </div>
+  </div>
+
+  <div class="pd-container-row" *ngIf="league">
+    <pd-league-container [league]="league" enterable="true"></pd-league-container>
+  </div>
+
+</div>
