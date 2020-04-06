@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
+import {LayoutModule} from "../layout/layout.module";
+import {RouterTestingModule} from "@angular/router/testing";
+import {ProfileNavbarComponent} from "./profile-navbar/profile-navbar.component";
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -8,7 +11,8 @@ describe('ProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
+      declarations: [ ProfileComponent, ProfileNavbarComponent ],
+      imports: [ LayoutModule, RouterTestingModule ]
     })
     .compileComponents();
   }));

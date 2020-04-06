@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IPokedraftLeague, IPokedraftLeagueSnippet} from "@pokedraft-fire/models";
-import {PokedraftAuthService} from "../../../../../shared/services/auth/pokedraft-auth.service";
+import {IPokedraftLeague, PokedraftAuthService} from "@pokedraft/core";
 
 @Component({
   selector: 'pd-league-container',
@@ -11,7 +10,7 @@ export class LeagueContainerComponent implements OnInit {
 
   @Input() league: IPokedraftLeague;
 
-  @Input() enterable: any = true;
+  @Input() enterable: any;
 
   uid: string;
 
@@ -21,6 +20,7 @@ export class LeagueContainerComponent implements OnInit {
 
   constructor(auth: PokedraftAuthService) {
     this.league = null;
+    this.enterable = true;
     this.logoLoaded = false;
     this.showMore = false;
     this.uid = auth.getActiveUsersId();

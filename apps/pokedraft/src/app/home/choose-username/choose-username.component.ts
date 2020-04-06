@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { PokedraftAuthService } from '../../../shared/services/auth/pokedraft-auth.service';
+import { PokedraftAuthService } from '@pokedraft/core';
 import {Router} from "@angular/router";
 import {PokedraftConfig} from "../../../shared/pokedraft.config";
-import {IPokedraftUser} from "@pokedraft-fire/models";
+import {IPokedraftUser} from "@pokedraft/core";
 
 @Component({
   selector: 'pd-choose-username',

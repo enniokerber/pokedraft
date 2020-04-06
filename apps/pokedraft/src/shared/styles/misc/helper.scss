@@ -66,6 +66,10 @@
   line-height: 10px;
 }
 
+.pd-shadow {
+  box-shadow: $floating-shadow;
+}
+
 .color-grey-light {
   color: $grey-light;
 }

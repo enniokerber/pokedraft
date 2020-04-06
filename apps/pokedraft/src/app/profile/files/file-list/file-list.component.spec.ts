@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FileListComponent } from './file-list.component';
+import {PokedraftStorageService, PokedraftStorageServiceStub} from "@pokedraft/core";
+import {RouterTestingModule} from "@angular/router/testing";
+import {PokedraftUIModule} from "@pokedraft/material";
 
 describe('FileListComponent', () => {
   let component: FileListComponent;
@@ -8,7 +11,9 @@ describe('FileListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FileListComponent ]
+      declarations: [ FileListComponent ],
+      imports: [ RouterTestingModule, PokedraftUIModule ],
+      providers: [ {provide: PokedraftStorageService, useValue: PokedraftStorageServiceStub} ]
     })
     .compileComponents();
   }));

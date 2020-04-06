@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IPokedraftMessage} from "@pokedraft-fire/models";
+import {IPokedraftMessage} from "@pokedraft/core";
 
 @Component({
   selector: 'pd-message-container',

@@ -1,8 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, Subscription} from "rxjs";
-import {IPokedraftLeague} from "@pokedraft-fire/models";
-import {AngularFirestore} from "@angular/fire/firestore";
-import {debounceTime, distinctUntilChanged, filter, map, switchMap, tap, throttleTime} from "rxjs/operators";
+import {IPokedraftLeague, PokedraftLeagueService} from "@pokedraft/core";
+import {debounceTime, distinctUntilChanged, filter, switchMap, tap} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -23,7 +22,7 @@ export class EnterLeagueComponent implements OnInit, OnDestroy {
   loading: boolean;
   notFound: boolean;
 
-  constructor(private afs: AngularFirestore,
+  constructor(private leagueService: PokedraftLeagueService,
               private actRoute: ActivatedRoute) {
     this.id = '';
     this.inputs = new Subject<string>();
@@ -40,7 +39,7 @@ export class EnterLeagueComponent implements OnInit, OnDestroy {
           this.loading = true;
           this.notFound = false;
         }),
-        switchMap(id => this.afs.doc<IPokedraftLeague>(`leagues/${id}`).valueChanges()),
+        switchMap(id => this.leagueService.getLeague(id).valueChanges()),
         tap(league => {
           this.league = league;
           this.loading = false;

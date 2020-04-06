@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["node", "jest"],
+    "types": ["node", "jasmine"],
     "lib": ["dom", "es2018", "es2018.promise"]
   }
 }

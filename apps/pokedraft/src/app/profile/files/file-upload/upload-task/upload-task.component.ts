@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/storage";
+import {AngularFireUploadTask} from "@angular/fire/storage";
 import {Observable} from "rxjs";
-import {AngularFirestore} from "@angular/fire/firestore";
-import {PokedraftAuthService} from "../../../../../shared/services/auth/pokedraft-auth.service";
+import {PokedraftAuthService, PokedraftStorageService} from "@pokedraft/core";
 import {finalize} from "rxjs/operators";
 
 @Component({
@@ -18,15 +17,14 @@ export class UploadTaskComponent implements OnInit {
 
   percentage$: Observable<number>;
 
-  url: Observable<string>;
+  url: string;
 
   error: string;
 
   noImage: boolean;
 
-  constructor(private storage: AngularFireStorage,
-              private auth: PokedraftAuthService,
-              private afs: AngularFirestore) {
+  constructor(private auth: PokedraftAuthService,
+              private storage: PokedraftStorageService) {
     this.file = null;
     this.task = null;
     this.percentage$ = null;
@@ -40,9 +38,16 @@ export class UploadTaskComponent implements OnInit {
   }
 
   uploadFile(): void {
+
+    if (this.file === null) {
+      return;
+    }
+
     this.error = '';
 
-    if (this.auth.getActiveUsersId() !== null) {
+    const uid = this.auth.getActiveUsersId();
+
+    if (uid !== null) {
 
       if (this.file.type.split('/')[0] !== 'image') {
         this.error = 'This file is not an image and thus cannot be uploaded.';
@@ -50,10 +55,10 @@ export class UploadTaskComponent implements OnInit {
         return;
       }
 
-      const path = `usercontent/${this.auth.getActiveUsersId()}/${Date.now()}_${this.file.name}`;
-      const ref = this.storage.ref(path);
+      const path = `usercontent/${uid}/${Date.now()}_${this.file.name}`;
+      const ref = this.storage.reference(path);
 
-      this.task = this.storage.upload(path, this.file);
+      this.task = this.storage.uploadFile(path, this.file);
       this.task.catch(error => {
         console.log(error);
         this.error = 'Could not upload the file.';
@@ -62,7 +67,7 @@ export class UploadTaskComponent implements OnInit {
         .pipe(
           finalize(async () => {
             this.url = await ref.getDownloadURL().toPromise();
-            this.afs.collection('files').add({ uid: this.auth.getActiveUsersId(), path: this.url });
+            this.storage.addFileSnippet({ uid, path: this.url });
           })
         );
     } else {

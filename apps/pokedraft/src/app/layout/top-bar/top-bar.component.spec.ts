@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopBarComponent } from './top-bar.component';
+import {BurgerMenuComponent} from "./burger-menu/burger-menu.component";
 
 describe('TopBarComponent', () => {
   let component: TopBarComponent;
@@ -8,7 +9,7 @@ describe('TopBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopBarComponent ]
+      declarations: [ TopBarComponent, BurgerMenuComponent ]
     })
     .compileComponents();
   }));

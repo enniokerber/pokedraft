@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { PokedraftAuthService } from '../../../shared/services/auth/pokedraft-auth.service';
 import { Observable, Subscription } from 'rxjs';
 import { FirebaseError } from 'firebase';
-import { FirebaseErrors } from '../../../shared/data/firebase/firebase.errors';
+import { FirebaseErrors, PokedraftAuthService } from '@pokedraft/core';
 import { filter, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 

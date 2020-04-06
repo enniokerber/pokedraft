@@ -16,14 +16,15 @@
     },
     "pokedraft-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "pokedraft"
-      ]
+      "implicitDependencies": ["pokedraft"]
     },
     "models": {
       "tags": []
     },
     "functions": {
+      "tags": []
+    },
+    "ui": {
       "tags": []
     }
   }

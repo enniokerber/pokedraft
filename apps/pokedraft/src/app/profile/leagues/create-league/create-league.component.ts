@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PokedraftConfig} from "../../../../shared/pokedraft.config";
-import {BattlePlatform, BattleType, IPokedraftCreateLeagueDTO} from "@pokedraft-fire/models";
-import {PokedraftLeagueService} from "../../../../shared/services/league/pokedraft-league.service";
+import {BattlePlatform, BattleType, BattleTypeConstants, IPokedraftCreateLeagueDTO, PokedraftLeagueService} from "@pokedraft/core";
 import {DocumentReference} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 
@@ -23,23 +22,26 @@ export class CreateLeagueComponent implements OnInit {
 
   loading$: Observable<boolean>;
 
+  success: boolean;
+
   platforms: string[] = [
     BattlePlatform.SHOWDOWN,
     BattlePlatform.WIFI,
     BattlePlatform.OTHER
   ];
 
-  battleTypes: string[] = [
-    BattleType.SINGLES,
-    BattleType.DOUBLES,
-    BattleType.TRIPLE,
-    BattleType.OTHER
+  battleTypes: BattleType[] = [
+    BattleTypeConstants.SINGLES,
+    BattleTypeConstants.DOUBLES,
+    BattleTypeConstants.TRIPLE,
+    BattleTypeConstants.OTHER
   ];
 
   teammembers: number[] = [6, 5, 4, 3, 2, 1];
 
   constructor(private fb: FormBuilder,
               private leagueService: PokedraftLeagueService) {
+    this.success = false;
     this.config = PokedraftConfig.editor.league;
     this.leagueForm = this.fb.group({
       name: ['Test League - Season T', [
@@ -54,7 +56,7 @@ export class CreateLeagueComponent implements OnInit {
       ]],
       description: ['A test league for testing.', [Validators.maxLength(this.config.DESCRIPTION_MAXLENGTH)]],
       platform: BattlePlatform.SHOWDOWN,
-      battleType: BattleType.SINGLES,
+      battleType: BattleTypeConstants.SINGLES,
       teamMembers: 6,
       participators: [10, [
         Validators.required,
@@ -126,6 +128,7 @@ export class CreateLeagueComponent implements OnInit {
       this.leagueService.createLeague(createLeagueDTO)
         .then((ref: DocumentReference) => {
           console.log('Successfully created league!');
+          this.success = true;
           const id = ref.id;
           this.leagueService.switchLeague(id);
           ref.update({ id });

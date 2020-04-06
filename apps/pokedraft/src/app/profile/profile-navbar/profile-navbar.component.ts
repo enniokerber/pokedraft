@@ -1,5 +1,5 @@
 import {Component, Input, NgZone, OnInit} from '@angular/core';
-import {PokedraftAuthService} from "../../../shared/services/auth/pokedraft-auth.service";
+import {PokedraftAuthService} from "../../../../../../libs/core/src/lib/logic/services/auth/pokedraft-auth.service";
 import {Router} from "@angular/router";
 
 @Component({

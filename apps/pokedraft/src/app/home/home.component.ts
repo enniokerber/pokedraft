@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { routerAnimations } from '../../shared/animations/router.animations';
+import { routerAnimation } from '@pokedraft/material';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
-    routerAnimations
+    routerAnimation
   ]
 })
 export class HomeComponent implements OnInit {

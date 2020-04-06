@@ -1,10 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {PopUpAnimation} from "../../../shared/animations/popup.animation";
-import {InputComponent} from "../../../shared/components/forms/input/input.component";
+import {PopUpAnimation} from "@pokedraft/material";
 import {Observable} from "rxjs";
-import {IPokedraftUser} from "@pokedraft-fire/models";
-import {PokedraftAuthService} from "../../../shared/services/auth/pokedraft-auth.service";
+import {IPokedraftUser, PokedraftAuthService} from "@pokedraft/core";
 import {tap} from "rxjs/operators";
+import {InputComponent} from "@pokedraft/material";
 
 @Component({
   selector: 'pd-account',

@@ -10,14 +10,26 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "dom", "es2018", "es2018.promise"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pokedraft-fire/models": ["libs/models/src/index.ts"]
+      "@pokedraft/core": [
+        "libs/core/src/index.ts"
+      ],
+      "@pokedraft/material": [
+        "libs/material/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

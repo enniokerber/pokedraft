@@ -1,10 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Observable} from "rxjs";
-import {PokedraftAuthService} from "../../../../shared/services/auth/pokedraft-auth.service";
-import {AngularFirestore} from "@angular/fire/firestore";
-import {delay, map, tap} from "rxjs/operators";
-import {IPokedraftFileSnippet} from "@pokedraft-fire/models";
-import {PokedraftStorageService} from "../../../../shared/services/storage/pokedraft-storage.service";
+import {PokedraftStorageService} from "@pokedraft/core";
 
 @Component({
   selector: 'pd-choose-file',
@@ -25,7 +21,7 @@ export class ChooseFileComponent {
     this.show = true;
     this.choose = new EventEmitter<string>();
     this.onclose = new EventEmitter<any>();
-    this.files$ = this.storage.files$;
+    this.files$ = this.storage.getActiveUsersFiles();
   }
 
   chooseFile(fileUrl: string): void {

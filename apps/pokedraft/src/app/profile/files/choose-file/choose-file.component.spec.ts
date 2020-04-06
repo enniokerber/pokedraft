@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChooseFileComponent } from './choose-file.component';
+import {PokedraftUIModule} from "@pokedraft/material";
+import {PokedraftStorageService, PokedraftStorageServiceStub} from "@pokedraft/core";
 
 describe('ChooseFileComponent', () => {
   let component: ChooseFileComponent;
@@ -8,7 +10,9 @@ describe('ChooseFileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChooseFileComponent ]
+      declarations: [ ChooseFileComponent ],
+      imports: [ PokedraftUIModule ],
+      providers: [ {provide: PokedraftStorageService, useValue: PokedraftStorageServiceStub} ]
     })
     .compileComponents();
   }));

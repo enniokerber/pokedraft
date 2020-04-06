@@ -128,6 +128,7 @@
                [disabled]="leagueForm.invalid"
                [loading]="loading$ | async"
                (leftclick)="createLeague()"> Create League </pd-button>
+    <div class="pd-success-icon left-space" *ngIf="success"></div>
   </div>
 
   <pd-choose-file [show]="showFilesList"

@@ -1,7 +1,6 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PokedraftAuthService } from '../../../shared/services/auth/pokedraft-auth.service';
-import { FirebaseErrors } from '../../../shared/data/firebase/firebase.errors';
+import { PokedraftAuthService, FirebaseErrors } from '@pokedraft/core';
 import { FirebaseError } from 'firebase';
 import { Observable } from 'rxjs';
 import {Router} from "@angular/router";

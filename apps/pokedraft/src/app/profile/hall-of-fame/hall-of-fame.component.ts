@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {IPokedraftUserAchievements} from "@pokedraft-fire/models";
+import {IPokedraftUserAchievements, PokedraftAuthService} from "@pokedraft/core";
 import {Observable, of} from "rxjs";
-import {PokedraftAuthService} from "../../../shared/services/auth/pokedraft-auth.service";
 import {map} from "rxjs/operators";
 
 @Component({

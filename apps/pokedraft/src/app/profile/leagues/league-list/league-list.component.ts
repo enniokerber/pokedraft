@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IPokedraftLeague, IPokedraftLeagueSnippet} from "@pokedraft-fire/models";
+import {IPokedraftLeague} from "@pokedraft/core";
 
 @Component({
   selector: 'pd-league-list',

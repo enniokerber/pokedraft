@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {PokedraftAuthService} from "../../../shared/services/auth/pokedraft-auth.service";
 import {AngularFirestore} from "@angular/fire/firestore";
 import {filter, shareReplay} from "rxjs/operators";
 import * as firebase from 'firebase/app';
-import {IPokedraftMessage} from "@pokedraft-fire/models";
+import {IPokedraftMessage, PokedraftUserService} from "@pokedraft/core";
 import {Observable} from "rxjs";
-import {PokedraftUserService} from "../../../shared/services/user/pokedraft-user.service";
 
 @Component({
   selector: 'pd-messages',
@@ -16,8 +14,7 @@ export class MessagesComponent implements OnInit {
 
   messages$: Observable<IPokedraftMessage[]>;
 
-  constructor(private auth: PokedraftAuthService,
-              private user: PokedraftUserService) {
+  constructor(private user: PokedraftUserService) {
     /*
     this.auth.user$
       .pipe(

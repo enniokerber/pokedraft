@@ -11,6 +11,7 @@ import {CreateLeagueComponent} from "./leagues/create-league/create-league.compo
 import {HallOfFameComponent} from "./hall-of-fame/hall-of-fame.component";
 import {EnterLeagueComponent} from "./leagues/enter-league/enter-league.component";
 import {MessagesComponent} from "./messages/messages.component";
+import {AdminToolboxComponent} from "./admin-toolbox/admin-toolbox.component";
 
 
 const routes: Routes = [
@@ -75,6 +76,10 @@ const routes: Routes = [
       {
         path: 'messages',
         component: MessagesComponent
+      },
+      {
+        path: 'admin-toolbox',
+        component: AdminToolboxComponent
       },
       {
         path: '',
