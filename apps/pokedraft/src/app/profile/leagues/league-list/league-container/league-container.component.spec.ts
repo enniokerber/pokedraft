@@ -20,7 +20,7 @@ describe('LeagueContainerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LeagueContainerComponent);
     component = fixture.componentInstance;
-    component.league = MOCK_POKEDRAFT_LEAGUE;
+    component.currentLeague = MOCK_POKEDRAFT_LEAGUE;
     fixture.detectChanges();
   });
 

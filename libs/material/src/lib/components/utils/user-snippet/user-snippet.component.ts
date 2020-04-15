@@ -10,8 +10,11 @@ export class UserSnippetComponent implements OnInit {
 
   @Input() user: IPokedraftUser | IPokedraftUserSnippet;
 
+  @Input() frame: any;
+
   constructor() {
     this.user = null;
+    this.frame = false;
   }
 
   ngOnInit(): void {

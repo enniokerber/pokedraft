@@ -1,0 +1,47 @@
+
+<div class="pd-container-row --heading-line">
+  <h2 class="no-margin left-space"> Invite Players </h2>
+</div>
+
+<div class="pd-container-row flex-align-right">
+  <a> team overview </a>
+</div>
+
+<div class="pd-container-row flex-align-center">
+  <pd-input [(value)]="id"
+            (valueChange)="searchUser()"
+            #playerId>Player ID</pd-input>
+</div>
+
+<div class="pd-container-row flex-align-center --large-row-margin-bottom" *ngIf="searching">
+  <pd-loader> Searching... </pd-loader>
+</div>
+
+<div class="pd-container-row flex-align-center" *ngIf="result">
+  <pd-user-snippet [user]="result"
+                   frame="on"></pd-user-snippet>
+</div>
+
+<div class="pd-container-row flex-align-center" *ngIf="notFound">
+  <div class="pd-text small-font-size"> No user was found with that id </div>
+</div>
+
+<div class="pd-container-row flex-align-center">
+  <pd-button icon="assets/icons/send.png"
+             alt="Send Icon"
+             [title]="!validUser ? 'You are either not logged in or this user is already part of that league!' : 'Send an invitation to the users inbox!'"
+             [disabled]="!(result && validUser) || invitationSuccess"
+             [loading]="loading$ | async"
+             (leftclick)="inviteUser()"> Send </pd-button>
+</div>
+
+<div class="pd-container-row flex-align-center no-margin-bottom"
+     *ngIf="invitationError">
+  <pd-error> {{invitationError}} </pd-error>
+</div>
+
+<div class="pd-container-row flex-align-center no-margin-bottom" *ngIf="invitationSuccess">
+  <div class="pd-success-icon"></div>
+</div>
+
+

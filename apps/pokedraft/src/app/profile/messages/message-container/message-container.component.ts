@@ -17,8 +17,8 @@ export class MessageContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get isLeagueInvitation(): boolean { return typeof this.message.content.league !== 'undefined'; }
+  get isLeagueInvitation(): boolean { return typeof this.message.league !== 'undefined'; }
 
-  get isRewardMessage(): boolean { return typeof this.message.content.reward !== 'undefined'; }
+  get isRewardMessage(): boolean { return typeof this.message.reward !== 'undefined'; }
 
 }

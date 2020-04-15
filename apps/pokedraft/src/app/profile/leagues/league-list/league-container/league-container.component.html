@@ -2,7 +2,7 @@
      [class.pd-league-container--open]="showMore">
 
   <div class="pd-league-container-league-name">
-    <a> {{league.name.long}} </a>
+    <a (click)="openLeague(league.id)"> {{league.name.long}} </a>
     <span class="pd-success-icon pd-success-icon--primary-color-icon left-space"
           title="You already take part in this league." *ngIf="isParticipator"></span>
   </div>
@@ -71,5 +71,8 @@
      *ngIf="enterable && !isParticipator">
   <pd-button icon="assets/icons/forward.png"
              alt="Enter League Icon"
-             title="Enter {{league.name}}?">Enter</pd-button>
+             title="Enter {{league.name.short}}? If you do so, you can create a team if there are still free slots or you can ask to be just a moderator."
+             [loading]="loading$ | async"
+             [disabled]="loading$ | async"
+             (leftclick)="enterLeague()">Enter {{league.name.short}}</pd-button>
 </div>

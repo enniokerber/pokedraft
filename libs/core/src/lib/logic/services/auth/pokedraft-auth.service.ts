@@ -11,7 +11,7 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class PokedraftAuthService implements OnDestroy {
 
-  activeUsersData: IPokedraftUser;
+  currentUser: IPokedraftUser;
 
   auth$: Observable<IPokedraftUser>; // used to check the auth state
   user$: Observable<IPokedraftUser>; // used to share the current user
@@ -22,7 +22,7 @@ export class PokedraftAuthService implements OnDestroy {
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore) {
-    this.activeUsersData = null;
+    this.currentUser = null;
     this.auth$ = this.afAuth.authState
       .pipe(switchMap(user => {
           if (user !== null) {
@@ -38,7 +38,7 @@ export class PokedraftAuthService implements OnDestroy {
       shareReplay()
     );
     this.userSubscription = this.auth$.subscribe(user => {
-      this.activeUsersData = user;
+      this.currentUser = user;
     });
     this.loading = new BehaviorSubject<boolean>(false);
   }
@@ -59,12 +59,16 @@ export class PokedraftAuthService implements OnDestroy {
     this.loading.next(false);
   }
 
-  getActiveUsersId(): string {
-    return this.activeUsersData ? this.activeUsersData.uid : null;
+  userIsSignedIn(): boolean {
+    return !!this.currentUser;
   }
 
-  getActiveUsersData(): IPokedraftUser {
-    return this.activeUsersData;
+  getCurrentUsersId(): string {
+    return this.currentUser ? this.currentUser.uid : null;
+  }
+
+  getCurrentUser(): IPokedraftUser {
+    return this.currentUser;
   }
 
   login(email: string, password: string): Promise<UserCredential> {
@@ -85,19 +89,19 @@ export class PokedraftAuthService implements OnDestroy {
 
   updateUsername(username: string): Promise<void> {
     this.startLoading();
-    return this.afs.doc(`users/${this.getActiveUsersId()}`).update({ username })
+    return this.afs.doc(`users/${this.getCurrentUsersId()}`).update({ username })
       .finally(() => this.stopLoading());
   }
 
   updateProfileDescription(profileDescription: string): Promise<void> {
     this.startLoading();
-    return this.afs.doc(`users/${this.getActiveUsersId()}`).update({ profileDescription })
+    return this.afs.doc(`users/${this.getCurrentUsersId()}`).update({ profileDescription })
       .finally(() => this.stopLoading());
   }
 
   updateProfilePicture(profilePicture: string): Promise<void> {
     this.startLoading();
-    return this.afs.doc(`users/${this.getActiveUsersId()}`).update({ profilePicture })
+    return this.afs.doc(`users/${this.getCurrentUsersId()}`).update({ profilePicture })
       .finally(() => this.stopLoading());
   }
 }

@@ -10,7 +10,7 @@ export const PokedraftAuthServiceStub = {
   getActiveUsersId: () => 'someid',
   updateUsername: (username: string) => Promise.resolve(),
   login: () => Promise.resolve(),
-  emailSignUp: () => Promise.resolve(),
+  emailSignUp: (email, password) => Promise.resolve(),
   signOut: () => Promise.resolve()
 };
 

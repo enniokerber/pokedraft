@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IPokedraftLeague} from "@pokedraft/core";
 import {Observable} from "rxjs";
-import {PokedraftLeagueService} from "../../../../../../../libs/core/src/lib/logic/services/league/pokedraft-league.service";
+import {PokedraftLeagueService} from "@pokedraft/core";
 
 @Component({
   selector: 'pd-users-leagues',
@@ -13,7 +13,7 @@ export class UsersLeaguesComponent implements OnInit {
   leagues$: Observable<IPokedraftLeague[]>;
 
   constructor(private leagueService: PokedraftLeagueService) {
-    this.leagues$ = this.leagueService.getActiveUsersLeagues();
+    this.leagues$ = this.leagueService.getCurrentUsersLeagues();
   }
 
   ngOnInit(): void {

@@ -1,15 +1,11 @@
-import {IPokedraftLeagueSettings, IPokedraftUserSnippet} from '@pokedraft/core';
-import * as firebase from "firebase";
+import {ILongShortName, IPokedraftLeagueSettings, IPokedraftUserSnippet} from '@pokedraft/core';
+import * as firebase from 'firebase/app';
 
 export interface IPokedraftLeague {
   id?: string; // not needed on create
-  name: {
-    long: string;
-    short: string;
-  };
+  name: ILongShortName;
   description: string;
   owner: IPokedraftUserSnippet;
-  users: string[];
   logo: string;
   settings: IPokedraftLeagueSettings;
   createdAt: firebase.firestore.Timestamp;
@@ -27,7 +23,6 @@ export const MOCK_POKEDRAFT_LEAGUE: IPokedraftLeague = {
     username: 'Someusername',
     profilePicture: ''
   },
-  users: ['someuid'],
   logo: '',
   settings: {
     general: {
@@ -45,7 +40,7 @@ export const MOCK_POKEDRAFT_LEAGUE: IPokedraftLeague = {
       speciesClause: true
     }
   },
-  createdAt: firebase.firestore.Timestamp.now()
+  createdAt: null
 };
 
 export const MOCK_POKEDRAFT_LEAGUE_ARRAY: IPokedraftLeague[] = [ MOCK_POKEDRAFT_LEAGUE, MOCK_POKEDRAFT_LEAGUE ];

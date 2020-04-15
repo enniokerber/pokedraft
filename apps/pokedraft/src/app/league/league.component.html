@@ -1,0 +1,15 @@
+<pd-top-bar [navbarOpen]="navbarOpen"
+                  (menuToggle)="toggleNavbar($event)"></pd-top-bar>
+
+<pd-league-navbar [open]="navbarOpen"></pd-league-navbar>
+
+<div class="pd-content-window"
+     [class.pd-content-window--navbar-active]="navbarOpen">
+
+  <pd-league-top-bar [navbarOpen]="navbarOpen"></pd-league-top-bar>
+
+  <div class="pd-league-component-frame">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

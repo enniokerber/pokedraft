@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IPokedraftUserAchievements, PokedraftAuthService} from "@pokedraft/core";
 import {Observable, of} from "rxjs";
-import {map} from "rxjs/operators";
+import {filter, map} from "rxjs/operators";
 
 @Component({
   selector: 'pd-hall-of-fame',
@@ -15,6 +15,7 @@ export class HallOfFameComponent implements OnInit {
 
   constructor(private auth: PokedraftAuthService) {
     this.achievements$ = this.auth.user$.pipe(
+      filter(user => !!user),
       map(user => user.achievements)
     );
     this.rank$ = of(1);

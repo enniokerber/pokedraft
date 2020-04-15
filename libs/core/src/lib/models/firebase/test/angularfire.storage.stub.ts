@@ -1,0 +1,2 @@
+
+export const MOCK_ANGULAR_FIRE_STORAGE_STUB = {};

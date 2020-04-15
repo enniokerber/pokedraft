@@ -1,4 +1,4 @@
-<div class="pd-container --league-form-container">
+<div class="pd-container --extended-form-container">
 
   <div class="pd-container-row --heading-line --small-row-margin-bottom">
     <h2 class="no-margin left-space"> Enter Leagues </h2>
@@ -27,7 +27,9 @@
   </div>
 
   <div class="pd-container-row" *ngIf="league">
-    <pd-league-container [league]="league" enterable="true"></pd-league-container>
+    <pd-league-container [league]="league"
+                         [enterable]="canBeEntered">
+    </pd-league-container>
   </div>
 
 </div>

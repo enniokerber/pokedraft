@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PokedraftConfig} from "../../../../shared/pokedraft.config";
 import {BattlePlatform, BattleType, BattleTypeConstants, IPokedraftCreateLeagueDTO, PokedraftLeagueService} from "@pokedraft/core";
 import {DocumentReference} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'pd-create-league',
@@ -40,7 +41,9 @@ export class CreateLeagueComponent implements OnInit {
   teammembers: number[] = [6, 5, 4, 3, 2, 1];
 
   constructor(private fb: FormBuilder,
-              private leagueService: PokedraftLeagueService) {
+              private leagueService: PokedraftLeagueService,
+              private router: Router,
+              private ngZone: NgZone) {
     this.success = false;
     this.config = PokedraftConfig.editor.league;
     this.leagueForm = this.fb.group({
@@ -132,6 +135,7 @@ export class CreateLeagueComponent implements OnInit {
           const id = ref.id;
           this.leagueService.switchLeague(id);
           ref.update({ id });
+          this.ngZone.run(() => this.router.navigateByUrl(`league/${id}`));
         })
         .catch(error => console.error(error));
     }

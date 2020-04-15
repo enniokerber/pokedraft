@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "pokedraftFire", "camelCase"],
-    "component-selector": [true, "element", "pokedraft-fire", "kebab-case"]
+    "directive-selector": [true, "attribute", "pd", "camelCase"],
+    "component-selector": [true, "element", "pd", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]

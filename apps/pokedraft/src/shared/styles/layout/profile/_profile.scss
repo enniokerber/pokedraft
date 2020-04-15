@@ -21,6 +21,12 @@ pd-profile-picture {
   @include flex-center-vertically;
   @include take-up-full-space;
   justify-content: flex-end;
+
+  &--with-borders {
+    border: 1px dashed $primary;
+    border-radius: $radius;
+    padding: $padding-m;
+  }
 }
 
 .pd-user-snippet-username {

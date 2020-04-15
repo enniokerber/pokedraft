@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'pd-top-bar',
@@ -15,7 +16,7 @@ export class TopBarComponent implements OnInit {
 
   @Output() menuToggle: EventEmitter<boolean>;
 
-  constructor() {
+  constructor(private router: Router) {
     this.navbarOpen = false;
     this.showBurgerMenu = true;
     this.showQuagior = true;
@@ -27,5 +28,9 @@ export class TopBarComponent implements OnInit {
 
   burgerMenuToggled(value: boolean): void {
     this.menuToggle.emit(value);
+  }
+
+  routeToLogin() {
+    this.router.navigateByUrl('home/login');
   }
 }

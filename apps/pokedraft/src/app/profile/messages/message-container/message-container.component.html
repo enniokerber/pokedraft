@@ -9,12 +9,12 @@
   </div>
 
   <div class="pd-message-container-text">
-    {{message.content.text}}
+    {{message.message}}
   </div>
 
   <div class="pd-message-container-assets"
        routerLink="../leagues/enter/{{league.id}}"
-       *ngIf="message.content.league as league">
+       *ngIf="message.league as league">
     <div class="pd-league-link">
       <span class="padding-top-adjustment">
       {{league.name}}
@@ -32,13 +32,13 @@
 
   <div class="pd-list-container pd-reward-container"
        [ngClass]="{
-          'bg-gold': message.content.reward.type === 'gold',
-          'bg-silver': message.content.reward.type === 'silver',
-          'bg-bronze': message.content.reward.type === 'bronze',
-          'bg-platinum': message.content.reward.type === 'platinum'
+          'bg-gold': message.reward.type === 'gold',
+          'bg-silver': message.reward.type === 'silver',
+          'bg-bronze': message.reward.type === 'bronze',
+          'bg-platinum': message.reward.type === 'platinum'
        }">
-    <span class="pd-reward-container-text"> {{message.content.text}} </span>
-    <span *ngIf="message.content.reward.draftPoints as dp"> +{{dp}} DP </span>
+    <span class="pd-reward-container-text"> {{message.message}} </span>
+    <span *ngIf="message.reward.draftPoints as dp"> +{{dp}} DP </span>
   </div>
 
 </ng-template>

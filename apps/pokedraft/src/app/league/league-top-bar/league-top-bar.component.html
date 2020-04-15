@@ -1,0 +1,11 @@
+<div class="pd-league-infobar"
+     [class.pd-league-infobar--side-navbar-active]="navbarOpen">
+
+  <div class="pd-league-inforbar-league-name">
+    <h3 class="primary-color"> {{currentLeagueName$ | async}} </h3>
+  </div>
+
+  <pd-user-snippet class="pd-league-infobar-user"
+                   routerLink="../../profile/leagues"
+                   [user]="currentUser$ | async"></pd-user-snippet>
+</div>

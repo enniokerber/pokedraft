@@ -51,7 +51,8 @@
 
   <div class="pd-container-row"
        [class.no-margin-bottom]="!signUpError">
-    <pd-button icon="assets\icons\send_18px.png"
+    <pd-button id="pd-signup-button"
+               icon="assets\icons\send_18px.png"
                [loading]="(loading$ | async) || (!profileCreated && success)"
                [disabled]="signUpForm.invalid || success"
                (leftclick)="signUp()">Sign Up</pd-button>

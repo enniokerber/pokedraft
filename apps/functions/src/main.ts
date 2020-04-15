@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import {IPokedraftLeague, IPokedraftUserSnippet, toLeagueSnippet} from "@pokedraft-fire/models";
+import {IPokedraftLeague, IPokedraftUserSnippet, toLeagueSnippet} from "@pokedraft/core";
 
 admin.initializeApp(functions.config().firebase);
 

@@ -1,6 +1,13 @@
-<div class="pd-user-snippet">
-  <span class="pd-user-snippet-username"> {{user.username}} </span>
-  <pd-profile-picture class="left-space"
-                      [src]="user.profilePicture"
-                      [alt]="user.username"></pd-profile-picture>
+<div class="pd-user-snippet"
+     [class.pd-user-snippet--with-borders]="frame">
+  <ng-container *ngIf="user; else noUser">
+    <span class="pd-user-snippet-username"> {{user.username}} </span>
+    <pd-profile-picture class="left-space"
+                        [src]="user.profilePicture"
+                        [alt]="user.username"></pd-profile-picture>
+  </ng-container>
+  <ng-template #noUser>
+    <span class="pd-user-snippet-username"> No User </span>
+    <pd-profile-picture class="left-space" alt="Default Avatar"></pd-profile-picture>
+  </ng-template>
 </div>

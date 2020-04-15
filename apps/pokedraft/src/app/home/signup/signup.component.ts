@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { FirebaseError } from 'firebase';
@@ -26,7 +26,8 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder,
               private auth: PokedraftAuthService,
-              private router: Router) {}
+              private router: Router,
+              private ngZone: NgZone) {}
 
   ngOnInit(): void {
     this.signUpError = '';
@@ -70,8 +71,11 @@ export class SignupComponent implements OnInit, OnDestroy {
             take(1)
           ).subscribe(_ => {
             this.profileCreated = true;
-            this.router.navigateByUrl(`home/pickusername`)
-              .then(() => console.log('Signed up successfully, switched page so you can pick a username.'));
+            this.ngZone.run(() =>
+              this.router.navigateByUrl(`home/pickusername`)
+              .then(() => console.log('Signed up successfully, switched page so you can pick a username.'))
+              .catch(error => console.log(error))
+            )
           });
         })
         .catch((error: FirebaseError) => {

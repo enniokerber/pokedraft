@@ -13,3 +13,9 @@ export function toUserSnippet({ uid, username, profilePicture }: IPokedraftUser)
     profilePicture
   });
 }
+
+export const MOCK_POKEDRAFT_USER_SNIPPET: IPokedraftUserSnippet = {
+  uid: 'someuid',
+  username: 'someusername',
+  profilePicture: ''
+};

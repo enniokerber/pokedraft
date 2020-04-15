@@ -1,5 +1,5 @@
 
-<div class="pd-container --league-form-container">
+<div class="pd-container --extended-form-container">
 
   <div class="pd-container-row-group"
        *ngIf="(authedUser$ | async) as authedUser; else noAuthorizedUser">
@@ -55,6 +55,7 @@
     <div class="pd-container-row">
       <ul>
         <li> Profile created: {{authedUser.createdAt | date : 'dd.MM.yyyy, hh:mm'}} Servertime </li>
+        <li> User-ID: <i class="small-font-size">{{authedUser.uid}}</i> </li>
       </ul>
     </div>
 

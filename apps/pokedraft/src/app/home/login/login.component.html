@@ -29,7 +29,8 @@
 
   <div class="pd-container-row"
        [class.no-margin-bottom]="!loginError">
-    <pd-button icon="assets\icons\send_18px.png"
+    <pd-button id="pd-login-button"
+               icon="assets\icons\send_18px.png"
                [loading]="loading$ | async"
                [disabled]="loginForm.invalid || success"
                (leftclick)="login()">Login</pd-button>

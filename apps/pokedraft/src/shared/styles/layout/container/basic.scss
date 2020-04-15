@@ -24,9 +24,16 @@
   @include center-relatively;
 }
 
-.--league-form-container {
+.--extended-form-container {
   flex-basis: 100%;
   max-width: 800px;
+  padding: $padding-l;
+  overflow: hidden;
+}
+
+.--full-width-form-container {
+  max-width: 100%;
+  width: 100%;
   padding: $padding-l;
   overflow: hidden;
 }

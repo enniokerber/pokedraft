@@ -126,6 +126,26 @@
   background-color: $bronze;
 }
 
+.primary-color {
+  color: $primary;
+}
+
+.primary2-color {
+  color: $primary2;
+}
+
+.secondary-color {
+  color: $secondary;
+}
+
 .padding-top-adjustment {
   padding-top: 2px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.no-outline {
+  outline: none;
 }

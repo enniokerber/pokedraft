@@ -45,7 +45,7 @@ export class UploadTaskComponent implements OnInit {
 
     this.error = '';
 
-    const uid = this.auth.getActiveUsersId();
+    const uid = this.auth.getCurrentUsersId();
 
     if (uid !== null) {
 

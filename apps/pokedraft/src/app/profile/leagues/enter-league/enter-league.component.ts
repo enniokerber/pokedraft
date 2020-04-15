@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, Subscription} from "rxjs";
-import {IPokedraftLeague, PokedraftLeagueService} from "@pokedraft/core";
+import {IPokedraftLeague, PokedraftAuthService, PokedraftLeagueService} from "@pokedraft/core";
 import {debounceTime, distinctUntilChanged, filter, switchMap, tap} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
 
@@ -23,6 +23,7 @@ export class EnterLeagueComponent implements OnInit, OnDestroy {
   notFound: boolean;
 
   constructor(private leagueService: PokedraftLeagueService,
+              private auth: PokedraftAuthService,
               private actRoute: ActivatedRoute) {
     this.id = '';
     this.inputs = new Subject<string>();
@@ -39,7 +40,7 @@ export class EnterLeagueComponent implements OnInit, OnDestroy {
           this.loading = true;
           this.notFound = false;
         }),
-        switchMap(id => this.leagueService.getLeague(id).valueChanges()),
+        switchMap(id => this.leagueService.getLeagueReference(id).valueChanges()),
         tap(league => {
           this.league = league;
           this.loading = false;
@@ -69,6 +70,11 @@ export class EnterLeagueComponent implements OnInit, OnDestroy {
 
   searchLeague(): void {
     this.inputs.next(this.id);
+  }
+
+  get canBeEntered(): boolean {
+    return this.league && this.auth.userIsSignedIn()
+      && (this.league.settings.general.public || this.league.invitedUsers.includes(this.auth.getCurrentUsersId()))
   }
 
 }
