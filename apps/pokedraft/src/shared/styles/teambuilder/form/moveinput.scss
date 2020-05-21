@@ -1,0 +1,49 @@
+@import "../../utils";
+
+move-input {
+  border-radius: $radius;
+}
+
+.next-move-slot {
+  box-shadow: 0 0 5px 0 $primary;
+}
+
+.pd-teambuilder-move-input-container {
+  @include flex-center-vertically;
+  border: 1px solid $grey-lighter;
+  border-radius: $radius;
+  width: 100%;
+  height: 32px;
+
+  @each $current-type, $current-type-color in $type-color-list {
+    &--#{$current-type} {
+      // box-shadow: 0 0 4px 0 $current-type-color inset;
+      border: 1px solid $current-type-color;
+    }
+  }
+
+  &--has-move {
+    justify-content: space-around;
+  }
+}
+
+.pd-teambuilder-move-input {
+  width: 75%;
+  height: 80%;
+  border: none;
+  color: $grey;
+  background-color: transparent;
+  outline: none;
+  padding: 3px 0 0 8px;
+
+  &::placeholder {
+    color: $grey-light;
+    font-size: $font-size;
+  }
+}
+
+.pd-teambuilder-move-input--category-image {
+  transform: scale(0.85);
+  height: 100%;
+  @include flex-center-vertically;
+}

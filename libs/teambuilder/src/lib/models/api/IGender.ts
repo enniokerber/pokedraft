@@ -1,6 +1,6 @@
+import {ITranslatable} from "./ITranslatable";
 
 export interface IGender {
   id: string;
-  label: string;
-  german?: string;
+  label: ITranslatable;
 }

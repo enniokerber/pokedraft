@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Optional} from '@angular/core';
 import {IPokedraftUser, IPokedraftUserSnippet} from "@pokedraft/core";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'pd-user-snippet',
@@ -19,5 +20,4 @@ export class UserSnippetComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

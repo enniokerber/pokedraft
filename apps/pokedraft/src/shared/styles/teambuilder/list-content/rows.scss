@@ -1,0 +1,276 @@
+@import "../../utils";
+
+$container-width: $teambuilder-main-width - $padding-s; // 820px
+$head-row-height: 40px;
+
+$icon-size: 40px;
+
+.pd-teambuilder-list-content {
+  max-height: calc(100% - #{$head-row-height});
+  padding-top: 20px;
+  overflow: auto;
+  scrollbar-width: 0;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.pd-teambuilder-list-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: $tablehead-height - 4px;
+  border-radius: $radius;
+  @include no-user-select;
+
+  &--selectable {
+    &:hover {
+      cursor: pointer;
+      background-color: $tbbackground;
+    }
+
+    &:active {
+      background-color: $grey-lightest;
+    }
+  }
+
+  &--selected {
+    border: 1px solid $primary-light;
+    background-color: $grey-lightest;
+  }
+
+  &--marked {
+    border: 1px dashed $secondary-light;
+    background-color: $grey-lightest;
+  }
+
+  &--scalable {
+    height: unset;
+    min-height: $tablehead-height - 4px;
+
+    .pd-teambuilder-list-cell {
+      height: unset;
+      min-height: 100%;
+    }
+  }
+}
+
+.pd-teambuilder-list-header {
+  height: $head-row-height;
+  overflow: hidden;
+}
+
+.pd-teambuilder-list-cell {
+  position: relative;
+  @include flex-center;
+  height: 100%;
+  color: $grey;
+
+  &--scalable {
+    height: unset;
+    min-height: 100%;
+  }
+}
+
+.pd-teambuilder-list-cell-wrapper {
+  @include flex-center-vertically;
+  width: 100%;
+  height: 100%;
+}
+
+.pd-teambuilder-table-head-cell {
+  @extend .pd-teambuilder-list-cell;
+  background-color: $primary;
+  color: $white;
+  @include no-user-select;
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: $tablehead-height - 14px;
+    width: 1px;
+    background-color: $white;
+  }
+
+  &:last-of-type {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.--action-cell {
+  cursor: pointer;
+
+  &:hover {
+    opacity: .8;
+  }
+
+  &:active {
+    opacity: 1;
+    background-color: $primary2;
+  }
+}
+
+.--cell-selected {
+  cursor: default;
+  background-color: $primary;
+}
+
+.--teambuilder-cell-has-multiple-contents {
+  @include flex-center-vertically;
+}
+
+.--cell-align-left {
+  justify-content: flex-start;
+}
+
+.--cell-align-right {
+  justify-content: flex-end;
+}
+
+.--cell-align-bottom {
+  align-items: flex-end;
+}
+
+.--cell-align-bottom-right {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.--cell-align-evenly {
+  justify-content: space-between;
+}
+
+.pd-teambuilder-table-pre-text {
+  @include flex-center;
+  height: 100%;
+  flex: 30px 0 0;
+  font-size: $font-size-xs;
+  color: $grey-light;
+}
+
+.pd-teambuilder-list-row-icon {
+  @include flex-center;
+  flex: $icon-size 0 0;
+  height: 100%;
+}
+
+.pd-teambuilder-list-cell-text {
+  @include flex-center-vertically;
+  height: 100%;
+  flex: $icon-size 1 1;
+  padding-left: 4px;
+}
+
+.pd-teambuilder-list-stat-label {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  color: $grey-light;
+  font-size: $font-size-xs;
+}
+
+.pd-teambuilder-list-prop-cell {
+  align-items: flex-end;
+  color: $grey;
+  font-size: $font-size;
+}
+
+.pd-teambuilder-list-prop-label {
+  position: absolute;
+  top: 2px;
+  @include center-relatively-horizontally;
+  color: $grey-light;
+  font-size: $font-size-xs;
+  white-space: nowrap;
+}
+
+.pd-teambuilder-list-sub-container {
+  width: 100%;
+  overflow: hidden;
+
+  &--grey-highlight {
+    background-color: $grey-lightest;
+    border-radius: 4px;
+
+    .pd-teambuilder-list-row {
+      &:active {
+        background-color: $grey-lighter;
+      }
+    }
+  }
+
+  &:not(:first-of-type) {
+    margin-top: 20px;
+  }
+}
+
+$tier-badge-width: 180px;
+
+.pd-teambuilder-list-subheading-head {
+  position: relative;
+  width: 100%;
+  height: $tablehead-height - 10px;
+  margin-bottom: $padding-s;
+}
+
+.pd-teambuilder-list-subheading-title {
+  @include flex-center-vertically;
+  width: fit-content;
+  height: 100%;
+  color: $primary;
+  font-size: 1.1em;
+  padding: 0 $padding-xs + 2px;
+  border-radius: $radius;
+  z-index: 5;
+  cursor: default;
+
+  &:hover {
+    color: $primary2;
+  }
+}
+
+.--subheading-line {
+
+  background-color: $white;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: .5px;
+    background-color: $primary;
+    z-index: -1;
+  }
+}
+
+$reload-button-size: 26px;
+
+.pd-teambuilder-list-reload-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: $reload-button-size;
+  height: $reload-button-size;
+  border-radius: $radius 0 $radius 0;
+  background-color: $primary;
+  color: $white;
+  opacity: .75;
+  transition: $transition;
+  cursor: pointer;
+  @include flex-center;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:active {
+    background-color: $primary2;
+  }
+}

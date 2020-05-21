@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreDocument, DocumentReference} from "@angular/fire/firestore";
 import {
+  constructLeague,
   IPokedraftCreateLeagueDTO,
-  IPokedraftLeague, IPokedraftLeagueInvitationsDocument,
-  IPokedraftMessage,
-  IPokedraftUser,
-  IPokedraftUserSnippet, toLeagueSnippet, toUserSnippet
+  IPokedraftLeague, IPokedraftLeagueParticipatorsDocument,
 } from "../../../models";
 import {PokedraftAuthService} from "../../services/auth/pokedraft-auth.service";
 import {BehaviorSubject, Observable, of, Subscription, combineLatest} from "rxjs";
 import {map, shareReplay, switchMap, tap} from "rxjs/operators";
 import * as firebase from 'firebase/app';
 import {PokedraftUserService} from "../user/pokedraft-user.service";
+import {AngularFireFunctions} from "@angular/fire/functions";
+import HttpsCallableResult = firebase.functions.HttpsCallableResult;
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -28,20 +29,14 @@ export class PokedraftLeagueService {
 
   constructor(private auth: PokedraftAuthService,
               private userService: PokedraftUserService,
-              private afs: AngularFirestore) {
+              private afs: AngularFirestore,
+              private afFunc: AngularFireFunctions,
+              private router: Router) {
     this.currentLeague = null;
     this.currentLeagueChanges$ = null;
     this.leagueSubscription = Subscription.EMPTY;
     this.loading = new BehaviorSubject<boolean>(false);
-    this.currentUserIsAdmin$ = combineLatest([this.auth.user$, this.currentLeagueChanges$])
-      .pipe(
-        map(([user, league]) => {
-          if (!user || !league) {
-            return false;
-          }
-          return league.owner.uid === user.uid;
-        })
-      );
+    this.currentUserIsAdmin$ = this.currentUserIsAdmin();
   }
 
   getCurrentLeague(): IPokedraftLeague {
@@ -68,6 +63,23 @@ export class PokedraftLeagueService {
     this.loading.next(false);
   }
 
+  openLeague(id: string): Promise<boolean> {
+    return this.router.navigateByUrl(`league/${id}`);
+  }
+
+  private currentUserIsAdmin(): Observable<boolean> {
+    return combineLatest([this.auth.user$, this.currentLeagueChanges$])
+      .pipe(
+        map(([user, league]) => {
+          if (!user || !league) {
+            return false;
+          }
+          return league.owner.uid === user.uid;
+        }),
+        shareReplay()
+      );
+  }
+
   getLeagueReference(id: string): AngularFirestoreDocument<any> {
     return this.afs.doc<IPokedraftLeague>(`leagues/${id}`);
   }
@@ -78,7 +90,7 @@ export class PokedraftLeagueService {
         if (user) {
           return this.afs.collection<IPokedraftLeague>(`leagues`,
             ref => ref
-              .where('participatorIds', 'array-contains', uid)
+              .where('users.participators.ids', 'array-contains', uid)
               .orderBy('createdAt', 'desc')
           ).valueChanges();
         } else {
@@ -93,25 +105,32 @@ export class PokedraftLeagueService {
     return this.getUsersLeagues(uid);
   }
 
+  getLeagueParticipators(leagueId: string): Observable<IPokedraftLeagueParticipatorsDocument> {
+    return this.getLeagueReference(leagueId).collection('users').doc('participators')
+      .valueChanges();
+  }
+
+  getCurrentLeaguesParticipatorDocument(): Observable<IPokedraftLeagueParticipatorsDocument> {
+    const leagueId = this.getCurrentLeaguesId();
+    if (!leagueId) {
+      return of({
+        participatorIds: [],
+        participatorSnippets: [],
+        participatorCount: 0
+      } as IPokedraftLeagueParticipatorsDocument);
+    }
+    return this.getLeagueParticipators(leagueId);
+  }
+
   createLeague(createLeagueDTO: IPokedraftCreateLeagueDTO): Promise<DocumentReference> {
     const authedUser = this.auth.getCurrentUser();
     if (!authedUser) {
       console.log('Not authorized: Cannot create League.');
       return;
     }
-    const owner: { owner: IPokedraftUserSnippet } = {
-      owner: {
-        uid: authedUser.uid,
-        username: authedUser.username,
-        profilePicture: authedUser.profilePicture
-      }
-    };
-    const date = firebase.firestore.Timestamp.now();
-    const league: IPokedraftLeague = {
-      ...createLeagueDTO,
-      ...owner,
-      createdAt: date
-    };
+
+    const league = constructLeague(createLeagueDTO, authedUser);
+
     const leagueRef = this.afs.collection(`leagues`);
     this.startLoading();
     return leagueRef.add(league)
@@ -143,84 +162,51 @@ export class PokedraftLeagueService {
     this.currentLeague = null;
   }
 
-  async userIsValidToBeInvited(user: IPokedraftUser): Promise<boolean> {
-    if (!user) {
-      return false;
+  inviteUser(uid: string): Promise<HttpsCallableResult> {
+    const authedUsersId = this.auth.getCurrentUsersId();
+    if (!authedUsersId) {
+      return Promise.reject('Unauthorized');
     }
+
+    const leagueId = this.getCurrentLeaguesId();
+    if (!leagueId) {
+      return Promise.reject('No active league');
+    }
+    this.startLoading();
+    const invitationFunction = this.afFunc.functions.httpsCallable('inviteUserToLeague');
+    return invitationFunction({ uid, leagueId })
+      .finally(() => this.stopLoading());
+  }
+
+  userValidToBeInvited(uid: string): boolean {
     const league = this.getCurrentLeague();
+
     if (!league) {
       return false;
     }
 
-    const alreadyInThatLeague = user.leagues.map(snippet => snippet.id).includes(league.id);
-    const invitationRef = this.getLeagueReference(league.id).collection('users').doc<IPokedraftLeagueInvitationsDocument>('invitations');
+    if (league.owner && league.owner.uid === uid) {
+      return false;
+    }
 
-    const isInvitedUser = await invitationRef
-            .get()
-            .toPromise()
-            .then(doc => {
-              const data = doc.data() as IPokedraftLeagueInvitationsDocument;
-              return (data && data.invitedUsers && data.invitedUsers.includes(user.uid))
-            });
+    if (league.users && league.users.participators &&
+      league.users.participators.ids.includes(uid)) {
+      return false;
+    }
 
-    return isInvitedUser && !alreadyInThatLeague;
+    return true;
   }
 
-  async inviteUser(userToInvite: IPokedraftUser): Promise<void[]> {
-    if (!(await this.userIsValidToBeInvited(userToInvite))) {
-      console.log('Cannot invite User because either no user has been passed to this function or there is no league currently selected');
-      return Promise.reject('user is not valid to be invited');
+  enterLeague(id: string): Promise<HttpsCallableResult> {
+
+    const currentUser = this.auth.getCurrentUser();
+    if (!currentUser) {
+      return Promise.reject('Unauthorized');
     }
-    const authedUser = this.auth.getCurrentUser();
-    if (!authedUser) {
-      console.log('Nobody is logged in. Invitation cannot be send.');
-      return Promise.reject('Nobody is logged in. Invitation cannot be send.');
-    }
-    const currentLeague = this.getCurrentLeague();
-    const invitation: IPokedraftMessage = {
-      id: currentLeague.id,
-      from: toUserSnippet(authedUser),
-      title: `Invitation to the ${currentLeague.name.long}`,
-      message: `Hi ${userToInvite.username}, you have been invited to the ${currentLeague.name.short}!`,
-      league: toLeagueSnippet(currentLeague),
-      createdAt: firebase.firestore.Timestamp.now()
-    };
+
     this.startLoading();
-    return Promise.all([
-      this.userService.getInboxReference(userToInvite.uid, currentLeague.id)
-        .set(invitation),
-      this.getLeagueReference(currentLeague.id)
-        .collection('users')
-        .doc('invitations')
-        .update({
-          invitedUsers: firebase.firestore.FieldValue.arrayUnion(userToInvite.uid),
-          invitationCount: firebase.firestore.FieldValue.increment(1)
-        })
-    ])
+    const enterFunction = this.afFunc.functions.httpsCallable('enterLeague');
+    return enterFunction({ leagueId: id })
       .finally(() => this.stopLoading());
-  }
-
-  // @return: [updated league participators, updated users leagues, deleted league invitation form users inbox]
-  addUserToLeague(leagueId: string): Promise<[void, void, void]> {
-    const authedUser = this.auth.getCurrentUser();
-    if (!authedUser) {
-      return Promise.reject('Nobody is logged in. Cannot enter the league.');
-    }
-    this.startLoading();
-    // add the current user to the league and delete the invitation from the inbox
-    return Promise.all([
-      this.getLeagueReference(leagueId)
-        .collection('users')
-        .doc('participators')
-        .update({
-          participatorIds: firebase.firestore.FieldValue.arrayUnion(authedUser.uid),
-          participatorSnippets: firebase.firestore.FieldValue.arrayUnion(toUserSnippet(authedUser)),
-          participatorCount: firebase.firestore.FieldValue.increment(1)
-        }),
-      this.userService.userDocumentReference(authedUser.uid).update({
-        leagues: firebase.firestore.FieldValue.arrayUnion(leagueId)
-      }),
-      this.userService.getInboxReference(authedUser.uid, leagueId).delete(),
-    ]).finally(() => this.stopLoading());
   }
 }

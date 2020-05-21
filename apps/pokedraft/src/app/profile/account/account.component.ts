@@ -3,7 +3,7 @@ import {PopUpAnimation} from "@pokedraft/material";
 import {Observable} from "rxjs";
 import {IPokedraftUser, PokedraftAuthService} from "@pokedraft/core";
 import {tap} from "rxjs/operators";
-import {InputComponent} from "@pokedraft/material";
+import {PdInputComponent} from "@pokedraft/material";
 
 @Component({
   selector: 'pd-account',
@@ -15,7 +15,7 @@ import {InputComponent} from "@pokedraft/material";
 })
 export class AccountComponent implements OnInit {
 
-  @ViewChild('usernameInput') usernameInputElement: InputComponent;
+  @ViewChild('usernameInput') usernameInputElement: PdInputComponent;
 
   user: IPokedraftUser;
 

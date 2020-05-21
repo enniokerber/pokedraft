@@ -9,48 +9,81 @@ export const stats = {
     SPEED: 'speed'
 };
 
-export const statsExtended: { [key: string]: StatMetadata } = {
+export interface ExtendedStatLabelMap {
+  HP: StatMetadata,
+  ATK: StatMetadata,
+  DEF: StatMetadata,
+  SPATK: StatMetadata,
+  SPDEF: StatMetadata,
+  SPEED: StatMetadata
+}
+
+export const statsExtended: ExtendedStatLabelMap = {
   HP: {
     statId: stats.HP,
-    name: 'Healthpoints',
-    nameGerman: 'Kraftpunkte',
-    abbr: 'HP',
-    abbrGerman: 'KP'
+    name: {
+      english: 'Healthpoints',
+      german: 'Kraftpunkte',
+    },
+    abbr: {
+      english: 'Hp',
+      german: 'Kp'
+    }
   },
   ATK: {
     statId: stats.ATK,
-    name: 'Attack',
-    nameGerman: 'Angriff',
-    abbr: 'Atk',
-    abbrGerman: 'Ang'
+    name: {
+      english: 'Attack',
+      german: 'Angriff',
+    },
+    abbr: {
+      english: 'Atk',
+      german: 'Ang'
+    }
   },
   DEF: {
     statId: stats.DEF,
-    name: 'Defense',
-    nameGerman: 'Verteidigung',
-    abbr: 'Def',
-    abbrGerman: 'Vert'
+    name: {
+      english: 'Defense',
+      german: 'Verteidigung',
+    },
+    abbr: {
+      english: 'Def',
+      german: 'Vert'
+    }
   },
   SPATK: {
     statId: stats.SPATK,
-    name: 'Special Attack',
-    nameGerman: 'Spezial-Angriff',
-    abbr: 'SpA',
-    abbrGerman: 'SpA'
+    name: {
+      english: 'Special Attack',
+      german: 'Spezial-Angriff',
+    },
+    abbr: {
+      english: 'SpA',
+      german: 'SpA'
+    }
   },
   SPDEF: {
     statId: stats.SPDEF,
-    name: 'Special Defense',
-    nameGerman: 'Spezial-Verteidigung',
-    abbr: 'SpD',
-    abbrGerman: 'SpV'
+    name: {
+      english: 'Special Defense',
+      german: 'Spezial-Verteidigung',
+    },
+    abbr: {
+      english: 'SpD',
+      german: 'SpV'
+    }
   },
   SPEED: {
     statId: stats.SPEED,
-    name: 'Speed',
-    nameGerman: 'Initiative',
-    abbr: 'Spe',
-    abbrGerman: 'Init'
+    name: {
+      english: 'Speed',
+      german: 'Initiative',
+    },
+    abbr: {
+      english: 'Spe',
+      german: 'Init'
+    }
   },
 };
 

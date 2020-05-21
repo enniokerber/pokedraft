@@ -6,7 +6,7 @@ export interface IPokedraftUserSnippet {
   profilePicture: string;
 }
 
-export function toUserSnippet({ uid, username, profilePicture }: IPokedraftUser) {
+export function toUserSnippet({ uid, username, profilePicture }: IPokedraftUser | IPokedraftUserSnippet) {
   return ({
     uid,
     username,

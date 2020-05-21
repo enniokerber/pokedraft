@@ -1,0 +1,28 @@
+@import "../../utils";
+
+// ITEM
+
+$item-name: 22.5%;
+$item-desc: 52.5%;
+
+.--tb-item-name-cell {
+  width: $item-name;
+}
+
+.--tb-item-desc-cell {
+  width: $item-desc;
+}
+
+.--tb-item-fling-basepower {
+  width: 12.5%;
+}
+
+.--tb-item-natural-gift {
+  width: 12.5%;
+}
+
+.pd-item-natural-gift-type-icon {
+  margin-left: $margin;
+  max-height: 18px;
+}
+

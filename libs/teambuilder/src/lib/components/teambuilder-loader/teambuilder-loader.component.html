@@ -1,0 +1,16 @@
+
+<div class="pd-teambuilder-inner-loader"
+     [class.progress-finished]="value >= 100">
+  <div class="pd-teambuilder-loader-title">
+    Loading...
+  </div>
+  <div class="pd-teambuilder-loading-information">
+    {{text}}
+  </div>
+  <div class="pd-teambuilder-loading-progess-container">
+    <progress max="100"
+              [value]="value">
+    </progress>
+    <div class="pd-teambuilder-progress-value"> {{value}}% </div>
+  </div>
+</div>

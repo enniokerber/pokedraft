@@ -1,0 +1,20 @@
+
+
+<div class="pd-dropdown"
+     [class.pd-dropdown-active]="open"
+     (click)="triggerDropdown()">
+
+  <div class="pd-dropdown-title"> {{title}} </div>
+
+  <span class="pd-dropdown-value"> {{selected}} </span>
+
+  <div class="pd-dropdown-menu" *ngIf="open">
+
+    <div class="pd-dropdown-item"
+         [class.pd-active-dropdown-item]="option === selected"
+         (click)="setValue(option)"
+         *ngFor="let option of options"> {{option}} </div>
+
+  </div>
+
+</div>

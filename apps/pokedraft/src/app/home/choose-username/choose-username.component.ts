@@ -48,7 +48,7 @@ export class ChooseUsernameComponent implements OnInit {
       this.auth.updateUsername(this.username.value)
         .then(() => {
           this.success = true;
-          this.router.navigateByUrl('profile');
+          this.router.navigateByUrl('profile/account');
         })
         .catch(error => {
           this.usernameFormError = 'Could not update the username.';

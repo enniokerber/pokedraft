@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerAnimation } from '@pokedraft/material';
 import { RouterOutlet } from '@angular/router';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'pd-home',
@@ -12,7 +13,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {}
+  constructor(titleService: Title) {
+    titleService.setTitle('Pokédraft');
+  }
 
   ngOnInit(): void {
   }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IPokedraftLeague} from "@pokedraft/core";
+import {IPokedraftLeague, PokedraftLeagueService} from "@pokedraft/core";
 import {Observable} from "rxjs";
-import {PokedraftLeagueService} from "@pokedraft/core";
 
 @Component({
   selector: 'pd-users-leagues',

@@ -1,18 +1,10 @@
-
-export type SortingDirection = 'asc' | 'desc';
-
-export enum SortingDirections {
-  ASC = 'asc',
-  DESC = 'desc'
-}
+import {SortingDirection, SortingDirections} from "../types/SortingDirection";
 
 export class TeambuilderEntityCollection<Entity = any> {
 
   private _all:      Entity[];
   private _filtered: Entity[];
   private _current:  Entity[];
-
-  private _filter: any[];
 
   private _sortingDirection: SortingDirection;
   private _sortColumn: string;
@@ -21,8 +13,6 @@ export class TeambuilderEntityCollection<Entity = any> {
     this._all = entities;
     this._filtered = [...entities];
     this._current = [...entities];
-
-    this._filter = [];
 
     this._sortingDirection = SortingDirections.ASC;
     if (defaultSortColumn) {
@@ -55,14 +45,6 @@ export class TeambuilderEntityCollection<Entity = any> {
     this._current = value;
   }
 
-  get filter(): any[] {
-    return this._filter;
-  }
-
-  set filter(value: any[]) {
-    this._filter = value;
-  }
-
   get sortingDirection(): SortingDirection {
     return this._sortingDirection;
   }
@@ -77,6 +59,10 @@ export class TeambuilderEntityCollection<Entity = any> {
 
   set sortColumn(value: string) {
     this._sortColumn = value;
+  }
+
+  updateCurrent() {
+    this.current = [ ...this.filtered ];
   }
 
   sort(by: string,
@@ -103,16 +89,40 @@ export class TeambuilderEntityCollection<Entity = any> {
     switch (type) {
       case 'number' : {
         if (parentProperty) {
-          this.current = this.filtered.sort((a, b) => b['stats'][by] - a['stats'][by]);
+          this.current = this.filtered.sort((a, b) => b[parentProperty][by] - a[parentProperty][by]);
         } else {
           this.current = this.filtered.sort((a, b) => b[by] - a[by]);
         }
         break;
       }
-      default : {
-        this.current = this.filtered.sort((a, b) => a[by].localeCompare(b[by]));
+      default: {
+        if (parentProperty) {
+          this.current = this.filtered.sort((a, b) => a[parentProperty][by].localeCompare(b[parentProperty][by]));
+        } else {
+          this.current = this.filtered.sort((a, b) => a[by].localeCompare(b[by]));
+        }
       }
     }
     console.log('Sorted');
+  }
+
+  filterByString(searchStr: string, propLevel1: string, propLevel2?: string) {
+
+    if (searchStr === '') {
+      this.filtered = [...this.all];
+      this.updateCurrent();
+      return;
+    }
+
+    const lowerCaseSearchString = searchStr.toLowerCase();
+
+    let filterFn = (entity: Entity) => (entity[propLevel1] as string).toLowerCase().includes(lowerCaseSearchString);
+
+    if (propLevel2) {
+      filterFn = (entity: Entity) => (entity[propLevel1][propLevel2] as string).toLowerCase().includes(lowerCaseSearchString);
+    }
+
+    this.filtered = this.all.filter(filterFn);
+    this.sort(this.sortColumn, '', false);
   }
 }

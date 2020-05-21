@@ -1,0 +1,12 @@
+
+<label class="pd-radio">
+  <input type="checkbox"
+         [disabled]="locked"
+         [ngModel]="checked"
+         (ngModelChange)="changeValue($event)"
+         id="{{name}}">
+  <span></span>
+  <label class="pd-radio-label"
+         [class.--pd-align-radio-label-underneath-on-small-screen]="onSmallScreen === 'align-bottom'"
+         for="{{name}}"> {{name}} </label>
+</label>

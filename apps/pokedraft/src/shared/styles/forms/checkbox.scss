@@ -1,0 +1,129 @@
+@import "../utils";
+
+$checkboxSize: 24px;
+
+.pd-checkbox {
+  display: none;
+
+  & + .pd-checkbox-trigger {
+    position: relative;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    transition: color 250ms cubic-bezier(.4,.0,.23,1);
+
+    & > span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $checkboxSize;
+      height: $checkboxSize;
+      background: transparent;
+      border: 2px solid $grey-light;
+      border-radius: $radius;
+      cursor: pointer;
+      transition: all 150ms cubic-bezier(.4,.0,.23,1);
+    }
+
+    &:hover, &:focus {
+      & > span {
+        background: $white;
+      }
+    }
+
+    &:active > span {
+      transition: 0s;
+      border-color: $grey;
+    }
+
+  }
+
+  &:checked {
+    & + .pd-checkbox-trigger > span {
+      border: #{$checkboxSize / 2} solid $primary;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 4px;
+        border-right: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        transform: rotate(45deg);
+        transform-origin: 0 100%;
+        animation: checkbox-check 300ms 200ms cubic-bezier(.4,.0,.23,1) forwards;
+      }
+    }
+
+    & ~ .pd-top-checkbox-title {
+      color: $primary;
+    }
+  }
+
+  &:disabled {
+    & + .pd-checkbox-trigger > span {
+        background-color: $grey-300;
+    }
+  }
+}
+
+
+
+@keyframes checkbox-check{
+  0%{
+    width: 0;
+    height: 0;
+    border-color: white;
+    transform: translate3d(0,10px,0) rotate(45deg);
+  }
+  33%{
+    width: 8px;
+    height: 0;
+    transform: translate3d(0,10px,0) rotate(45deg);
+  }
+  100%{
+    width: 8px;
+    height: 16px;
+    border-color: white;
+    transform: translate3d(0,-6px,0) rotate(45deg);
+  }
+}
+
+.pd-top-checkbox-title {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $grey-light;
+  font-size: $font-size-s;
+  transition: $transition;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+@media screen and (max-width: 400px) {
+  .pd-option-label {
+    font-size: $font-size;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .--pd-sub-row {
+    margin-left: 0;
+    width: 100%;
+
+    & .pd-option-label {
+      font-size: $font-size-s;
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .pd-option-content {
+    justify-content: center;
+  }
+}

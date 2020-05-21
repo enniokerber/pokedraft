@@ -58,6 +58,11 @@
   transform: translateY(-50%);
 }
 
+@mixin center-relatively-horizontally {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @mixin padding-left-right($padding) {
   padding: 0 $padding;
 }
@@ -65,3 +70,4 @@
 @mixin padding-top-down($padding) {
   padding: $padding 0;
 }
+

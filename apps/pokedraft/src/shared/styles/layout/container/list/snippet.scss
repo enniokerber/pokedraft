@@ -1,0 +1,18 @@
+@import "../../../utils";
+
+.pd-league-snippet-container {
+  border: 1px solid $primary;
+  padding: $padding-m;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-light;
+    box-shadow: none;
+  }
+
+  &:active {
+    transition: 0s;
+    border-color: $primary2;
+  }
+}

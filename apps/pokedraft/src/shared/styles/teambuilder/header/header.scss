@@ -1,0 +1,32 @@
+@import "../../utils";
+
+#pd-teambuilder-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $white;
+  z-index: 5;
+}
+
+#pd-teambuilder-logo-container {
+  width: calc(100% - #{$space-to-screen-edge * 2});
+  margin: 0 $space-to-screen-edge;
+  height: 60px;
+  border-bottom: 1px solid $primary;
+}
+
+#pd-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 54px;
+}
+
+#pd-teambuilder-title {
+  @include flex-center;
+  width: 100%;
+  height: 26px;
+  color: $primary;
+  font-size: $font-size-m;
+}

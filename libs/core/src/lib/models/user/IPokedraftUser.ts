@@ -8,7 +8,7 @@ export interface IPokedraftUser {
   profilePicture: string;
   leagues: IPokedraftLeagueSnippet[];
   achievements: IPokedraftUserAchievements;
-  createdAt: Date;
+  createdAt: any;
 }
 
 export const MOCK_POKEDRAFT_USER: IPokedraftUser = {
@@ -18,7 +18,7 @@ export const MOCK_POKEDRAFT_USER: IPokedraftUser = {
   profilePicture: '',
   leagues: [],
   achievements: MOCK_POKEDRAFT_USER_ACHIEVEMENTS,
-  createdAt: new Date()
+  createdAt: null
 };
 
 export interface CreatePokedraftUserDTO {

@@ -1,0 +1,54 @@
+@import "../../utils";
+
+$tooltip-arrow-width: 8px;
+$tooltip-inner-arrow-width-decrement: 1px;
+
+.pd-teambuilder-move-input-tooltip {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) translateX(100%);
+  width: 200px;
+  padding: 12px 8px;
+  background-color: $white;
+  border: 1px solid $primary;
+  font-size: $font-size-xs;
+  color: $grey;
+  box-shadow: $tb-box-shadow;
+  z-index: 6;
+  opacity: 0;
+  transition: $transition;
+  pointer-events: none;
+
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    @include center-relatively-vertically;
+    width: 0;
+    height: 0;
+    border: $tooltip-arrow-width solid transparent;
+  }
+
+  &::before {
+    left: -(2 * $tooltip-arrow-width);
+    border-right: $tooltip-arrow-width solid $primary;
+    z-index: 4;
+  }
+
+  &::after {
+    left: -(2 * ($tooltip-arrow-width - $tooltip-inner-arrow-width-decrement));
+    border-right: ($tooltip-arrow-width - $tooltip-inner-arrow-width-decrement) solid $white;
+    z-index: 5;
+  }
+}
+
+
+.show-tooltip-on-hover {
+  position: relative;
+
+  &:hover {
+    .pd-teambuilder-move-input-tooltip {
+      opacity: 1;
+    }
+  }
+}

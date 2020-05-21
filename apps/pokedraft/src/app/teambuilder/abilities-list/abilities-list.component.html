@@ -1,0 +1,35 @@
+<div class="pd-teambuilder-list-row pd-teambuilder-list-header">
+
+  <div class="pd-teambuilder-table-head-cell --tb-ability-name-cell --action-cell">
+    Name
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-ability-desc-cell">
+    <translator2 english="Description" german="Beschreibung"></translator2>
+  </div>
+
+</div>
+
+<div class="pd-teambuilder-list-content">
+
+  <div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable pd-teambuilder-list-row--scalable"
+       translatableTitle
+       [englishTitle]="ability.description"
+       [germanTitle]="ability.descriptionGerman"
+       [ngClass]="{
+        'pd-teambuilder-list-row--selected': selectedTeampokemonsAbility?.name === ability.name,
+        'pd-teambuilder-list-row--marked': false
+       }"
+       (click)="selectAbility(ability)"
+       *ngFor="let ability of abilities">
+    <div class="pd-teambuilder-list-cell --tb-ability-name-cell --cell-align-left">
+      <translator2 [english]="ability.name" [german]="ability.german"></translator2>
+    </div>
+    <div class="pd-teambuilder-list-cell --tb-desc-cell --tb-ability-desc-cell --cell-align-left">
+      <translator2 [english]="ability.shortDescription"
+                   [german]="ability.shortDescriptionGerman">
+      </translator2>
+    </div>
+  </div>
+
+</div>

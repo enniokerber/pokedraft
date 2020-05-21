@@ -1,3 +1,4 @@
+import {PokemonType} from "../types";
 
 export enum MoveCategory {
   PHYSICAL = 'physical',
@@ -14,7 +15,7 @@ export interface IMove {
   shortDescription: string;
   shortDescriptionGerman: string;
   category: string;
-  type: string;
+  type: PokemonType;
   basePower: number;
   accuracy: number;
   priority: number;

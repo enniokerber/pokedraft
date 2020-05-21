@@ -24,6 +24,8 @@
   margin-left: $margin-m;
 }
 
+
+
 .flex-align-left {
   justify-content: flex-start;
 }
@@ -53,7 +55,19 @@
 }
 
 .margin-top {
-  margin-top: 20px;
+  margin-top: $margin-l;
+}
+
+.small-margin-top {
+  margin-top: $margin-m;
+}
+
+.margin-bottom {
+  margin-bottom: $margin-l;
+}
+
+.small-margin-bottom {
+  margin-bottom: $margin-m;
 }
 
 .center-relatively {
@@ -126,6 +140,10 @@
   background-color: $bronze;
 }
 
+.pd-text {
+  color: $grey;
+}
+
 .primary-color {
   color: $primary;
 }
@@ -136,6 +154,9 @@
 
 .secondary-color {
   color: $secondary;
+}
+.color-white {
+  color: $white;
 }
 
 .padding-top-adjustment {

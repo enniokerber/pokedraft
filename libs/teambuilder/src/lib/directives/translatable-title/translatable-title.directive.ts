@@ -1,34 +1,42 @@
-import {AfterViewInit, Directive, ElementRef, Input, OnDestroy} from '@angular/core';
+import {Directive, ElementRef, Input, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {TeambuilderViewService} from '../../services/teambuilder/view/teambuilder-view.service';
-import {Language} from '../../data/teambuilder/language';
+import {TeambuilderLanguageService} from "../../services";
+import {Language, Languages} from "../../models";
+
 
 @Directive({
   selector: '[translatableTitle]'
 })
-export class TranslatableTitleDirective implements AfterViewInit, OnDestroy {
+export class TranslatableTitleDirective implements OnDestroy {
 
   @Input() set englishTitle(englishTitle: string) {
     this._englishTitle = englishTitle;
+    if (this.languageIsEnglish()) {
+      this.setContent(englishTitle);
+    }
   }
 
   @Input() set germanTitle(germanTitle: string) {
     this._germanTitle = germanTitle;
+    if (this.languageIsGerman()) {
+      this.setContent(germanTitle);
+    }
   }
 
-  _englishTitle: string;
+  private _englishTitle: string;
 
-  _germanTitle: string;
+  private _germanTitle: string;
+
+  private _language: Language;
 
   private subscription: Subscription;
 
   constructor(private elem: ElementRef,
-              private tbView: TeambuilderViewService) {
-  }
-
-  ngAfterViewInit(): void {
-    this.subscription = this.tbView.language.observer$.subscribe((language) => {
-      this.update(language);
+              private tbLanguage: TeambuilderLanguageService) {
+    this._language = Languages.ENGLISH;
+    this.subscription = Subscription.EMPTY;
+    this.subscription = this.tbLanguage.language.changes$.subscribe((language) => {
+      this.translate(language);
     });
   }
 
@@ -36,9 +44,10 @@ export class TranslatableTitleDirective implements AfterViewInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  update(language: Language) {
+  translate(language: Language) {
+    this._language = language;
     switch (language) {
-      case Language.GERMAN:
+      case Languages.GERMAN:
         this.setContent(this._germanTitle);
         break;
       default:
@@ -50,8 +59,20 @@ export class TranslatableTitleDirective implements AfterViewInit, OnDestroy {
     if (content) {
       this.elem.nativeElement.setAttribute('title', content);
     } else {
-      console.log('There is no content to use for translation.');
+      if (this._englishTitle) {
+        this.setContent(this._englishTitle);
+        console.log('No translation to use, fallback to english.');
+        return;
+      }
+      console.log('No translation to use, did nothing.');
+
     }
   }
+
+  private languageIsEnglish(): boolean { return this._language === Languages.ENGLISH; }
+
+  private languageIsGerman(): boolean  { return this._language === Languages.GERMAN; }
+
+  private languageIsFrench(): boolean { return this._language === Languages.FRENCH; }
 
 }

@@ -3,19 +3,31 @@
 .pd-input-container {
   position: relative;
   max-width: 100%;
-  height: 36px;
+  height: $text-input-height;
 }
 
-.--large-input {
-  height: 44px;
+.--pd-large-input {
+  height: $text-input-height--large;
 
   .pd-input {
     font-size: $font-size-m;
   }
 }
 
+.--pd-small-input {
+  height: $text-input-height--small;
+
+  & .pd-text-input {
+    font-size: $font-size;
+  }
+
+  & .pd-text-input-placeholder {
+    font-size: $font-size;
+  }
+}
+
 .--textarea-container {
-  width: 100vh;
+  width: 100%;
   height: 200px;
 }
 

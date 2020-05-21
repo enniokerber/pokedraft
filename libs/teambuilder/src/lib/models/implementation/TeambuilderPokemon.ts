@@ -1,12 +1,9 @@
 import {Nature} from './nature';
 import {Stats} from './stats';
 import {Stat} from './stat';
-import {Gender} from '../enums/genders';
-
-import {IPokemon} from '../api/IPokemon';
-import {DEFAULT_NATURE, natures} from '../../../data/teambuilder/natures';
-import {INature} from '../api/INature';
-import {IMove} from '../api/IMove';
+import {IAbility, IItem, IMove, IPokemon, ITranslatable} from "../api";
+import {Genders, GenderType, PokemonType} from "../types";
+import {MoveContainer} from "./MoveContainer";
 
 export class TeambuilderPokemon {
 
@@ -15,51 +12,51 @@ export class TeambuilderPokemon {
 
   teambuilderPokemonId: number;
   nr: number;
-  name: string;
-  germanName: string;
+  name: ITranslatable;
   imgSrc: string;
   nickname: string;
-  types: string[];
+  types: PokemonType[];
   level: number;
   happiness: number;
   nature: Nature;
   stats: Stats;
-  gender: Gender;
+  gender: GenderType;
 
   shiny: boolean;
   sprite: string;
 
-  item: string;
-  ability: string;
+  item: IItem;
+  ability: IAbility;
   possibleAbilities: string[];
 
-  moves: IMove[];
+  moves: MoveContainer[];
 
-  currentNature: string;
+  possibleMoves: IMove[]; // all moves this pokemon can learn are stored after first load
 
   constructor(pokemon: IPokemon, id: number) {
     this.teambuilderPokemonId = id;
     this.nr = pokemon.nr;
     this.name = pokemon.name;
-    this.germanName = pokemon.german;
     this.imgSrc = pokemon.imgSrc;
     this.nickname = '';
     this.types = pokemon.types;
     this.level = 100;
     this.happiness = 255;
-    this.nature = new Nature(DEFAULT_NATURE);
-    this.stats = new Stats(pokemon.stats);
-    this.gender = Gender.RANDOM;
+    this.nature = new Nature();
+    this.stats = new Stats(pokemon.stats, this.nature);
+    this.gender = Genders.RANDOM;
     this.shiny = false;
-    this.ability = '';
+    this.item = null;
+    this.ability = null;
     this.possibleAbilities = [];
-    this.moves = [null, null, null, null];
-    this.initialize();
+    this.moves = [new MoveContainer(0), new MoveContainer(1), new MoveContainer(2), new MoveContainer(3)];
+    this.possibleMoves = [];
+    this.prepare();
   }
 
-  initialize() {
+  private prepare() {
     this.updateSprite();
-    this.changeNature(DEFAULT_NATURE);
+    this.stats.applyNature();
   }
 
   get hp(): Stat {
@@ -86,28 +83,24 @@ export class TeambuilderPokemon {
     return this.stats.speed;
   }
 
-  getCurrentHp(): number {
-    return this.stats.hp.modifiedValue;
+  getName(): ITranslatable {
+    return this.name;
   }
 
-  getCurrentAtk(): number {
-    return this.stats.atk.modifiedValue;
+  getItem(): IItem {
+    return this.item;
   }
 
-  getCurrentDef(): number {
-    return this.stats.def.modifiedValue;
+  setItem(item: IItem): void {
+    this.item = item;
   }
 
-  getCurrentSpAtk(): number {
-    return this.stats.spatk.modifiedValue;
+  getAbility(): IAbility {
+    return this.ability;
   }
 
-  getCurrentSpDef(): number {
-    return this.stats.spdef.modifiedValue;
-  }
-
-  getCurrentSpeed(): number {
-    return this.stats.speed.modifiedValue;
+  setAbility(ability: IAbility): void {
+    this.ability = ability;
   }
 
   updateStats(): void {
@@ -118,15 +111,13 @@ export class TeambuilderPokemon {
     this.stats.modify();
   }
 
-  changeNature(nature: INature): void {
-    this.currentNature = nature.name;
-    this.nature.change(nature);
-    this.stats.applyNature(this.nature.getValue());
+  getNatureId(): number {
+    return this.nature.get().id;
   }
 
-  changeNatureFromCurrentlySelected() {
-    const nature = natures.find(n => n.name === this.currentNature);
-    this.changeNature(nature);
+  changeNatureById(id: number): void {
+    this.nature.setById(id);
+    this.stats.applyNature();
   }
 
   isShiny(): boolean {
@@ -135,7 +126,7 @@ export class TeambuilderPokemon {
 
   updateSprite() {
     const baseURL = (this.isShiny()) ? TeambuilderPokemon.shinySpriteURL : TeambuilderPokemon.regularSpriteURL;
-    this.sprite = baseURL + this.name.toLowerCase() + '.gif';
+    this.sprite = baseURL + this.name.english.toLowerCase() + '.gif';
   }
 }
 

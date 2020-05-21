@@ -1,0 +1,13 @@
+<div class="show-tooltip-on-hover">
+  <pd-input size="small"
+            [(value)]="searchItem"
+            (click)="openItemList()"
+            (valueChange)="searchForItem($event)"
+            (onblur)="reset()">
+    Item
+  </pd-input>
+
+  <div class="pd-teambuilder-move-input-tooltip" *ngIf="currentItem">
+    <translator3 [source]="currentItem.description"></translator3>
+  </div>
+</div>

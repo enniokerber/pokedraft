@@ -1,79 +1,36 @@
 import {INature, INatureWithoutStatMetadata} from '../api/INature';
-import {natures} from "../../data/natures";
-import {StatMetadata} from "../api/IStats";
+import {DEFAULT_NATURE, natures} from "../../data/natures";
 
 export class Nature {
 
-  german: string;
-  name: string;
-  increases?: StatMetadata;
-  decreases?: StatMetadata;
+  data: INature;
 
-  private readonly natures: INature[];
-
-  constructor(from: INature) {
-    this.name = from.name;
-    this.german = from.germanName;
-    this.increases = from.increases ? from.increases : null;
-    this.decreases = from.decreases ? from.decreases : null;
-    this.natures = natures;
+  constructor() {
+    this.data = DEFAULT_NATURE;
   }
 
-  isNeutral(): boolean {
-    return (this.increases === null && this.decreases === null);
+  get(): INature {
+    return this.data;
   }
 
-  getName(): string {
-    return this.name;
+  getWithoutStatMetaData(): INatureWithoutStatMetadata {
+    const data = this.get();
+    return ({
+      ...data,
+      increases: data?.increases?.statId,
+      decreases: data?.decreases?.statId
+    });
   }
 
-  getGerman(): string {
-    return this.german;
+  set(nature: INature) {
+    this.data = nature;
   }
 
-  getIncreased(): string {
-    return this.increases ? this.increases.statId : null;
-  }
-
-  getDecreased(): string {
-    return this.decreases ? this.decreases.statId : null;
-  }
-
-  getIncreasedWithMetadata(): StatMetadata {
-    return this.increases;
-  }
-
-  getDecreasedWithMetadata(): StatMetadata {
-    return this.decreases;
-  }
-
-  getNatureId(): number {
-    return this.natures.findIndex(nature => nature.name === this.name);
-  }
-
-  getValue(): INatureWithoutStatMetadata {
-    return {
-      name: this.getName(),
-      germanName: this.getGerman(),
-      increases: this.getIncreased(),
-      decreases: this.getDecreased()
-    };
-  }
-
-  change(from: INature): void {
-    this.name = from.name;
-    this.german = from.germanName;
-    this.increases = from.increases ? from.increases : null;
-    this.decreases = from.decreases ? from.decreases : null;
-  }
-
-  setByName(name: string): void {
-    const nature = this.natures.find(n => n.name === name);
-    this.change(nature);
+  setDefault() {
+    this.data = DEFAULT_NATURE;
   }
 
   setById(id: number) {
-    const nature = this.natures[id];
-    this.change(nature);
+    this.set(natures[id]);
   }
 }

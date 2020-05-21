@@ -1,16 +1,17 @@
 import {StatMetadata} from "./IStats";
+import {ITranslatable} from "./ITranslatable";
 
 
 export interface INature {
-  germanName: string;
-  name: string;
+  id?: number;
+  name: ITranslatable;
   increases?: StatMetadata;
   decreases?: StatMetadata;
 }
 
 export interface INatureWithoutStatMetadata {
-  germanName: string;
-  name: string;
+  id?: number;
+  name: ITranslatable;
   increases?: string;
   decreases?: string;
 }

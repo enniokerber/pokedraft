@@ -1,0 +1,51 @@
+
+<div class="pd-teambuilder-frame">
+
+  <div *ngIf="!preparingTeambuilder; then tb else loader"></div>
+
+</div>
+
+<ng-template #tb>
+
+  <div class="pd-teambuilder-half pd-teambuilder-main-half">
+
+    <teambar></teambar>
+
+    <ng-container *ngIf="display as displayMode">
+
+      <teambuilder-form *ngIf="displayMode.showForm"></teambuilder-form>
+
+      <!-- all lists need to be on screen at all times so the list components dont have to be recreated and rendered every time which would cause huge delays -->
+      <div class="pd-teambuilder-list-container">
+        <pokemon-list class="pd-teambuilder-list"
+                      [class.pd-teambuilder-list--show]="displayMode.showPokemonList">
+        </pokemon-list>
+
+        <pd-item-list class="pd-teambuilder-list"
+                      [class.pd-teambuilder-list--show]="displayMode.showItemList"></pd-item-list>
+
+        <moves-list class="pd-teambuilder-list"
+                    [class.pd-teambuilder-list--show]="displayMode.showMoveList"></moves-list>
+
+        <abilities-list class="pd-teambuilder-list"
+                        [class.pd-teambuilder-list--show]="displayMode.showAbilitiesList"></abilities-list>
+      </div>
+
+    </ng-container>
+
+  </div>
+
+  <div class="pd-teambuilder-half pd-teambuilder-second-half">
+
+    <teambuilder-settings-bar></teambuilder-settings-bar>
+
+  </div>
+
+</ng-template>
+
+<ng-template #loader>
+    <teambuilder-loader
+      [value]="loadingProgress"
+      [text]="loadingText">
+    </teambuilder-loader>
+</ng-template>

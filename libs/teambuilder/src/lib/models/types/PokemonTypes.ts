@@ -25,7 +25,7 @@ export type PokemonType =
   'Fighting' | 'Flying' | 'Ghost' | 'Ground' | 'Ice' | 'Normal' | 'Poison' | 'Psychic' |
   'Rock' | 'Steel' | '???';
 
-export const pokemonTypes: PokemonTypes = [
+export const pokemonTypes: PokemonTypes[] = [
   PokemonTypes.Fire,
   PokemonTypes.Water,
   PokemonTypes.Grass,

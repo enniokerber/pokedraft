@@ -1,24 +1,33 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {IAbility} from '../../models/teambuilder/interfaces/IAbility';
-import {TEST_ABILITIES} from '../../data/teambuilder/testAbilities';
-import {Language} from '../../data/teambuilder/language';
+import {IAbility, Languages} from "../../models";
+import {testAbilities} from "../../data";
+import {TeambuilderLanguageService} from "../../services";
+import {map} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Pipe({
   name: 'translateAbility'
 })
 export class TranslateAbilitiesPipe implements PipeTransform {
 
-  abilities: IAbility[] = TEST_ABILITIES;
+  abilities: IAbility[] = testAbilities;
 
-  transform(abilities: any, language: Language): string | string[] {
-    switch (language) {
-      case Language.GERMAN:
-        switch (typeof abilities) {
-          case 'string': return this.getGermanAbility(abilities);
-          default: return abilities.map(ability => this.getGermanAbility(ability)); // Array
-        }
-      default: return abilities;
-    }
+  constructor(private tbLanguage: TeambuilderLanguageService) {}
+
+  transform(abilities: any): Observable<string | string[]> {
+    return this.tbLanguage.language.changes$
+      .pipe(
+        map(language => {
+          switch (language) {
+            case Languages.GERMAN:
+              switch (typeof abilities) {
+                case 'string': return this.getGermanAbility(abilities);
+                default: return abilities.map(ability => this.getGermanAbility(ability)); // Array
+              }
+            default: return abilities;
+          }
+        })
+      );
   }
 
   private getGermanAbility(ability: string): string {

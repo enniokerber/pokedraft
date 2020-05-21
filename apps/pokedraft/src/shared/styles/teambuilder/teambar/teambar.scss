@@ -1,0 +1,195 @@
+@import "../../utils";
+
+$teambar-item: 125px;
+
+.pd-teambuilder-teambar, .pd-teambuilder-bar {
+  position: relative;
+  @include flex-center-vertically;
+  height: 70px;
+  width: 100%;
+  padding: 8px;
+  background-color: $white;
+  border-radius: $radius;
+  box-shadow: $tb-box-shadow;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.pd-teambuilder-teambar-item-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 125px 0 1;
+  height: 100%;
+  margin-right: 20px;
+  @include no-user-select;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.pd-teambuilder-teambar-item {
+  border-radius: $radius;
+  background-color: $white;
+  border: 1px solid $primary;
+  color: $primary;
+  padding: 0 $padding-s;
+  height: 100%;
+
+  &:hover {
+    + .pd-teambuilder-teambar-item-delete-button {
+      background-color: $red-1;
+
+      &:active {
+        background-color: $red-2;
+      }
+    }
+  }
+
+  &:hover:not(.pd-teambuilder-teambar-item--selected) {
+    cursor: pointer;
+    border-color: $primary2;
+    color: $primary2;
+    .pd-teambuilder-teambar-item-half--name-half {
+      border-color: $primary2;
+    }
+  }
+
+  &:active:not(.pd-teambuilder-teambar-item--selected) {
+    border-color: $secondary;
+    color: $secondary;
+    .pd-teambuilder-teambar-item-half--name-half {
+      border-color: $secondary;
+    }
+  }
+}
+
+.pd-teambuilder-teambar-item--selected {
+  background-color: $primary;
+  color: $white;
+  .pd-teambuilder-teambar-item-half--name-half {
+    border-color: $white;
+  }
+}
+
+.pd-teambuilder-teambar-item-half {
+  @include flex-center;
+  width: 100%;
+}
+
+.pd-teambuilder-teambar-item-half--top-half {
+  height: 55%;
+}
+
+
+.pd-teambuilder-teambar-item-half--name-half {
+  border-top: 1px solid $primary;
+  height: 45%;
+  white-space: nowrap;
+}
+
+.pd-teambuilder-teambar-item-half--placeholder-half {
+  height: 50%;
+}
+
+.pd-teambuilder-teambar-item-half--border-half {
+  border-top: 1px solid $primary;
+}
+
+.pd-teambuilder-teambar-item-default {
+  @include flex-center;
+  flex-direction: column;
+  width: 120px;
+  height: 100%;
+  @include no-user-select;
+  background-color: $white;
+  border: 1px solid $primary;
+  border-radius: $radius;
+  color: $primary;
+  padding: 0 $padding-s;
+
+  .pd-teambuilder-teambar-item-half--name-half {
+    border-color: $primary;
+  }
+}
+
+
+
+$stroke-width: 66%;
+$stroke-height: 2px;
+$add-button-click-color: $primary2;
+
+.pd-teambuilder-teambar-add-button {
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    @include center-relatively;
+    background-color: $primary;
+    border-radius: $radius;
+  }
+
+  &::before {
+    width: $stroke-width;
+    height: $stroke-height;
+  }
+
+  &::after {
+    width: $stroke-height;
+    height: $stroke-width;
+  }
+
+  &:active {
+    border-color: $add-button-click-color;
+    &::before, &::after {
+      background-color: $add-button-click-color;
+    }
+  }
+}
+
+$delete-button-size: 22px;
+
+.pd-teambuilder-teambar-item-delete-button {
+  position: absolute;
+  top: - $delete-button-size / 3;
+  right: - $delete-button-size / 3;
+  @include flex-center;
+  width: $delete-button-size;
+  height: $delete-button-size;
+  border-radius: 50%;
+  border: 2px solid $white;
+  background-color: $primary;
+  color: $white;
+  padding: 4px;
+  cursor: pointer;
+  outline: none;
+
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    @include center-relatively;
+    background-color: $white;
+    width: 75%;
+    height: 1px;
+    border-radius: $radius;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    background-color: $red-1;
+  }
+
+  &:active {
+    background-color: $red-2;
+  }
+}
+

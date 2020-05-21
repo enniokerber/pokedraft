@@ -48,12 +48,10 @@ export class EnterLeagueComponent implements OnInit, OnDestroy {
             this.notFound = true;
           }
         })
-      )
-      .subscribe();
+      ).subscribe();
     this.routerSubscription = this.actRoute.params.subscribe(
       ({ id }) => {
         this.id = id;
-        console.log(id);
         this.searchLeague();
       }
     );
@@ -71,10 +69,4 @@ export class EnterLeagueComponent implements OnInit, OnDestroy {
   searchLeague(): void {
     this.inputs.next(this.id);
   }
-
-  get canBeEntered(): boolean {
-    return this.league && this.auth.userIsSignedIn()
-      && (this.league.settings.general.public || this.league.invitedUsers.includes(this.auth.getCurrentUsersId()))
-  }
-
 }

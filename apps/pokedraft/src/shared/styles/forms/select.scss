@@ -2,11 +2,12 @@
 
 .pd-select {
   max-width: 300px;
+  height: $text-input-height;
   border: 1px solid $grey-lighter;
   border-radius: $radius;
   padding: 10px 10px 7px 10px;
 
-  color: $grey-dark;
+  color: $grey;
   font-size: $font-size-s;
   outline: none;
   z-index: 1;
@@ -14,6 +15,20 @@
   cursor: pointer;
 
   &:focus {
-    border: 1px solid $primary;
+    border-color: $primary;
   }
+
+  &--small {
+    height: $text-input-height--small;
+    padding: 2px 0 0 10px;
+  }
+}
+
+.--tb-form-nature-select {
+  max-width: 178px;
+  padding: 2px 0 0 10px;
+}
+
+.--language-select {
+  width: 200px;
 }

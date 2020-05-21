@@ -1,0 +1,22 @@
+<div class="pd-input-container"
+     [ngClass]="{
+        '--pd-small-input': size === 'small',
+        '--pd-large-input': size === 'large'
+     }">
+  <input #inputElement
+         class="pd-input"
+         [ngClass]="{
+            'pd-input-has-content': value !== ''
+         }"
+         [type]="type"
+         [disabled]="disabled"
+         [maxlength]="maxlength"
+         [ngModel]="value"
+         (ngModelChange)="changeValue($event)"
+         (focus)="onFocusFunction()"
+         (blur)="onTouch($event); onblurFunction();"
+         required>
+  <label class="pd-input-placeholder">
+    <ng-content></ng-content>
+  </label>
+</div>

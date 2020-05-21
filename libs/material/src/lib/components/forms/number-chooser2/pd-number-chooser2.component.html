@@ -1,0 +1,9 @@
+
+<div class="pd-number-chooser2" [class.pd-darker-number-chooser2]="darker">
+  <div class="pd-number-chooser-action2 pd-minus2"
+       (click)="decValue()" *ngIf="!disabled"> </div>
+  <div class="pd-number-chooser-display2"
+       [class.valueGreaterZero]="(value + extra) > 0"> {{value + extra}} </div>
+  <div class="pd-number-chooser-action2 pd-plus2"
+       (click)="incValue()" *ngIf="!disabled"> </div>
+</div>

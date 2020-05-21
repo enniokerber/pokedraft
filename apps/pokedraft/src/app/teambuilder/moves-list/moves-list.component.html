@@ -1,0 +1,90 @@
+<div class="pd-teambuilder-list-row pd-teambuilder-list-header">
+
+  <div class="pd-teambuilder-table-head-cell --tb-move-name-cell --action-cell">
+    Name
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell">
+    <translator2 english="Type" german="Typ"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell"
+       translatableTitle englishTitle="Category" germanTitle="Kategorie">
+    <translator2 english="Cat" german="Kat"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell"
+       translatableTitle englishTitle="Power" germanTitle="Stärke">
+    <translator2 english="Pow" german="Strk"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell"
+       translatableTitle englishTitle="Accuracy" germanTitle="Genauigkeit">
+    <translator2 english="Acc" german="Gen"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell --tb-powerpoints-cell"
+       translatableTitle englishTitle="PowerPoints" germanTitle="Angriffspunkte">
+    <translator2 english="PP" german="AP"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-move-desc-cell">
+    <translator2 english="Description" german="Beschreibung"></translator2>
+  </div>
+
+</div>
+
+<div class="pd-container-row pd-teambuilder-list-container-row flex-align-center small-margin-top no-margin-bottom"
+     *ngIf="loadingError">
+  <div class="pd-error-icon pd-error-icon--smaller-margin"></div>
+  <span class="pd-error-text">
+    <translator2 english="An error occurred while fetching the Pokémon´s moves." german="Fehler beim Laden der Attacken."></translator2>
+  </span>
+</div>
+
+<div class="pd-container-row pd-teambuilder-list-container-row pd-teambuilder-list-container-row--for-loader flex-align-center flex-align-top small-margin-top no-margin-bottom"
+     *ngIf="loadingMoves">
+  <pd-loader><translator2 english="Load Moves" german="Lade Attacken"></translator2></pd-loader>
+</div>
+
+
+<div class="pd-teambuilder-list-content" *ngIf="moves.firstHalf.length > 0 || moves.secondHalf.length > 0;">
+
+  <div class="pd-teambuilder-list-sub-container" *ngIf="moves.firstHalf.length > 0">
+    <div class="pd-teambuilder-list-subheading-head">
+      <span class="pd-teambuilder-list-subheading-title --subheading-line"
+            translatableTitle englishTitle="These are common moves that many people like to use on this Pokémon." germanTitle="Das sind beliebte Attacken, die von vielen Spieler gerne auf diesem Pokémon verwendet werden.">
+        <translator2 english="Common Moves" german="Beliebte Attacken"></translator2>
+      </span>
+    </div>
+
+    <moves-list-row-container
+      [moves]="moves.firstHalf"
+      (onchoose)="insertMove($event)">
+    </moves-list-row-container>
+  </div>
+
+  <div class="pd-teambuilder-list-sub-container pd-teambuilder-list-sub-container--grey-highlight" *ngIf="moves.secondHalf.length > 0">
+    <div class="pd-teambuilder-list-subheading-head">
+      <span class="pd-teambuilder-list-subheading-title"
+            translatableTitle englishTitle="These moves are usually not used by the majority of players, but sometimes they can be used for unique strategies." germanTitle="Diese Attacken werden vom Pokémon zwar beherrscht, aber vom Großteil der Spieler nicht genutzt. Manchmal werden diese Attacken jedoch für einzigartige Strategien verwendet oder werden durch bestimmte Items oder Fähigkeiten spielbar.">
+        <translator2 english="Usually Useless Moves" german="Normalerweise unnütze Attacken"></translator2>
+      </span>
+    </div>
+
+    <moves-list-row-container
+      [moves]="moves.secondHalf"
+      (onchoose)="insertMove($event)">
+    </moves-list-row-container>
+  </div>
+</div>
+
+<div class="pd-teambuilder-list-reload-button"
+     translatableTitle
+     englishTitle="Reload Moves"
+     germanTitle="Attacken neu laden"
+     *ngIf="!loadingMoves">
+  <img src="assets/icons/download.png" alt="Download Icon">
+</div>
+
+

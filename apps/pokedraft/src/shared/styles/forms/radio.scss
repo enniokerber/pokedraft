@@ -1,0 +1,149 @@
+@import "../utils";
+
+.pd-radio-group {
+  flex: 1 1 400px;
+  height: 100%;
+  padding: 0 20px;
+  transition: $transition-m;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.pd-radio-label {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $grey-light;
+  transition: $transition;
+  cursor: pointer;
+}
+
+.--pd-align-radio-label-underneath-on-small-screen {}
+
+.pd-optional-item {
+  display: flex;
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .pd-radio-row {
+    flex-wrap: wrap;
+  }
+
+  .pd-radio-group {
+    height: 55px;
+    padding: 0 0 6px 0;
+    align-items: flex-end;
+    justify-content: space-around;
+  }
+
+  .pd-radio-label {
+    font-size: $font-size-s;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .pd-item-group-label {
+    font-size: $font-size-m;
+    padding-left: 0;
+    padding-right: 10px;
+  }
+
+  .pd-radio-group {
+    height: 80px;
+    padding-bottom: 20px;
+  }
+
+  .--pd-rights-radio-group {
+    align-items: center;
+  }
+
+  .--pd-align-radio-label-underneath-on-small-screen {
+    top: 24px;
+  }
+}
+
+
+$radioSize: 22px;
+$radioBorder: $grey-lighter;
+$radioActive: $primary;
+
+.pd-radio {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  input {
+    display: none;
+    & + span {
+      height: $radioSize;
+      padding-left: $radioSize;
+      display: block;
+      position: relative;
+      &:before,
+      &:after {
+        content: '';
+        width: $radioSize;
+        height: $radioSize;
+        display: block;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        position: absolute;
+      }
+      &:before {
+        background: $radioBorder;
+        transition: background .2s ease, transform .4s cubic-bezier(.175, .885, .32, 2);
+      }
+      &:after {
+        background: #fff;
+        transform: scale(.78);
+        transition: transform .6s cubic-bezier(.175, .885, .32, 1.4);
+      }
+    }
+    &:checked {
+      & + span {
+        &:before {
+          transform: scale(1.04);
+          background: $radioActive;
+        }
+        &:after {
+          transform: scale(.4);
+          transition: transform .3s ease;
+        }
+      }
+
+      & ~ .pd-radio-label {
+        color: $primary;
+      }
+    }
+  }
+  &:hover {
+    input {
+      & + span {
+        &:before {
+          transform: scale(.92);
+        }
+        &:after {
+          transform: scale(.74);
+        }
+      }
+      &:checked + span {
+        &:after {
+          transform: scale(.4);
+        }
+      }
+    }
+  }
+}
+
+
+/*
+    <label class="radio">
+        <input type="radio" name="r" value="1" checked>
+        <span>Radio #1</span>
+    </label>
+ */

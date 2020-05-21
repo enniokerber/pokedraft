@@ -1,12 +1,13 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Observable, Subject, Subscription} from "rxjs";
+import {combineLatest, Observable, Subject, Subscription} from "rxjs";
 import {
   IPokedraftUser,
   PokedraftLeagueService,
   PokedraftUserService,
 } from "@pokedraft/core";
-import {debounceTime, distinctUntilChanged, filter, switchMap, tap} from "rxjs/operators";
-import {InputComponent} from "@pokedraft/material";
+import {debounceTime, distinctUntilChanged, filter, map, shareReplay, switchMap, tap} from "rxjs/operators";
+import {PdInputComponent} from "@pokedraft/material";
+import {BOBS_UID} from "../../../../shared/data/testdata";
 
 @Component({
   selector: 'pd-league-invitations',
@@ -15,14 +16,15 @@ import {InputComponent} from "@pokedraft/material";
 })
 export class LeagueInvitationsComponent implements OnInit, OnDestroy {
 
-  @ViewChild('playerId') playerIdInput: InputComponent;
+  @ViewChild('playerId') playerIdInput: PdInputComponent;
 
   id: string;
 
   inputs: Subject<string>;
   inputsSubscription: Subscription;
 
-  result: IPokedraftUser;
+  user: IPokedraftUser;
+  validInvitation$: Observable<boolean>;
 
   searching: boolean;
   loading$: Observable<boolean>;
@@ -31,16 +33,15 @@ export class LeagueInvitationsComponent implements OnInit, OnDestroy {
   invitationError: string;
   invitationSuccess: boolean;
 
-  validUser: boolean;
-
   constructor(private userService: PokedraftUserService,
               private leagueService: PokedraftLeagueService) {
-    this.id = 'AtKHyRCFERYmTT50E4RN3KZXh8d2';
+    this.id = BOBS_UID;
     this.inputs = new Subject<string>();
+    this.user = null;
+    this.validInvitation$ = null;
     this.searching = false;
     this.loading$ = this.leagueService.loading.asObservable();
     this.notFound = false;
-    this.validUser = false;
     this.invitationError = '';
     this.invitationSuccess = false;
 
@@ -54,19 +55,17 @@ export class LeagueInvitationsComponent implements OnInit, OnDestroy {
           this.notFound = false;
         }),
         switchMap(id => this.userService.getUserById(id)),
-        tap(user => {
+      ).subscribe(user => {
           this.searching = false;
-          this.validUser = this.leagueService.userIsValidToBeInvited(user);
           if (!user) {
             this.notFound = true;
-            this.result = null;
+            this.user = null;
             return;
           }
-          this.result = user;
+          this.user = user;
+          this.validInvitation$ = this.validateUser(user.uid);
           this.notFound = false;
-        })
-      )
-      .subscribe();
+        });
   }
 
   ngOnInit(): void {
@@ -83,16 +82,27 @@ export class LeagueInvitationsComponent implements OnInit, OnDestroy {
 
   inviteUser(): void {
     this.invitationError = '';
-    this.leagueService.inviteUser(this.result)
+    this.leagueService.inviteUser(this.user.uid)
       .then(() => {
         this.invitationSuccess = true;
         this.id = '';
-        this.result = null;
+        this.user = null;
         this.playerIdInput.focus();
         setTimeout(() => this.invitationSuccess = false, 1200);
         console.log('Sent the invitation!')
       })
-      .catch(error => this.invitationError = 'An error occurred when sending the invitation');
+      .catch(error => {
+        this.invitationError = 'An error occurred when sending the invitation';
+        console.log(error);
+      });
+  }
+
+  private validateUser(uid: string): Observable<boolean> {
+    return this.leagueService.currentLeagueChanges$
+      .pipe(
+        map(league => this.leagueService.userValidToBeInvited(this.user.uid)),
+        shareReplay()
+      )
   }
 
 }

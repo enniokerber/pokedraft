@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IPokedraftLeague, PokedraftAuthService, PokedraftLeagueService} from "@pokedraft/core";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 
 @Component({
   selector: 'pd-league-container',
@@ -14,30 +14,26 @@ export class LeagueContainerComponent implements OnInit {
 
   @Input() enterable: any;
 
-  uid: string;
-
   logoLoaded: boolean;
 
   showMore: boolean;
 
   loading$: Observable<boolean>;
 
+  entered: boolean;
+
   constructor(private router: Router,
               private auth: PokedraftAuthService,
               private leagueService: PokedraftLeagueService) {
     this.league = null;
-    this.enterable = true;
+    this.enterable = false;
     this.logoLoaded = false;
     this.showMore = false;
-    this.uid = this.auth.getCurrentUsersId();
     this.loading$ = this.leagueService.loading.asObservable();
+    this.entered = (this.league && this.league.users) ? this.league.users.participators.ids.includes(this.auth.getCurrentUsersId()): false;
   }
 
   ngOnInit(): void {
-  }
-
-  get isParticipator(): boolean {
-    return this.league.owner.uid === this.uid || (this.league.participatorIds && this.league.participatorIds.includes(this.uid));
   }
 
   toggleMoreInformation(): void {
@@ -57,13 +53,17 @@ export class LeagueContainerComponent implements OnInit {
   }
 
   enterLeague(): void {
-    this.uid = this.auth.getCurrentUsersId();
-    if (this.league && this.enterable && !this.isParticipator) {
-      this.leagueService.addUserToLeague(this.league.id)
-        .then(() => console.log('Enter league'))
-        .catch(error => console.log('Could not enter league'));
+    if (this.league) {
+      const leagueId = this.league.id;
+      this.leagueService.enterLeague(leagueId)
+        .then(_ => {
+          console.log('Successfully entered league.');
+          this.entered = true;
+          this.leagueService.openLeague(leagueId);
+        })
+        .catch(error => console.warn(error));
     } else {
-      console.log('Cannot trigger the addUserToLeague function because if returns false');
+      console.log('No league => no entering.');
     }
   }
 

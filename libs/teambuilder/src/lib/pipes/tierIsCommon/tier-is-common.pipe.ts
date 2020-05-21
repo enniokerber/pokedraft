@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {ITier} from '../../models/teambuilder/interfaces/ITier';
+import {ITier} from '../../models';
 
 @Pipe({
   name: 'tierIsCommon'

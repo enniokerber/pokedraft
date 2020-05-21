@@ -1,0 +1,14 @@
+@import "../../utils";
+
+$ability-name-cell: 20%;
+
+.--tb-ability-name-cell {
+  width: 20%;
+  padding-left: $padding;
+  min-height: 100%;
+}
+
+.--tb-ability-desc-cell {
+  width: calc(100% - #{$ability-name-cell});
+  padding: $padding-s 0 $padding-s $padding;
+}

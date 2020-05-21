@@ -1,0 +1,45 @@
+@import "../../utils";
+
+$tbheader-height: $tblogocontainer-height + $tbtitle-height;
+
+#pd-teambuilder-content {
+  position: relative;
+  @include take-up-full-space;
+  background-color: $white;
+  padding: $tbheader-height + 10px $space-to-screen-edge $space-to-screen-edge $space-to-screen-edge;
+  z-index: 3;
+}
+
+.pd-teambuilder-frame {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: $tbframe-padding;
+  border-radius: $radius;
+  background-color: $tbbackground;
+  box-shadow: 0 0 3px 0 $grey-light inset;
+  overflow: hidden;
+}
+
+.pd-teambuilder-half {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.pd-teambuilder-main-half {
+  flex: $teambuilder-main-width 0 0;
+  width: $teambuilder-main-width;
+}
+
+.pd-teambuilder-second-half {
+  flex: $teambuilder-main-width 1 1;
+  margin-left: $tb-container-margin;
+}

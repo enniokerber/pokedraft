@@ -18,13 +18,10 @@
       "tags": [],
       "implicitDependencies": ["pokedraft"]
     },
-    "models": {
+    "core": {
       "tags": []
     },
-    "functions": {
-      "tags": []
-    },
-    "ui": {
+    "material": {
       "tags": []
     },
     "teambuilder": {

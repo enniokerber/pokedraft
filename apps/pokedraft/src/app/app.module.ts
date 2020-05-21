@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import {AngularFireStorageModule} from "@angular/fire/storage";
 import { TrySignInComponent } from './try-sign-in/try-sign-in.component';
 import {LayoutModule} from "./layout/layout.module";
 import {PokedraftUtilsModule} from "@pokedraft/material";
+import {AngularFireFunctionsModule, FUNCTIONS_REGION} from "@angular/fire/functions";
 
 @NgModule({
   declarations: [AppComponent, TrySignInComponent],
@@ -22,10 +23,15 @@ import {PokedraftUtilsModule} from "@pokedraft/material";
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    AngularFireFunctionsModule,
     LayoutModule,
     PokedraftUtilsModule
   ],
-  providers: [AngularFirestore],
+  providers: [
+    AngularFirestore,
+    Title,
+    { provide: FUNCTIONS_REGION, useValue: 'europe-west3'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

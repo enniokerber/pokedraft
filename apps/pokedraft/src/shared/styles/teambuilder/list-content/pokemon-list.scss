@@ -1,0 +1,63 @@
+@import "../../utils";
+
+// POKEMON
+
+.pd-teambuilder-list-ability-block {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+}
+
+.pd-teambuilder-list-ability {
+  @include flex-center;
+  flex: 50% 1 1;
+  width: 100%;
+  padding: 0 $padding-xs;
+  font-size: $font-size-xs;
+}
+
+.pd-teambuilder-list-ability--first {
+  align-items: flex-end;
+}
+
+.pd-teambuilder-list-ability--second {
+  align-items: flex-start;
+}
+
+.--tb-name-cell {
+  width: 28%;
+}
+
+.--tb-desc-cell {
+  line-height: $desc-line-height;
+  font-size: $font-size-s;
+}
+
+.--tb-abilities-cell {
+  width: 23%;
+}
+
+.--tb-types-cell {
+  width: 14%;
+}
+
+.pd-teambuilder-type-half {
+  width: 50%;
+}
+
+$padding-type: 15px;
+
+.--english-type-half {
+  &:nth-child(1) {
+    padding-left: $padding-type;
+  }
+  &:nth-child(2) {
+    padding-right: $padding-type;
+  }
+}
+
+.--tb-stat-cell {
+  width: 5%;
+  font-size: $font-size-s;
+}

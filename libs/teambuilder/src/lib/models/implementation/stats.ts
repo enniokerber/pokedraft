@@ -1,7 +1,8 @@
 import {Stat} from './stat';
 import {IStats} from '../api/IStats';
 import {INatureWithoutStatMetadata} from '../api/INature';
-import {stats} from '../../../data/teambuilder/stats';
+import {stats} from "../../data";
+import {Nature} from "./nature";
 
 
 export class Stats {
@@ -13,13 +14,20 @@ export class Stats {
     spdef: Stat;
     speed: Stat;
 
-    constructor(base: IStats) {
+    private readonly _nature: Nature;
+
+    constructor(base: IStats, nature: Nature) {
            this.hp = new Stat(base.hp);
           this.atk = new Stat(base.atk);
           this.def = new Stat(base.def);
         this.spatk = new Stat(base.spatk);
         this.spdef = new Stat(base.spdef);
         this.speed = new Stat(base.speed);
+        this._nature = nature;
+    }
+
+    getNature(): Nature {
+      return this._nature;
     }
 
     update(level: number = 100): void {
@@ -40,7 +48,8 @@ export class Stats {
         this.speed.modify();
     }
 
-    applyNature(nature: INatureWithoutStatMetadata) {
+    applyNature(nat?: INatureWithoutStatMetadata) {
+      const nature = nat ? nat : this.getNature().getWithoutStatMetaData();
       this.neutralizeNatures();
       if (nature.increases && nature.decreases) {
         switch (nature.increases) {

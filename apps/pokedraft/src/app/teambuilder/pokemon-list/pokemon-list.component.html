@@ -1,0 +1,97 @@
+<div class="pd-teambuilder-list-row pd-teambuilder-list-header">
+  <div class="pd-teambuilder-table-head-cell --tb-name-cell --action-cell"
+       (click)="sortPokemonlist(sortingOptions.NAME)"
+       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.NAME, $event)">
+    Name
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-types-cell">
+    <translator3 [source]="{ english: 'Types', german: 'Typen' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-abilities-cell">
+    <translator3 [source]="{ english: 'Abilities', german: 'Fähigkeiten' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+       [translatableTitle2]="{ english: 'Healthpoints', german: 'Kraftpunkte' }"
+       (click)="sortPokemonlistByStat(sortingOptions.HP)"
+       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.HP, $event, true)">
+    <translator3 [source]="{ english: 'HP', german: 'KP' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+       [translatableTitle2]="{ english: 'Attack', german: 'Angriff' }"
+       (click)="sortPokemonlistByStat(sortingOptions.ATK)"
+       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.ATK, $event, true)">
+    <translator3 [source]="{ english: 'Atk', german: 'Ang' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+       [translatableTitle2]="{ english: 'Defense', german: 'Verteidigung' }"
+       (click)="sortPokemonlistByStat(sortingOptions.DEF)"
+       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.DEF, $event, true)">
+    <translator3 [source]="{ english: 'Def', german: 'Vert' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+       [translatableTitle2]="{ english: 'Special-Attack', german: 'Spezial-Angriff' }"
+       (click)="sortPokemonlistByStat(sortingOptions.SPATK)"
+       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPATK, $event, true)">
+    <translator3 [source]="{ english: 'SpA', german: 'SpA' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+       [translatableTitle2]="{ english: 'Special-Defense', german: 'Spezial-Verteidigung' }"
+       (click)="sortPokemonlistByStat(sortingOptions.SPDEF)"
+       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPDEF, $event, true)">
+    <translator3 [source]="{ english: 'SpD', german: 'SpV' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+       [translatableTitle2]="{ english: 'Speed', german: 'Initiative' }"
+       (click)="sortPokemonlistByStat(sortingOptions.SPEED)"
+       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPEED, $event, true)">
+    <translator3 [source]="{ english: 'Spe', german: 'Init' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-stat-cell"
+       [translatableTitle2]="{ english: 'Base Stat Total (Sum of the other Stats)', german: 'Basiswertsumme (Summe der anderen Stats)' }">
+    <translator3 [source]="{ english: 'Bst', german: 'Bws' }"></translator3>
+  </div>
+
+</div>
+
+<div class="pd-teambuilder-list-content" #pokemonListContainer>
+  <div *ngIf="(showTiers$ | async); then tierSeparatedList else noTiersList"></div>
+</div>
+
+
+<ng-template #tierSeparatedList>
+  <div class="pd-teambuilder-list-sub-container"
+       *ngFor="let tier of tiers | tierIsCommon">
+
+    <div class="pd-teambuilder-list-subheading-head">
+      <span class="pd-teambuilder-list-subheading-title"
+            [title]="language === 'GERMAN' && tier.descriptionGerman ? tier.descriptionGerman : tier.description">
+        <span *ngIf="tier.id === tier.name; else withDesc"> {{tier.id}} </span>
+        <ng-template #withDesc>
+          <span> {{tier.id + ' - ' + tier.name}} </span>
+        </ng-template>
+      </span>
+    </div>
+
+    <pokemon-list-row-container
+      [pokemon]="pokemon.current | tierFilter : tier.id : tierPipeTrigger"
+      (onchoose)="choosePokemon($event)">
+    </pokemon-list-row-container>
+
+  </div>
+</ng-template>
+
+<ng-template #noTiersList>
+  <pokemon-list-row-container
+    [pokemon]="pokemon.current"
+    (onchoose)="choosePokemon($event)">
+  </pokemon-list-row-container>
+</ng-template>

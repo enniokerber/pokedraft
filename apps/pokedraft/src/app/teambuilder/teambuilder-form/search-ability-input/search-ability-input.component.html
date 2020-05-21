@@ -1,0 +1,19 @@
+<div class="show-tooltip-on-hover">
+  <pd-input size="small"
+            [(value)]="searchAbility"
+            (click)="openAbilitiesList()"
+            (valueChange)="searchForAbility($event)"
+            (onblur)="reset()">
+    <translator2 english="Ability" german="Fähigkeit"></translator2>
+  </pd-input>
+
+  <div class="pd-teambuilder-move-input-tooltip" *ngIf="currentAbility">
+    <translator2 [english]="currentAbility.description"
+                 [german]="currentAbility.descriptionGerman"
+                 *ngIf="currentAbility.description; else shortDesc"></translator2>
+    <ng-template #shortDesc>
+      <translator2 [english]="currentAbility.shortDescription"
+                   [german]="currentAbility.shortDescriptionGerman"></translator2>
+    </ng-template>
+  </div>
+</div>

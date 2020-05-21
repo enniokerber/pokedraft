@@ -1,3 +1,4 @@
+import {ITranslatable} from "./ITranslatable";
 
 export interface IStats {
   hp: number;
@@ -10,10 +11,8 @@ export interface IStats {
 
 export interface StatMetadata {
   statId: string;
-  name: string;
-  nameGerman: string;
-  abbr: string;
-  abbrGerman: string;
+  name: ITranslatable;
+  abbr: ITranslatable;
 }
 
 export interface StatWithLabel {

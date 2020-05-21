@@ -1,4 +1,5 @@
-import {ITier} from '../../models/teambuilder/interfaces/ITier';
+import {ITier} from "../models/api";
+
 
 export const TestTiers: ITier[] = [
   {

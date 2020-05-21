@@ -1,0 +1,150 @@
+@import "../utils";
+
+
+.pd-dropdown-container {
+  position: relative;
+  flex: 0 1 200px;
+  height: 36px;
+  margin-right: 20px;
+
+  display: flex;
+  align-items: center;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.pd-dropdown {
+  position: relative;
+  flex: 0 1 200px;
+  height: 26px;
+  padding: 0 30px 0 10px;
+
+  background-color: $white;
+  border-radius: $radius;
+
+  cursor: pointer;
+
+
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+
+    width: 9px;
+    height: 3px;
+    background-color: $primary2;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+    right: 12px;
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    right: 7px;
+  }
+}
+
+.pd-dropdown-active {
+  &::before, &::after {
+    background-color: $primary3;
+  }
+
+  .pd-dropdown-value {
+    color: $primary3;
+  }
+}
+
+
+.pd-dropdown-title {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $white;
+  font-size: $font-size-s;
+  background-color: $primary2;
+  padding: 2px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.pd-dropdown-value {
+  width: 100%;
+  height: 100%;
+
+  color: $primary2;
+  padding-top: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.pd-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  width: 100%;
+  min-height: 100px;
+  border: 2px solid $primary2;
+  border-radius: $radius-s;
+  background-color: $white;
+  z-index: 3;
+  transition: $transition-s;
+}
+
+
+.pd-dropdown-item {
+  width: 100%;
+  height: 30px;
+  padding: 0 12px;
+  color: $grey;
+  border-bottom: 1px solid $grey-lighter;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover:not(.pd-active-dropdown-item) {
+    background-color: $grey-300;
+  }
+
+  &:active:not(.pd-active-dropdown-item) {
+    background-color: $primary2;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.pd-active-dropdown-item {
+  color: $white;
+  background-color: $primary3;
+}
+
+
+
+
+@media screen and (max-width: 500px) {
+  .pd-dropdown-menu {
+    border-color: $green-1;
+  }
+}
+
+
+@media screen and (max-width: 280px) {
+  .pd-dropdown-value {
+    font-size: $font-size-s;
+  }
+}

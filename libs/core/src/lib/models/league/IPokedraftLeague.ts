@@ -1,5 +1,12 @@
-import {ILongShortName, IPokedraftLeagueSettings, IPokedraftUserSnippet} from '@pokedraft/core';
-import * as firebase from 'firebase/app';
+import {
+  IPokedraftUser,
+  IPokedraftUserSnippet,
+  toUserSnippet
+} from '../user';
+import {
+  ILongShortName,
+} from './ILongShortName';
+import {IPokedraftLeagueSettings} from './IPokedraftLeagueSettings';
 
 export interface IPokedraftLeague {
   id?: string; // not needed on create
@@ -7,8 +14,14 @@ export interface IPokedraftLeague {
   description: string;
   owner: IPokedraftUserSnippet;
   logo: string;
+  users: {
+    participators: {
+      ids: string[];
+      snippets: IPokedraftUserSnippet[];
+    }
+  };
   settings: IPokedraftLeagueSettings;
-  createdAt: firebase.firestore.Timestamp;
+  createdAt: any;
 }
 
 export const MOCK_POKEDRAFT_LEAGUE: IPokedraftLeague = {
@@ -24,6 +37,12 @@ export const MOCK_POKEDRAFT_LEAGUE: IPokedraftLeague = {
     profilePicture: ''
   },
   logo: '',
+  users: {
+    participators: {
+      ids: ['someuid'],
+      snippets: []
+    }
+  },
   settings: {
     general: {
       public: true,
@@ -45,8 +64,6 @@ export const MOCK_POKEDRAFT_LEAGUE: IPokedraftLeague = {
 
 export const MOCK_POKEDRAFT_LEAGUE_ARRAY: IPokedraftLeague[] = [ MOCK_POKEDRAFT_LEAGUE, MOCK_POKEDRAFT_LEAGUE ];
 
-
-
 export interface IPokedraftCreateLeagueDTO {
   name: {
     long: string;
@@ -55,4 +72,26 @@ export interface IPokedraftCreateLeagueDTO {
   description: string;
   logo: string;
   settings: IPokedraftLeagueSettings;
+}
+
+export function constructLeague(createLeagueDTO: IPokedraftCreateLeagueDTO,
+                                owner: IPokedraftUser | IPokedraftUserSnippet): IPokedraftLeague {
+
+  const ownerSnippet: IPokedraftUserSnippet = toUserSnippet(owner);
+
+  const users = {
+    participators: {
+      ids: [ owner.uid ],
+      snippets: [ ownerSnippet ],
+    },
+  }
+
+  const date: number = Date.now();
+
+  return ({
+    ...createLeagueDTO,
+    owner: ownerSnippet,
+    users,
+    createdAt: date
+  }) as IPokedraftLeague;
 }

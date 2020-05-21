@@ -1,6 +1,6 @@
 import {IGender} from "../api/IGender";
 
-export enum GenderConstants {
+export enum Genders {
   MALE = 'm',
   FEMALE = 'w',
   NEUTRAL = 'n',
@@ -9,30 +9,39 @@ export enum GenderConstants {
 
 export type GenderType = 'm' | 'w' | 'n' | 'r';
 
-export const genders = [
-  GenderConstants.MALE,
-  GenderConstants.FEMALE,
-  GenderConstants.NEUTRAL,
-  GenderConstants.RANDOM
+export const genders: GenderType[] = [
+  Genders.MALE,
+  Genders.FEMALE,
+  Genders.NEUTRAL,
+  Genders.RANDOM
 ];
 
 export const gendersWithLabels: IGender[] = [
   {
     id: 'm',
-    label: 'Male ♂',
-    german: 'Männl. ♂'
+    label: {
+      english: 'Male ♂',
+      german: 'Männl. ♂'
+    }
   },
   {
     id: 'f',
-    label: 'Female ♀',
-    german: 'Weibl. ♀'
+    label: {
+      english: 'Female ♀',
+      german: 'Weibl. ♀'
+    }
   },
   {
     id: 'n',
-    label: 'Neutral'
+    label: {
+      english: 'Neutral'
+    }
   },
   {
     id: 'r',
-    label: 'Random'
+    label: {
+      english: 'Random',
+      german: 'Zufall'
+    }
   }
 ];

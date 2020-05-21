@@ -1,0 +1,31 @@
+
+@import "../../utils";
+
+.pd-league-infobar {
+  position: fixed;
+  top: $top-bar-height;
+  left: 0;
+  width: 100%;
+  height: $side-navbar-title-height;
+  background-color: $white;
+  border-bottom: 1px solid $grey-lighter;
+  padding: 0 $padding-l;
+  box-shadow: 0 0 8px 1px $grey-lighter;
+  transition: $transition;
+  z-index: 4;
+  @include flex-center-vertically;
+
+  &--side-navbar-active {
+    margin-left: $side-navbar-width;
+    width: calc(100% - #{$side-navbar-width});
+  }
+}
+
+.pd-league-infobar-user {
+  position: absolute;
+  top: unset;
+  right: 0;
+  transform: scale(.8);
+  outline: none;
+  cursor: pointer;
+}

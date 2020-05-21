@@ -1,0 +1,11 @@
+@import "../../utils";
+
+
+.pd-league-component-frame {
+  width: 100%;
+  height: 100%;
+  padding: ($side-navbar-title-height + 20px) $padding-l $padding-l $padding-l;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

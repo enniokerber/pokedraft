@@ -1,0 +1,102 @@
+<div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable"
+     (click)="choosePokemon(pkmn)"
+     *ngFor="let pkmn of pokemon">
+
+  <div class="pd-teambuilder-list-cell --tb-name-cell --teambuilder-cell-has-multiple-contents">
+
+    <div class="pd-teambuilder-table-pre-text">
+      {{pkmn.tier}}
+    </div>
+
+    <div class="pd-teambuilder-list-row-icon">
+      <img src="assets/pokemon/icons/{{pkmn.imgSrc}}" alt="">
+    </div>
+
+    <div class="pd-teambuilder-list-cell-text">
+      <translator3 [source]="pkmn.name"></translator3>
+    </div>
+
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-types-cell --teambuilder-cell-has-multiple-contents --cell-align-evenly">
+
+    <div class="pd-teambuilder-type-half"
+         [class.--english-type-half]="(language$ | async) === ENGLISH_LANGUAGE"
+         *ngFor="let type of pkmn.types">
+      <pokemon-type-image [type]="type"></pokemon-type-image>
+    </div>
+
+  </div>
+
+
+  <div class="pd-teambuilder-list-cell --tb-abilities-cell --teambuilder-cell-has-multiple-contents"
+       [ngSwitch]="pkmn.abilities.length">
+    <div class="pd-teambuilder-list-cell-wrapper" *ngSwitchCase="3">
+      <div class="pd-teambuilder-list-ability-block">
+        <span class="pd-teambuilder-list-ability pd-teambuilder-list-ability--first"> {{pkmn.abilities[0] | translateAbility | async}} </span>
+        <span class="pd-teambuilder-list-ability pd-teambuilder-list-ability--second"> {{pkmn.abilities[1] | translateAbility | async}} </span>
+      </div>
+      <div class="pd-teambuilder-list-ability-block">
+        <span class="pd-teambuilder-list-ability"> {{pkmn.abilities[2] | translateAbility | async}} </span>
+      </div>
+    </div>
+
+    <div class="pd-teambuilder-list-cell-wrapper" *ngSwitchCase="2">
+      <div class="pd-teambuilder-list-ability-block">
+        <span class="pd-teambuilder-list-ability"> {{pkmn.abilities[0] | translateAbility | async}} </span>
+      </div>
+      <div class="pd-teambuilder-list-ability-block">
+        <span class="pd-teambuilder-list-ability"> {{pkmn.abilities[1] | translateAbility | async}} </span>
+      </div>
+    </div>
+
+    <div class="pd-teambuilder-list-cell-wrapper" *ngSwitchCase="1">
+      <div class="pd-teambuilder-list-ability-block">
+        <span class="pd-teambuilder-list-ability"> {{pkmn.abilities[0] | translateAbility | async}} </span>
+      </div>
+    </div>
+
+    <div class="pd-teambuilder-list-cell-wrapper" *ngSwitchDefault>
+      No Ability
+    </div>
+  </div>
+
+  <!-- STATS -->
+
+  <div class="pd-teambuilder-list-cell --tb-stat-cell --cell-align-bottom-right">
+    <translator3 class="pd-teambuilder-list-stat-label" [source]="{ english: 'HP', german: 'KP' }"></translator3>
+    {{pkmn.stats.hp}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-stat-cell --cell-align-bottom-right">
+    <translator3 class="pd-teambuilder-list-stat-label" [source]="{ english: 'Atk', german: 'Ang' }"></translator3>
+    {{pkmn.stats.atk}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-stat-cell --cell-align-bottom-right">
+    <translator3 class="pd-teambuilder-list-stat-label" [source]="{ english: 'Def', german: 'Vert' }"></translator3>
+    {{pkmn.stats.def}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-stat-cell --cell-align-bottom-right">
+    <translator3 class="pd-teambuilder-list-stat-label" [source]="{ english: 'SpA', german: 'SpA' }"></translator3>
+    {{pkmn.stats.spatk}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-stat-cell --cell-align-bottom-right">
+    <translator3 class="pd-teambuilder-list-stat-label" [source]="{ english: 'SpD', german: 'SpV' }"></translator3>
+    {{pkmn.stats.spdef}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-stat-cell --cell-align-bottom-right">
+    <translator3 class="pd-teambuilder-list-stat-label" [source]="{ english: 'Spe', german: 'Init' }"></translator3>
+    {{pkmn.stats.speed}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-stat-cell --cell-align-bottom-right">
+    <translator3 class="pd-teambuilder-list-stat-label" [source]="{ english: 'Bst', german: 'Bws' }"></translator3>
+    {{pkmn.stats.hp + pkmn.stats.atk + pkmn.stats.def + pkmn.stats.spatk + pkmn.stats.spdef + pkmn.stats.speed}}
+  </div>
+
+
+</div>

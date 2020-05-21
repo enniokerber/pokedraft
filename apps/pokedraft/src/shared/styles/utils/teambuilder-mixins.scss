@@ -1,0 +1,28 @@
+@import "../utils/variables/variables";
+
+@mixin pd-teambuilder-container {
+  padding: 8px;
+  background-color: $white;
+  border-radius: $radius;
+  box-shadow: $tb-box-shadow;
+}
+
+@mixin pd-teambuilder-list-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: $tablehead-height - 4px;
+  border-radius: $radius;
+  @include no-user-select;
+}
+
+@mixin pd-teambuilder-list-row--selectable {
+  &:hover {
+    cursor: pointer;
+    background-color: $tbbackground;
+  }
+
+  &:active {
+    background-color: $grey-lightest;
+  }
+}

@@ -1,0 +1,47 @@
+<div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable"
+     (click)="chooseMove(move)"
+     *ngFor="let move of moves">
+
+  <div class="pd-teambuilder-list-cell --tb-move-name-cell --cell-align-left">
+    <translator2 [english]="move.name" [german]="move.german"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-move-props-cell">
+    <pokemon-type-image [type]="move.type"></pokemon-type-image>
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-move-props-cell">
+    <move-category-image
+      [category]="move.category">
+    </move-category-image>
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-move-props-cell">
+    <translator2 class="pd-teambuilder-list-move-prop-label" english="Power" german="Stärke"></translator2>
+    {{move.basePower}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-move-props-cell">
+    <translator2 class="pd-teambuilder-list-move-prop-label" english="Acc" german="Gen."></translator2>
+    {{move.accuracy}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-move-props-cell --tb-powerpoints-cell"
+       translatableTitle
+       englishTitle="A Pokémon can use {{move.name}} max. {{move.maxPowerPoints}} times. Base PP are only {{move.powerPoints}}."
+       germanTitle="Ein Pokémon kann {{move.german}} max. {{move.maxPowerPoints}} Mal einsetzen. Basis AP sind {{move.powerPoints}}.">
+    <translator2 class="pd-teambuilder-list-move-prop-label" english="PP" german="AP"></translator2>
+    {{move.maxPowerPoints}}
+  </div>
+
+  <div class="pd-teambuilder-list-cell --tb-move-desc-cell --cell-align-left">
+    <translator2 [english]="move.shortDescription"
+                 [german]="move.shortDescriptionGerman"
+                 *ngIf="move.shortDescription; else longDesc"></translator2>
+    <ng-template #longDesc>
+      <translator2 [english]="move.description"
+                   [german]="move.descriptionGerman"></translator2>
+    </ng-template>
+  </div>
+
+</div>

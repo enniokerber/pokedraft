@@ -1,0 +1,48 @@
+@import "../../utils";
+
+.pd-teambuilder-list-move-prop-label {
+  position: absolute;
+  top: -2px;
+  color: #a0a4ac;
+  font-size: 0.8em;
+}
+
+.pd-teambuilder-move-category-image {
+  opacity: .75;
+  transform: scale(.88);
+}
+
+.pd-teambuilder-list-row--selectable {
+  &:hover {
+    .pd-teambuilder-move-category-image {
+      opacity: 1;
+    }
+  }
+}
+
+
+// CELL
+
+.--tb-move-name-cell {
+  padding-left: $padding;
+  width: 22%;
+}
+
+.--tb-move-desc-cell {
+  width: 50%;
+  font-size: $font-size-s;
+}
+
+.--tb-move-type-cell {
+  width: 9%;
+}
+
+.--tb-move-props-cell {
+  width: 6%;
+  font-size: $font-size-s;
+  align-content: flex-end;
+}
+
+.--tb-powerpoints-cell {
+  width: 4%;
+}

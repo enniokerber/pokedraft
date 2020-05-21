@@ -34,10 +34,10 @@
     </div>
 
     <div class="pd-container-row flex-align-bottom">
-      <pd-textarea maxlength="400"
+      <pd-textarea class="full-width small-margin-bottom"
+                   maxlength="400"
                    [(value)]="user.profileDescription"> Profile Description </pd-textarea>
-      <pd-round-button class="left-space"
-                       icon="assets/icons/done.png"
+      <pd-round-button icon="assets/icons/done.png"
                        title="Save"
                        [@PopUp]
                        [disabled]="user.profileDescription === authedUser.profileDescription"

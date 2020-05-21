@@ -1,0 +1,120 @@
+@import "../utils";
+
+$number-chooser-height: 36px;
+$line-thickness: 2px;
+
+.pd-number-chooser {
+  position: relative;
+  display: flex;
+
+  height: $number-chooser-height;
+  border: 2px solid $grey-light;
+  border-radius: $radius;
+  background-color: $white;
+}
+
+.pd-number-chooser-title {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $grey-light;
+  font-size: $font-size-m;
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+
+.pd-number-chooser-action {
+  @include flex-center;
+  position: relative;
+  height: 100%;
+  width: 36px;
+  font-size: $font-size-xl;
+  color: $primary;
+  cursor: pointer;
+
+  &:active {
+    background-color: $primary-transparent;
+    &::before, &::after {
+      background-color: $secondary;
+    }
+  }
+}
+
+.pd-plus {
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $primary;
+  }
+
+  &::before {
+    width: 50%;
+    height: $line-thickness;
+  }
+
+  &::after {
+    width: $line-thickness;
+    height: 50%;
+  }
+}
+
+
+.pd-minus {
+    &::before {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $primary;
+    }
+
+    &::before {
+      width: $number-chooser-height * 0.4;
+      height: $line-thickness;
+    }
+}
+
+
+.pd-number-chooser-display {
+  @include flex-center;
+  @include no-user-select;
+  width: $number-chooser-height;
+  height: 100%;
+
+  font-size: $font-size-l;
+  color: $primary;
+}
+
+.pd-number-chooser-hit-max-value {
+  color: $secondary;
+}
+
+
+@media screen and (max-width: 350px) {
+  .pd-number-chooser-row {
+    flex-wrap: wrap;
+
+    & .pd-option-label {
+      line-height: 1.5em;
+    }
+
+    & .pd-option-content {
+      height: 50px;
+    }
+  }
+
+  .--pd-sub-row {
+    & .pd-option-label {
+      padding: 0;
+      height: 30px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+  }
+}

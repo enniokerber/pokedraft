@@ -5,6 +5,7 @@ $primary: rgb(83, 148, 234);
 $primary-light: rgb(83, 158, 244);
 $primary2: rgb(35, 95, 151);
 $primary3: #123453;
+$primary-transparent: rgba(26, 115, 232, 0.05);
 
 $secondary: orange;
 $secondary-light: rgba(255, 165, 0, 0.5);
@@ -59,9 +60,12 @@ $font-size-l: 1.25em;
 $font-size-xl: 1.8em;
 $font-size-xxl: 2.5em;
 
+$desc-line-height: 14px;
+
 // OTHER
 
 $radius: 4px;
+$radius-s: 1px;
 
 $padding-xl: 50px;
 $padding-l: 20px;

@@ -1,11 +1,7 @@
 {
-  "name": "pokedraft-fire",
+  "name": "pokedraft",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "dist/apps/functions/main.js",
-  "engines": {
-    "node": "8"
-  },
   "scripts": {
     "ng": "ng",
     "nx": "nx",
@@ -22,7 +18,9 @@
     "affected:lint": "nx affected:lint",
     "affected:dep-graph": "nx affected:dep-graph",
     "affected": "nx affected",
-    "firebase:serve": "concurrently --kill-others \"npm run build functions --watch\" \"firebase serve --only functions\"",
+    "firebase:gac": "set GOOGLE_APPLICATION_CREDENTIALS=C:\\anw_entw\\web\\pokedraft\\apps\\functions\\key.json",
+    "firebase:serve": "npm run build functions --watch && npm run firebase:gac && firebase emulators:start --only functions",
+    "firebase:serve --nobuild": "npm run firebase:gac && firebase emulators:start --only functions",
     "firebase:shell": "concurrently --kill-others \"npm run build functions --watch\" \"firebase functions:shell\" --raw",
     "firebase:deploy": "firebase deploy",
     "format": "nx format:write",
@@ -49,10 +47,9 @@
     "@angular/router": "9.0.0",
     "@nrwl/angular": "^9.1.1",
     "@nrwl/workspace": "^9.1.1",
+    "concurrently": "^5.1.0",
     "core-js": "^2.5.4",
     "firebase": "^7.11.0",
-    "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.3.0",
     "rxjs": "^6.5.4",
     "zone.js": "^0.10.2"
   },

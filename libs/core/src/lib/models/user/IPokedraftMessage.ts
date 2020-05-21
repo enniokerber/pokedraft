@@ -1,5 +1,4 @@
 import {IPokedraftLeagueSnippet, IPokedraftUserSnippet, PokedraftRewardType} from "@pokedraft/core";
-import * as firebase from 'firebase/app';
 
 export interface IPokedraftMessage {
   id?: string;
@@ -8,7 +7,7 @@ export interface IPokedraftMessage {
   message: string;
   league?: IPokedraftLeagueSnippet;
   reward?: IPokedraftReward;
-  createdAt: firebase.firestore.Timestamp;
+  createdAt: any;
 }
 
 export interface IPokedraftReward {

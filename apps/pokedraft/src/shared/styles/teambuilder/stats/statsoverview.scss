@@ -1,0 +1,49 @@
+@import "../../utils";
+
+.pd-teambuilder-stat-overview-row {
+  position: relative;
+  @include flex-center;
+  width: 100%;
+  height: 20px;
+}
+
+$space: 40px;
+$labelspace: 5px;
+
+.pd-teambuilder-stat-overview-row-line-container {
+  position: relative;
+  @include flex-center-vertically;
+  margin: 0 $space;
+  width: calc(100% - #{$space * 2});
+}
+
+.pd-teambuilder-stat-overview-row-line {
+  max-width: 100%;
+  height: 3px;
+  background-color: $primary-light;
+  transition: $transition;
+}
+
+.pd-teambuilder-stat-overview-row-label {
+  @include center-relatively-vertically;
+  color: $primary;
+  font-size: $font-size-xs;
+
+  &--positive-nature {
+    color: $green-1;
+  }
+
+  &--negative-nature {
+    color: $red-2;
+  }
+}
+
+.pd-teambuilder-stat-overview-row-name {
+  position: absolute;
+  left: $labelspace;
+}
+
+.pd-teambuilder-stat-overview-row-value {
+  position: absolute;
+  right: $labelspace;
+}

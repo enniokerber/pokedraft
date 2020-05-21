@@ -1,0 +1,33 @@
+@import "../../utils";
+
+.pd-teambuilder-colored-svg {
+  fill: $primary;
+}
+
+.pd-teambuilder-circle-svg-button {
+  &:hover {
+    border-color: $primary2;
+    svg {
+      fill: $primary2;
+    }
+  }
+}
+
+$add-button-size: 44px;
+
+.pd-teambuilder-circle-stroke-button {
+  position: relative;
+  @include flex-center;
+  width: $add-button-size;
+  height: $add-button-size;
+  background-color: $white;
+  border: 1px solid $primary;
+  border-radius: 50%;
+  margin-left: 20px;
+  outline: none;
+  cursor: pointer;
+
+  &--nomargin {
+    margin: 0;
+  }
+}

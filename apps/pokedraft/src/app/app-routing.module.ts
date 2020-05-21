@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { HomeModule } from './home/home.module';
-import {ProfileModule} from "./profile/profile.module";
 import {AuthGuard} from "@pokedraft/core";
 import {TrySignInComponent} from "./try-sign-in/try-sign-in.component";
-import {LeagueModule} from "./league/league.module";
 
 const routes: Route[] = [
   {
@@ -13,16 +10,20 @@ const routes: Route[] = [
   },
   {
     path: 'home',
-    loadChildren: () => HomeModule
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'profile',
-    loadChildren: () => ProfileModule,
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'league/:id',
-    loadChildren: () => LeagueModule
+    loadChildren: () => import('./league/league.module').then(m => m.LeagueModule),
+  },
+  {
+    path: 'teambuilder',
+    loadChildren: () => import('./teambuilder/teambuilder.module').then(m => m.TeambuilderModule),
   },
   {
     path: '',

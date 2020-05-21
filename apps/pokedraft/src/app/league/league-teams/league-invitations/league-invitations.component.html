@@ -17,8 +17,8 @@
   <pd-loader> Searching... </pd-loader>
 </div>
 
-<div class="pd-container-row flex-align-center" *ngIf="result">
-  <pd-user-snippet [user]="result"
+<div class="pd-container-row flex-align-center" *ngIf="user">
+  <pd-user-snippet [user]="user"
                    frame="on"></pd-user-snippet>
 </div>
 
@@ -29,8 +29,8 @@
 <div class="pd-container-row flex-align-center">
   <pd-button icon="assets/icons/send.png"
              alt="Send Icon"
-             [title]="!validUser ? 'You are either not logged in or this user is already part of that league!' : 'Send an invitation to the users inbox!'"
-             [disabled]="!(result && validUser) || invitationSuccess"
+             [title]="(validInvitation$ | async) ? 'Invite this player now!' : 'This player cannot be invited. You are either not authorized or this player is already part of that league.'"
+             [disabled]="invitationSuccess || !(validInvitation$ | async)"
              [loading]="loading$ | async"
              (leftclick)="inviteUser()"> Send </pd-button>
 </div>

@@ -1,0 +1,21 @@
+<div class="pd-teambuilder-stat-overview-row">
+  <span class="pd-teambuilder-stat-overview-row-label pd-teambuilder-stat-overview-row-name"
+        [ngClass]="{
+      'pd-teambuilder-stat-overview-row-label--positive-nature': stat.naturePositive,
+      'pd-teambuilder-stat-overview-row-label--negative-nature': stat.natureNegative
+    }" [ngSwitch]="stat.natureValue">
+    <ng-content></ng-content>
+    <span *ngSwitchCase="1.1">+</span>
+    <span *ngSwitchCase="0.9">-</span>
+  </span>
+  <div class="pd-teambuilder-stat-overview-row-line-container">
+    <span class="pd-teambuilder-stat-overview-row-line"
+          [style.width]="stat.value / 394 * 100 + '%'">
+    </span>
+  </div>
+  <span class="pd-teambuilder-stat-overview-row-label pd-teambuilder-stat-overview-row-value"
+        [ngClass]="{
+      'pd-teambuilder-stat-overview-row-label--positive-nature': stat.naturePositive,
+      'pd-teambuilder-stat-overview-row-label--negative-nature': stat.natureNegative
+    }">{{stat.value}}</span>
+</div>

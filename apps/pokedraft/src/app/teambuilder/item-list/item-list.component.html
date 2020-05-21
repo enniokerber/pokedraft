@@ -1,0 +1,69 @@
+<div class="pd-teambuilder-list-row pd-teambuilder-list-header">
+
+  <div class="pd-teambuilder-table-head-cell --tb-item-name-cell --action-cell">
+    Item
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-item-desc-cell">
+    <translator2 english="Description" german="Beschreibung"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-item-fling-basepower"
+       translatableTitle
+       englishTitle="The basepower of the attack Fling, when this item is thrown."
+       germanTitle="Die Stärke der Attacke Schleuder, wenn dieses Item geworfen wird.">
+    <translator2 english="Fling" german="Schleuder"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-table-head-cell --tb-item-natural-gift"
+       translatableTitle
+       englishTitle="If the item is a berry, it determines the basepower and the type of the attack Natural Gift."
+       germanTitle="Wenn das Item eine Beere ist, bestimmt es den Typ und die Stärke der Attacke Beerenkräfte.">
+    <translator2 english="Berry" german="Beere"></translator2>
+  </div>
+</div>
+
+<div class="pd-teambuilder-list-content">
+
+  <div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable pd-teambuilder-list-row--scalable"
+       [ngClass]="{
+        'pd-teambuilder-list-row--selected': selectedTeampokemonsItem?.id === item.id,
+        'pd-teambuilder-list-row--marked': false
+       }"
+       (click)="selectItem(item)"
+       *ngFor="let item of items">
+
+    <div class="pd-teambuilder-list-cell --tb-item-name-cell --teambuilder-cell-has-multiple-contents">
+      <div class="pd-teambuilder-list-row-icon">
+        <img src="assets/items/{{item.imgSrc}}" alt="">
+      </div>
+
+      <div class="pd-teambuilder-list-cell-text">
+        <translator2 [english]="item.name.english" [german]="item.name.german"></translator2>
+      </div>
+    </div>
+
+    <div class="pd-teambuilder-list-cell --tb-desc-cell --tb-item-desc-cell --cell-align-left">
+      <translator2 [english]="item.description.english" [german]="item.description.german"></translator2>
+    </div>
+
+    <div class="pd-teambuilder-list-cell pd-teambuilder-list-prop-cell --tb-item-fling-basepower">
+      <span class="pd-teambuilder-list-prop-label">
+        <translator2 english="Power" german="Stärke"></translator2>
+      </span>
+      {{item.flingBasePower}}
+    </div>
+
+    <div class="pd-teambuilder-list-cell pd-teambuilder-list-prop-cell --tb-item-natural-gift" *ngIf="item.berry?.naturalGift as naturalGift">
+      <span class="pd-teambuilder-list-prop-label">
+        <translator2 english="Natural Gift" german="Beerenkräfte"></translator2>
+      </span>
+      {{naturalGift.basePower}}
+      <pokemon-type-image class="pd-item-natural-gift-type-icon"
+                          [type]="naturalGift.type"></pokemon-type-image>
+    </div>
+
+  </div>
+
+</div>
+
