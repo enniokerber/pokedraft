@@ -22,6 +22,8 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { NatureDropdownComponent } from './teambuilder-form/nature-dropdown/nature-dropdown.component';
 import { SearchItemInputComponent } from './teambuilder-form/search-item-input/search-item-input.component';
 import { SearchAbilityInputComponent } from './teambuilder-form/search-ability-input/search-ability-input.component';
+import { ItemListRowContainerComponent } from './item-list/item-list-row-container/item-list-row-container.component';
+import { StatsComponent } from './stats/stats.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { SearchAbilityInputComponent } from './teambuilder-form/search-ability-i
     ItemListComponent,
     NatureDropdownComponent,
     SearchItemInputComponent,
-    SearchAbilityInputComponent
+    SearchAbilityInputComponent,
+    ItemListRowContainerComponent,
+    StatsComponent
   ],
   imports: [
     CommonModule,

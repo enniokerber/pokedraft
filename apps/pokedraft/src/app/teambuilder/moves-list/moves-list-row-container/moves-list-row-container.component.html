@@ -1,9 +1,12 @@
-<div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable"
+<div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable pd-teambuilder-list-row--scalable"
+     [ngClass]="{
+        'pd-teambuilder-list-row--marked': index === markedId
+        }"
      (click)="chooseMove(move)"
-     *ngFor="let move of moves">
+     *ngFor="let move of moves; index as index">
 
   <div class="pd-teambuilder-list-cell --tb-move-name-cell --cell-align-left">
-    <translator2 [english]="move.name" [german]="move.german"></translator2>
+    <translator3 [source]="move.name"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-cell --tb-move-props-cell">
@@ -28,20 +31,14 @@
 
   <div class="pd-teambuilder-list-cell --tb-move-props-cell --tb-powerpoints-cell"
        translatableTitle
-       englishTitle="A Pokémon can use {{move.name}} max. {{move.maxPowerPoints}} times. Base PP are only {{move.powerPoints}}."
-       germanTitle="Ein Pokémon kann {{move.german}} max. {{move.maxPowerPoints}} Mal einsetzen. Basis AP sind {{move.powerPoints}}.">
+       englishTitle="A Pokémon can use {{move.name.english}} max. {{move.maxPowerPoints}} times. Base PP are only {{move.powerPoints}}."
+       germanTitle="Ein Pokémon kann {{move.name.german}} max. {{move.maxPowerPoints}} Mal einsetzen. Basis AP sind {{move.powerPoints}}.">
     <translator2 class="pd-teambuilder-list-move-prop-label" english="PP" german="AP"></translator2>
     {{move.maxPowerPoints}}
   </div>
 
   <div class="pd-teambuilder-list-cell --tb-move-desc-cell --cell-align-left">
-    <translator2 [english]="move.shortDescription"
-                 [german]="move.shortDescriptionGerman"
-                 *ngIf="move.shortDescription; else longDesc"></translator2>
-    <ng-template #longDesc>
-      <translator2 [english]="move.description"
-                   [german]="move.descriptionGerman"></translator2>
-    </ng-template>
+    <translator3 [source]="move.description"></translator3>
   </div>
 
 </div>

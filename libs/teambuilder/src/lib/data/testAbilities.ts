@@ -82,4 +82,22 @@ export const testAbilities: IAbility[] = [
     'shortDescription': 'Prevents adjacent foes from choosing to switch unless they are airborne.',
     'shortDescriptionGerman': ''
   },
+  {
+    'id': 200,
+    'name': 'Swarm',
+    'german': '',
+    'description': 'When this Pokemon has 1/3 or less of its maximum HP, rounded down, its attacking stat is multiplied by 1.5 while using a Bug-type attack.',
+    'descriptionGerman': '',
+    'shortDescription': 'At 1/3 or less of its max HP, this Pokemon´s attacking stat is 1.5x with Bug attacks.',
+    'shortDescriptionGerman': ''
+  },
+  {
+    'id': 177,
+    'name': 'Sniper',
+    'german': '',
+    'description': '',
+    'descriptionGerman': '',
+    'shortDescription': 'If this Pokemon strikes with a critical hit, the damage is multiplied by 1.5.',
+    'shortDescriptionGerman': ''
+  },
 ]

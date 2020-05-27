@@ -44,6 +44,5 @@ move-input {
 
 .pd-teambuilder-move-input--category-image {
   transform: scale(0.85);
-  height: 100%;
-  @include flex-center-vertically;
+  height: 17px;
 }

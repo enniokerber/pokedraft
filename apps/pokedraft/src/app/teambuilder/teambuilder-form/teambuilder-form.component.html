@@ -4,7 +4,8 @@
   <ng-container *ngIf="pokemon">
     <div class="pd-teambuilder-form-fraction --pokemon-fraction">
       <pd-input size="small"
-                [maxlength]="30">
+                maxlength="12"
+                [(value)]="pokemon.nickname">
         <translator2 english="Nickname" german="Spitzname"></translator2>
       </pd-input>
       <div class="pd-teambuilder-form-pokemon-sprite-container">
@@ -23,7 +24,7 @@
         </pd-radio-checkbox>
       </div>
       <pd-input size="small"
-                [maxlength]="30"
+                maxlength="15"
                 [(value)]="searchPokemon"
                 (click)="openPokemonList()"
                 (onblur)="resetName()">

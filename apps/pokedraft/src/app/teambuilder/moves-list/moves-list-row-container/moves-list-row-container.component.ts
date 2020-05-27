@@ -8,14 +8,20 @@ import {IMove} from "@pokedraft/teambuilder";
 })
 export class MovesListRowContainerComponent {
 
-  @Input() moves: IMove[] = [];
+  @Input() moves: IMove[];
 
-  @Output() onchoose: EventEmitter<IMove> = new EventEmitter<IMove>();
+  @Input() markedId: number;
 
-  constructor() {}
+  @Output() choose: EventEmitter<IMove>;
+
+  constructor() {
+    this.moves = [];
+    this.markedId = -1;
+    this.choose = new EventEmitter<IMove>();
+  }
 
   chooseMove(move: IMove): void {
-    this.onchoose.emit(move);
+    this.choose.emit(move);
   }
 
 }

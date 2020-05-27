@@ -1,9 +1,14 @@
 <div class="show-tooltip-on-hover">
-  <pd-input size="small"
-            [(value)]="searchAbility"
+  <pd-input #abilityInput
+            size="small"
+            animations="off"
             (click)="openAbilitiesList()"
             (valueChange)="searchForAbility($event)"
-            (onblur)="reset()">
+            (onblur)="resetSearchInput()"
+            (keydown.arrowdown)="listDown()"
+            (keydown.arrowup)="listUp()"
+            (keydown.enter)="selectMarkedAbility()"
+            [(value)]="searchAbility">
     <translator2 english="Ability" german="Fähigkeit"></translator2>
   </pd-input>
 

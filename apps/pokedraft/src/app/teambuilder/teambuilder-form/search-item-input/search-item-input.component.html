@@ -1,9 +1,14 @@
 <div class="show-tooltip-on-hover">
-  <pd-input size="small"
+  <pd-input #itemInput
+            size="small"
+            animations="off"
             [(value)]="searchItem"
             (click)="openItemList()"
+            (keydown.arrowdown)="listDown()"
+            (keydown.arrowup)="listUp()"
+            (keydown.enter)="selectMarkedItem()"
             (valueChange)="searchForItem($event)"
-            (onblur)="reset()">
+            (onblur)="resetSearchInput()">
     Item
   </pd-input>
 

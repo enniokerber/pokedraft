@@ -48,7 +48,7 @@ export class TeambuilderPokemon {
     this.shiny = false;
     this.item = null;
     this.ability = null;
-    this.possibleAbilities = [];
+    this.possibleAbilities = pokemon.abilities;
     this.moves = [new MoveContainer(0), new MoveContainer(1), new MoveContainer(2), new MoveContainer(3)];
     this.possibleMoves = [];
     this.prepare();
@@ -57,30 +57,6 @@ export class TeambuilderPokemon {
   private prepare() {
     this.updateSprite();
     this.stats.applyNature();
-  }
-
-  get hp(): Stat {
-    return this.stats.hp;
-  }
-
-  get atk(): Stat {
-    return this.stats.atk;
-  }
-
-  get def(): Stat {
-    return this.stats.def;
-  }
-
-  get spatk(): Stat {
-    return this.stats.spatk;
-  }
-
-  get spdef(): Stat {
-    return this.stats.spdef;
-  }
-
-  get speed(): Stat {
-    return this.stats.speed;
   }
 
   getName(): ITranslatable {
@@ -101,6 +77,10 @@ export class TeambuilderPokemon {
 
   setAbility(ability: IAbility): void {
     this.ability = ability;
+  }
+
+  getPossibleAbilities(): string[] {
+    return this.possibleAbilities;
   }
 
   updateStats(): void {

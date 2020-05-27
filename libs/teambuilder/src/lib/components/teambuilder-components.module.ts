@@ -4,22 +4,26 @@ import {PokemonTypeImageComponent} from "./pokemon-type-image/pokemon-type-image
 import {TeambuilderLoaderComponent} from "./teambuilder-loader/teambuilder-loader.component";
 import { Translator2Component } from './translator2 (language from service)/translator2.component';
 import { Translator3Component } from './translator3 (from ITranslatable)/translator3.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
-  declarations: [
-    MoveCategoryImageComponent,
-    PokemonTypeImageComponent,
-    TeambuilderLoaderComponent,
-    Translator2Component,
-    Translator3Component
-  ],
-  exports: [
-    MoveCategoryImageComponent,
-    PokemonTypeImageComponent,
-    TeambuilderLoaderComponent,
-    Translator2Component,
-    Translator3Component
-  ]
+    declarations: [
+        MoveCategoryImageComponent,
+        PokemonTypeImageComponent,
+        TeambuilderLoaderComponent,
+        Translator2Component,
+        Translator3Component
+    ],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        MoveCategoryImageComponent,
+        PokemonTypeImageComponent,
+        TeambuilderLoaderComponent,
+        Translator2Component,
+        Translator3Component
+    ]
 })
 export class TeambuilderComponentsModule {
 }

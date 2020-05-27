@@ -4,7 +4,11 @@ import {
   testItems,
   IItem,
   TeambuilderEventService,
-  SubscriptionContainer, TeambuilderPokemonService
+  SubscriptionContainer,
+  TeambuilderPokemonService,
+  DividedTeambuilderEntityCollection,
+  ITEM_DIVIDER_PROP,
+  TeambuilderLanguageService, TeambuilderListMarkerForDividedEntityCollection
 } from "@pokedraft/teambuilder";
 
 @Component({
@@ -14,23 +18,25 @@ import {
 })
 export class ItemListComponent implements OnInit {
 
-  items: IItem[] = testItems;
+  items: DividedTeambuilderEntityCollection<IItem>;
 
-  selectedTeampokemonsItem: IItem;
+  marker: TeambuilderListMarkerForDividedEntityCollection<IItem>;
 
   private subscriptions: SubscriptionContainer;
 
   constructor(private tbView: TeambuilderViewService,
               private tbEvents: TeambuilderEventService,
-              private tbPokemon: TeambuilderPokemonService) {
-    this.selectedTeampokemonsItem = null;
-    this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
-      this.tbPokemon.selectedTeampokemon.changes$
-        .subscribe(pokemon => {
-          this.selectedTeampokemonsItem = pokemon ? pokemon.item : null;
-        }),
-      this.tbEvents.searchItem.changes$.subscribe(searchString => {}),
+              private tbPokemon: TeambuilderPokemonService,
+              private tbLanguage: TeambuilderLanguageService) {
+    this.items = new DividedTeambuilderEntityCollection<IItem>(testItems, ITEM_DIVIDER_PROP);
+    this.marker = new TeambuilderListMarkerForDividedEntityCollection<IItem>(this.items);
+    this.subscriptions = new SubscriptionContainer(
+      this.tbEvents.itemListEvents.search.changes$
+        .subscribe(searchString => this.items.filterByString(searchString, 'name', this.tbLanguage.getCurrentLanguageAsProp())),
+      this.tbEvents.itemListEvents.down.subscribe(_ => this.marker.inc()),
+      this.tbEvents.itemListEvents.up.subscribe(_ => this.marker.dec()),
+      this.tbEvents.itemListEvents.selectMarked
+        .subscribe(_ => this.tbPokemon.updateSelectedPokemonsItem(this.marker.getMarkedEntity())),
     );
   }
 
@@ -41,5 +47,4 @@ export class ItemListComponent implements OnInit {
   selectItem(item: IItem) {
     this.tbPokemon.updateSelectedPokemonsItem(item);
   }
-
 }

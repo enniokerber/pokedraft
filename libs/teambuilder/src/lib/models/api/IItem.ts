@@ -12,6 +12,8 @@ export interface IItem {
   popular?: boolean;
 }
 
+export const ITEM_DIVIDER_PROP = 'popular';
+
 export interface IBerry {
   naturalGift: INaturalGift;
 }

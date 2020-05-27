@@ -1,38 +1,28 @@
-import {Component, Input, OnDestroy} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild} from '@angular/core';
 import {
   IMove,
   TeambuilderPokemonService,
   Language,
   Languages,
-  ITranslatable,
-  emptyTranslatable,
   TeambuilderViewService,
   TeambuilderEventService,
   SubscriptionContainer, TeambuilderLanguageService,
 } from "@pokedraft/teambuilder";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'move-input',
   templateUrl: './move-input.component.html',
   styleUrls: ['./move-input.component.scss']
 })
-export class MoveInputComponent implements OnDestroy {
+export class MoveInputComponent implements AfterViewInit, OnDestroy {
 
-  _move: IMove;
-
-  _description: ITranslatable;
-
-  _type: string;
-
-  _searchName: string;
-
-  _language: Language = Languages.ENGLISH;
+  @ViewChild('moveInput') elem: ElementRef;
 
   @Input() set move(move: IMove) {
     this._move = move;
-    if (this._move !== null) {
-      this.setInputValue();
-      this.updateDescription();
+    this.updateSearchName();
+    if (move !== null) {
       this._type = this._move.type.toLowerCase();
     } else {
       this._type = '';
@@ -41,23 +31,38 @@ export class MoveInputComponent implements OnDestroy {
 
   @Input() moveId: number;
 
-  subscriptions: SubscriptionContainer;
+  _move: IMove;
+
+  _type: string;
+
+  _searchName: string;
+
+  _language: Language = Languages.ENGLISH;
+
+  private subscriptions: SubscriptionContainer;
 
   constructor(private tbPokemon: TeambuilderPokemonService,
               private tbEvents: TeambuilderEventService,
               private tbLanguage: TeambuilderLanguageService,
               private tbView: TeambuilderViewService) {
     this._move = null;
-    this._description = emptyTranslatable();
+    this.moveId = -1;
     this._type = '';
     this._searchName = '';
-    this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
+    this.subscriptions = new SubscriptionContainer(
       this.tbLanguage.language.changes$
         .subscribe(language => {
           this._language = language;
-          this.setInputValue();
-        })
+          this.updateSearchName();
+        }),
+    );
+  }
+
+  ngAfterViewInit(): void {
+    this.subscriptions.add(
+      this.tbPokemon.nextMoveslot.changes$
+        .pipe(filter(moveslot => this.moveId === moveslot))
+        .subscribe(_ => this.elem.nativeElement.focus())
     );
   }
 
@@ -65,30 +70,15 @@ export class MoveInputComponent implements OnDestroy {
     this.subscriptions.unsubscribeAll();
   }
 
-  private setInputValue() {
-    if (this._move !== null) {
-      switch (this._language) {
-        case Languages.GERMAN:
-          this._searchName = this._move.german ? this._move.german : this._move.name;
-          break;
-        default:
-          this._searchName = this._move.name;
-      }
-    }
-  }
-
-  private updateDescription() {
-    if (this._move !== null) {
-      this._description.english = this._move.description ? this._move.description : this._move.shortDescription;
-      this._description.german = this._move.descriptionGerman ? this._move.descriptionGerman : this._move.descriptionGerman;
-    }
+  updateSearchName() {
+    this._searchName = this.tbLanguage.translateFromTranslatable(this._move?.name);
   }
 
   searchMove() {
     if (this._searchName === '') {
       this.deselectMove();
     }
-    this.tbEvents.searchMove.update(this._searchName);
+    this.tbEvents.moveListEvents.search.update(this._searchName);
   }
 
   deselectMove() {
@@ -100,7 +90,21 @@ export class MoveInputComponent implements OnDestroy {
   }
 
   selectMoveSlot() {
-    this.tbPokemon.updateSelectedMoveSlot(this.moveId);
+    if (this.tbPokemon.nextMoveslot.getValue() !== this.moveId) {
+      this.tbPokemon.setNextMoveslot(this.moveId);
+    }
     this.openMoveList();
+  }
+
+  listUp() {
+    this.tbEvents.moveListEvents.up.next();
+  }
+
+  listDown() {
+    this.tbEvents.moveListEvents.down.next();
+  }
+
+  selectMarkedMove() {
+    this.tbEvents.moveListEvents.selectMarked.next();
   }
 }

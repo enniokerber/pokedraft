@@ -4,25 +4,25 @@
   position: relative;
   max-width: 100%;
   height: $text-input-height;
-}
 
-.--pd-large-input {
-  height: $text-input-height--large;
+  &--large {
+    height: $text-input-height--large;
 
-  .pd-input {
-    font-size: $font-size-m;
-  }
-}
-
-.--pd-small-input {
-  height: $text-input-height--small;
-
-  & .pd-text-input {
-    font-size: $font-size;
+    .pd-input {
+      font-size: $font-size-m;
+    }
   }
 
-  & .pd-text-input-placeholder {
-    font-size: $font-size;
+  &--small {
+    height: $text-input-height--small;
+
+    & .pd-text-input {
+      font-size: $font-size;
+    }
+
+    & .pd-text-input-placeholder {
+      font-size: $font-size;
+    }
   }
 }
 

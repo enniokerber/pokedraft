@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, ViewChild} from '@angular/core';
 import {
   IAbility,
   SubscriptionContainer,
@@ -7,14 +7,17 @@ import {
   TeambuilderViewService
 } from "@pokedraft/teambuilder";
 import {of} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
+import {filter, map, switchMap, tap} from "rxjs/operators";
+import {PdInputComponent} from "@pokedraft/material";
 
 @Component({
   selector: 'pd-search-ability-input',
   templateUrl: './search-ability-input.component.html',
   styleUrls: ['./search-ability-input.component.scss']
 })
-export class SearchAbilityInputComponent implements OnDestroy {
+export class SearchAbilityInputComponent implements AfterViewInit, OnDestroy {
+
+  @ViewChild('abilityInput') elem: PdInputComponent;
 
   searchAbility = '';
 
@@ -26,10 +29,10 @@ export class SearchAbilityInputComponent implements OnDestroy {
               private tbLanguage: TeambuilderLanguageService,
               private tbEvents: TeambuilderEventService,
               private tbPokemon: TeambuilderPokemonService) {
-    this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
+    this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.selectedTeampokemon.changes$
         .pipe(
+          filter(pokemon => pokemon !== null),
           map(pokemon => pokemon.getAbility()),
           tap(ability => this.currentAbility = ability),
           switchMap(ability => {
@@ -44,7 +47,15 @@ export class SearchAbilityInputComponent implements OnDestroy {
           })
         ).subscribe(abilityString => {
         this.searchAbility = abilityString;
-      })
+      }),
+    );
+  }
+
+  ngAfterViewInit(): void {
+    this.subscriptions.add(
+      this.tbView.displayMode.changes$
+        .pipe(filter(dm => !!dm.showAbilitiesList))
+        .subscribe(_ => this.elem.focus()),
     );
   }
 
@@ -52,7 +63,7 @@ export class SearchAbilityInputComponent implements OnDestroy {
     this.subscriptions.unsubscribeAll();
   }
 
-  reset() {
+  resetSearchInput() {
     if (this.currentAbility) {
       this.searchAbility = this.tbLanguage.translateFromTranslatable({
         english: this.currentAbility.name,
@@ -61,12 +72,33 @@ export class SearchAbilityInputComponent implements OnDestroy {
     }
   }
 
+  deselectAbilityIfSearchIsEmpty() {
+    if (this.currentAbility) {
+      this.tbPokemon.updateSelectedPokemonsAbility(null);
+    }
+  }
+
   searchForAbility(searchString: string) {
-    this.tbEvents.searchAbility.update(searchString);
+    this.tbEvents.abilityListEvents.search.update(searchString);
+    if (searchString === '') {
+      this.deselectAbilityIfSearchIsEmpty();
+    }
   }
 
   openAbilitiesList() {
     this.tbView.displayAbilitiesList();
+  }
+
+  listUp() {
+    this.tbEvents.abilityListEvents.up.next();
+  }
+
+  listDown() {
+    this.tbEvents.abilityListEvents.down.next();
+  }
+
+  selectMarkedAbility() {
+    this.tbEvents.abilityListEvents.selectMarked.next();
   }
 
 }

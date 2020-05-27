@@ -61,18 +61,12 @@ export class TranslatableTitleDirective implements OnDestroy {
     } else {
       if (this._englishTitle) {
         this.setContent(this._englishTitle);
-        console.log('No translation to use, fallback to english.');
         return;
       }
-      console.log('No translation to use, did nothing.');
-
     }
   }
 
   private languageIsEnglish(): boolean { return this._language === Languages.ENGLISH; }
 
   private languageIsGerman(): boolean  { return this._language === Languages.GERMAN; }
-
-  private languageIsFrench(): boolean { return this._language === Languages.FRENCH; }
-
 }

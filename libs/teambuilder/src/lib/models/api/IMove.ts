@@ -1,4 +1,5 @@
 import {PokemonType} from "../types";
+import {ITranslatable} from "./ITranslatable";
 
 export enum MoveCategory {
   PHYSICAL = 'physical',
@@ -8,36 +9,30 @@ export enum MoveCategory {
 }
 
 export interface IMove {
-  name: string;
-  german: string;
-  description: string;
-  descriptionGerman: string;
-  shortDescription: string;
-  shortDescriptionGerman: string;
+  name: ITranslatable;
+  description: ITranslatable;
   category: string;
   type: PokemonType;
   basePower: number;
   accuracy: number;
   priority: number;
   target: string;
-  alwaysConnects: boolean;
-  alwaysCrits: boolean;
   powerPoints: number;
   maxPowerPoints: number;
   flags: {
-    mustBeCharged: boolean,
-    isAffectedByGravity: boolean,
-    isContactMove: boolean,
-    canBeProtected: boolean,
-    canBeReflected: boolean,
-    canBeSnatched: boolean,
-    affectsStats: boolean,
-    hasSecondaryEffect: boolean,
-    isPulseMove: boolean,
-    isZMove: boolean
+    alwaysConnects?: boolean;
+    alwaysCrits?: boolean;
+    mustBeCharged?: boolean,
+    isAffectedByGravity?: boolean,
+    isContactMove?: boolean,
+    canBeProtected?: boolean,
+    canBeReflected?: boolean,
+    canBeSnatched?: boolean,
+    affectsStats?: boolean,
+    hasSecondaryEffect?: boolean,
+    isPulseMove?: boolean;
   };
-  zMovePower: number;
-  zMoveEffect: string;
-  contestType: string;
-  isViable: boolean;
+  viable?: boolean;
 }
+
+export const MOVE_DIVIDER_PROP = 'viable';

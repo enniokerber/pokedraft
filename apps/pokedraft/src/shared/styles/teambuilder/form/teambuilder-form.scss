@@ -157,6 +157,8 @@
   position: absolute;
   bottom: 10px;
   right: 0;
+  display: flex;
+  flex-direction: row;
 
   pokemon-type-image:last-of-type {
     margin-left: 6px;

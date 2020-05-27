@@ -1,28 +1,44 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 
 import {
   IAbility,
   IMove,
   IPokemon,
   BehaviorSubjectStream,
-  TeambuilderPokemon, IItem
+  TeambuilderPokemon, IItem, SubscriptionContainer, MoveContainer
 } from "../../models";
 import {TeambuilderEventService} from "../event/teambuilder-event.service";
+import {TeambuilderViewService} from "../view/teambuilder-view.service";
+import {distinctUntilChanged} from "rxjs/operators";
 
 
 @Injectable()
-export class TeambuilderPokemonService {
+export class TeambuilderPokemonService implements OnDestroy {
 
   private _teampokemon: TeambuilderPokemon[];
   private readonly _selectedTeampokemon: BehaviorSubjectStream<TeambuilderPokemon>;
-  private _selectedMoveSlot;
-  private readonly _selectMoveSlotChanges: BehaviorSubjectStream<number>;
+  private readonly _nextMoveslot: BehaviorSubjectStream<number>;
 
-  constructor(private tbEvents: TeambuilderEventService) {
+  private readonly _subscriptions: SubscriptionContainer;
+
+  constructor(private tbEvents: TeambuilderEventService,
+              private tbView: TeambuilderViewService) {
     this._teampokemon = [];
     this._selectedTeampokemon = new BehaviorSubjectStream<TeambuilderPokemon>(null);
-    this._selectedMoveSlot = 0;
-    this._selectMoveSlotChanges = new BehaviorSubjectStream<number>(this._selectedMoveSlot);
+    this._nextMoveslot = new BehaviorSubjectStream<number>(-1);
+    this._subscriptions = new SubscriptionContainer(
+      this._selectedTeampokemon.changes$
+        .pipe(distinctUntilChanged())
+        .subscribe(pokemon => {
+          if (!pokemon) {
+            this.tbView.displayRawPokemonList();
+          }
+        })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this._subscriptions.unsubscribeAll();
   }
 
   get teampokemon(): TeambuilderPokemon[] {
@@ -37,20 +53,12 @@ export class TeambuilderPokemonService {
     return this._selectedTeampokemon;
   }
 
-  get selectedMoveSlot() {
-    return this._selectedMoveSlot;
+  get nextMoveslot(): BehaviorSubjectStream<number> {
+    return this._nextMoveslot;
   }
 
-  set selectedMoveSlot(value) {
-    this._selectedMoveSlot = value;
-  }
-
-  get selectMoveSlotChanges(): BehaviorSubjectStream<number> {
-    return this._selectMoveSlotChanges;
-  }
-
-  selectTeampokemon(value: TeambuilderPokemon) {
-    this.selectedTeampokemon.update(value);
+  selectTeampokemon(pokemon: TeambuilderPokemon) {
+    this.selectedTeampokemon.update(pokemon);
   }
 
   getNextId(): number {
@@ -63,6 +71,7 @@ export class TeambuilderPokemonService {
       const pokemon = new TeambuilderPokemon(fromInterface, nextId);
       this.teampokemon.push(pokemon);
       this.selectTeampokemon(pokemon);
+      this.tbView.displayItemList();
     }
   }
 
@@ -96,35 +105,60 @@ export class TeambuilderPokemonService {
 
   // MOVES
 
+  private isValidMoveslot(id: number) {
+    return id >= 0 && id < 4;
+  }
+
+  setNextMoveslot(id: number) {
+    if (this.isValidMoveslot(id)) {
+      this.nextMoveslot.update(id);
+      this.resetSearchMove();
+    }
+  }
+
+  selectNextMoveslot() {
+    const currentMoveslot = this.nextMoveslot.getValue();
+    const nextMoveSlot = currentMoveslot >= 3 ? 0 : currentMoveslot + 1;
+    this.setNextMoveslot(nextMoveSlot);
+  }
+
+  selectNextEmptyMoveslot() {
+    const currentPokemon = this.selectedTeampokemon.getValue();
+    const moves: MoveContainer[] = currentPokemon.moves;
+    for (let moveId = 0; moveId < moves.length; moveId++) {
+      if (moves[moveId].getData() === null) {
+        return this.setNextMoveslot(moveId);
+      }
+    }
+    this.setNextMoveslot(0);
+  }
+
   setCurrentMoveslotData(move: IMove): void {
-    const currentTeampokemon = this.selectedTeampokemon.getValue();
-    currentTeampokemon.moves[this.selectedMoveSlot].setData(move);
-    this.selectTeampokemon(currentTeampokemon);
+    if (this.isValidMoveslot(this.nextMoveslot.getValue())) {
+      const currentTeampokemon = this.selectedTeampokemon.getValue();
+      const selectedMoveslot = this.nextMoveslot.getValue();
+      currentTeampokemon.moves[selectedMoveslot].setData(move);
+      this.selectTeampokemon(currentTeampokemon);
+    }
   }
 
   insertMove(move: IMove) {
     const currentTeampokemon = this.selectedTeampokemon.getValue();
-    if (this.selectedMoveSlot < 4) {
-      if (!currentTeampokemon.moves.map(container => container.data).includes(move)) {
-        this.setCurrentMoveslotData(move);
-        if (this.selectedMoveSlot === 3) {
-          this.selectedMoveSlot = -1;
-        }
-        this.selectMoveSlotChanges.update(++this.selectedMoveSlot);
-        this.resetSearchMove();
-      } else {
-        console.log('This move is already on the set');
-      }
+    if (!currentTeampokemon.moves.map(container => container.data).includes(move)) {
+      this.setCurrentMoveslotData(move);
+      this.selectNextMoveslot();
+    } else {
+      console.log('This move is already on the set');
     }
   }
 
   resetSearchMove() {
-    this.tbEvents.searchMove.reset();
+    this.tbEvents.moveListEvents.search.reset();
   }
 
   deselectFocusedMove() {
     const currentTeampokemon = this.selectedTeampokemon.getValue();
-    currentTeampokemon.moves[this.selectedMoveSlot].setData(null);
+    currentTeampokemon.moves[this.nextMoveslot.getValue()].setData(null);
     this.selectTeampokemon(currentTeampokemon);
   }
 
@@ -136,26 +170,26 @@ export class TeambuilderPokemonService {
     }
   }
 
-  updateSelectedMoveSlot(id: number) {
-    this.selectedMoveSlot = id;
-    this.selectMoveSlotChanges.update(id);
-    this.resetSearchMove();
+  // ITEM
+
+  updateSelectedPokemonsItem(item: IItem) {
+    const currentTeampokemon = this.selectedTeampokemon.getValue();
+    if (currentTeampokemon.item !== item) {
+      currentTeampokemon.setItem(item);
+      this.selectTeampokemon(currentTeampokemon);
+      this.tbView.displayAbilitiesList();
+    }
   }
 
   // ABILITY
 
   updateSelectedPokemonsAbility(ability: IAbility) {
     const currentTeampokemon = this.selectedTeampokemon.getValue();
-    currentTeampokemon.ability = ability;
-    this.selectTeampokemon(currentTeampokemon);
+    if (currentTeampokemon.ability !== ability) {
+      currentTeampokemon.setAbility(ability);
+      this.selectTeampokemon(currentTeampokemon);
+      this.tbView.displayMoveList();
+      this.selectNextEmptyMoveslot();
+    }
   }
-
-  // ITEM
-
-  updateSelectedPokemonsItem(item: IItem) {
-    const currentTeampokemon = this.selectedTeampokemon.getValue();
-    currentTeampokemon.item = item;
-    this.selectTeampokemon(currentTeampokemon);
-  }
-
 }

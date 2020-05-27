@@ -16,11 +16,24 @@ export class TeambuilderLanguageService {
     return this._language;
   }
 
+  getCurrentLanguage(): Language {
+    return this.language.getValue();
+  }
+
+  getCurrentLanguageAsProp(): string {
+    return this.getCurrentLanguage().toLowerCase();
+  }
+
   changeLanguage(lang: Language): void {
     this._language.update(lang);
   }
 
   translateFromTranslatable(translatable: ITranslatable): string {
+
+    if (!translatable) {
+      return '';
+    }
+
     switch (this.language.getValue()) {
       case Languages.GERMAN:
         if (translatable.german) {

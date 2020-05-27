@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
-import {QuerySubject} from "../../models/misc";
+import {TeambuilderListEvents} from "../../models/misc";
 
 @Injectable()
 export class TeambuilderEventService {
 
-  private readonly _searchMove: QuerySubject;
-  private readonly _searchAbility: QuerySubject;
-  private readonly _searchItem: QuerySubject;
+  private readonly _moveListEvents: TeambuilderListEvents;
+  private readonly _itemListEvents: TeambuilderListEvents;
+  private readonly _abilityListEvents: TeambuilderListEvents;
 
   constructor() {
-    this._searchMove = new QuerySubject();
-    this._searchAbility = new QuerySubject();
-    this._searchItem = new QuerySubject();
+    this._moveListEvents = new TeambuilderListEvents();
+    this._itemListEvents = new TeambuilderListEvents();
+    this._abilityListEvents = new TeambuilderListEvents();
   }
 
-  get searchMove(): QuerySubject {
-    return this._searchMove;
+  get moveListEvents(): TeambuilderListEvents {
+    return this._moveListEvents;
   }
 
-  get searchAbility(): QuerySubject {
-    return this._searchAbility;
+  get itemListEvents(): TeambuilderListEvents {
+    return this._itemListEvents;
   }
 
-  get searchItem(): QuerySubject {
-    return this._searchItem;
+  get abilityListEvents(): TeambuilderListEvents {
+    return this._abilityListEvents;
   }
 }

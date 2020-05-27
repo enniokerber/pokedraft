@@ -34,12 +34,24 @@ $icon-size: 40px;
   }
 
   &--selected {
-    border: 1px solid $primary-light;
-    background-color: $grey-lightest;
+    position: relative;
+    border: 1px solid $primary;
+    background-color: $yellow-light;
+
+    &::before {
+      position: absolute;
+      content: '';
+
+      @include center-relatively-vertically;
+      left: 0;
+
+      border: 5px solid transparent;
+      border-left: 10px solid $primary;
+    }
   }
 
-  &--marked {
-    border: 1px dashed $secondary-light;
+  &--marked:not(&--selected) {
+    border: 1px dashed $primary-light;
     background-color: $grey-lightest;
   }
 
@@ -64,11 +76,6 @@ $icon-size: 40px;
   @include flex-center;
   height: 100%;
   color: $grey;
-
-  &--scalable {
-    height: unset;
-    min-height: 100%;
-  }
 }
 
 .pd-teambuilder-list-cell-wrapper {

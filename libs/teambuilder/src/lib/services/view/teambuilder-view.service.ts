@@ -1,40 +1,19 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   DisplayModeBuilder,
-  BehaviorSubjectStream, SubscriptionContainer,
+  BehaviorSubjectStream,
   TeambuilderDisplayMode
 } from "../../models";
-import {TeambuilderPokemonService} from "../pokemon/teambuilder-pokemon.service";
-import {distinctUntilChanged} from "rxjs/operators";
-
 
 @Injectable()
-export class TeambuilderViewService implements OnDestroy {
+export class TeambuilderViewService {
 
   private readonly _displayMode: BehaviorSubjectStream<TeambuilderDisplayMode>;
   private readonly _showTiers: BehaviorSubjectStream<boolean>;
 
-  private readonly subscriptions: SubscriptionContainer;
-
-  constructor(private tbStore: TeambuilderPokemonService) {
+  constructor() {
     this._displayMode = new BehaviorSubjectStream<TeambuilderDisplayMode>(new DisplayModeBuilder().displayPokemonList().get());
     this._showTiers = new BehaviorSubjectStream<boolean>(true)
-    this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
-      this.tbStore.selectedTeampokemon.changes$
-        .pipe(distinctUntilChanged())
-        .subscribe(pokemon => {
-          if (pokemon) {
-            this.displayMoveList();
-          } else {
-            this.displayRawPokemonList();
-          }
-        }),
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribeAll();
   }
 
   get displayMode(): BehaviorSubjectStream<TeambuilderDisplayMode> {

@@ -2,6 +2,7 @@ import {IMove} from "../models";
 
 
 export const fallbackMoves: IMove[] = [
+  /*
   {
     'name': 'Freak out',
     'german': 'Ausrasten',
@@ -138,4 +139,5 @@ export const fallbackMoves: IMove[] = [
     'contestType': 'Smart',
     'isViable': false,
   }
+  */
 ];

@@ -1,60 +1,41 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {
-  Language,
-  Languages,
-  SubscriptionContainer, TeambuilderLanguageService,
   TeambuilderPokemon,
-  TeambuilderPokemonService, TeambuilderViewService
+  TeambuilderPokemonService
 } from "@pokedraft/teambuilder";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'teambar',
   templateUrl: './teambar.component.html',
   styleUrls: ['./teambar.component.scss']
 })
-export class TeambarComponent implements OnInit, OnDestroy {
+export class TeambarComponent{
 
   team: TeambuilderPokemon[];
 
-  selectedTeamPokemon: TeambuilderPokemon;
+  selectedPokemon$: Observable<TeambuilderPokemon>;
 
-  language: Language = Languages.ENGLISH;
-
-  subscriptions: SubscriptionContainer;
-
-  constructor(private tbStore: TeambuilderPokemonService,
-              private tbLanguage: TeambuilderLanguageService) {
-    this.team = tbStore.teampokemon;
-    this.selectedTeamPokemon = null;
-    this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
-      this.tbStore.selectedTeampokemon.changes$.subscribe(
-        pokemon => this.selectedTeamPokemon = pokemon),
-      this.tbLanguage.language.changes$.subscribe(language => this.language = language)
-    );
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribeAll();
+  constructor(private tbPokemon: TeambuilderPokemonService) {
+    this.team = tbPokemon.teampokemon;
+    this.selectedPokemon$ = this.tbPokemon.selectedTeampokemon.changes$;
   }
 
   selectPokemon(pokemon: TeambuilderPokemon): void {
-    if (this.selectedTeamPokemon === null || pokemon.teambuilderPokemonId !== this.selectedTeamPokemon.teambuilderPokemonId) {
-      this.tbStore.selectTeampokemon(pokemon);
+    const currentPokemon = this.tbPokemon.selectedTeampokemon.getValue();
+    if (currentPokemon === null || pokemon.teambuilderPokemonId !== currentPokemon.teambuilderPokemonId) {
+      this.tbPokemon.selectTeampokemon(pokemon);
     }
   }
 
   createPokemon(): void {
-    if (this.tbStore.selectedTeampokemon.getValue() !== null) {
-      this.tbStore.selectTeampokemon(null);
+    if (this.tbPokemon.selectedTeampokemon.getValue() !== null) {
+      this.tbPokemon.selectTeampokemon(null);
     }
   }
 
   deletePokemon(id: number): void {
-    this.team = this.tbStore.deleteTeampokemon(id);
+    this.team = this.tbPokemon.deleteTeampokemon(id);
   }
 
 }

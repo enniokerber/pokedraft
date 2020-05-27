@@ -51,9 +51,11 @@ export class Translator2Component implements OnDestroy {
     this._subscription = this.tbLanguage.language.changes$
       .subscribe(language => {
         this._language = language;
-        this.setContent(this.tbLanguage.translateFromTranslatable(
-          createTranslatable(this._english, this._german, this._french)
-        ));
+        this.setContent(
+          this.tbLanguage.translateFromTranslatable(
+            createTranslatable(this._english, this._german, this._french)
+          )
+        );
       }
     )
   }

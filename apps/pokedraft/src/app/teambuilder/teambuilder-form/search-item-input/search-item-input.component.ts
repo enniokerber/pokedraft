@@ -1,18 +1,21 @@
-import {Component, OnDestroy} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, ViewChild} from '@angular/core';
 import {
   SubscriptionContainer,
   TeambuilderEventService, TeambuilderPokemonService,
   TeambuilderViewService, TeambuilderLanguageService, IItem,
 } from "@pokedraft/teambuilder";
 import {of} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
+import {filter, map, switchMap, tap} from "rxjs/operators";
+import {PdInputComponent} from "@pokedraft/material";
 
 @Component({
   selector: 'pd-search-item-input',
   templateUrl: './search-item-input.component.html',
   styleUrls: ['./search-item-input.component.scss']
 })
-export class SearchItemInputComponent implements OnDestroy {
+export class SearchItemInputComponent implements AfterViewInit, OnDestroy {
+
+  @ViewChild('itemInput') elem: PdInputComponent;
 
   searchItem = '';
 
@@ -24,10 +27,10 @@ export class SearchItemInputComponent implements OnDestroy {
               private tbLanguage: TeambuilderLanguageService,
               private tbEvents: TeambuilderEventService,
               private tbPokemon: TeambuilderPokemonService) {
-    this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
+    this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.selectedTeampokemon.changes$
         .pipe(
+          filter(pokemon => pokemon !== null),
           map(pokemon => pokemon.getItem()),
           tap(item => this.currentItem = item),
           switchMap(item => {
@@ -38,8 +41,16 @@ export class SearchItemInputComponent implements OnDestroy {
             }
           })
         ).subscribe(itemString => {
-          this.searchItem = itemString;
+        this.searchItem = itemString;
       })
+    );
+  }
+
+  ngAfterViewInit(): void {
+    this.subscriptions.add(
+      this.tbView.displayMode.changes$
+        .pipe(filter(dm => !!dm.showItemList))
+        .subscribe(_ => this.elem.focus()),
     );
   }
 
@@ -47,17 +58,39 @@ export class SearchItemInputComponent implements OnDestroy {
     this.subscriptions.unsubscribeAll();
   }
 
-  reset() {
+  resetSearchInput() {
     if (this.currentItem) {
       this.searchItem = this.tbLanguage.translateFromTranslatable(this.currentItem.name);
     }
   }
 
+  deselectItemIfSearchIsEmpty() {
+    if (this.currentItem) {
+      this.tbPokemon.updateSelectedPokemonsItem(null);
+    }
+  }
+
   searchForItem(searchString: string) {
-    this.tbEvents.searchItem.update(searchString);
+    this.tbEvents.itemListEvents.search.update(searchString);
+    if (searchString === '') {
+      this.deselectItemIfSearchIsEmpty();
+    }
   }
 
   openItemList() {
     this.tbView.displayItemList();
+  }
+
+
+  listUp() {
+    this.tbEvents.itemListEvents.up.next();
+  }
+
+  listDown() {
+    this.tbEvents.itemListEvents.down.next();
+  }
+
+  selectMarkedItem() {
+    this.tbEvents.itemListEvents.selectMarked.next();
   }
 }

@@ -2,14 +2,14 @@ import {TeambuilderEntityCollection} from "./TeambuilderEntityCollection";
 
 export class DividedTeambuilderEntityCollection<Entity = any> extends TeambuilderEntityCollection {
 
-  private _dividerProp: string;
+  private readonly _dividerProp: string;
 
   // only contains references to TeambuilderEntityCollection.current, thus takes up just little memory space
-  firstHalf: Entity[];
-  secondHalf: Entity[];
+  public firstHalf: Entity[];
+  public secondHalf: Entity[];
 
-  constructor(entities: Entity[], dividerProp: string) {
-    super(entities);
+  constructor(entities: Entity[], dividerProp: string, defaultSortColumn?: string) {
+    super(entities, defaultSortColumn);
     this.firstHalf = [];
     this.secondHalf = [];
     this._dividerProp = dividerProp;
@@ -20,10 +20,6 @@ export class DividedTeambuilderEntityCollection<Entity = any> extends Teambuilde
     return this._dividerProp;
   }
 
-  set dividerProp(value: string) {
-    this._dividerProp = value;
-  }
-
   sort(by: string,
        parentProperty = '',
        toggleSortOrder = true) {
@@ -31,7 +27,7 @@ export class DividedTeambuilderEntityCollection<Entity = any> extends Teambuilde
     this.divide();
   }
 
-  filterByString(searchStr: string, propLevel1: string, propLevel2?: string) {
+  filterByString(searchStr: string, propLevel1: string, propLevel2?: string, parentSortColumn?: string) {
     super.filterByString(searchStr, propLevel1, propLevel2);
     this.divide();
   }

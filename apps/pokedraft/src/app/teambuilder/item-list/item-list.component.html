@@ -25,44 +25,30 @@
 
 <div class="pd-teambuilder-list-content">
 
-  <div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable pd-teambuilder-list-row--scalable"
-       [ngClass]="{
-        'pd-teambuilder-list-row--selected': selectedTeampokemonsItem?.id === item.id,
-        'pd-teambuilder-list-row--marked': false
-       }"
-       (click)="selectItem(item)"
-       *ngFor="let item of items">
-
-    <div class="pd-teambuilder-list-cell --tb-item-name-cell --teambuilder-cell-has-multiple-contents">
-      <div class="pd-teambuilder-list-row-icon">
-        <img src="assets/items/{{item.imgSrc}}" alt="">
-      </div>
-
-      <div class="pd-teambuilder-list-cell-text">
-        <translator2 [english]="item.name.english" [german]="item.name.german"></translator2>
-      </div>
-    </div>
-
-    <div class="pd-teambuilder-list-cell --tb-desc-cell --tb-item-desc-cell --cell-align-left">
-      <translator2 [english]="item.description.english" [german]="item.description.german"></translator2>
-    </div>
-
-    <div class="pd-teambuilder-list-cell pd-teambuilder-list-prop-cell --tb-item-fling-basepower">
-      <span class="pd-teambuilder-list-prop-label">
-        <translator2 english="Power" german="Stärke"></translator2>
+  <div class="pd-teambuilder-list-sub-container">
+    <div class="pd-teambuilder-list-subheading-head">
+      <span class="pd-teambuilder-list-subheading-title --subheading-line">
+        <translator2 english="Popular Items" german="Beliebte Items"></translator2>
       </span>
-      {{item.flingBasePower}}
     </div>
 
-    <div class="pd-teambuilder-list-cell pd-teambuilder-list-prop-cell --tb-item-natural-gift" *ngIf="item.berry?.naturalGift as naturalGift">
-      <span class="pd-teambuilder-list-prop-label">
-        <translator2 english="Natural Gift" german="Beerenkräfte"></translator2>
+    <pd-item-list-row-container [items]="items.firstHalf"
+                                [markedId]="marker.index"
+                                (choose)="selectItem($event)">
+    </pd-item-list-row-container>
+  </div>
+
+  <div class="pd-teambuilder-list-sub-container">
+    <div class="pd-teambuilder-list-subheading-head">
+      <span class="pd-teambuilder-list-subheading-title --subheading-line">
+        <translator2 english="Other Items" german="Weitere Items"></translator2>
       </span>
-      {{naturalGift.basePower}}
-      <pokemon-type-image class="pd-item-natural-gift-type-icon"
-                          [type]="naturalGift.type"></pokemon-type-image>
     </div>
 
+    <pd-item-list-row-container [items]="items.secondHalf"
+                                [markedId]="marker.markerForSecondHalf"
+                                (choose)="selectItem($event)">
+    </pd-item-list-row-container>
   </div>
 
 </div>

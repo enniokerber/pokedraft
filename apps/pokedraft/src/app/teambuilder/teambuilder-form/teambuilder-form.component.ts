@@ -28,10 +28,10 @@ export class TeambuilderFormComponent implements OnInit, OnDestroy {
   constructor(private tbPokemon: TeambuilderPokemonService,
               private tbViewService: TeambuilderViewService,
               private tbLanguage: TeambuilderLanguageService) {
-    this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
+    this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.selectedTeampokemon.changes$
         .pipe(
+          filter(pokemon => pokemon !== null),
           tap(selectedPokemon => this.pokemon = selectedPokemon),
           map(pokemon => pokemon.getName()),
           switchMap(name => {
@@ -45,7 +45,7 @@ export class TeambuilderFormComponent implements OnInit, OnDestroy {
         this.searchPokemon = nameString;
         this.currentPokemonString = nameString;
       }),
-      this.tbPokemon.selectMoveSlotChanges.changes$.pipe(
+      this.tbPokemon.nextMoveslot.changes$.pipe(
         filter(id => (id !== -1 && id < 4))
       ).subscribe(moveslot => {
         this.currentMoveslot = moveslot;

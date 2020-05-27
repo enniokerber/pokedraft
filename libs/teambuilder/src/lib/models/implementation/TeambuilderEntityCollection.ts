@@ -4,7 +4,7 @@ export class TeambuilderEntityCollection<Entity = any> {
 
   private _all:      Entity[];
   private _filtered: Entity[];
-  private _current:  Entity[];
+  public  _current:  Entity[];
 
   private _sortingDirection: SortingDirection;
   private _sortColumn: string;
@@ -19,7 +19,6 @@ export class TeambuilderEntityCollection<Entity = any> {
       this.sort(defaultSortColumn, '', false);
     }
   }
-
 
   get all(): Entity[] {
     return this._all;
@@ -61,7 +60,22 @@ export class TeambuilderEntityCollection<Entity = any> {
     this._sortColumn = value;
   }
 
-  updateCurrent() {
+  count(): number {
+    return this.current.length;
+  }
+
+  getByIndex(index: number): Entity {
+    if (this.count() === 0 || index > this.count() - 1) return null;
+    return this.current[index];
+  }
+
+  setEntities(entities: Entity[]) {
+    this.all = entities;
+    this.filtered = [...entities];
+    this.current = [...entities];
+  }
+
+  private updateCurrent() {
     this.current = [ ...this.filtered ];
   }
 
@@ -76,7 +90,6 @@ export class TeambuilderEntityCollection<Entity = any> {
     if (toggleSortOrder && this.sortColumn === by) {
       this.sortingDirection = this.sortingDirection === SortingDirections.ASC ? SortingDirections.DESC : SortingDirections.ASC;
       this.current = this.current.reverse();
-      console.log(this.current);
       return;
     } else {
       this.sortColumn = by;
@@ -123,6 +136,11 @@ export class TeambuilderEntityCollection<Entity = any> {
     }
 
     this.filtered = this.all.filter(filterFn);
-    this.sort(this.sortColumn, '', false);
+
+    if (propLevel2) {
+      return this.sort(propLevel2, propLevel1, false);
+    } else {
+      return this.sort(propLevel1, '', false);
+    }
   }
 }

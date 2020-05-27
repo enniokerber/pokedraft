@@ -33,6 +33,8 @@ export class PdInputComponent implements OnInit, AfterViewInit, ControlValueAcce
 
   @Input() size: 'normal' | 'small' | 'large';
 
+  @Input() animations: 'on' | 'off';
+
   @Input() autofocus: boolean;
 
   @Input() maxlength: number;
@@ -47,6 +49,7 @@ export class PdInputComponent implements OnInit, AfterViewInit, ControlValueAcce
     this.value = '';
     this.disabled = false;
     this.size = 'normal';
+    this.animations = 'on';
     this.autofocus = false;
     this.valueChange = new EventEmitter<string>();
     this.onfocus = new EventEmitter<void>();
@@ -63,7 +66,7 @@ export class PdInputComponent implements OnInit, AfterViewInit, ControlValueAcce
 
   focus(): void {
     this.element.nativeElement.focus();
-    this.onFocusFunction();
+    this.emitFocus();
   }
 
   changeValue(to: string): void {
@@ -96,11 +99,11 @@ export class PdInputComponent implements OnInit, AfterViewInit, ControlValueAcce
     }
   }
 
-  onblurFunction() {
+  emitBlur() {
     this.onblur.emit();
   }
 
-  onFocusFunction() {
+  emitFocus() {
     this.onfocus.emit();
   }
 }

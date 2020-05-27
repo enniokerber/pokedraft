@@ -4,8 +4,9 @@ export class SubscriptionContainer {
 
   private subscriptions: Subscription[];
 
-  constructor() {
+  constructor(...subscriptions: Subscription[]) {
     this.subscriptions = [];
+    this.add(...subscriptions);
   }
 
   public add(...subscriptions: Subscription[]): void {

@@ -4,7 +4,7 @@ $ability-name-cell: 20%;
 
 .--tb-ability-name-cell {
   width: 20%;
-  padding-left: $padding;
+  padding-left: $padding-l - 2px;
   min-height: 100%;
 }
 

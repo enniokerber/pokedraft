@@ -6,6 +6,7 @@ $item-name: 22.5%;
 $item-desc: 52.5%;
 
 .--tb-item-name-cell {
+  padding-left: $padding;
   width: $item-name;
 }
 
