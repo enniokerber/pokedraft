@@ -3,7 +3,8 @@
   <div class="pd-number-chooser-action2 pd-minus2"
        (click)="decValue()" *ngIf="!disabled"> </div>
   <div class="pd-number-chooser-display2"
-       [class.valueGreaterZero]="(value + extra) > 0"> {{value + extra}} </div>
+       [class.pd-number-chooser-value-maxed]="(value + extra) >= max"> {{value + extra}} </div>
   <div class="pd-number-chooser-action2 pd-plus2"
-       (click)="incValue()" *ngIf="!disabled"> </div>
+       (click)="incValue()"
+       *ngIf="!disabled"> </div>
 </div>

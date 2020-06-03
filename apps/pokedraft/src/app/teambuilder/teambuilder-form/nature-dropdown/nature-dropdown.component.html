@@ -14,7 +14,10 @@
       <translator3 [source]="nature.name"></translator3>
     </option>
   </optgroup>
-  <optgroup label="{{stat.label}} +"
+  <optgroup label=""
+            translateAttribute="label"
+            [source]="stat.label"
+            format="? +"
             *ngFor="let stat of stats">
     <ng-container
       *ngFor="let nature of statAffectingNatures">

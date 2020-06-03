@@ -49,7 +49,6 @@ export class MovesListComponent implements OnInit, OnDestroy {
       this.tbEvents.moveListEvents.down.subscribe(_ => this.marker.inc()),
       this.tbEvents.moveListEvents.selectMarked.subscribe(_ => {
         this.insertMove(this.marker.getMarkedEntity());
-        this.marker.inc();
       }),
     )
   }
@@ -63,6 +62,7 @@ export class MovesListComponent implements OnInit, OnDestroy {
 
   insertMove(move: IMove): void {
     this.tbPokemon.insertMove(move);
+    this.marker.inc();
   }
 
   sort(by: string, parentProperty?: string) {

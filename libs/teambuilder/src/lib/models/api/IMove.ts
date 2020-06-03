@@ -11,6 +11,7 @@ export enum MoveCategory {
 export interface IMove {
   name: ITranslatable;
   description: ITranslatable;
+  shortDescription: ITranslatable;
   category: string;
   type: PokemonType;
   basePower: number;

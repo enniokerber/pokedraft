@@ -50,6 +50,28 @@
   justify-content: space-between;
 }
 
+.relative-container {
+  position: relative;
+}
+
+.center-relatively {
+  position: absolute;
+  @include center-relatively;
+}
+
+.grid-align-left {
+  justify-self: flex-start;
+}
+
+.grid-align-right {
+  justify-self: flex-end;
+}
+
+.grid-align-center {
+  justify-self: center;
+}
+
+
 .side-padding {
   padding: 0 $padding-m;
 }
@@ -68,11 +90,6 @@
 
 .small-margin-bottom {
   margin-bottom: $margin-m;
-}
-
-.center-relatively {
-  position: absolute;
-  @include center-relatively;
 }
 
 .small-font-size {
@@ -157,6 +174,14 @@
 }
 .color-white {
   color: $white;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .padding-top-adjustment {

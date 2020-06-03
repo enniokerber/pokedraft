@@ -1,0 +1,48 @@
+<div class="pd-teambuilder-stat-row" *ngIf="stat">
+
+  <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-label">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-base bold">
+    {{stat.base}}
+  </div>
+
+  <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-bar full-width grid-align-left">
+    <div class="pd-teambuilder-stat-row-bar-indicator"
+         [style.width]="stat.value / 394 * 100 + '%'"
+         [style.background-color]="'hsl(' + (stat.value / 394 * 99) + ', 85%, 45%)'" >
+    </div>
+  </div>
+
+  <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-number-input pd-teambuilder-stat-row-evs">
+    <pd-ev-input [stat]="stat"></pd-ev-input>
+  </div>
+
+  <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-slider full-width">
+    <input #evInput
+           class="pd-teambuilder-stat-row-slider-input"
+           type="range"
+           min="0"
+           max="252"
+           step="4"
+           (input)="setEvs(evInput.value)"
+           [value]="stat.evs">
+  </div>
+
+  <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-number-input pd-teambuilder-stat-row-dvs">
+    <pd-number-chooser2 [min]="0"
+                        [max]="31"
+                        (valueChange)="calculateStat()"
+                        [(value)]="stat.dvs"></pd-number-chooser2>
+  </div>
+
+  <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-value"
+       [ngClass]="{
+      'pd-positive-nature': stat.naturePositive,
+      'pd-negative-nature': stat.natureNegative
+    }">
+    {{stat.value}}
+  </div>
+
+</div>

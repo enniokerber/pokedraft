@@ -18,3 +18,6 @@ export * from './IItem';
 export * from './ITranslatable';
 
 export * from './PDApiResponse';
+
+export * from './StatConfig';
+

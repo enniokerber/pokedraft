@@ -1,0 +1,79 @@
+@import "../utils";
+
+$thumb-height: 21px;
+$track-height: 7px;
+
+@mixin slider-thumb() {
+  box-sizing: content-box;
+  border: 1px solid $white;
+  box-shadow: 0 0 0 1px $primary;
+  height: $thumb-height;
+  width: $thumb-height / 2 - 3px;
+  border-radius: $radius-s;
+  background: $primary-light;
+  cursor: pointer;
+  margin-top: -8px;
+
+  &:active {
+    background-color: $primary2;
+    box-shadow: 0 0 0 1px $primary2;
+  }
+}
+
+@mixin slider-track() {
+  -webkit-appearance: none;
+  width: 100%;
+  height: $track-height;
+  cursor: pointer;
+  background-color: $grey-lightest;
+  border-radius: $radius-s;
+  border: 1px solid $primary-light;
+  box-shadow: 2px 2px 0 $grey-light;
+}
+
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 0;
+  width: 100%;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+
+    &::-webkit-slider-runnable-track {
+      border-color: $primary2;
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include slider-track;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    @include slider-thumb;
+  }
+}
+
+// hack: applies additional styling when used with Firefox
+// somehow the moz range specific pseudo-elements overwrite the chrome range styles, thats why this is needed
+@-moz-document url-prefix() {
+
+  input[type=range] {
+
+    &::-moz-range-track {
+      @include slider-track;
+    }
+
+    &::-moz-range-thumb {
+      @include slider-thumb;
+    }
+
+    &::-moz-range-progress {
+      background-color: $primary-light;
+      height: $track-height;
+    }
+
+  }
+}

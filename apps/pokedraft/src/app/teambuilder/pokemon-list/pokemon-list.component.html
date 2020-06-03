@@ -56,7 +56,9 @@
   </div>
 
   <div class="pd-teambuilder-table-head-cell --tb-stat-cell"
-       [translatableTitle2]="{ english: 'Base Stat Total (Sum of the other Stats)', german: 'Basiswertsumme (Summe der anderen Stats)' }">
+       translatableTitle
+       englishTitle="Base Stat Total (Sum of the other Stats)"
+       germanTitle="Basiswertsumme (Summe der anderen Stats)">
     <translator3 [source]="{ english: 'Bst', german: 'Bws' }"></translator3>
   </div>
 
@@ -73,7 +75,7 @@
 
     <div class="pd-teambuilder-list-subheading-head">
       <span class="pd-teambuilder-list-subheading-title"
-            [title]="language === 'GERMAN' && tier.descriptionGerman ? tier.descriptionGerman : tier.description">
+            [title]="language === GERMAN_LANGUAGE && tier.descriptionGerman ? tier.descriptionGerman : tier.description">
         <span *ngIf="tier.id === tier.name; else withDesc"> {{tier.id}} </span>
         <ng-template #withDesc>
           <span> {{tier.id + ' - ' + tier.name}} </span>
@@ -82,7 +84,7 @@
     </div>
 
     <pokemon-list-row-container
-      [pokemon]="pokemon.current | tierFilter : tier.id : tierPipeTrigger"
+      [pokemon]="pokemon._current | tierFilter : tier.id : tierPipeTrigger"
       (onchoose)="choosePokemon($event)">
     </pokemon-list-row-container>
 
@@ -91,7 +93,7 @@
 
 <ng-template #noTiersList>
   <pokemon-list-row-container
-    [pokemon]="pokemon.current"
+    [pokemon]="pokemon._current"
     (onchoose)="choosePokemon($event)">
   </pokemon-list-row-container>
 </ng-template>

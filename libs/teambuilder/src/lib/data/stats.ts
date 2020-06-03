@@ -1,6 +1,6 @@
 import {StatMetadata, StatWithLabel} from "../models/api/IStats";
 
-export const stats = {
+export const statIds = {
     HP: 'hp',
     ATK: 'atk',
     DEF: 'def',
@@ -9,29 +9,38 @@ export const stats = {
     SPEED: 'speed'
 };
 
+export const statIdsArray = [
+  statIds.HP,
+  statIds.ATK,
+  statIds.DEF,
+  statIds.SPATK,
+  statIds.SPDEF,
+  statIds.SPEED
+]
+
 export interface ExtendedStatLabelMap {
-  HP: StatMetadata,
-  ATK: StatMetadata,
-  DEF: StatMetadata,
-  SPATK: StatMetadata,
-  SPDEF: StatMetadata,
-  SPEED: StatMetadata
+  hp: StatMetadata,
+  atk: StatMetadata,
+  def: StatMetadata,
+  spatk: StatMetadata,
+  spdef: StatMetadata,
+  speed: StatMetadata
 }
 
 export const statsExtended: ExtendedStatLabelMap = {
-  HP: {
-    statId: stats.HP,
+  hp: {
+    statId: statIds.HP,
     name: {
       english: 'Healthpoints',
       german: 'Kraftpunkte',
     },
     abbr: {
-      english: 'Hp',
-      german: 'Kp'
+      english: 'HP',
+      german: 'KP'
     }
   },
-  ATK: {
-    statId: stats.ATK,
+  atk: {
+    statId: statIds.ATK,
     name: {
       english: 'Attack',
       german: 'Angriff',
@@ -41,8 +50,8 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'Ang'
     }
   },
-  DEF: {
-    statId: stats.DEF,
+  def: {
+    statId: statIds.DEF,
     name: {
       english: 'Defense',
       german: 'Verteidigung',
@@ -52,8 +61,8 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'Vert'
     }
   },
-  SPATK: {
-    statId: stats.SPATK,
+  spatk: {
+    statId: statIds.SPATK,
     name: {
       english: 'Special Attack',
       german: 'Spezial-Angriff',
@@ -63,8 +72,8 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'SpA'
     }
   },
-  SPDEF: {
-    statId: stats.SPDEF,
+  spdef: {
+    statId: statIds.SPDEF,
     name: {
       english: 'Special Defense',
       german: 'Spezial-Verteidigung',
@@ -74,8 +83,8 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'SpV'
     }
   },
-  SPEED: {
-    statId: stats.SPEED,
+  speed: {
+    statId: statIds.SPEED,
     name: {
       english: 'Speed',
       german: 'Initiative',
@@ -89,48 +98,25 @@ export const statsExtended: ExtendedStatLabelMap = {
 
 export const natureStats: StatWithLabel[] = [
   {
-    id: stats.ATK,
-    label: 'Attack'
+    id: statIds.ATK,
+    label: statsExtended.atk.name
   },
   {
-    id: stats.DEF,
-    label: 'Defense'
+    id: statIds.DEF,
+    label: statsExtended.def.name
   },
   {
-    id: stats.SPATK,
-    label: 'Special Attack'
+    id: statIds.SPATK,
+    label: statsExtended.spatk.name
   },
   {
-    id: stats.SPDEF,
-    label: 'Special Defense'
+    id: statIds.SPDEF,
+    label: statsExtended.spdef.name
   },
   {
-    id: stats.SPEED,
-    label: 'Speed'
+    id: statIds.SPEED,
+    label: statsExtended.speed.name
   }
-];
-
-export const natureStatsGerman: StatWithLabel[] = [
-  {
-    id: stats.ATK,
-    label: 'Angriff'
-  },
-  {
-    id: stats.DEF,
-    label: 'Verteidigung'
-  },
-  {
-    id: stats.SPATK,
-    label: 'Spezial-Angriff'
-  },
-  {
-    id: stats.SPDEF,
-    label: 'Spezial-Verteidigung'
-  },
-  {
-    id: stats.SPEED,
-    label: 'Initiative'
-  },
 ];
 
 export const COMPARE_STAT_VALUE = 394; // this is max for a 130 base stat, which is considered as a good compare value

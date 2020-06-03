@@ -1,0 +1,65 @@
+
+<ng-container *ngIf="(selectedPokemon$ | async)?.stats as stats">
+
+  <div class="pd-teambuilder-stat-row pd-teambuilder-stat-head-row">
+
+    <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-label">
+      Stat
+    </div>
+
+    <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-base">
+      <translator2 english="Base" german="Basis"></translator2>
+    </div>
+
+    <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-bar"></div>
+
+    <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-number-input pd-teambuilder-stat-row-evs"
+         translatableTitle
+         englishTitle="Effort Values (EVs) contribute to a Pokémon´s stats. Every 4 EVs on a stat a Pokémon gains 1 stat point on that stat at level 100 (below level 100 less than 1 point). A Pokémon can have up to 510 Evs. A Pokémon should not have more than 252 Evs on a stat as it does not increase stats any further. A Pokémon can gain EVs through either training (defeating wild Pokémon) or Vitamins (Protein, etc.)."
+         germanTitle="Fleißpunkte (zu engl.: Effort Values, kurz: EVs) erhöhen die Statuswerte eines Pokémon. Pro 4 EVs auf einem Stat erhöht sich dieser um genau 1 Punkt auf Level 100 (unter Level 100 um weniger als 1 Pkt.). Ein Pokémon kann maximal 510 EVs verteilen. Ein Pokémon sollte nicht mehr als 252 EVS auf einen Statuswert verteilen, da die Werte sich darüber hinaus nicht weiter erhöhen. Ein Pokémon erhält EVs durch Training (besiegen wilder Pokémon) oder Vitamine (Protein, Zink, etc.)."
+    >
+      EVs
+    </div>
+
+    <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-slider"></div>
+
+    <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-number-input pd-teambuilder-stat-row-dvs">
+      DVs
+    </div>
+
+    <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-value">
+      <translator2 english="Value" german="Wert"></translator2>
+    </div>
+
+  </div>
+
+  <div class="pd-container-row margin-top flex-align-center small-margin-bottom relative-container">
+    <select
+      id="pd-statconfig-dropdown"
+      name="nature"
+      class="pd-select pd-select--small"
+      (change)="stats.applyStatConfig()"
+      [(ngModel)]="stats.statConfig">
+      <option [ngValue]="statConfig" *ngFor="let statConfig of statConfigs">
+        <translator3 [source]="statConfig.name"></translator3>
+      </option>
+    </select>
+  </div>
+
+  <div class="pd-teambuilder-stats-container">
+
+    <pd-single-stat [stat]="stats[statId]"
+                    *ngFor="let statId of statIds">
+      <translator3 [source]="statLabels[statId].abbr"></translator3>
+    </pd-single-stat>
+
+    <div class="pd-container-row flex-align-center small-margin-top no-margin-bottom">
+      <div class="pd-teambuilder-stats-remaining-evs">
+        <translator2 english="Remaining" german="Verfügbar"></translator2>
+        :
+        <b>{{MAX_EVS - stats.evSum}}</b> EVs
+      </div>
+    </div>
+  </div>
+
+</ng-container>

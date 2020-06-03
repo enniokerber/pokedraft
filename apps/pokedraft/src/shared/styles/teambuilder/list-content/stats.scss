@@ -1,0 +1,92 @@
+
+@import "../../utils";
+
+$statrow: 35px;
+$headrow: 42px;
+
+.pd-teambuilder-stats-container {
+  width: 100%;
+  padding: $padding-m 0;
+}
+
+.pd-teambuilder-stat-row {
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "label base  bar   evs   slider  dvs  value";
+  grid-template-columns:
+    50px 50px 0.8fr 130px 1.1fr 130px 60px;
+  grid-template-rows: $statrow;
+  row-gap: 0;
+  color: $grey;
+  overflow: hidden;
+  @include no-user-select;
+}
+
+.pd-teambuilder-stat-head-row {
+  border-radius: $radius;
+  background-color: $primary;
+  color: $white;
+  grid-template-rows: $headrow;
+}
+
+.pd-statconfig-dropdown-label {
+  position: absolute;
+  top: -16px;
+  font-size: $font-size-xs;
+  color: $grey;
+}
+
+.pd-teambuilder-stat-row-griditem {
+  place-self: center;
+}
+
+.pd-teambuilder-stat-row-label {
+  grid-area: label;
+}
+
+.pd-teambuilder-stat-row-base {
+  grid-area: base;
+}
+
+.pd-teambuilder-stat-row-bar {
+  grid-area: bar;
+}
+
+.pd-teambuilder-stat-row-number-input {}
+
+.pd-teambuilder-stat-row-evs {
+  grid-area: evs;
+}
+
+.pd-teambuilder-stat-row-slider {
+  grid-area: slider;
+}
+
+.pd-teambuilder-stat-row-dvs {
+  grid-area: dvs;
+}
+
+.pd-teambuilder-stat-row-value {
+  grid-area: value;
+}
+
+.pd-teambuilder-stat-row-bar-indicator {
+  max-width: 100%;
+  height: 10px;
+  background-color: $primary;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 2px 2px 0 $grey-light;
+}
+
+.pd-teambuilder-stat-row-slider-input {
+  width: 100%;
+}
+
+.pd-teambuilder-stats-remaining-evs {
+  padding: $padding $padding-m;
+  border-radius: $radius;
+  background-color: $primary;
+  color: $white;
+  cursor: default;
+}

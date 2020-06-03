@@ -28,14 +28,14 @@ $labelspace: 5px;
   @include center-relatively-vertically;
   color: $primary;
   font-size: $font-size-xs;
+}
 
-  &--positive-nature {
-    color: $green-1;
-  }
+.pd-positive-nature {
+  color: $green-1;
+}
 
-  &--negative-nature {
-    color: $red-2;
-  }
+.pd-negative-nature {
+  color: $red-2;
 }
 
 .pd-teambuilder-stat-overview-row-name {

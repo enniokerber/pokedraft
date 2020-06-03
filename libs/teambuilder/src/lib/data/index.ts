@@ -10,3 +10,4 @@ export * from './testMoves'
 export * from './testTiers'
 export * from './translator'
 export * from './fallbackMoves';
+export * from './teambuilder-config';

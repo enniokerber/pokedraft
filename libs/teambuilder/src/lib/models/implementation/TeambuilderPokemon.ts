@@ -1,9 +1,8 @@
 import {Nature} from './nature';
 import {Stats} from './stats';
-import {Stat} from './stat';
 import {IAbility, IItem, IMove, IPokemon, ITranslatable} from "../api";
 import {Genders, GenderType, PokemonType} from "../types";
-import {MoveContainer} from "./MoveContainer";
+import {Container, generateContainer} from "./Container";
 
 export class TeambuilderPokemon {
 
@@ -29,9 +28,14 @@ export class TeambuilderPokemon {
   ability: IAbility;
   possibleAbilities: string[];
 
-  moves: MoveContainer[];
+  moves: Container<IMove>[];
 
-  possibleMoves: IMove[]; // all moves this pokemon can learn are stored after first load
+  possibleMoves: IMove[]; // all moves this pokemon can learn are stored after initial load
+
+  // if moves are filled (all 4) the first time, stats component opens automatically
+  // if moves are focused and changed afterwards that does not happen again,
+  // so moves can easily be added without always switching to stats
+  movesFilled: boolean;
 
   constructor(pokemon: IPokemon, id: number) {
     this.teambuilderPokemonId = id;
@@ -49,14 +53,19 @@ export class TeambuilderPokemon {
     this.item = null;
     this.ability = null;
     this.possibleAbilities = pokemon.abilities;
-    this.moves = [new MoveContainer(0), new MoveContainer(1), new MoveContainer(2), new MoveContainer(3)];
+    this.moves = generateContainer<IMove>(4);
     this.possibleMoves = [];
+    this.movesFilled = false;
     this.prepare();
   }
 
   private prepare() {
     this.updateSprite();
     this.stats.applyNature();
+  }
+
+  getTeambuilderId(): number {
+    return this.teambuilderPokemonId;
   }
 
   getName(): ITranslatable {
@@ -83,6 +92,14 @@ export class TeambuilderPokemon {
     return this.possibleAbilities;
   }
 
+  getMoves(): Container<IMove>[] {
+    return this.moves;
+  }
+
+  getPossibleMoves(): IMove[] {
+    return this.possibleMoves;
+  }
+
   updateStats(): void {
     this.stats.update(this.level);
   }
@@ -107,6 +124,14 @@ export class TeambuilderPokemon {
   updateSprite() {
     const baseURL = (this.isShiny()) ? TeambuilderPokemon.shinySpriteURL : TeambuilderPokemon.regularSpriteURL;
     this.sprite = baseURL + this.name.english.toLowerCase() + '.gif';
+  }
+
+  movesWereFilled() {
+    return this.movesFilled;
+  }
+
+  markMovesFilled() {
+    this.movesFilled = true;
   }
 }
 

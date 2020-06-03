@@ -1,11 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
 
-import {
-  IAbility,
-  IMove,
-  IPokemon,
-  BehaviorSubjectStream,
-  TeambuilderPokemon, IItem, SubscriptionContainer, MoveContainer
+import {IAbility, IMove, IPokemon, BehaviorSubjectStream, TeambuilderPokemon, IItem,
+  SubscriptionContainer, Container
 } from "../../models";
 import {TeambuilderEventService} from "../event/teambuilder-event.service";
 import {TeambuilderViewService} from "../view/teambuilder-view.service";
@@ -124,7 +120,7 @@ export class TeambuilderPokemonService implements OnDestroy {
 
   selectNextEmptyMoveslot() {
     const currentPokemon = this.selectedTeampokemon.getValue();
-    const moves: MoveContainer[] = currentPokemon.moves;
+    const moves: Container[] = currentPokemon.moves;
     for (let moveId = 0; moveId < moves.length; moveId++) {
       if (moves[moveId].getData() === null) {
         return this.setNextMoveslot(moveId);
@@ -147,9 +143,19 @@ export class TeambuilderPokemonService implements OnDestroy {
     if (!currentTeampokemon.moves.map(container => container.data).includes(move)) {
       this.setCurrentMoveslotData(move);
       this.selectNextMoveslot();
+      if (!currentTeampokemon.movesWereFilled() && this.moveSetFull()) {
+        currentTeampokemon.markMovesFilled();
+        this.tbView.displayStats();
+      }
     } else {
       console.log('This move is already on the set');
     }
+  }
+
+  moveSetFull(): boolean {
+    return this.selectedTeampokemon.getValue()
+      .getMoves()
+      .every(mc => !!mc.data); // every move is set
   }
 
   resetSearchMove() {

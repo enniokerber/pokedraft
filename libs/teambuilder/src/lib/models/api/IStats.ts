@@ -17,5 +17,5 @@ export interface StatMetadata {
 
 export interface StatWithLabel {
   id: string;
-  label: string;
+  label: ITranslatable;
 }

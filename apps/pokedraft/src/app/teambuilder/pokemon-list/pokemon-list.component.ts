@@ -34,6 +34,8 @@ export class PokemonListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   sortingOptions = SORTING_OPTIONS;
 
+  GERMAN_LANGUAGE = Languages.GERMAN;
+
   tierPipeTrigger = false;
 
   private subscriptions: SubscriptionContainer;
@@ -44,17 +46,10 @@ export class PokemonListComponent implements OnInit, OnDestroy, AfterViewInit {
               private tbLanguage: TeambuilderLanguageService) {
     this.pokemon = this.tbStore.pokemonlist;
     this.tiers = this.tbStore.tiers;
-    this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
+    this.subscriptions = new SubscriptionContainer(
       this.tbLanguage.language.changes$.pipe(distinctUntilChanged()).subscribe(
         (language) => {
-          switch (language) {
-            case Languages.GERMAN:
-              this.tbStore.sortPokemonIfNotSorted('german', 'name');
-              break;
-            default:
-              this.tbStore.sortPokemonIfNotSorted('english', 'name');
-          }
+          this.tbStore.sortPokemonIfNotSorted(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
           this.language = language;
         }
       ),

@@ -5,6 +5,7 @@ export interface TeambuilderDisplayMode {
   showMoveList?: boolean;
   showAbilitiesList?: boolean;
   showItemList?: boolean;
+  showStats?: boolean;
 }
 
 export class DisplayModeBuilder {
@@ -21,7 +22,8 @@ export class DisplayModeBuilder {
       showPokemonList: false,
       showMoveList: false,
       showAbilitiesList: false,
-      showItemList: false
+      showItemList: false,
+      showStats: false
     };
   }
 
@@ -47,6 +49,11 @@ export class DisplayModeBuilder {
 
   displayForm(): DisplayModeBuilder {
     this._configurationObject.showForm = true;
+    return this;
+  }
+
+  displayStats(): DisplayModeBuilder {
+    this._configurationObject.showStats = true;
     return this;
   }
 

@@ -10,8 +10,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Adamant',
       german: 'Hart',
     },
-    increases: stats.ATK,
-    decreases: stats.SPATK
+    increases: stats.atk,
+    decreases: stats.spatk
   },
   {
     id: 6,
@@ -19,8 +19,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Brave',
       german: 'Mutig',
     },
-    increases: stats.ATK,
-    decreases: stats.SPEED
+    increases: stats.atk,
+    decreases: stats.speed
   },
   {
     id: 7,
@@ -28,8 +28,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Lonely',
       german: 'Solo',
     },
-    increases: stats.ATK,
-    decreases: stats.DEF
+    increases: stats.atk,
+    decreases: stats.def
   },
   {
     id: 8,
@@ -37,8 +37,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Naughty',
       german: 'Frech',
     },
-    increases: stats.ATK,
-    decreases: stats.SPDEF
+    increases: stats.atk,
+    decreases: stats.spdef
   },
 
   // +DEF
@@ -48,8 +48,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Bold',
       german: 'Kühn',
     },
-    increases: stats.DEF,
-    decreases: stats.ATK
+    increases: stats.def,
+    decreases: stats.atk
   },
   {
     id: 10,
@@ -57,8 +57,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Impish',
       german: 'Pfiffig',
     },
-    increases: stats.DEF,
-    decreases: stats.SPATK
+    increases: stats.def,
+    decreases: stats.spatk
   },
   {
     id: 11,
@@ -66,8 +66,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Lax',
       german: 'Lasch',
     },
-    increases: stats.DEF,
-    decreases: stats.SPDEF
+    increases: stats.def,
+    decreases: stats.spdef
   },
   {
     id: 12,
@@ -75,8 +75,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Relaxed',
       german: 'Locker',
     },
-    increases: stats.DEF,
-    decreases: stats.SPEED
+    increases: stats.def,
+    decreases: stats.speed
   },
 
   // +SPATK
@@ -87,8 +87,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Mild',
       german: 'Mild',
     },
-    increases: stats.SPATK,
-    decreases: stats.DEF
+    increases: stats.spatk,
+    decreases: stats.def
   },
   {
     id: 14,
@@ -96,8 +96,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Modest',
       german: 'Mäßig',
     },
-    increases: stats.SPATK,
-    decreases: stats.ATK
+    increases: stats.spatk,
+    decreases: stats.atk
   },
   {
     id: 15,
@@ -105,8 +105,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Quiet',
       german: 'Ruhig',
     },
-    increases: stats.SPATK,
-    decreases: stats.SPEED
+    increases: stats.spatk,
+    decreases: stats.speed
   },
   {
     id: 16,
@@ -114,8 +114,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Rash',
       german: 'Hitzig',
     },
-    increases: stats.SPATK,
-    decreases: stats.SPDEF
+    increases: stats.spatk,
+    decreases: stats.spdef
   },
 
   // +SPDEF
@@ -126,8 +126,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Calm',
       german: 'Still',
     },
-    increases: stats.SPDEF,
-    decreases: stats.ATK
+    increases: stats.spdef,
+    decreases: stats.atk
   },
   {
     id: 18,
@@ -135,8 +135,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Careful',
       german: 'Forsch',
     },
-    increases: stats.SPDEF,
-    decreases: stats.SPEED
+    increases: stats.spdef,
+    decreases: stats.speed
   },
   {
     id: 19,
@@ -144,8 +144,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Gentle',
       german: 'Zart',
     },
-    increases: stats.SPDEF,
-    decreases: stats.DEF
+    increases: stats.spdef,
+    decreases: stats.def
   },
   {
     id: 20,
@@ -153,8 +153,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Sassy',
       german: 'Sacht',
     },
-    increases: stats.SPDEF,
-    decreases: stats.SPATK
+    increases: stats.spdef,
+    decreases: stats.spatk
   },
 
 
@@ -166,8 +166,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Hasty',
       german: 'Hastig',
     },
-    increases: stats.SPEED,
-    decreases: stats.DEF
+    increases: stats.speed,
+    decreases: stats.def
   },
   {
     id: 22,
@@ -175,8 +175,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Jolly',
       german: 'Froh',
     },
-    increases: stats.SPEED,
-    decreases: stats.SPATK
+    increases: stats.speed,
+    decreases: stats.spatk
   },
   {
     id: 23,
@@ -184,8 +184,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Naive',
       german: 'Naiv',
     },
-    increases: stats.SPEED,
-    decreases: stats.SPDEF
+    increases: stats.speed,
+    decreases: stats.spdef
   },
   {
     id: 24,
@@ -193,8 +193,8 @@ export const statAffectingNatures: INature[] = [
       english: 'Timid',
       german: 'Scheu',
     },
-    increases: stats.SPEED,
-    decreases: stats.ATK
+    increases: stats.speed,
+    decreases: stats.atk
   }
 ];
 

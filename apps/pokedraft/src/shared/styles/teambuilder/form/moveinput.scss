@@ -14,6 +14,9 @@ move-input {
   border-radius: $radius;
   width: 100%;
   height: 32px;
+  transition: $transition;
+
+  @include clickable;
 
   @each $current-type, $current-type-color in $type-color-list {
     &--#{$current-type} {

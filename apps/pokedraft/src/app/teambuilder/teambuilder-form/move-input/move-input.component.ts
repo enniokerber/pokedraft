@@ -93,7 +93,6 @@ export class MoveInputComponent implements AfterViewInit, OnDestroy {
     if (this.tbPokemon.nextMoveslot.getValue() !== this.moveId) {
       this.tbPokemon.setNextMoveslot(this.moveId);
     }
-    this.openMoveList();
   }
 
   listUp() {

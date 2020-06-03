@@ -21,12 +21,10 @@ export class TeambuilderFormComponent implements OnInit, OnDestroy {
 
   genders: IGender[] = gendersWithLabels;
 
-  currentMoveslot = 0;
-
   private subscriptions: SubscriptionContainer;
 
   constructor(private tbPokemon: TeambuilderPokemonService,
-              private tbViewService: TeambuilderViewService,
+              private tbView: TeambuilderViewService,
               private tbLanguage: TeambuilderLanguageService) {
     this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.selectedTeampokemon.changes$
@@ -45,11 +43,6 @@ export class TeambuilderFormComponent implements OnInit, OnDestroy {
         this.searchPokemon = nameString;
         this.currentPokemonString = nameString;
       }),
-      this.tbPokemon.nextMoveslot.changes$.pipe(
-        filter(id => (id !== -1 && id < 4))
-      ).subscribe(moveslot => {
-        this.currentMoveslot = moveslot;
-      })
     );
   }
 
@@ -65,6 +58,10 @@ export class TeambuilderFormComponent implements OnInit, OnDestroy {
   }
 
   openPokemonList() {
-    this.tbViewService.displayPokemonList();
+    this.tbView.displayPokemonList();
+  }
+
+  openStats() {
+    this.tbView.displayStats();
   }
 }

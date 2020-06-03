@@ -9,6 +9,7 @@
          (keydown.arrowup)="listUp()"
          (keydown.enter)="selectMarkedMove()"
          (focus)="selectMoveSlot()"
+         (click)="openMoveList()"
          [(ngModel)]="_searchName"/>
   <ng-container *ngIf="_move">
     <move-category-image class="pd-teambuilder-move-input--category-image"

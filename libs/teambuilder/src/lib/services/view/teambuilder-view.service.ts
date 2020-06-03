@@ -63,4 +63,12 @@ export class TeambuilderViewService {
         .get()
     )
   }
+
+  displayStats() {
+    this.changeDisplayMode(
+      DisplayModeBuilder.buildFormView()
+        .displayStats()
+        .get()
+    )
+  }
 }

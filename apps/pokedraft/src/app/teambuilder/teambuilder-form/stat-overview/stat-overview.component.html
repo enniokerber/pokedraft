@@ -1,24 +1,4 @@
 
-<stat-overview-row [stat]="stats.hp">
-  <translator3 [source]="statLabels.HP.abbr"></translator3>
-</stat-overview-row>
-
-<stat-overview-row [stat]="stats.atk">
-  <translator3 [source]="statLabels.ATK.abbr"></translator3>
-</stat-overview-row>
-
-<stat-overview-row [stat]="stats.def">
-  <translator3 [source]="statLabels.DEF.abbr"></translator3>
-</stat-overview-row>
-
-<stat-overview-row [stat]="stats.spatk">
-  <translator3 [source]="statLabels.SPATK.abbr"></translator3>
-</stat-overview-row>
-
-<stat-overview-row [stat]="stats.spdef">
-  <translator3 [source]="statLabels.SPDEF.abbr"></translator3>
-</stat-overview-row>
-
-<stat-overview-row [stat]="stats.speed">
-  <translator3 [source]="statLabels.SPEED.abbr"></translator3>
+<stat-overview-row [stat]="stats[statId]" *ngFor="let statId of statsIds">
+  <translator3 [source]="statLabels[statId].abbr"></translator3>
 </stat-overview-row>

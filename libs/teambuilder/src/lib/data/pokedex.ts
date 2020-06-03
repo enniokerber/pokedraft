@@ -2,680 +2,424 @@ import {IPokemon} from "../models/api";
 
 export const pokedex: IPokemon[] = [
   {
-    "nr": 1,
-    "id": "bulbasaur",
+    "nr": 630,
+    "id": "mandibuzz",
     "name": {
-      "english": "Bulbasaur",
-      "german": "Bisasam",
-      "french": "Bulbizarre"
+      "english": "Mandibuzz",
+      "german": "Grypheldis",
+      "french": "Vaututrice"
     },
-    "imgSrc": "001.png",
+    "imgSrc": "630.png",
     "types": [
-      "Grass",
-      "Poison"
+      "Dark",
+      "Flying"
     ],
     "abilities": [
-      "Overgrow",
-      "Chlorophyll"
+      "Big Pecks",
+      "Overcoat",
+      "Weak Armor"
     ],
     "stats": {
-      "hp": 45,
-      "atk": 49,
-      "def": 49,
-      "spatk": 65,
-      "spdef": 65,
-      "speed": 45
-    },
-    "weight": 6.9,
-    "tier": "LC"
-  },
-  {
-    "nr": 2,
-    "id": "ivysaur",
-    "name": {
-      "english": "Ivysaur",
-      "german": "Bisaknosp",
-      "french": "Herbizarre"
-    },
-    "imgSrc": "002.png",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "abilities": [
-      "Overgrow",
-      "Chlorophyll"
-    ],
-    "stats": {
-      "hp": 60,
-      "atk": 62,
-      "def": 63,
-      "spatk": 80,
-      "spdef": 80,
-      "speed": 60
-    },
-    "weight": 13,
-    "tier": "NFE"
-  },
-  {
-    "nr": 3,
-    "id": "venusaur",
-    "name": {
-      "english": "Venusaur",
-      "german": "Bisaflor",
-      "french": "Florizarre"
-    },
-    "imgSrc": "003.png",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "abilities": [
-      "Overgrow",
-      "Chlorophyll"
-    ],
-    "stats": {
-      "hp": 80,
-      "atk": 82,
-      "def": 83,
-      "spatk": 100,
-      "spdef": 100,
+      "hp": 110,
+      "atk": 65,
+      "def": 105,
+      "spatk": 55,
+      "spdef": 95,
       "speed": 80
     },
-    "weight": 100,
-    "tier": "UUBL"
+    "weight": 39.5,
+    "tier": "OU",
+    "requiredGender": "f"
   },
   {
-    "nr": 3,
-    "id": "venusaurmega",
+    "nr": 631,
+    "id": "heatmor",
     "name": {
-      "english": "Venusaur-Mega",
-      "german": "Bisaflor",
-      "french": "Florizarre"
+      "english": "Heatmor",
+      "german": "Furnifraß",
+      "french": "Aflamanoir"
     },
-    "imgSrc": "003.png",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "abilities": [
-      "Thick Fat"
-    ],
-    "stats": {
-      "hp": 80,
-      "atk": 100,
-      "def": 123,
-      "spatk": 122,
-      "spdef": 120,
-      "speed": 80
-    },
-    "weight": 155.5,
-    "tier": "Illegal",
-    "form": "Mega",
-    "requiredItem": "Venusaurite",
-    "originalSpecies": "Venusaur"
-  },
-  {
-    "nr": 4,
-    "id": "charmander",
-    "name": {
-      "english": "Charmander",
-      "german": "Glumanda",
-      "french": "Salamèche"
-    },
-    "imgSrc": "004.png",
+    "imgSrc": "631.png",
     "types": [
       "Fire"
     ],
     "abilities": [
-      "Blaze",
-      "Solar Power"
+      "Gluttony",
+      "Flash Fire",
+      "White Smoke"
     ],
     "stats": {
-      "hp": 39,
-      "atk": 52,
-      "def": 43,
-      "spatk": 60,
-      "spdef": 50,
+      "hp": 85,
+      "atk": 97,
+      "def": 66,
+      "spatk": 105,
+      "spdef": 66,
       "speed": 65
     },
-    "weight": 8.5,
-    "tier": "LC"
+    "weight": 58,
+    "tier": "PU"
   },
   {
-    "nr": 5,
-    "id": "charmeleon",
+    "nr": 632,
+    "id": "durant",
     "name": {
-      "english": "Charmeleon",
-      "german": "Glutexo",
-      "french": "Reptincel"
+      "english": "Durant",
+      "german": "Fermicula",
+      "french": "Fermite"
     },
-    "imgSrc": "005.png",
-    "types": [
-      "Fire"
-    ],
-    "abilities": [
-      "Blaze",
-      "Solar Power"
-    ],
-    "stats": {
-      "hp": 58,
-      "atk": 64,
-      "def": 58,
-      "spatk": 80,
-      "spdef": 65,
-      "speed": 80
-    },
-    "weight": 19,
-    "tier": "NFE"
-  },
-  {
-    "nr": 6,
-    "id": "charizard",
-    "name": {
-      "english": "Charizard",
-      "german": "Glurak",
-      "french": "Dracaufeu"
-    },
-    "imgSrc": "006.png",
-    "types": [
-      "Fire",
-      "Flying"
-    ],
-    "abilities": [
-      "Blaze",
-      "Solar Power"
-    ],
-    "stats": {
-      "hp": 78,
-      "atk": 84,
-      "def": 78,
-      "spatk": 109,
-      "spdef": 85,
-      "speed": 100
-    },
-    "weight": 90.5,
-    "tier": "RU"
-  },
-  {
-    "nr": 6,
-    "id": "charizardmegax",
-    "name": {
-      "english": "Charizard-Mega-X",
-      "german": "Glurak X",
-      "french": "Dracaufeu"
-    },
-    "imgSrc": "006.png",
-    "types": [
-      "Fire",
-      "Dragon"
-    ],
-    "abilities": [
-      "Tough Claws"
-    ],
-    "stats": {
-      "hp": 78,
-      "atk": 130,
-      "def": 111,
-      "spatk": 130,
-      "spdef": 85,
-      "speed": 100
-    },
-    "weight": 110.5,
-    "tier": "Illegal",
-    "form": "Mega-X",
-    "requiredItem": "Charizardite X",
-    "originalSpecies": "Charizard"
-  },
-  {
-    "nr": 6,
-    "id": "charizardmegay",
-    "name": {
-      "english": "Charizard-Mega-Y",
-      "german": "Glurak Y",
-      "french": "Dracaufeu"
-    },
-    "imgSrc": "006.png",
-    "types": [
-      "Fire",
-      "Flying"
-    ],
-    "abilities": [
-      "Drought"
-    ],
-    "stats": {
-      "hp": 78,
-      "atk": 104,
-      "def": 78,
-      "spatk": 159,
-      "spdef": 115,
-      "speed": 100
-    },
-    "weight": 100.5,
-    "tier": "Illegal",
-    "form": "Mega-Y",
-    "requiredItem": "Charizardite Y",
-    "originalSpecies": "Charizard"
-  },
-  {
-    "nr": 6,
-    "id": "charizardgmax",
-    "name": {
-      "english": "Charizard-Gmax",
-      "german": "Glurak",
-      "french": "Dracaufeu"
-    },
-    "imgSrc": "006.png",
-    "types": [
-      "Fire",
-      "Flying"
-    ],
-    "abilities": [
-      "Blaze",
-      "Solar Power"
-    ],
-    "stats": {
-      "hp": 78,
-      "atk": 84,
-      "def": 78,
-      "spatk": 109,
-      "spdef": 85,
-      "speed": 100
-    },
-    "weight": 0,
-    "tier": "(Uber)",
-    "form": "Gmax",
-    "originalSpecies": "Charizard"
-  },
-  {
-    "nr": 7,
-    "id": "squirtle",
-    "name": {
-      "english": "Squirtle",
-      "german": "Schiggy",
-      "french": "Carapuce"
-    },
-    "imgSrc": "007.png",
-    "types": [
-      "Water"
-    ],
-    "abilities": [
-      "Torrent",
-      "Rain Dish"
-    ],
-    "stats": {
-      "hp": 44,
-      "atk": 48,
-      "def": 65,
-      "spatk": 50,
-      "spdef": 64,
-      "speed": 43
-    },
-    "weight": 9,
-    "tier": "LC"
-  },
-  {
-    "nr": 8,
-    "id": "wartortle",
-    "name": {
-      "english": "Wartortle",
-      "german": "Schillok",
-      "french": "Carabaffe"
-    },
-    "imgSrc": "008.png",
-    "types": [
-      "Water"
-    ],
-    "abilities": [
-      "Torrent",
-      "Rain Dish"
-    ],
-    "stats": {
-      "hp": 59,
-      "atk": 63,
-      "def": 80,
-      "spatk": 65,
-      "spdef": 80,
-      "speed": 58
-    },
-    "weight": 22.5,
-    "tier": "NFE"
-  },
-  {
-    "nr": 9,
-    "id": "blastoise",
-    "name": {
-      "english": "Blastoise",
-      "german": "Turtok",
-      "french": "Tortank"
-    },
-    "imgSrc": "009.png",
-    "types": [
-      "Water"
-    ],
-    "abilities": [
-      "Torrent",
-      "Rain Dish"
-    ],
-    "stats": {
-      "hp": 79,
-      "atk": 83,
-      "def": 100,
-      "spatk": 85,
-      "spdef": 105,
-      "speed": 78
-    },
-    "weight": 85.5,
-    "tier": "UU"
-  },
-  {
-    "nr": 9,
-    "id": "blastoisemega",
-    "name": {
-      "english": "Blastoise-Mega",
-      "german": "Turtok",
-      "french": "Tortank"
-    },
-    "imgSrc": "009.png",
-    "types": [
-      "Water"
-    ],
-    "abilities": [
-      "Mega Launcher"
-    ],
-    "stats": {
-      "hp": 79,
-      "atk": 103,
-      "def": 120,
-      "spatk": 135,
-      "spdef": 115,
-      "speed": 78
-    },
-    "weight": 101.1,
-    "tier": "Illegal",
-    "form": "Mega",
-    "requiredItem": "Blastoisinite",
-    "originalSpecies": "Blastoise"
-  },
-  {
-    "nr": 10,
-    "id": "caterpie",
-    "name": {
-      "english": "Caterpie",
-      "german": "Raupy",
-      "french": "Chenipan"
-    },
-    "imgSrc": "010.png",
-    "types": [
-      "Bug"
-    ],
-    "abilities": [
-      "Shield Dust",
-      "Run Away"
-    ],
-    "stats": {
-      "hp": 45,
-      "atk": 30,
-      "def": 35,
-      "spatk": 20,
-      "spdef": 20,
-      "speed": 45
-    },
-    "weight": 2.9,
-    "tier": "LC"
-  },
-  {
-    "nr": 11,
-    "id": "metapod",
-    "name": {
-      "english": "Metapod",
-      "german": "Safcon",
-      "french": "Chrysacier"
-    },
-    "imgSrc": "011.png",
-    "types": [
-      "Bug"
-    ],
-    "abilities": [
-      "Shed Skin"
-    ],
-    "stats": {
-      "hp": 50,
-      "atk": 20,
-      "def": 55,
-      "spatk": 25,
-      "spdef": 25,
-      "speed": 30
-    },
-    "weight": 9.9,
-    "tier": "NFE"
-  },
-  {
-    "nr": 12,
-    "id": "butterfree",
-    "name": {
-      "english": "Butterfree",
-      "german": "Smettbo",
-      "french": "Papilusion"
-    },
-    "imgSrc": "012.png",
+    "imgSrc": "632.png",
     "types": [
       "Bug",
-      "Flying"
-    ],
-    "abilities": [
-      "Compound Eyes",
-      "Tinted Lens"
-    ],
-    "stats": {
-      "hp": 60,
-      "atk": 45,
-      "def": 50,
-      "spatk": 90,
-      "spdef": 80,
-      "speed": 70
-    },
-    "weight": 32,
-    "tier": "NU"
-  },
-  {
-    "nr": 12,
-    "id": "butterfreegmax",
-    "name": {
-      "english": "Butterfree-Gmax",
-      "german": "Smettbo",
-      "french": "Papilusion"
-    },
-    "imgSrc": "012.png",
-    "types": [
-      "Bug",
-      "Flying"
-    ],
-    "abilities": [
-      "Compound Eyes",
-      "Tinted Lens"
-    ],
-    "stats": {
-      "hp": 60,
-      "atk": 45,
-      "def": 50,
-      "spatk": 90,
-      "spdef": 80,
-      "speed": 70
-    },
-    "weight": 0,
-    "tier": "(Uber)",
-    "form": "Gmax",
-    "originalSpecies": "Butterfree"
-  },
-  {
-    "nr": 13,
-    "id": "weedle",
-    "name": {
-      "english": "Weedle",
-      "german": "Hornliu",
-      "french": "Aspicot"
-    },
-    "imgSrc": "013.png",
-    "types": [
-      "Bug",
-      "Poison"
-    ],
-    "abilities": [
-      "Shield Dust",
-      "Run Away"
-    ],
-    "stats": {
-      "hp": 40,
-      "atk": 35,
-      "def": 30,
-      "spatk": 20,
-      "spdef": 20,
-      "speed": 50
-    },
-    "weight": 3.2,
-    "tier": "Illegal"
-  },
-  {
-    "nr": 14,
-    "id": "kakuna",
-    "name": {
-      "english": "Kakuna",
-      "german": "Kokuna",
-      "french": "Coconfort"
-    },
-    "imgSrc": "014.png",
-    "types": [
-      "Bug",
-      "Poison"
-    ],
-    "abilities": [
-      "Shed Skin"
-    ],
-    "stats": {
-      "hp": 45,
-      "atk": 25,
-      "def": 50,
-      "spatk": 25,
-      "spdef": 25,
-      "speed": 35
-    },
-    "weight": 10,
-    "tier": "Illegal"
-  },
-  {
-    "nr": 15,
-    "id": "beedrill",
-    "name": {
-      "english": "Beedrill",
-      "german": "Bibor",
-      "french": "Dardargnan"
-    },
-    "imgSrc": "015.png",
-    "types": [
-      "Bug",
-      "Poison"
+      "Steel"
     ],
     "abilities": [
       "Swarm",
-      "Sniper"
+      "Hustle",
+      "Truant"
     ],
     "stats": {
-      "hp": 65,
-      "atk": 90,
-      "def": 40,
+      "hp": 58,
+      "atk": 109,
+      "def": 112,
+      "spatk": 48,
+      "spdef": 48,
+      "speed": 109
+    },
+    "weight": 33,
+    "tier": "UUBL"
+  },
+  {
+    "nr": 633,
+    "id": "deino",
+    "name": {
+      "english": "Deino",
+      "german": "Kapuno",
+      "french": "Solochi"
+    },
+    "imgSrc": "633.png",
+    "types": [
+      "Dark",
+      "Dragon"
+    ],
+    "abilities": [
+      "Hustle"
+    ],
+    "stats": {
+      "hp": 52,
+      "atk": 65,
+      "def": 50,
       "spatk": 45,
-      "spdef": 80,
-      "speed": 75
+      "spdef": 50,
+      "speed": 38
     },
-    "weight": 29.5,
-    "tier": "Illegal"
+    "weight": 17.3,
+    "tier": "LC"
   },
   {
-    "nr": 16,
-    "id": "pidgey",
+    "nr": 634,
+    "id": "zweilous",
     "name": {
-      "english": "Pidgey",
-      "german": "Taubsi",
-      "french": "Roucool"
+      "english": "Zweilous",
+      "german": "Duodino",
+      "french": "Diamat"
     },
-    "imgSrc": "016.png",
+    "imgSrc": "634.png",
     "types": [
-      "Normal",
-      "Flying"
+      "Dark",
+      "Dragon"
     ],
     "abilities": [
-      "Keen Eye",
-      "Tangled Feet",
-      "Big Pecks"
+      "Hustle"
     ],
     "stats": {
-      "hp": 40,
-      "atk": 45,
-      "def": 40,
-      "spatk": 35,
-      "spdef": 35,
-      "speed": 56
+      "hp": 72,
+      "atk": 85,
+      "def": 70,
+      "spatk": 65,
+      "spdef": 70,
+      "speed": 58
     },
-    "weight": 1.8,
-    "tier": "Illegal"
+    "weight": 50,
+    "tier": "NFE"
   },
   {
-    "nr": 17,
-    "id": "pidgeotto",
+    "nr": 635,
+    "id": "hydreigon",
     "name": {
-      "english": "Pidgeotto",
-      "german": "Tauboga",
-      "french": "Roucoups"
+      "english": "Hydreigon",
+      "german": "Trikephalo",
+      "french": "Trioxhydre"
     },
-    "imgSrc": "017.png",
+    "imgSrc": "635.png",
     "types": [
-      "Normal",
-      "Flying"
+      "Dark",
+      "Dragon"
     ],
     "abilities": [
-      "Keen Eye",
-      "Tangled Feet",
-      "Big Pecks"
+      "Levitate"
     ],
     "stats": {
-      "hp": 63,
-      "atk": 60,
+      "hp": 92,
+      "atk": 105,
+      "def": 90,
+      "spatk": 125,
+      "spdef": 90,
+      "speed": 98
+    },
+    "weight": 160,
+    "tier": "OU"
+  },
+  {
+    "nr": 636,
+    "id": "larvesta",
+    "name": {
+      "english": "Larvesta",
+      "german": "Ignivor",
+      "french": "Pyronille"
+    },
+    "imgSrc": "636.png",
+    "types": [
+      "Bug",
+      "Fire"
+    ],
+    "abilities": [
+      "Flame Body",
+      "Swarm"
+    ],
+    "stats": {
+      "hp": 55,
+      "atk": 85,
       "def": 55,
       "spatk": 50,
-      "spdef": 50,
-      "speed": 71
+      "spdef": 55,
+      "speed": 60
     },
-    "weight": 30,
+    "weight": 28.8,
     "tier": "Illegal"
   },
   {
-    "nr": 18,
-    "id": "pidgeot",
+    "nr": 637,
+    "id": "volcarona",
     "name": {
-      "english": "Pidgeot",
-      "german": "Tauboss",
-      "french": "Roucarnage"
+      "english": "Volcarona",
+      "german": "Ramoth",
+      "french": "Pyrax"
     },
-    "imgSrc": "018.png",
+    "imgSrc": "637.png",
     "types": [
-      "Normal",
+      "Bug",
+      "Fire"
+    ],
+    "abilities": [
+      "Flame Body",
+      "Swarm"
+    ],
+    "stats": {
+      "hp": 85,
+      "atk": 60,
+      "def": 65,
+      "spatk": 135,
+      "spdef": 105,
+      "speed": 100
+    },
+    "weight": 46,
+    "tier": "Illegal"
+  },
+  {
+    "nr": 638,
+    "id": "cobalion",
+    "name": {
+      "english": "Cobalion",
+      "german": "Kobalium",
+      "french": "Cobaltium"
+    },
+    "imgSrc": "638.png",
+    "types": [
+      "Steel",
+      "Fighting"
+    ],
+    "abilities": [
+      "Justified"
+    ],
+    "stats": {
+      "hp": 91,
+      "atk": 90,
+      "def": 129,
+      "spatk": 90,
+      "spdef": 72,
+      "speed": 108
+    },
+    "weight": 250,
+    "tier": "UU",
+    "requiredGender": "n"
+  },
+  {
+    "nr": 639,
+    "id": "terrakion",
+    "name": {
+      "english": "Terrakion",
+      "german": "Terrakium",
+      "french": "Terrakium"
+    },
+    "imgSrc": "639.png",
+    "types": [
+      "Rock",
+      "Fighting"
+    ],
+    "abilities": [
+      "Justified"
+    ],
+    "stats": {
+      "hp": 91,
+      "atk": 129,
+      "def": 90,
+      "spatk": 72,
+      "spdef": 90,
+      "speed": 108
+    },
+    "weight": 260,
+    "tier": "OU",
+    "requiredGender": "n"
+  },
+  {
+    "nr": 640,
+    "id": "virizion",
+    "name": {
+      "english": "Virizion",
+      "german": "Viridium",
+      "french": "Viridium"
+    },
+    "imgSrc": "640.png",
+    "types": [
+      "Grass",
+      "Fighting"
+    ],
+    "abilities": [
+      "Justified"
+    ],
+    "stats": {
+      "hp": 91,
+      "atk": 90,
+      "def": 72,
+      "spatk": 90,
+      "spdef": 129,
+      "speed": 108
+    },
+    "weight": 200,
+    "tier": "RU",
+    "requiredGender": "n"
+  },
+  {
+    "nr": 641,
+    "id": "tornadus",
+    "name": {
+      "english": "Tornadus",
+      "german": "Boreos",
+      "french": "Boréas"
+    },
+    "imgSrc": "641.png",
+    "types": [
       "Flying"
     ],
     "abilities": [
-      "Keen Eye",
-      "Tangled Feet",
-      "Big Pecks"
+      "Prankster",
+      "Defiant"
     ],
     "stats": {
-      "hp": 83,
-      "atk": 80,
-      "def": 75,
-      "spatk": 70,
-      "spdef": 70,
-      "speed": 101
+      "hp": 79,
+      "atk": 115,
+      "def": 70,
+      "spatk": 125,
+      "spdef": 80,
+      "speed": 111
     },
-    "weight": 39.5,
-    "tier": "Illegal"
+    "weight": 63,
+    "tier": "Illegal",
+    "requiredGender": "m"
+  },
+  {
+    "nr": 641,
+    "id": "tornadustherian",
+    "name": {
+      "english": "Tornadus-Therian",
+      "german": "Boreos",
+      "french": "Boréas"
+    },
+    "imgSrc": "641.png",
+    "types": [
+      "Flying"
+    ],
+    "abilities": [
+      "Regenerator"
+    ],
+    "stats": {
+      "hp": 79,
+      "atk": 100,
+      "def": 80,
+      "spatk": 110,
+      "spdef": 90,
+      "speed": 121
+    },
+    "weight": 63,
+    "tier": "Illegal",
+    "form": "Therian",
+    "requiredGender": "m",
+    "originalSpecies": "Tornadus"
+  },
+  {
+    "nr": 642,
+    "id": "thundurus",
+    "name": {
+      "english": "Thundurus",
+      "german": "Voltolos",
+      "french": "Fulguris"
+    },
+    "imgSrc": "642.png",
+    "types": [
+      "Electric",
+      "Flying"
+    ],
+    "abilities": [
+      "Prankster",
+      "Defiant"
+    ],
+    "stats": {
+      "hp": 79,
+      "atk": 115,
+      "def": 70,
+      "spatk": 125,
+      "spdef": 80,
+      "speed": 111
+    },
+    "weight": 61,
+    "tier": "Illegal",
+    "requiredGender": "m"
+  },
+  {
+    "nr": 681,
+    "id": "aegislash",
+    "name": {
+      "english": "Aegislash",
+      "german": "Durengard",
+      "french": "Exagide"
+    },
+    "imgSrc": "681.png",
+    "types": [
+      "Steel",
+      "Ghost"
+    ],
+    "abilities": [
+      "Stance Change"
+    ],
+    "stats": {
+      "hp": 60,
+      "atk": 50,
+      "def": 140,
+      "spatk": 50,
+      "spdef": 140,
+      "speed": 60
+    },
+    "weight": 53,
+    "tier": "OU"
   },
 ]

@@ -1,0 +1,12 @@
+<div class="pd-number-chooser2">
+  <div class="pd-number-chooser-action2 pd-minus2" (click)="decValue()"></div>
+  <input #evInput
+         type="number"
+         class="pd-number-chooser-display2 pd-number-chooser-display2--input --remove-number-input-appearance"
+         [min]="min"
+         [max]="max"
+         [class.pd-number-chooser-value-maxed]="stat.evs >= max"
+         (input)="checkValidity(evInput.value);"
+         [value]="stat.evs"/>
+  <div class="pd-number-chooser-action2 pd-plus2" (click)="incValue()"></div>
+</div>

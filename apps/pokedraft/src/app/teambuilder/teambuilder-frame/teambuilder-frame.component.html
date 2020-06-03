@@ -17,9 +17,9 @@
 
       <!-- all lists need to be on screen at all times so the list components dont have to be recreated and rendered every time which would cause huge delays -->
       <div class="pd-teambuilder-list-container">
+
         <pokemon-list class="pd-teambuilder-list"
-                      [class.pd-teambuilder-list--show]="displayMode.showPokemonList">
-        </pokemon-list>
+                      [class.pd-teambuilder-list--show]="displayMode.showPokemonList"></pokemon-list>
 
         <pd-item-list class="pd-teambuilder-list"
                       [class.pd-teambuilder-list--show]="displayMode.showItemList"></pd-item-list>
@@ -29,6 +29,10 @@
 
         <abilities-list class="pd-teambuilder-list"
                         [class.pd-teambuilder-list--show]="displayMode.showAbilitiesList"></abilities-list>
+
+        <pd-stats class="pd-teambuilder-list"
+                  [class.pd-teambuilder-list--show]="displayMode.showStats"></pd-stats>
+
       </div>
 
     </ng-container>

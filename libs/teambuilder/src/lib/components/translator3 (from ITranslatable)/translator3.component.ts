@@ -15,7 +15,7 @@ but it uses an ITranslatable object for translation wheras Translator2 received 
 })
 export class Translator3Component {
 
-  @Input() set source(translatable: ITranslatable) {
+  @Input() set source(translatable: ITranslatable | any) {
     this.content$ = this.tbLanguage.createTranslatorStream(translatable);
   }
 

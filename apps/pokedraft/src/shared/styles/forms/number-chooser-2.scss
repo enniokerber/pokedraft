@@ -10,7 +10,6 @@ $line-thickness: 2px;
 }
 
 .pd-darker-number-chooser2 {
-
   .pd-number-chooser-action2 {
     border-color: $grey;
 
@@ -24,7 +23,7 @@ $line-thickness: 2px;
     }
   }
 
-  .valueGreaterZero {
+  .pd-number-chooser-value-maxed {
     color: $primary2;
   }
 }
@@ -91,14 +90,35 @@ $line-thickness: 2px;
 .pd-number-chooser-display2 {
   @include flex-center;
   @include no-user-select;
-  width: 32px;
+  width: 46px;
   height: 100%;
 
   font-size: $font-size-l;
   color: $grey;
   transition: $transition;
+
+  &--input {
+
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid transparent;
+    cursor: text;
+    outline: none;
+
+    &:hover:not(:focus) {
+      border-color: $primary;
+      color: $primary;
+    }
+
+    &:focus {
+      color: $primary2;
+      border-bottom: 2px solid $primary2;
+    }
+
+  }
 }
 
-.valueGreaterZero {
+.pd-number-chooser-value-maxed {
   color: $secondary;
 }
+

@@ -24,6 +24,8 @@ import { SearchItemInputComponent } from './teambuilder-form/search-item-input/s
 import { SearchAbilityInputComponent } from './teambuilder-form/search-ability-input/search-ability-input.component';
 import { ItemListRowContainerComponent } from './item-list/item-list-row-container/item-list-row-container.component';
 import { StatsComponent } from './stats/stats.component';
+import { SingleStatComponent } from './stats/single-stat/single-stat.component';
+import { EvInputComponent } from './stats/single-stat/ev-input/ev-input.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { StatsComponent } from './stats/stats.component';
     SearchItemInputComponent,
     SearchAbilityInputComponent,
     ItemListRowContainerComponent,
-    StatsComponent
+    StatsComponent,
+    SingleStatComponent,
+    EvInputComponent
   ],
   imports: [
     CommonModule,

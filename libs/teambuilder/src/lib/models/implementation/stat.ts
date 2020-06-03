@@ -1,20 +1,29 @@
+import {Stats} from "./stats";
+import {MAX_DVS, MAX_EVS_PER_STAT} from "../../data";
 
 export class Stat {
 
-    value: number;
-    modifiedValue: number;
-    stage: number;
-    evs: number;
-    dvs: number;
-    natureValue: number;
+    public value: number;
+    public modifiedValue: number;
+    public stage: number;
+    public evs: number;
+    public dvs: number;
+    public natureValue: number;
 
-    constructor(public base: number) {
+    constructor(public base: number,
+                public allStats: Stats) {
         this.base = base;
         this.stage = 0;
-        this.evs = 252;
-        this.dvs = 31;
+        this.evs = 0;
+        this.dvs = MAX_DVS;
         this.natureValue = 1;
+        this.modifiedValue = 0;
+        this.allStats = allStats;
         this.update();
+    }
+
+    cannotGoHigher() {
+      return this.allStats.evSumMaxed || this.getEvs() === MAX_EVS_PER_STAT;
     }
 
     getValue(): number {
@@ -33,8 +42,43 @@ export class Stat {
         return this.evs;
     }
 
+    setEvs(evs: number) {
+      if (!evs) { this.evs = 0; return; }
+      this.evs = evs;
+    }
+
+    setEvsAndUpdate(evs: number): void {
+      this.setEvs(evs);
+      this.update();
+      this.allStats.calculateEvSum();
+    }
+
+    setEvsFromSlider(evs: number): void {
+      if (evs < this.getEvs()) {
+        // lowering is always ok
+        return this.setEvsAndUpdate(evs);
+      } else {
+        // otherwise calc the space between the new and the current evs
+        const evSum = this.allStats.getEvSum();
+        const diff = Math.abs(this.getEvs() - evs);
+
+        // and check if the added points will overflow the MAX_EVS
+        if (evSum + diff <= this.allStats.MAX_EVS) {
+          return this.setEvsAndUpdate(evs);
+        // if it would overflow, add as much as there is space
+        } else {
+          return this.setEvsAndUpdate(this.getEvs() + this.allStats.MAX_EVS - this.allStats.getEvSum());
+        }
+      }
+    }
+
     getDvs(): number {
         return this.dvs;
+    }
+
+    setDvs(dvs: number): void {
+      if (!dvs) { this.dvs = MAX_DVS; return; }
+      this.dvs = dvs;
     }
 
     positiveNature(): void {
@@ -43,7 +87,7 @@ export class Stat {
     }
 
     neutralNature(): void {
-        this.natureValue = 1;
+       this.natureValue = 1;
        this.update();
     }
 
@@ -87,5 +131,18 @@ export class Stat {
 
         this.modifiedValue = Math.floor(this.value * (a / b));
     }
+}
+
+export class HPStat extends Stat {
+
+  constructor(base: number, stats: Stats) {
+    super(base, stats);
+  }
+
+  // HP Foumlar
+  update(level: number = 100): void {
+    const factor1 = Math.floor(2 * this.base + this.dvs + Math.floor(this.evs / 4) * level)
+    this.value = factor1 + level + 10;
+  }
 
 }

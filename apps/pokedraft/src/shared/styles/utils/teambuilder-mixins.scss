@@ -8,22 +8,16 @@
   box-shadow: $tb-box-shadow;
 }
 
-@mixin pd-teambuilder-list-row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: $tablehead-height - 4px;
-  border-radius: $radius;
-  @include no-user-select;
-}
+@mixin clickable {
+  transition: $transition;
 
-@mixin pd-teambuilder-list-row--selectable {
   &:hover {
-    cursor: pointer;
-    background-color: $tbbackground;
+    border-color: $primary;
   }
 
   &:active {
-    background-color: $grey-lightest;
+    transition: 0s;
+    border-color: $primary2;
+    box-shadow: 0 0 4px 0 $primary inset;
   }
 }

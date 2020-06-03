@@ -7,7 +7,7 @@ export * from './implementation/nature';
 export * from './implementation/basestats';
 export * from './implementation/TeambuilderEntityCollection';
 export * from './implementation/DividedTeambuilderEntityCollection';
-export * from './implementation/MoveContainer';
+export * from './implementation/Container';
 export * from './implementation/TeambuilderPokemon';
 export * from './implementation/pokemonbase';
 

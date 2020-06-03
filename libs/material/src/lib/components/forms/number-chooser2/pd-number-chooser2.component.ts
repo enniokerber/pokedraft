@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'pd-number-chooser2',
   templateUrl: './pd-number-chooser2.component.html',
   styleUrls: ['./pd-number-chooser2.component.scss']
 })
-export class PdNumberChooser2Component implements OnInit {
+export class PdNumberChooser2Component {
 
   @Input()
   value;
@@ -29,17 +29,13 @@ export class PdNumberChooser2Component implements OnInit {
   darker;
 
   @Output()
-  valueChange = new EventEmitter();
-
-  @Output()
-  change = new EventEmitter();
+  valueChange = new EventEmitter<number>();
 
 
   incValue(): void {
     if (!this.disabled) {
       const max = this.max;
-      const stepsize = this.stepsize;
-      this.value = (this.value === max) ? max : this.value + stepsize;
+      this.value = (this.value === max) ? max : this.value + this.stepsize;
       this.emitValue();
     }
   }
@@ -47,20 +43,15 @@ export class PdNumberChooser2Component implements OnInit {
   decValue(): void {
     if (!this.disabled) {
       const min = this.min;
-      const stepsize = this.stepsize;
-      this.value = (this.value === min) ? min : this.value - stepsize;
+      this.value = (this.value === min) ? min : this.value - this.stepsize;
       this.emitValue();
     }
   }
 
   emitValue(): void {
     this.valueChange.emit(this.value);
-    this.change.emit();
   }
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

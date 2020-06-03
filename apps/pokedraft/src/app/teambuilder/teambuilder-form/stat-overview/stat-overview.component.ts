@@ -1,9 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {
-  ExtendedStatLabelMap,
-  Stats,
-  statsExtended,
-} from "@pokedraft/teambuilder";
+import {ExtendedStatLabelMap, statIdsArray, Stats, statsExtended} from "@pokedraft/teambuilder";
 
 @Component({
   selector: 'stat-overview',
@@ -14,17 +10,14 @@ export class StatOverviewComponent {
 
   @Input() stats: Stats;
 
-  @Input() set level(level: number) {
-    if (typeof level === 'number') {
-      this.stats.update(level);
-    } else {
-      this.stats.update(100);
-    }
-  }
+  statLabels: ExtendedStatLabelMap;
 
-  statLabels: ExtendedStatLabelMap = statsExtended;
+  statsIds: string[];
 
   constructor() {
+    this.stats = null;
+    this.statLabels = statsExtended;
+    this.statsIds = statIdsArray;
   }
 
 }

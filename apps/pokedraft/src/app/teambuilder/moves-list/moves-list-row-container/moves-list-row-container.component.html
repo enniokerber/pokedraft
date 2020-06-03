@@ -1,4 +1,4 @@
-<div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable pd-teambuilder-list-row--scalable"
+<div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable"
      [ngClass]="{
         'pd-teambuilder-list-row--marked': index === markedId
         }"
@@ -38,7 +38,10 @@
   </div>
 
   <div class="pd-teambuilder-list-cell --tb-move-desc-cell --cell-align-left">
-    <translator3 [source]="move.description"></translator3>
+    <translator3 [source]="move.shortDescription" *ngIf="move.shortDescription.english; else longDesc"></translator3>
+    <ng-template #longDesc>
+      <translator3 [source]="move.description"></translator3>
+    </ng-template>
   </div>
 
 </div>

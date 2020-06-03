@@ -77,8 +77,8 @@
                    value="255"
                    type="number"
                    translatableTitle
-                   englishTitle="Happiness of the Pokémon. Ranges from 1 - 255. Certain Pokémon evolve when reaching a certain level of happiness. The higher the stronger the attack Return is. The lower the stronger the attack Frustration is."
-                   germanTitle="Freundschaftswert des Pokémon. Bewegt sich zwischen 1 und 255. Manche Pokémon entwickeln sich, wenn sie ein bestimmtes Level an Freundschaft erreichen. Je höher der Wert, desto stärker ist die Attacke Rückkehr. Je niedriger, destro stärker ist die Attacke Frustration."
+                   englishTitle="Happiness of the Pokémon. Ranges from 1 - 255. Certain Pokémon evolve when reaching a certain level of happiness. The higher the stronger is the Return-Attack. The lower the stronger is the Frustration-Attack."
+                   germanTitle="Der Freundschaftswert des Pokémon. Bewegt sich zwischen 1 und 255. Manche Pokémon entwickeln sich, wenn sie ein bestimmtes Level an Freundschaft erreichen. Je höher der Wert, desto stärker ist die Attacke Rückkehr. Je niedriger, desto stärker ist die Attacke Frustration."
                    maxlength="3">
           </div>
         </div>
@@ -111,10 +111,8 @@
 
     <div class="pd-teambuilder-form-fraction --stats-fraction">
 
-      <div class="pd-teambuilder-form-stat-container">
-        <stat-overview [stats]="pokemon.stats"
-                       [level]="pokemon.level">
-        </stat-overview>
+      <div class="pd-teambuilder-form-stat-container" (click)="openStats()">
+        <stat-overview [stats]="pokemon.stats"></stat-overview>
       </div>
 
       <pd-nature-dropdown [pokemon]="pokemon" (natureChange)="pokemon.changeNatureById($event)"></pd-nature-dropdown>
