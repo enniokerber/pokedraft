@@ -4,8 +4,6 @@ import {ITranslatable} from "./ITranslatable";
 
 export interface IPokemon {
 
-  nr: number; // Pokédex Number of the Pokémon
-  id: string;
   name: ITranslatable;
   imgSrc: string; // Src of the Pokémons icon File in the assets directory
   types: PokemonType[]; // Types of the Pokémon
@@ -13,6 +11,7 @@ export interface IPokemon {
   stats: IStats;
   weight: number; // kg
   tier: string;
+  moves: string[];
   form?: string;
   originalSpecies?: string;
   requiredGender?: string;

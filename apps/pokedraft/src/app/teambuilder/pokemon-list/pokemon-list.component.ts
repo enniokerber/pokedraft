@@ -80,12 +80,6 @@ export class PokemonListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   sortPokemonlist(sortBy: string, isStat = false): void {
     this.tbView.showTiers.update(true);
-    if (sortBy === 'name') {
-      switch (this.language) {
-        case Languages.GERMAN: sortBy = 'german';
-        break;
-      }
-    }
     this.tbStore.sortPokemon(sortBy, (isStat ? 'stats' : ''));
     this.sortingSideEffects();
   }

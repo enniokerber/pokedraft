@@ -1,4 +1,5 @@
-[{
+[
+  {
   "id": "missingno",
   "moves": ["blizzard", "bubblebeam", "doubleedge", "earthquake", "fissure", "icebeam", "megakick", "megapunch", "psychic", "rage", "razorwind", "rest", "seismictoss", "skyattack", "submission", "substitute", "swordsdance", "takedown", "teleport", "thunder", "thunderwave", "toxic", "triattack", "watergun"]
 }, {

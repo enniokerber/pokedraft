@@ -49,7 +49,9 @@
 </div>
 
 
-<div class="pd-teambuilder-list-content" *ngIf="moves.firstHalf.length > 0 || moves.secondHalf.length > 0;">
+<div #moveListContainer
+     class="pd-teambuilder-list-content"
+     *ngIf="moves.firstHalf.length > 0 || moves.secondHalf.length > 0;">
 
   <div class="pd-teambuilder-list-sub-container">
     <div class="pd-teambuilder-list-subheading-head">
@@ -72,8 +74,8 @@
     <div class="pd-teambuilder-list-subheading-head">
       <span class="pd-teambuilder-list-subheading-title"
             translatableTitle
-            englishTitle="These moves are usually not used by the majority of players, but sometimes they can be used for unique strategies."
-            germanTitle="Diese Attacken werden vom Pokémon zwar beherrscht, aber vom Großteil der Spieler nicht genutzt. Manchmal werden diese Attacken jedoch für einzigartige Strategien verwendet oder werden durch bestimmte Items oder Fähigkeiten spielbar.">
+            englishTitle="These moves are typically not used by the majority of players, but sometimes they can be used for unique strategies."
+            germanTitle="Diese Attacken werden vom Pokémon zwar beherrscht, aber vom Großteil der Spieler eher selten genutzt. Manchmal werden diese Attacken jedoch für einzigartige Strategien verwendet oder werden durch bestimmte Items oder Fähigkeiten spielbar.">
         <translator2 english="Usually Useless Moves" german="Normalerweise unnütze Attacken"></translator2>
       </span>
     </div>

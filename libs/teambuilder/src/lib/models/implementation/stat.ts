@@ -1,5 +1,5 @@
 import {Stats} from "./stats";
-import {MAX_DVS, MAX_EVS_PER_STAT} from "../../data";
+import {MAX_DVS, MAX_EVS_PER_STAT, MAX_EVS_TOTAL} from "../../data";
 
 export class Stat {
 
@@ -30,6 +30,10 @@ export class Stat {
         return this.value;
     }
 
+    setValue(value: number): void {
+      this.value = value;
+    }
+
     getModifiedValue(): number {
         return this.modifiedValue;
     }
@@ -58,18 +62,36 @@ export class Stat {
         // lowering is always ok
         return this.setEvsAndUpdate(evs);
       } else {
+
+        if (evs > MAX_EVS_PER_STAT) {
+          evs = MAX_EVS_PER_STAT;
+        }
+
         // otherwise calc the space between the new and the current evs
         const evSum = this.allStats.getEvSum();
         const diff = Math.abs(this.getEvs() - evs);
 
         // and check if the added points will overflow the MAX_EVS
-        if (evSum + diff <= this.allStats.MAX_EVS) {
+        if (evSum + diff <= MAX_EVS_TOTAL) {
           return this.setEvsAndUpdate(evs);
         // if it would overflow, add as much as there is space
         } else {
-          return this.setEvsAndUpdate(this.getEvs() + this.allStats.MAX_EVS - this.allStats.getEvSum());
+          return this.setEvsAndUpdate(this.getEvs() + MAX_EVS_TOTAL - this.allStats.getEvSum());
         }
       }
+    }
+
+    setEvsFromInput(evs: number) {
+      // if ev value is invalid or lower than allowed, set it to min
+      if (!evs || Number.isNaN(evs) || evs < 0) {
+        return this.setEvsFromSlider(0);
+      }
+
+      // sometimes there a additional zeros in front of the number,
+      // which have to be cut off, so the input doesnt look stupid
+      let stringValue = evs.toString();
+      while (stringValue.charAt(0) === '0') { stringValue = stringValue.substr(1); }
+      return this.setEvsFromSlider(Number(stringValue));
     }
 
     getDvs(): number {
@@ -113,8 +135,8 @@ export class Stat {
     }
 
     update(level: number = 100): void {
-        const factor1 = Math.floor( (2 * this.base + this.dvs + Math.floor(this.evs / 4) ) * level);
-        this.value = Math.floor(((factor1 / 100) + 5) * this.natureValue);
+        const factor1 = Math.floor((2 * this.base + this.dvs + Math.floor(this.evs / 4)) * level / 100 + 5);
+        this.setValue(Math.floor(factor1 * this.natureValue));
     }
 
     modify(): void {
@@ -141,8 +163,8 @@ export class HPStat extends Stat {
 
   // HP Foumlar
   update(level: number = 100): void {
-    const factor1 = Math.floor(2 * this.base + this.dvs + Math.floor(this.evs / 4) * level)
-    this.value = factor1 + level + 10;
+    const factor1 = (2 * this.base + this.dvs + Math.floor(this.evs / 4)) * level;
+    this.value = Math.floor(factor1 / 100) + level + 10;
   }
 
 }

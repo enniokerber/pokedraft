@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig } from './firebase.config';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import { TrySignInComponent } from './try-sign-in/try-sign-in.component';
 import {LayoutModule} from "./layout/layout.module";
@@ -21,6 +21,7 @@ import {AngularFireFunctionsModule, FUNCTIONS_REGION} from "@angular/fire/functi
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireFunctionsModule,

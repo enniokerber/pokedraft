@@ -37,10 +37,7 @@ export class SearchAbilityInputComponent implements AfterViewInit, OnDestroy {
           tap(ability => this.currentAbility = ability),
           switchMap(ability => {
             if (ability) {
-              return this.tbLanguage.createTranslatorStream({
-                english: ability.name,
-                german: ability.german
-              });
+              return this.tbLanguage.createTranslatorStream(ability.name);
             } else {
               return of('');
             }
@@ -65,10 +62,7 @@ export class SearchAbilityInputComponent implements AfterViewInit, OnDestroy {
 
   resetSearchInput() {
     if (this.currentAbility) {
-      this.searchAbility = this.tbLanguage.translateFromTranslatable({
-        english: this.currentAbility.name,
-        german: this.currentAbility.german
-      });
+      this.searchAbility = this.tbLanguage.translateFromTranslatable(this.currentAbility.name);
     }
   }
 

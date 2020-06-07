@@ -110,13 +110,12 @@ export class TeambuilderEntityCollection<Entity = any> {
       }
       default: {
         if (parentProperty) {
-          this.current = this.filtered.sort((a, b) => a[parentProperty][by].localeCompare(b[parentProperty][by]));
+          this.current = this.filtered.sort((a, b) => (a[parentProperty][by] || '').localeCompare(b[parentProperty][by] || ''));
         } else {
           this.current = this.filtered.sort((a, b) => a[by].localeCompare(b[by]));
         }
       }
     }
-    console.log('Sorted');
   }
 
   filterByString(searchStr: string, propLevel1: string, propLevel2?: string) {

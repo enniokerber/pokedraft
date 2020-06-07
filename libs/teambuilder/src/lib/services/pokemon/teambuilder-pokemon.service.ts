@@ -168,14 +168,6 @@ export class TeambuilderPokemonService implements OnDestroy {
     this.selectTeampokemon(currentTeampokemon);
   }
 
-  updateSelectedPokemonsMoves(moves: IMove[]) {
-    const selectedPokemon = this.selectedTeampokemon.getValue();
-    if (selectedPokemon !== null) {
-      selectedPokemon.possibleMoves = moves;
-      this.selectTeampokemon(selectedPokemon);
-    }
-  }
-
   // ITEM
 
   updateSelectedPokemonsItem(item: IItem) {

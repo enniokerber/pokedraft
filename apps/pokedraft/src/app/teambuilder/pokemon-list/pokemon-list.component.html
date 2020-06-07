@@ -1,7 +1,5 @@
 <div class="pd-teambuilder-list-row pd-teambuilder-list-header">
-  <div class="pd-teambuilder-table-head-cell --tb-name-cell --action-cell"
-       (click)="sortPokemonlist(sortingOptions.NAME)"
-       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.NAME, $event)">
+  <div class="pd-teambuilder-table-head-cell --tb-name-cell --action-cell">
     Name
   </div>
 
@@ -75,7 +73,7 @@
 
     <div class="pd-teambuilder-list-subheading-head">
       <span class="pd-teambuilder-list-subheading-title"
-            [title]="language === GERMAN_LANGUAGE && tier.descriptionGerman ? tier.descriptionGerman : tier.description">
+            [translatableTitle2]="tier.description">
         <span *ngIf="tier.id === tier.name; else withDesc"> {{tier.id}} </span>
         <ng-template #withDesc>
           <span> {{tier.id + ' - ' + tier.name}} </span>

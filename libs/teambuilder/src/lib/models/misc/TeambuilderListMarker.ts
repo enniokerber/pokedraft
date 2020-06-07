@@ -35,6 +35,10 @@ export class TeambuilderListMarker<EntityType> {
       this.index--;
     }
   }
+
+  reset() {
+    this.index = 0;
+  }
 }
 
 export class TeambuilderListMarkerForDividedEntityCollection<EntityType = any> extends TeambuilderListMarker<EntityType> {
@@ -71,6 +75,11 @@ export class TeambuilderListMarkerForDividedEntityCollection<EntityType = any> e
 
   dec() {
     super.dec();
+    this.updateMarkerForSecondHalf();
+  }
+
+  reset() {
+    super.reset();
     this.updateMarkerForSecondHalf();
   }
 

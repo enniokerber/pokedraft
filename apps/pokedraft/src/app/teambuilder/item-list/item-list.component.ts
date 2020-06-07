@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {
   TeambuilderViewService,
-  testItems,
   IItem,
   TeambuilderEventService,
   SubscriptionContainer,
   TeambuilderPokemonService,
   DividedTeambuilderEntityCollection,
   ITEM_DIVIDER_PROP,
-  TeambuilderLanguageService, TeambuilderListMarkerForDividedEntityCollection
+  TeambuilderLanguageService, TeambuilderListMarkerForDividedEntityCollection, TeambuilderStoreService
 } from "@pokedraft/teambuilder";
 
 @Component({
@@ -17,6 +16,8 @@ import {
   styleUrls: ['./item-list.component.scss']
 })
 export class ItemListComponent implements OnInit {
+
+  @ViewChild('itemListContainer') itemListContainerElement: ElementRef;
 
   items: DividedTeambuilderEntityCollection<IItem>;
 
@@ -27,8 +28,10 @@ export class ItemListComponent implements OnInit {
   constructor(private tbView: TeambuilderViewService,
               private tbEvents: TeambuilderEventService,
               private tbPokemon: TeambuilderPokemonService,
-              private tbLanguage: TeambuilderLanguageService) {
-    this.items = new DividedTeambuilderEntityCollection<IItem>(testItems, ITEM_DIVIDER_PROP);
+              private tbLanguage: TeambuilderLanguageService,
+              private tbStore: TeambuilderStoreService) {
+    this.items = new DividedTeambuilderEntityCollection<IItem>(this.tbStore.getItems(), ITEM_DIVIDER_PROP);
+    this.items.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
     this.marker = new TeambuilderListMarkerForDividedEntityCollection<IItem>(this.items);
     this.subscriptions = new SubscriptionContainer(
       this.tbEvents.itemListEvents.search.changes$
@@ -46,5 +49,11 @@ export class ItemListComponent implements OnInit {
 
   selectItem(item: IItem) {
     this.tbPokemon.updateSelectedPokemonsItem(item);
+  }
+
+  scrollTop() {
+    if (this.itemListContainerElement) {
+      this.itemListContainerElement.nativeElement.scrollTop = 0;
+    }
   }
 }

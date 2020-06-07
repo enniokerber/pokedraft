@@ -30,6 +30,11 @@ $list-height: 460px;
   &--show {
     z-index: 1
   }
+
+  &::-webkit-scrollbar {
+    display: none;
+    height: 0;
+  }
 }
 
 .pd-teambuilder-list-container-row {

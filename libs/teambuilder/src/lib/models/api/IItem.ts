@@ -2,11 +2,11 @@ import {ITranslatable} from "./ITranslatable";
 import {PokemonType} from "../types";
 
 export interface IItem {
-  id: string;
+  id: number,
   name: ITranslatable;
   description: ITranslatable;
   imgSrc?: string;
-  flingBasePower: number;
+  flingBasePower?: number;
   berry?: IBerry;
   isUnreleased?: boolean;
   popular?: boolean;
@@ -22,3 +22,5 @@ export interface INaturalGift {
   basePower: number;
   type: PokemonType;
 }
+
+export type ItemRecord = Record<string, IItem>;

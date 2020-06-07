@@ -6,8 +6,7 @@ import {
   TeambuilderEventService,
   TeambuilderLanguageService,
   TeambuilderListMarker,
-  TeambuilderPokemonService,
-  testAbilities
+  TeambuilderPokemonService, TeambuilderStoreService
 } from "@pokedraft/teambuilder";
 import {debounceTime} from "rxjs/operators";
 
@@ -28,21 +27,20 @@ export class AbilitiesListComponent implements OnInit, OnDestroy {
 
   constructor(private tbPokemon: TeambuilderPokemonService,
               private tbEvents: TeambuilderEventService,
-              private tbLanguage: TeambuilderLanguageService) {
+              private tbLanguage: TeambuilderLanguageService,
+              private tbStore: TeambuilderStoreService) {
     this.abilities = new TeambuilderEntityCollection<IAbility>([]);
     this.marker = new TeambuilderListMarker<IAbility>(this.abilities);
     this.selectedTeampokemonsAbility = null;
     this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.selectedTeampokemon.changes$
         .subscribe(pokemon => {
-          let abilities = [];
           if (pokemon !== null) {
-            this.selectedTeampokemonsAbility = pokemon.ability;
-            abilities = testAbilities.filter(ability => pokemon.getPossibleAbilities().includes(ability.name));
+            this.selectedTeampokemonsAbility = pokemon.getAbility();
           } else {
             this.selectedTeampokemonsAbility = null;
           }
-          this.abilities.setEntities(abilities);
+          this.abilities.setEntities(this.tbStore.getPokemonsAbilities(pokemon));
         }),
       this.tbEvents.abilityListEvents.search.changesNotEmpty$
         .pipe(debounceTime(250))

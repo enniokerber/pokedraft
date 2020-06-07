@@ -11,10 +11,7 @@ $teambar-item: 125px;
   background-color: $white;
   border-radius: $radius;
   box-shadow: $tb-box-shadow;
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  &::-webkit-scrollbar { display: none; }
+  overflow: visible;
 }
 
 .pd-teambuilder-teambar-item-wrapper {
@@ -82,6 +79,7 @@ $teambar-item: 125px;
 
 .pd-teambuilder-teambar-item-half--top-half {
   height: 55%;
+  align-items: flex-end;
 }
 
 

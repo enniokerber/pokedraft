@@ -5,8 +5,7 @@ import {map} from "rxjs/operators";
 
 @Component({
   selector: 'pd-item-list-row-container',
-  templateUrl: './item-list-row-container.component.html',
-  styleUrls: ['./item-list-row-container.component.css']
+  templateUrl: './item-list-row-container.component.html'
 })
 export class ItemListRowContainerComponent {
 

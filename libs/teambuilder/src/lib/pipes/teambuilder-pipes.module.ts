@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {TierIsCommonPipe} from "./tierIsCommon/tier-is-common.pipe";
-import {TranslateAbilitiesPipe} from "./translateAbilities/translate-abilities.pipe";
+import {FindAbilityNamePipe} from "./findAbilityName/find-ability-name.pipe";
 import {TierFilterPipe} from "./tierFilter/tier-filter.pipe";
 
 
@@ -8,12 +8,12 @@ import {TierFilterPipe} from "./tierFilter/tier-filter.pipe";
 @NgModule({
   declarations: [
     TierIsCommonPipe ,
-    TranslateAbilitiesPipe,
+    FindAbilityNamePipe,
     TierFilterPipe
   ],
   exports: [
     TierIsCommonPipe ,
-    TranslateAbilitiesPipe,
+    FindAbilityNamePipe,
     TierFilterPipe
   ]
 })

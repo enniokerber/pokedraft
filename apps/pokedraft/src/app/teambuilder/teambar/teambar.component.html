@@ -2,12 +2,13 @@
 
   <div class="pd-teambuilder-teambar-item-wrapper"
        *ngFor="let pokemon of team">
+
     <div class="pd-teambuilder-teambar-item"
          [class.pd-teambuilder-teambar-item--selected]="(selectedPokemon$ | async)?.teambuilderPokemonId === pokemon.teambuilderPokemonId"
          (click)="selectPokemon(pokemon)">
 
       <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--top-half">
-        <img src="assets/pokemon/icons/{{pokemon.imgSrc}}" alt="">
+        <pd-pokemon-icon [imgSrc]="pokemon.imgSrc"></pd-pokemon-icon>
       </div>
 
       <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--name-half">

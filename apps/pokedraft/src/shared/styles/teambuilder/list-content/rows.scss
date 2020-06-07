@@ -1,9 +1,9 @@
 @import "../../utils";
 
 $container-width: $teambuilder-main-width - $padding-s; // 820px
-$head-row-height: 40px;
+$head-row-height: $tablehead-height;
 
-$icon-size: 40px;
+$icon-size: 68px;
 
 .pd-teambuilder-list-content {
   max-height: calc(100% - #{$head-row-height});
@@ -18,7 +18,7 @@ $icon-size: 40px;
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: $tablehead-height - 4px;
+  height: $head-row-height - 4px;
   border-radius: $radius;
   @include no-user-select;
 
@@ -63,6 +63,10 @@ $icon-size: 40px;
       height: unset;
       min-height: 100%;
     }
+  }
+
+  &--l {
+    height: $head-row-height;
   }
 }
 
@@ -174,7 +178,7 @@ $icon-size: 40px;
 
 .pd-teambuilder-list-stat-label {
   position: absolute;
-  top: 6px;
+  top: 10px;
   right: 0;
   color: $grey-light;
   font-size: $font-size-xs;

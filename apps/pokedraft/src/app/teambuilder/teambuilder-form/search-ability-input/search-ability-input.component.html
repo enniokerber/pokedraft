@@ -13,12 +13,10 @@
   </pd-input>
 
   <div class="pd-teambuilder-move-input-tooltip" *ngIf="currentAbility">
-    <translator2 [english]="currentAbility.description"
-                 [german]="currentAbility.descriptionGerman"
-                 *ngIf="currentAbility.description; else shortDesc"></translator2>
+    <translator3 [source]="currentAbility.description"
+                 *ngIf="currentAbility.description.english; else shortDesc"></translator3>
     <ng-template #shortDesc>
-      <translator2 [english]="currentAbility.shortDescription"
-                   [german]="currentAbility.shortDescriptionGerman"></translator2>
+      <translator3 [source]="currentAbility.shortDescription"></translator3>
     </ng-template>
   </div>
 </div>

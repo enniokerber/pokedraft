@@ -27,6 +27,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-70%, -50%);
+  max-height: 120px;
   pointer-events: none;
 }
 
@@ -133,9 +134,9 @@
 }
 
 .--remove-number-input-appearance {
+  -moz-appearance: textfield;
   &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
     -webkit-appearance: none;
-    -moz-appearance: textfield;
     appearance: none;
     margin: 0;
   }

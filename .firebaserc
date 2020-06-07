@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "pokedraft-tool"
+  },
+  "targets": {
+    "pokedraft-tool": {
+      "hosting": {
+        "pokedraft": [
+          "pokedraft"
+        ],
+        "pokedraft-tool": [
+          "pokedraft-tool"
+        ]
+      }
+    }
+  }
+}

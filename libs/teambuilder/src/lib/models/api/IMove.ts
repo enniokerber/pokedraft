@@ -37,3 +37,5 @@ export interface IMove {
 }
 
 export const MOVE_DIVIDER_PROP = 'viable';
+
+export type MovesRecord = Record<string, IMove>;

@@ -13,9 +13,7 @@
 <div class="pd-teambuilder-list-content">
 
   <div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable pd-teambuilder-list-row--scalable"
-       translatableTitle
-       [englishTitle]="ability.description"
-       [germanTitle]="ability.descriptionGerman"
+       [translatableTitle2]="ability.description"
        [ngClass]="{
         'pd-teambuilder-list-row--selected': selectedTeampokemonsAbility?.name === ability.name,
         'pd-teambuilder-list-row--marked': index === marker.index
@@ -23,12 +21,10 @@
        (click)="selectAbility(ability)"
        *ngFor="let ability of abilities._current; index as index">
     <div class="pd-teambuilder-list-cell --tb-ability-name-cell --cell-align-left">
-      <translator2 [english]="ability.name" [german]="ability.german"></translator2>
+      <translator3 [source]="ability.name"></translator3>
     </div>
     <div class="pd-teambuilder-list-cell --tb-desc-cell --tb-ability-desc-cell --cell-align-left">
-      <translator2 [english]="ability.shortDescription"
-                   [german]="ability.shortDescriptionGerman">
-      </translator2>
+      <translator3 [source]="ability.shortDescription"></translator3>
     </div>
   </div>
 

@@ -35,6 +35,7 @@ export class Stats {
         this.evSum = 0;
         this.evSumMaxed = false;
         this.nature = nature;
+        this.applyNature();
     }
 
     getNature(): Nature {

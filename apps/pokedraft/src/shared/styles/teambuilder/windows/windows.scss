@@ -22,7 +22,13 @@ $tbheader-height: $tblogocontainer-height + $tbtitle-height;
   border-radius: $radius;
   background-color: $tbbackground;
   box-shadow: 0 0 3px 0 $grey-light inset;
-  overflow: hidden;
+  overflow: auto;
+  scrollbar-width: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+    height: 0;
+  }
 }
 
 .pd-teambuilder-half {

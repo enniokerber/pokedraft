@@ -5,7 +5,7 @@
      }">
   <input #inputElement
          class="pd-input"
-         [class.pd-input-has-content]="value !== ''"
+         [class.pd-input-has-content]="value !== '' || animations === 'off'"
          [type]="type"
          [disabled]="disabled"
          [maxlength]="maxlength"

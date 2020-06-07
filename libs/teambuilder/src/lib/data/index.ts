@@ -7,6 +7,7 @@ export * from './stats'
 export * from './testAbilities'
 export * from './testItems'
 export * from './testMoves'
+export * from './testMovesObject'
 export * from './testTiers'
 export * from './translator'
 export * from './fallbackMoves';

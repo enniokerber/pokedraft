@@ -5,6 +5,7 @@ import {TeambuilderLoaderComponent} from "./teambuilder-loader/teambuilder-loade
 import { Translator2Component } from './translator2 (language from service)/translator2.component';
 import { Translator3Component } from './translator3 (from ITranslatable)/translator3.component';
 import {CommonModule} from "@angular/common";
+import { PokemonIconComponent } from './pokemon-icon/pokemon-icon.component';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import {CommonModule} from "@angular/common";
         PokemonTypeImageComponent,
         TeambuilderLoaderComponent,
         Translator2Component,
-        Translator3Component
+        Translator3Component,
+        PokemonIconComponent
     ],
     imports: [
         CommonModule
@@ -22,7 +24,8 @@ import {CommonModule} from "@angular/common";
         PokemonTypeImageComponent,
         TeambuilderLoaderComponent,
         Translator2Component,
-        Translator3Component
+        Translator3Component,
+        PokemonIconComponent
     ]
 })
 export class TeambuilderComponentsModule {
