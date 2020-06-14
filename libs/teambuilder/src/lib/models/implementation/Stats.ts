@@ -1,4 +1,4 @@
-import {HPStat, Stat} from './stat';
+import {HPStat, Stat} from './Stat';
 import {IStats} from '../api/IStats';
 import {INatureWithoutStatMetadata} from '../api/INature';
 import {MAX_DVS, MAX_EVS_TOTAL, statIdsArray} from "../../data";

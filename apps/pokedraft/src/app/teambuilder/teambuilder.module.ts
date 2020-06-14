@@ -11,7 +11,7 @@ import {TeambarComponent} from "./teambar/teambar.component";
 import {TeambuilderFrameComponent} from "./teambuilder-frame/teambuilder-frame.component";
 import {TeambuilderFormComponent} from "./teambuilder-form/teambuilder-form.component";
 import {TeambuilderSettingsBarComponent} from "./teambuilder-settings-bar/teambuilder-settings-bar.component";
-import {PokedraftFormsModule, PokedraftUtilsModule} from "@pokedraft/material";
+import {PokedraftButtonsModule, PokedraftFormsModule, PokedraftUtilsModule} from "@pokedraft/material";
 import {FormsModule} from "@angular/forms";
 import {MovesListRowContainerComponent} from "./moves-list/moves-list-row-container/moves-list-row-container.component";
 import {PokemonListRowContainerComponent} from "./pokemon-list/pokemon-list-row-container/pokemon-list-row-container.component";
@@ -26,6 +26,9 @@ import { ItemListRowContainerComponent } from './item-list/item-list-row-contain
 import { StatsComponent } from './stats/stats.component';
 import { SingleStatComponent } from './stats/single-stat/single-stat.component';
 import { EvInputComponent } from './stats/single-stat/ev-input/ev-input.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { TypeStatisticsComponent } from './statistics/type-statistics/type-statistics.component';
+import { HazardStatisticsComponent } from './statistics/hazard-statistics/hazard-statistics.component';
 
 
 @NgModule({
@@ -50,7 +53,10 @@ import { EvInputComponent } from './stats/single-stat/ev-input/ev-input.componen
     ItemListRowContainerComponent,
     StatsComponent,
     SingleStatComponent,
-    EvInputComponent
+    EvInputComponent,
+    StatisticsComponent,
+    TypeStatisticsComponent,
+    HazardStatisticsComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +64,8 @@ import { EvInputComponent } from './stats/single-stat/ev-input/ev-input.componen
     TeambuilderRoutingModule,
     TeambuilderCoreModule,
     PokedraftFormsModule,
-    PokedraftUtilsModule
+    PokedraftUtilsModule,
+    PokedraftButtonsModule
   ]
 })
 export class TeambuilderModule { }

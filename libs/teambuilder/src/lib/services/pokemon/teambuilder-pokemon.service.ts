@@ -1,7 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
-
-import {IAbility, IMove, IPokemon, BehaviorSubjectStream, TeambuilderPokemon, IItem,
-  SubscriptionContainer, Container
+import {
+  IAbility, IMove, IPokemon, BehaviorSubjectStream,
+  TeambuilderPokemon, IItem, SubscriptionContainer, Container
 } from "../../models";
 import {TeambuilderEventService} from "../event/teambuilder-event.service";
 import {TeambuilderViewService} from "../view/teambuilder-view.service";
@@ -11,7 +11,7 @@ import {distinctUntilChanged} from "rxjs/operators";
 @Injectable()
 export class TeambuilderPokemonService implements OnDestroy {
 
-  private _teampokemon: TeambuilderPokemon[];
+  private readonly _team: BehaviorSubjectStream<TeambuilderPokemon[]>;
   private readonly _selectedTeampokemon: BehaviorSubjectStream<TeambuilderPokemon>;
   private readonly _nextMoveslot: BehaviorSubjectStream<number>;
 
@@ -19,7 +19,7 @@ export class TeambuilderPokemonService implements OnDestroy {
 
   constructor(private tbEvents: TeambuilderEventService,
               private tbView: TeambuilderViewService) {
-    this._teampokemon = [];
+    this._team = new BehaviorSubjectStream<TeambuilderPokemon[]>([]);
     this._selectedTeampokemon = new BehaviorSubjectStream<TeambuilderPokemon>(null);
     this._nextMoveslot = new BehaviorSubjectStream<number>(-1);
     this._subscriptions = new SubscriptionContainer(
@@ -37,12 +37,8 @@ export class TeambuilderPokemonService implements OnDestroy {
     this._subscriptions.unsubscribeAll();
   }
 
-  get teampokemon(): TeambuilderPokemon[] {
-    return this._teampokemon;
-  }
-
-  set teampokemon(value: TeambuilderPokemon[]) {
-    this._teampokemon = value;
+  get team(): BehaviorSubjectStream<TeambuilderPokemon[]> {
+    return this._team;
   }
 
   get selectedTeampokemon(): BehaviorSubjectStream<TeambuilderPokemon> {
@@ -58,44 +54,47 @@ export class TeambuilderPokemonService implements OnDestroy {
   }
 
   getNextId(): number {
-    return this.teampokemon.length;
+    return this.team.getValue().length;
   }
 
   addTeampokemon(fromInterface: IPokemon) {
-    if (this.teampokemon.length < 6) {
+    const team = this.team.getValue();
+    if (team.length < 6) {
       const nextId = this.getNextId();
       const pokemon = new TeambuilderPokemon(fromInterface, nextId);
-      this.teampokemon.push(pokemon);
+      team.push(pokemon);
+      this.triggerTeamChangeListeners(); // notifies listeners on the updated team, so for ex: statistics are recalculated
       this.selectTeampokemon(pokemon);
       this.tbView.displayItemList();
     }
   }
 
-  refactorTeambuilderPokemonsIDs(): void {
-    this.teampokemon = this.teampokemon.map(
-      (pokemon, index) => {
-        pokemon.teambuilderPokemonId = index;
-        return pokemon;
-      }
-    );
+  // trigger on team change listeners
+  triggerTeamChangeListeners(): void {
+    this.team.update(this.team.getValue());
   }
 
-  // TODO: Check if refactorTeambuilderPokemonsIDs() causes bugs within the teambuilderIds in selectedPokemon
-  deleteTeampokemon(id: number): TeambuilderPokemon[] {
-    this.teampokemon = this.teampokemon.filter(pokemon => pokemon.teambuilderPokemonId !== id);
+  deleteTeampokemon(id: number): void {
+    this.team.update(
+      this.team.getValue()
+        .filter(pokemon => pokemon.getTeambuilderId() !== id)
+        .map((pokemon, index) => {
+          pokemon.setTeambuilderId(index);
+          return pokemon;
+        })
+    );
+    const team = this.team.getValue();
     const selectedTeamPokemon = this.selectedTeampokemon.getValue();
-    this.refactorTeambuilderPokemonsIDs();
-    if (selectedTeamPokemon !== null && selectedTeamPokemon.teambuilderPokemonId === id) {
-      const count = this.teampokemon.length;
+    if (selectedTeamPokemon !== null && selectedTeamPokemon.getTeambuilderId() === id) {
+      const count = team.length;
       if (count > id) {
-        this.selectTeampokemon(this.teampokemon[id]);
+        this.selectTeampokemon(team[id]);
       } else if (count > 0) {
-        this.selectTeampokemon(this.teampokemon[count - 1]);
+        this.selectTeampokemon(team[count - 1]);
       } else {
         this.selectTeampokemon(null);
       }
     }
-    return this.teampokemon;
   }
 
 
@@ -135,6 +134,7 @@ export class TeambuilderPokemonService implements OnDestroy {
       const selectedMoveslot = this.nextMoveslot.getValue();
       currentTeampokemon.moves[selectedMoveslot].setData(move);
       this.selectTeampokemon(currentTeampokemon);
+      this.triggerTeamChangeListeners(); // notifies listeners on the updated team, so for ex: statistics are recalculated
     }
   }
 
@@ -147,15 +147,13 @@ export class TeambuilderPokemonService implements OnDestroy {
         currentTeampokemon.markMovesFilled();
         this.tbView.displayStats();
       }
-    } else {
-      console.log('This move is already on the set');
     }
   }
 
   moveSetFull(): boolean {
     return this.selectedTeampokemon.getValue()
       .getMoves()
-      .every(mc => !!mc.data); // every move is set
+      .every(isSet => !!isSet); // every move is set
   }
 
   resetSearchMove() {

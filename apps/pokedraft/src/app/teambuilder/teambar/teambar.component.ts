@@ -12,12 +12,12 @@ import {Observable} from "rxjs";
 })
 export class TeambarComponent{
 
-  team: TeambuilderPokemon[];
+  team$: Observable<TeambuilderPokemon[]>;
 
   selectedPokemon$: Observable<TeambuilderPokemon>;
 
   constructor(private tbPokemon: TeambuilderPokemonService) {
-    this.team = tbPokemon.teampokemon;
+    this.team$ = this.tbPokemon.team.changes$;
     this.selectedPokemon$ = this.tbPokemon.selectedTeampokemon.changes$;
   }
 
@@ -35,7 +35,7 @@ export class TeambarComponent{
   }
 
   deletePokemon(id: number): void {
-    this.team = this.tbPokemon.deleteTeampokemon(id);
+    this.tbPokemon.deleteTeampokemon(id);
   }
 
 }

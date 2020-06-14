@@ -1,4 +1,4 @@
-import {StatMetadata, StatWithLabel} from "../models/api/IStats";
+import {StatMetadata, StatWithLabel} from "../models/api";
 
 export const statIds = {
     HP: 'hp',

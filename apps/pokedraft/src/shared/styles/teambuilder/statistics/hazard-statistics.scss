@@ -1,0 +1,64 @@
+@import "../../utils";
+
+.pd-hazards-statistics {
+  justify-content: space-evenly;
+}
+
+@mixin single-hazard-statistic($color) {
+  border-color: $color;
+  &::before { background-color: $color; }
+}
+
+.pd-single-hazards-statistics-wrapper {
+  position: relative;
+  flex: 200px 0 1;
+  border: 1px solid;
+  border-radius: $radius;
+  margin-bottom: $margin-m;
+
+  &::before {
+    position: absolute;
+    content: '';
+    opacity: .2;
+    z-index: 0;
+    @include take-up-full-space;
+  }
+
+  &--stealth-rock { @include single-hazard-statistic($rock-type); }
+
+  &--spikes { @include single-hazard-statistic($ground-type); }
+
+  &--toxic-spikes { @include single-hazard-statistic($poison-type); }
+
+  &--defog { @include single-hazard-statistic($flying-type); }
+
+  &--rapid-spin { @include single-hazard-statistic($normal-type); }
+
+  &:hover::before {
+    opacity: .4;
+  }
+}
+
+.pd-single-hazard-statistics {
+  display: grid;
+  grid-template-areas:
+    "label"
+    "count";
+  grid-template-rows: 36px 44px;
+  grid-template-columns: 100%;
+
+  @include take-up-full-space;
+}
+
+.pd-single-hazard-statistics-label {
+  grid-area: label;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: $padding-xxs $padding-m;
+  border-radius: $radius;
+  box-shadow: $floating-shadow;
+  z-index: 1;
+}
+
+.pd-single-hazards-statistics-count {
+  grid-area: count;
+}

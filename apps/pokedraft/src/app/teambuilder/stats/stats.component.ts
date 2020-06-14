@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   ExtendedStatLabelMap, MAX_EVS_TOTAL,
   statIdsArray, statsExtended,
   TeambuilderPokemon,
   TeambuilderPokemonService,
-  TeambuilderViewService,
   StatConfig, statConfigs
 } from "@pokedraft/teambuilder";
 import {Observable} from "rxjs";
@@ -14,7 +13,7 @@ import {Observable} from "rxjs";
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.scss']
 })
-export class StatsComponent implements OnInit {
+export class StatsComponent {
 
   readonly selectedPokemon$: Observable<TeambuilderPokemon>;
 
@@ -26,17 +25,12 @@ export class StatsComponent implements OnInit {
 
   readonly MAX_EVS: number;
 
-  constructor(private tbPokemon: TeambuilderPokemonService,
-              private tbView: TeambuilderViewService) {
+  constructor(private tbPokemon: TeambuilderPokemonService) {
     this.selectedPokemon$ = this.tbPokemon.selectedTeampokemon.changes$;
     this.statIds = statIdsArray;
     this.statLabels = statsExtended;
     this.statConfigs = statConfigs;
     this.MAX_EVS = MAX_EVS_TOTAL;
-  }
-
-  ngOnInit(): void {
-    this.tbView.displayStats();
   }
 
 }

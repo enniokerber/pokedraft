@@ -31,7 +31,7 @@ import {AngularFireFunctionsModule, FUNCTIONS_REGION} from "@angular/fire/functi
   providers: [
     AngularFirestore,
     Title,
-    { provide: FUNCTIONS_REGION, useValue: 'europe-west3'}
+    { provide: FUNCTIONS_REGION, useValue: 'europe-west3' }
   ],
   bootstrap: [AppComponent]
 })

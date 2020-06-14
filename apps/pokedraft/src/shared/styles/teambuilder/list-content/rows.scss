@@ -20,6 +20,7 @@ $icon-size: 68px;
   width: 100%;
   height: $head-row-height - 4px;
   border-radius: $radius;
+  color: $grey;
   @include no-user-select;
 
   &--selectable {
@@ -73,25 +74,18 @@ $icon-size: 68px;
 .pd-teambuilder-list-header {
   height: $head-row-height;
   overflow: hidden;
+  background-color: $primary;
+  color: $white;
 }
 
 .pd-teambuilder-list-cell {
   position: relative;
   @include flex-center;
   height: 100%;
-  color: $grey;
 }
 
-.pd-teambuilder-list-cell-wrapper {
-  @include flex-center-vertically;
-  width: 100%;
-  height: 100%;
-}
-
-.pd-teambuilder-table-head-cell {
+.pd-teambuilder-list-head-cell {
   @extend .pd-teambuilder-list-cell;
-  background-color: $primary;
-  color: $white;
   @include no-user-select;
 
   &::after {
@@ -116,11 +110,10 @@ $icon-size: 68px;
   cursor: pointer;
 
   &:hover {
-    opacity: .8;
+    background-color: $primary-light;
   }
 
   &:active {
-    opacity: 1;
     background-color: $primary2;
   }
 }
@@ -132,18 +125,6 @@ $icon-size: 68px;
 
 .--teambuilder-cell-has-multiple-contents {
   @include flex-center-vertically;
-}
-
-.--cell-align-left {
-  justify-content: flex-start;
-}
-
-.--cell-align-right {
-  justify-content: flex-end;
-}
-
-.--cell-align-bottom {
-  align-items: flex-end;
 }
 
 .--cell-align-bottom-right {
@@ -167,6 +148,10 @@ $icon-size: 68px;
   @include flex-center;
   flex: $icon-size 0 0;
   height: 100%;
+
+  &---align-bottom {
+    align-items: flex-end;
+  }
 }
 
 .pd-teambuilder-list-cell-text {

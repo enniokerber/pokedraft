@@ -27,27 +27,27 @@
 
 
 .flex-align-left {
-  justify-content: flex-start;
+  justify-content: flex-start !important;
 }
 
 .flex-align-right {
-  justify-content: flex-end;
+  justify-content: flex-end !important;
 }
 
 .flex-align-center {
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .flex-align-top {
-  align-items: flex-start;
+  align-items: flex-start !important;
 }
 
 .flex-align-bottom {
-  align-items: flex-end;
+  align-items: flex-end !important;
 }
 
 .flex-space-between {
-  justify-content: space-between;
+  justify-content: space-between !important;
 }
 
 .relative-container {
@@ -60,17 +60,20 @@
 }
 
 .grid-align-left {
-  justify-self: flex-start;
+  justify-self: flex-start !important;
 }
 
 .grid-align-right {
-  justify-self: flex-end;
+  justify-self: flex-end !important;
 }
 
 .grid-align-center {
-  justify-self: center;
+  justify-self: center !important;
 }
 
+.grid-place-center {
+  place-self: center !important;
+}
 
 .side-padding {
   padding: 0 $padding-m;
@@ -127,6 +130,14 @@
 
 .svg-grey-color {
   fill: $grey;
+}
+
+.svg-success-color {
+  fill: $green-1;
+}
+
+.svg-error-color {
+  fill: $red-1;
 }
 
 .svg-platinum-color {

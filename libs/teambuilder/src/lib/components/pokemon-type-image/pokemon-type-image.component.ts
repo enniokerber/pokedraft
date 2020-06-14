@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy} from '@angular/core';
 import {Languages, PokemonType, PokemonTypes} from "../../models";
-import {TeambuilderLanguageService, TeambuilderViewService} from "../../services";
+import {TeambuilderLanguageService} from "../../services";
 import {Subscription} from "rxjs";
 
 const TYPE_ICON_BASE_URL = 'assets/types/';

@@ -1,42 +1,46 @@
 <div class="pd-teambuilder-teambar">
 
-  <div class="pd-teambuilder-teambar-item-wrapper"
-       *ngFor="let pokemon of team">
+  <ng-container *ngIf="(team$ | async) as team">
 
-    <div class="pd-teambuilder-teambar-item"
-         [class.pd-teambuilder-teambar-item--selected]="(selectedPokemon$ | async)?.teambuilderPokemonId === pokemon.teambuilderPokemonId"
-         (click)="selectPokemon(pokemon)">
+    <div class="pd-teambuilder-teambar-item-wrapper"
+         *ngFor="let pokemon of team">
 
-      <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--top-half">
-        <pd-pokemon-icon [imgSrc]="pokemon.imgSrc"></pd-pokemon-icon>
+      <div class="pd-teambuilder-teambar-item"
+           [class.pd-teambuilder-teambar-item--selected]="(selectedPokemon$ | async)?.teambuilderPokemonId === pokemon.teambuilderPokemonId"
+           (click)="selectPokemon(pokemon)">
+
+        <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--top-half">
+          <pd-pokemon-icon [imgSrc]="pokemon.imgSrc"></pd-pokemon-icon>
+        </div>
+
+        <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--name-half">
+          <ng-container *ngIf="pokemon.nickname; else noNickname"> {{pokemon.nickname}} </ng-container>
+          <ng-template #noNickname>
+            <translator3 [source]="pokemon.name"></translator3>
+          </ng-template>
+        </div>
       </div>
 
-      <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--name-half">
-        <ng-container *ngIf="pokemon.nickname; else noNickname"> {{pokemon.nickname}} </ng-container>
-        <ng-template #noNickname>
-          <translator3 [source]="pokemon.name"></translator3>
-        </ng-template>
+      <button class="pd-teambuilder-teambar-item-delete-button"
+              (click)="deletePokemon(pokemon.getTeambuilderId())"></button>
+    </div>
+
+    <!-- PLACEHOLDER IF THE TEAM CONTAINS NO POKÉMON -->
+    <div class="pd-teambuilder-teambar-item-default"
+         *ngIf="team.length === 0">
+      <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--placeholder-half">
+        <translator2 english="Choose a" german="Wähle ein"></translator2>
+      </div>
+      <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--border-half pd-teambuilder-teambar-item-half--placeholder-half">
+        Pokémon
       </div>
     </div>
 
-    <button class="pd-teambuilder-teambar-item-delete-button"
-            (click)="deletePokemon(pokemon.teambuilderPokemonId)"></button>
-  </div>
+    <!-- ADD BUTTON -->
+    <button class="pd-teambuilder-circle-stroke-button pd-teambuilder-teambar-add-button"
+            (click)="createPokemon()"
+            *ngIf="team.length < 6"></button>
 
-  <!-- PLACEHOLDER IF THE TEAM CONTAINS NO POKÉMON -->
-  <div class="pd-teambuilder-teambar-item-default"
-       *ngIf="team.length === 0">
-    <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--placeholder-half">
-      <translator2 english="Choose a" german="Wähle ein"></translator2>
-    </div>
-    <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--border-half pd-teambuilder-teambar-item-half--placeholder-half">
-      Pokémon
-    </div>
-  </div>
-
-  <!-- ADD BUTTON -->
-  <button class="pd-teambuilder-circle-stroke-button pd-teambuilder-teambar-add-button"
-          (click)="createPokemon()"
-          *ngIf="team.length < 6"></button>
+  </ng-container>
 
 </div>

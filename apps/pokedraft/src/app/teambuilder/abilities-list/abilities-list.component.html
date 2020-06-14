@@ -1,10 +1,10 @@
 <div class="pd-teambuilder-list-row pd-teambuilder-list-header">
 
-  <div class="pd-teambuilder-table-head-cell --tb-ability-name-cell --action-cell">
+  <div class="pd-teambuilder-list-head-cell --tb-ability-name-cell --action-cell">
     Name
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-ability-desc-cell">
+  <div class="pd-teambuilder-list-head-cell --tb-ability-desc-cell">
     <translator2 english="Description" german="Beschreibung"></translator2>
   </div>
 
@@ -20,10 +20,10 @@
        }"
        (click)="selectAbility(ability)"
        *ngFor="let ability of abilities._current; index as index">
-    <div class="pd-teambuilder-list-cell --tb-ability-name-cell --cell-align-left">
+    <div class="pd-teambuilder-list-cell --tb-ability-name-cell flex-align-left">
       <translator3 [source]="ability.name"></translator3>
     </div>
-    <div class="pd-teambuilder-list-cell --tb-desc-cell --tb-ability-desc-cell --cell-align-left">
+    <div class="pd-teambuilder-list-cell --tb-desc-cell --tb-ability-desc-cell flex-align-left">
       <translator3 [source]="ability.shortDescription"></translator3>
     </div>
   </div>

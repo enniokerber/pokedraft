@@ -11,4 +11,5 @@ export * from './testMovesObject'
 export * from './testTiers'
 export * from './translator'
 export * from './fallbackMoves';
+export * from './typeChart';
 export * from './teambuilder-config';

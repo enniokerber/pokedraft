@@ -1,59 +1,60 @@
 <div class="pd-teambuilder-list-row pd-teambuilder-list-header">
-  <div class="pd-teambuilder-table-head-cell --tb-name-cell --action-cell">
+
+  <div class="pd-teambuilder-list-head-cell --tb-name-cell --action-cell">
     Name
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-types-cell">
+  <div class="pd-teambuilder-list-head-cell --tb-types-cell">
     <translator3 [source]="{ english: 'Types', german: 'Typen' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-abilities-cell">
+  <div class="pd-teambuilder-list-head-cell --tb-abilities-cell">
     <translator3 [source]="{ english: 'Abilities', german: 'Fähigkeiten' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Healthpoints', german: 'Kraftpunkte' }"
        (click)="sortPokemonlistByStat(sortingOptions.HP)"
        (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.HP, $event, true)">
     <translator3 [source]="{ english: 'HP', german: 'KP' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Attack', german: 'Angriff' }"
        (click)="sortPokemonlistByStat(sortingOptions.ATK)"
        (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.ATK, $event, true)">
     <translator3 [source]="{ english: 'Atk', german: 'Ang' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Defense', german: 'Verteidigung' }"
        (click)="sortPokemonlistByStat(sortingOptions.DEF)"
        (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.DEF, $event, true)">
     <translator3 [source]="{ english: 'Def', german: 'Vert' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Special-Attack', german: 'Spezial-Angriff' }"
        (click)="sortPokemonlistByStat(sortingOptions.SPATK)"
        (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPATK, $event, true)">
     <translator3 [source]="{ english: 'SpA', german: 'SpA' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Special-Defense', german: 'Spezial-Verteidigung' }"
        (click)="sortPokemonlistByStat(sortingOptions.SPDEF)"
        (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPDEF, $event, true)">
     <translator3 [source]="{ english: 'SpD', german: 'SpV' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-stat-cell --action-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Speed', german: 'Initiative' }"
        (click)="sortPokemonlistByStat(sortingOptions.SPEED)"
        (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPEED, $event, true)">
     <translator3 [source]="{ english: 'Spe', german: 'Init' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-stat-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-stat-cell"
        translatableTitle
        englishTitle="Base Stat Total (Sum of the other Stats)"
        germanTitle="Basiswertsumme (Summe der anderen Stats)">

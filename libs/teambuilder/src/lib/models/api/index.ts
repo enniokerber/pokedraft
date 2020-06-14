@@ -17,7 +17,9 @@ export * from './IItem';
 
 export * from './ITranslatable';
 
-export * from './PDApiResponse';
-
 export * from './StatConfig';
+
+export * from './TypeChart';
+
+export * from './TypeStatistics';
 

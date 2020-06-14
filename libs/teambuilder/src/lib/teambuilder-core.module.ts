@@ -8,7 +8,8 @@ import {
   TeambuilderPokemonService,
   TeambuilderViewService,
   TeambuilderEventService,
-  TeambuilderStoreService
+  TeambuilderStoreService,
+  TeambuilderStatisticsService
 } from "./services";
 
 @NgModule({
@@ -18,7 +19,8 @@ import {
     TeambuilderViewService,
     TeambuilderLanguageService,
     TeambuilderApiService,
-    TeambuilderEventService
+    TeambuilderEventService,
+    TeambuilderStatisticsService
   ],
   exports: [
     TeambuilderComponentsModule,

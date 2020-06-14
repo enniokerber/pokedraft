@@ -8,7 +8,7 @@
       {{pkmn.tier}}
     </div>
 
-    <div class="pd-teambuilder-list-row-icon flex-align-bottom">
+    <div class="pd-teambuilder-list-row-icon pd-teambuilder-list-row-icon--align-bottom">
       <pd-pokemon-icon [imgSrc]="pkmn.imgSrc"></pd-pokemon-icon>
     </div>
 
@@ -31,7 +31,7 @@
 
   <div class="pd-teambuilder-list-cell --tb-abilities-cell"
        [ngSwitch]="pkmn.abilities.length">
-    <div class="pd-teambuilder-list-cell-wrapper" *ngSwitchCase="3">
+    <ng-container *ngSwitchCase="3">
       <div class="pd-teambuilder-list-ability-block">
         <span class="pd-teambuilder-list-ability pd-teambuilder-list-ability--first"> {{pkmn.abilities[0] | findAbilityName | async}} </span>
         <span class="pd-teambuilder-list-ability pd-teambuilder-list-ability--second"> {{pkmn.abilities[1] | findAbilityName | async}} </span>
@@ -39,26 +39,26 @@
       <div class="pd-teambuilder-list-ability-block">
         <span class="pd-teambuilder-list-ability"> {{pkmn.abilities[2] | findAbilityName | async}} </span>
       </div>
-    </div>
+    </ng-container>
 
-    <div class="pd-teambuilder-list-cell-wrapper" *ngSwitchCase="2">
+    <ng-container *ngSwitchCase="2">
       <div class="pd-teambuilder-list-ability-block">
         <span class="pd-teambuilder-list-ability"> {{pkmn.abilities[0] | findAbilityName | async}} </span>
       </div>
       <div class="pd-teambuilder-list-ability-block">
         <span class="pd-teambuilder-list-ability"> {{pkmn.abilities[1] | findAbilityName | async}} </span>
       </div>
-    </div>
+    </ng-container>
 
-    <div class="pd-teambuilder-list-cell-wrapper" *ngSwitchCase="1">
+    <ng-container *ngSwitchCase="1">
       <div class="pd-teambuilder-list-ability-block">
         <span class="pd-teambuilder-list-ability"> {{pkmn.abilities[0] | findAbilityName | async}} </span>
       </div>
-    </div>
+    </ng-container>
 
-    <div class="pd-teambuilder-list-cell-wrapper" *ngSwitchDefault>
+    <ng-container *ngSwitchDefault>
       No Ability
-    </div>
+    </ng-container>
   </div>
 
   <!-- STATS -->

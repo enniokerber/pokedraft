@@ -1,0 +1,11 @@
+@import "../../utils";
+
+.pd-statistics {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: hidden;
+}
+
+@import "type-statistics";
+@import "hazard-statistics";

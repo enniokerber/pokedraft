@@ -1,0 +1,49 @@
+
+<div class="pd-teambuilder-list-row pd-teambuilder-list-header flex-space-between side-padding">
+  <div class="pd-teambuilder-list-cell">
+    <translator2 english="Type Coverage" german="Typabdeckung"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-list-cell"
+       translatableTitle
+       englishTitle="Calculate the type relationships of your current team. The teambuilder counts from left to right: The number of Pokémon on your team that have type advantage against the type plus how many Pokémon resist and how many of them are immune to the type. If you have at least one counter (advantage) and 1 resistance (or immunity) against the type on your team, it´s marked green. If only one of those conditions is fulfilled, it´s marked yellow. And if there is no coverage at all, it´s marked red."
+       germanTitle="Berechne die Typen-Wechselwirkungen deines Teams. Der Teambuilder zählt von links nach rechts: Die Anzahl an Pokémon deines Teams, die einen Typenvorteil gegen den Typ haben und wie viele Pokémon Attacken dieses Typs resistieren bzw. immunisieren. Hast du mindestens einen Counter (Vorteil) und eine Resistenz (oder Immunität) gegen einen Typen, so wird dieser grün markiert. Ist nur eine Bedingung erfüllt, wird er gelb, und falls die Abdeckung überhaupt nicht erfüllt ist, rot markiert.">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="36px" height="36px">
+      <path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+    </svg>
+  </div>
+</div>
+
+<div class="pd-statistics pd-type-statistics margin-top" *ngIf="typeStatistics.statistics.length > 0">
+  <div class="pd-single-type-statistics"
+       [ngClass]="{
+          'pd-single-type-statistics--bad-coverage': singleTypeStatistic.coverage === coverageTypes.BAD,
+          'pd-single-type-statistics--mid-coverage': singleTypeStatistic.coverage === coverageTypes.MID,
+          'pd-single-type-statistics--good-coverage': singleTypeStatistic.coverage === coverageTypes.GOOD
+       }"
+       *ngFor="let singleTypeStatistic of typeStatistics.statistics">
+    <div class="pd-single-type-statistics-type grid-place-center">
+      <pokemon-type-image [type]="singleTypeStatistic.type"></pokemon-type-image>
+    </div>
+    <div class="pd-single-type-statistics-cell pd-single-type-statistics-effectiveness-counter">
+      <svg class="svg-grey-color"
+           [class.svg-error-color]="singleTypeStatistic.counters <= 0"
+           [class.svg-success-color]="singleTypeStatistic.counters > 0"
+           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-4-4h-4v-2h4v-2h-4V9h4V7H9v10h6z"/></svg>
+      {{singleTypeStatistic.counters}}
+    </div>
+    <div class="pd-single-type-statistics-cell pd-single-type-statistics-resistances">
+      <svg class="svg-grey-color"
+           [class.svg-error-color]="singleTypeStatistic.resistances <= 0 && singleTypeStatistic.immunities === 0"
+           [class.svg-success-color]="singleTypeStatistic.resistances > 0"
+           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+      {{singleTypeStatistic.resistances}}
+    </div>
+    <div class="pd-single-type-statistics-cell pd-single-type-statistics-immunities">
+      <svg class="svg-grey-color"
+           [class.svg-success-color]="singleTypeStatistic.immunities > 0"
+           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      {{singleTypeStatistic.immunities}}
+    </div>
+  </div>
+</div>

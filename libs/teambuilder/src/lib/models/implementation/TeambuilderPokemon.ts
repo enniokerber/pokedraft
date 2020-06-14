@@ -1,9 +1,11 @@
 import {Nature} from './nature';
-import {Stats} from './stats';
+import {Stats} from './Stats';
 import {IAbility, IItem, IMove, IPokemon, ITranslatable} from "../api";
 import {Genders, GenderType, PokemonType} from "../types";
 import {Container, generateContainer} from "./Container";
 import {MAX_HAPPINESS, MAX_LEVEL} from "../../data";
+
+export type TeambuilderPokemonArray = TeambuilderPokemon[];
 
 export class TeambuilderPokemon {
 
@@ -66,9 +68,15 @@ export class TeambuilderPokemon {
     return this.teambuilderPokemonId;
   }
 
+  setTeambuilderId(value: number): void {
+    this.teambuilderPokemonId = value;
+  }
+
   getName(): ITranslatable {
     return this.name;
   }
+
+  getTypes(): PokemonType[] { return this.types; }
 
   getItem(): IItem {
     return this.item;
@@ -90,20 +98,12 @@ export class TeambuilderPokemon {
     return this.possibleAbilities;
   }
 
-  getMoves(): Container<IMove>[] {
-    return this.moves;
+  getMoves(): IMove[] {
+    return this.moves.map(mc => mc.getData());
   }
 
   getPossibleMoves(): string[] {
     return this.possibleMoves;
-  }
-
-  updateStats(): void {
-    this.stats.update(this.level);
-  }
-
-  modifyStats(): void {
-    this.stats.modify();
   }
 
   getNatureId(): number {

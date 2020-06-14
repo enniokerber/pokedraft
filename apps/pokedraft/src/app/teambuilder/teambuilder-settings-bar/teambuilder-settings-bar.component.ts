@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-  Language, LanguageWithLabel,
+  Language,
+  LanguageWithLabel,
   Languages,
   LanguagesWithLabels,
   SubscriptionContainer,

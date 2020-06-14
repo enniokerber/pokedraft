@@ -121,6 +121,8 @@ $stroke-height: 2px;
 $add-button-click-color: $primary2;
 
 .pd-teambuilder-teambar-add-button {
+  margin-left: $margin-l;
+
   &::before, &::after {
     position: absolute;
     content: '';

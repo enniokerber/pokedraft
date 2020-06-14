@@ -1,4 +1,4 @@
-import {Stats} from "./stats";
+import {Stats} from "./Stats";
 import {MAX_DVS, MAX_EVS_PER_STAT, MAX_EVS_TOTAL} from "../../data";
 
 export class Stat {

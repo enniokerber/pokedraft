@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import {
   IMove,
   SubscriptionContainer,
@@ -10,7 +10,7 @@ import {
   TeambuilderLanguageService,
   TeambuilderListMarkerForDividedEntityCollection,
   TeambuilderStoreService,
-  TeambuilderPokemon
+  TeambuilderPokemon, TeambuilderStatisticsService
 } from "@pokedraft/teambuilder";
 import {debounceTime, distinctUntilChanged, filter} from "rxjs/operators";
 
@@ -19,7 +19,7 @@ import {debounceTime, distinctUntilChanged, filter} from "rxjs/operators";
   templateUrl: './moves-list.component.html',
   styleUrls: ['./moves-list.component.scss']
 })
-export class MovesListComponent implements OnInit, OnDestroy {
+export class MovesListComponent implements OnDestroy {
 
   @ViewChild('moveListContainer') moveListContainerElement: ElementRef;
 
@@ -64,16 +64,12 @@ export class MovesListComponent implements OnInit, OnDestroy {
     )
   }
 
-  ngOnInit() {
-  }
-
   ngOnDestroy(): void {
     this.subscriptions.unsubscribeAll();
   }
 
   insertMove(move: IMove): void {
     this.tbPokemon.insertMove(move);
-    this.marker.inc();
   }
 
   sort(by: string, parentProperty?: string) {

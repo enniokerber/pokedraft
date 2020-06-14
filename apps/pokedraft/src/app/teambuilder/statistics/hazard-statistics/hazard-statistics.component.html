@@ -1,0 +1,27 @@
+<div class="pd-teambuilder-list-row pd-teambuilder-list-header side-padding flex-space-between">
+  <div class="pd-teambuilder-list-cell">
+    <translator2 english="Hazards - Stealth Rocks, Spikes & more"
+                 german="Hazards - Tarnsteine, Stachler & mehr"></translator2>
+  </div>
+
+  <div class="pd-teambuilder-list-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="36px" height="36px">
+      <path d="M0 0h24v24H0V0z" fill="none"/>
+      <path
+        d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+    </svg>
+  </div>
+</div>
+
+<div class="pd-statistics pd-hazards-statistics margin-top">
+
+  <div class="pd-single-hazards-statistics-wrapper pd-single-hazards-statistics-wrapper--{{hazard.class}}"
+       *ngFor="let hazard of hazardStatistics.statistics">
+    <div class="pd-single-hazard-statistics">
+      <div class="pd-single-hazard-statistics-label grid-place-center"> {{hazard.name}} </div>
+      <div class="pd-single-hazards-statistics-count grid-place-center"> {{hazard.users}} </div>
+    </div>
+  </div>
+
+</div>
+

@@ -1,35 +1,35 @@
 <div class="pd-teambuilder-list-row pd-teambuilder-list-header">
 
-  <div class="pd-teambuilder-table-head-cell --tb-move-name-cell --action-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-move-name-cell --action-cell"
        (click)="sortByName()">
     Name
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell">
+  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell">
     <translator2 english="Type" german="Typ"></translator2>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell"
        translatableTitle englishTitle="Category" germanTitle="Kategorie">
     <translator2 english="Cat" german="Kat"></translator2>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell"
        translatableTitle englishTitle="Power" germanTitle="Stärke">
     <translator2 english="Pow" german="Strk"></translator2>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell"
        translatableTitle englishTitle="Accuracy" germanTitle="Genauigkeit">
     <translator2 english="Acc" german="Gen"></translator2>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-move-props-cell --tb-powerpoints-cell"
+  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell --tb-powerpoints-cell"
        translatableTitle englishTitle="PowerPoints" germanTitle="Angriffspunkte">
     <translator2 english="PP" german="AP"></translator2>
   </div>
 
-  <div class="pd-teambuilder-table-head-cell --tb-move-desc-cell">
+  <div class="pd-teambuilder-list-head-cell --tb-move-desc-cell">
     <translator2 english="Description" german="Beschreibung"></translator2>
   </div>
 
@@ -66,7 +66,7 @@
     <moves-list-row-container
       [moves]="moves.firstHalf"
       [markedId]="marker.index"
-      (choose)="insertMove($event)">
+      (choose)="insertMove($event); marker.inc();">
     </moves-list-row-container>
   </div>
 
@@ -83,7 +83,7 @@
     <moves-list-row-container
       [moves]="moves.secondHalf"
       [markedId]="marker.markerForSecondHalf"
-      (choose)="insertMove($event)">
+      (choose)="insertMove($event); marker.inc();">
     </moves-list-row-container>
   </div>
 </div>

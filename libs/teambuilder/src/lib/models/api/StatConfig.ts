@@ -39,6 +39,28 @@ export const statConfigs: StatConfig[] = [
   },
   {
     name: {
+      english: `Bulky Attacker (HP: ${MAX_EVS_PER_STAT_MINUS_4}, ATK: ${MAX_EVS_PER_STAT}, DEF: 8)`,
+      german: `Bulkiger Angreifer (KP: ${MAX_EVS_PER_STAT_MINUS_4}, ANG: ${MAX_EVS_PER_STAT}, VERT: 8)`
+    },
+    evs: {
+      hp: MAX_EVS_PER_STAT_MINUS_4,
+      atk: MAX_EVS_PER_STAT,
+      def: 8
+    }
+  },
+  {
+    name: {
+      english: `Bulky Special Attacker (HP: ${MAX_EVS_PER_STAT_MINUS_4}, SPATK: ${MAX_EVS_PER_STAT}, SPDEF: 8)`,
+      german: `Bulkiger Spezieller Angreifer (KP: ${MAX_EVS_PER_STAT_MINUS_4}, SPANG: ${MAX_EVS_PER_STAT}, SPVERT: 8)`
+    },
+    evs: {
+      hp: MAX_EVS_PER_STAT_MINUS_4,
+      spatk: MAX_EVS_PER_STAT,
+      spdef: 8
+    }
+  },
+  {
+    name: {
       english: `Physical Wall (HP: ${MAX_EVS_PER_STAT_MINUS_4}, DEF: ${MAX_EVS_PER_STAT}, SPDEF: 8)`,
       german: `Physische Wand (KP: ${MAX_EVS_PER_STAT_MINUS_4}, VERT: ${MAX_EVS_PER_STAT}, SPVERT: 8)`
     },
