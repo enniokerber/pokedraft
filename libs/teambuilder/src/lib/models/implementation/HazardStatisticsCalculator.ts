@@ -1,10 +1,17 @@
-import {Hazards, HAZARDS, HazardStatistics, HazardStatisticsMap, SingleHazardStatistics} from "../api/HazardStatistics";
+import {
+  HAZARDS,
+  Hazards,
+  HazardStatistics,
+  HazardStatisticsMap,
+  HAZARDSWITHTRANSLATION,
+  SingleHazardStatistics
+} from "../api/HazardStatistics";
 import {
   PokemonType,
   PokemonTypes,
 } from "../types";
 import {TeambuilderPokemon, TeambuilderPokemonArray} from "./TeambuilderPokemon";
-import {FOUR_TIMES_SUPER_EFFECTIVE, IMMUNE, IMove, NEUTRAL, SUPER_EFFECTIVE} from "../api";
+import {FOUR_TIMES_SUPER_EFFECTIVE, IMMUNE, NEUTRAL, SUPER_EFFECTIVE} from "../api";
 import {TYPE_CHART} from "../../data";
 import {Abilities} from "../constants";
 
@@ -26,20 +33,31 @@ export class HazardStatisticsCalculator {
     this.hazardStatisticsMap = this.emptyHazardStatisticsMap();
   }
 
-  public calculate(team: TeambuilderPokemonArray) {
+  public calculate(forTeam: TeambuilderPokemonArray) {
     this.reset();
-    team.forEach(pokemon => {
+    forTeam.forEach(pokemon => {
+      this.checkMovesetForHazards(pokemon);
       this.addStealthRockData(pokemon);
+      this.addSpikesData(pokemon);
+      this.addToxicSpikesData(pokemon);
+      this.addRapidSpinData(pokemon);
     });
     this.statistics = Object.values(this.hazardStatisticsMap);
   }
 
+  private checkMovesetForHazards(pokemon: TeambuilderPokemon) {
+    pokemon.getMoves()
+      .forEach(move => {
+        const moveName = move?.name.english;
+        if (moveName && HAZARDS.includes(moveName)) {
+          this.hazardStatisticsMap[moveName].users++;
+        }
+      });
+  }
+
   private addStealthRockData(fromPokemon: TeambuilderPokemon) {
     const types: PokemonType[] = fromPokemon.getTypes();
-    const moves: IMove[] = fromPokemon.getMoves();
     const stealthRocksStatistics: SingleHazardStatistics = this.hazardStatisticsMap[Hazards.STEALTH_ROCK];
-
-    if (moves.some(move => move?.name.english === Hazards.STEALTH_ROCK)) { stealthRocksStatistics.users++; }
 
     const rockTypeEffectiveness =
       types.reduce((acc, type) => {
@@ -48,7 +66,7 @@ export class HazardStatisticsCalculator {
       }, 1);
 
     if ((rockTypeEffectiveness === SUPER_EFFECTIVE || rockTypeEffectiveness === FOUR_TIMES_SUPER_EFFECTIVE)
-        && !(fromPokemon.getAbility()?.name.english === Abilities.MAGIC_GUARD)) {
+        && !this.abilityProtectsFromHazards(fromPokemon)) {
       stealthRocksStatistics.weaknesses++;
       stealthRocksStatistics.hits++;
     } else
@@ -58,13 +76,46 @@ export class HazardStatisticsCalculator {
       }
   }
 
+  private addSpikesData(fromPokemon: TeambuilderPokemon) {
+    const spikesStatistics = this.hazardStatisticsMap[Hazards.SPIKES];
+    if (fromPokemon.getTypes().includes(PokemonTypes.Flying) || this.abilityProtectsFromHazards(fromPokemon)) {
+      spikesStatistics.immune++;
+    } else {
+      spikesStatistics.hits++;
+    }
+  }
+
+  private addToxicSpikesData(fromPokemon: TeambuilderPokemon) {
+    const toxicSpikeStatistics = this.hazardStatisticsMap[Hazards.TOXIC_SPIKES];
+    if (fromPokemon.getTypes()
+        .some(type => type === PokemonTypes.Poison ||  type === PokemonTypes.Flying || type === PokemonTypes.Steel)
+          || this.abilityProtectsFromHazards(fromPokemon)) {
+      toxicSpikeStatistics.immune++;
+    } else {
+      toxicSpikeStatistics.hits++;
+    }
+  }
+
+  private addRapidSpinData(fromPokemon: TeambuilderPokemon) {
+    const rapidSpinStatistics = this.hazardStatisticsMap[Hazards.RAPID_SPINNER];
+    if (fromPokemon.getTypes().includes(PokemonTypes.Ghost)) {
+      rapidSpinStatistics.immune++;
+    } else {
+      rapidSpinStatistics.hits++;
+    }
+  }
+
+  private abilityProtectsFromHazards(pokemon: TeambuilderPokemon): boolean {
+    return pokemon.getAbility()?.name.english === Abilities.MAGIC_GUARD;
+  }
+
   private emptyHazardStatisticsMap(): HazardStatisticsMap {
     const emptyHazardsStatistics = {};
-    HAZARDS.forEach(hazardType => {
-      const hazardId = hazardType.toLowerCase().replace(' ', '-');
-      emptyHazardsStatistics[hazardType] = {
+    HAZARDSWITHTRANSLATION.forEach(hazard => {
+      const hazardId = hazard.english.toLowerCase().replace(' ', '-');
+      emptyHazardsStatistics[hazard.english] = {
         class: hazardId,
-        name: hazardType,
+        name: hazard,
         users: 0,
         hits: 0,
         immune: 0,

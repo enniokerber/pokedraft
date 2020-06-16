@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HazardStatisticsCalculator, TeambuilderStatisticsService} from "@pokedraft/teambuilder";
+import {HazardStatisticsCalculator, TeambuilderStatisticsService, Hazards} from "@pokedraft/teambuilder";
 
 @Component({
   selector: 'pd-hazard-statistics',
@@ -8,6 +8,8 @@ import {HazardStatisticsCalculator, TeambuilderStatisticsService} from "@pokedra
 export class HazardStatisticsComponent {
 
   hazardStatistics: HazardStatisticsCalculator;
+
+  Hazards = Hazards;
 
   constructor(private tbStatistics: TeambuilderStatisticsService) {
     this.hazardStatistics = this.tbStatistics.getHazardStatistics();

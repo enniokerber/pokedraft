@@ -7,11 +7,13 @@
 @mixin single-hazard-statistic($color) {
   border-color: $color;
   &::before { background-color: $color; }
+
+  .pd-single-hazard-statistics-icon { fill: $color; }
 }
 
 .pd-single-hazards-statistics-wrapper {
   position: relative;
-  flex: 200px 0 1;
+  flex: 210px 0 1;
   border: 1px solid;
   border-radius: $radius;
   margin-bottom: $margin-m;
@@ -42,12 +44,19 @@
 .pd-single-hazard-statistics {
   display: grid;
   grid-template-areas:
-    "label"
-    "count";
+    "label label label  label"
+    "users hits  immune weaknesses";
   grid-template-rows: 36px 44px;
-  grid-template-columns: 100%;
-
+  grid-template-columns: repeat(4, 1fr);
   @include take-up-full-space;
+}
+
+.pd-single-hazard-statistics-icon {
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  fill: $white;
+  stroke: $white;
 }
 
 .pd-single-hazard-statistics-label {
@@ -59,6 +68,18 @@
   z-index: 1;
 }
 
-.pd-single-hazards-statistics-count {
-  grid-area: count;
+.pd-single-hazards-statistics-users {
+  grid-area: users;
+}
+
+.pd-single-hazard-statistics-hits {
+  grid-area: hits;
+}
+
+.pd-single-hazard-statistics-weaknesses {
+  grid-area: weaknesses;
+}
+
+.pd-single-hazard-statistics-immune {
+  grid-area: immune;
 }

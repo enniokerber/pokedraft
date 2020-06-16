@@ -23,3 +23,5 @@ export * from './TypeChart';
 
 export * from './TypeStatistics';
 
+export * from './HazardStatistics';
+

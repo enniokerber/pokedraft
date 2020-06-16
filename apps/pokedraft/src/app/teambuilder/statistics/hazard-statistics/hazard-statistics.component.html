@@ -4,9 +4,11 @@
                  german="Hazards - Tarnsteine, Stachler & mehr"></translator2>
   </div>
 
-  <div class="pd-teambuilder-list-cell">
+  <div class="pd-teambuilder-list-cell"
+       translatableTitle
+       englishTitle="Calculate hazard-statistics of your team. Hazards are battlefield-entry effects that often deal damage against the incoming Pokémon. Make sure your team is not too weak against hazards or you have enough hazard-removal on your team (ex. attacks Defog or Rapid Spin)."
+       germanTitle="Berechne die Hazard-Statistik deines Teams. Hazards sind Effekte, die beim Einwechseln eines Pokémon aktiviert werden und meistens eine gewisse Menge an Schaden anrichten. Pass auf, dass dein Team nicht zu anfällig gegen Hazards ist oder du genügend Hazard-Entferner wie die Attacken Auflockern und Turbodreher im Team hast.">
     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="36px" height="36px">
-      <path d="M0 0h24v24H0V0z" fill="none"/>
       <path
         d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
     </svg>
@@ -16,10 +18,39 @@
 <div class="pd-statistics pd-hazards-statistics margin-top">
 
   <div class="pd-single-hazards-statistics-wrapper pd-single-hazards-statistics-wrapper--{{hazard.class}}"
+       translatableTitle
+       englishTitle="Single Hazard Statistics - Properties from left to right: Users on your team, amount of Pokémon on your team that get hit by this hazard type, weaknesses on your team, immunities against this hazard type on your team."
+       germanTitle="Hazard Statistik - Eigenschaften von links nach rechts: 1. Anzahl Hazard-User deines Teams 2. Anzahl Pokémon deines Teams, die von diesem Hazard-Typ getroffen werden 3. Anzahl Schwächen gegen diesen Hazard-Typ in deinem Team 4. Immunitäten gegen diesen Hazard-Typ in deinem Team."
        *ngFor="let hazard of hazardStatistics.statistics">
-    <div class="pd-single-hazard-statistics">
-      <div class="pd-single-hazard-statistics-label grid-place-center"> {{hazard.name}} </div>
-      <div class="pd-single-hazards-statistics-count grid-place-center"> {{hazard.users}} </div>
+    <div class="pd-single-hazard-statistics" [ngSwitch]="hazard.name.english">
+
+      <svg class="pd-single-hazard-statistics-icon" *ngSwitchCase="Hazards.STEALTH_ROCK" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36px" height="36px"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg>
+      <svg class="pd-single-hazard-statistics-icon" *ngSwitchCase="Hazards.SPIKES" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36px" height="36px"><path d="M3 4l9 16 9-16H3zm3.38 2h11.25L12 16 6.38 6z"/></svg>
+      <svg class="pd-single-hazard-statistics-icon" *ngSwitchCase="Hazards.TOXIC_SPIKES" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36px" height="36px"><path d="M3 4l9 16 9-16H3zm3.38 2h11.25L12 16 6.38 6z"/></svg>
+      <svg class="pd-single-hazard-statistics-icon" *ngSwitchCase="Hazards.DEFOG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36px" height="36px"><path d="M12 12c0-3 2.5-5.5 5.5-5.5S23 9 23 12H12zm0 0c0 3-2.5 5.5-5.5 5.5S1 15 1 12h11zm0 0c-3 0-5.5-2.5-5.5-5.5S9 1 12 1v11zm0 0c3 0 5.5 2.5 5.5 5.5S15 23 12 23V12z"/></svg>
+      <svg class="pd-single-hazard-statistics-icon" *ngSwitchCase="Hazards.RAPID_SPINNER" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36px" height="36px"><path d="M12 7C6.48 7 2 9.24 2 12c0 2.24 2.94 4.13 7 4.77V20l4-4-4-4v2.73c-3.15-.56-5-1.9-5-2.73 0-1.06 3.04-3 8-3s8 1.94 8 3c0 .73-1.46 1.89-4 2.53v2.05c3.53-.77 6-2.53 6-4.58 0-2.76-4.48-5-10-5z"/></svg>
+
+      <div class="pd-single-hazard-statistics-label grid-place-center">
+        <translator3 [source]="hazard.name"></translator3>
+      </div>
+
+      <div class="pd-single-statistics-cell pd-single-hazard-statistics-users">
+        <svg class="svg-grey-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M18 4H6v2l6.5 6L6 18v2h12v-3h-7l5-5-5-5h7z"/></svg>
+        {{hazard.users}}
+      </div>
+      <div class="pd-single-statistics-cell pd-single-hazard-statistics-hits" *ngIf="hazard.name.english !== Hazards.DEFOG">
+        <svg class="svg-grey-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+        {{hazard.hits}}
+      </div>
+      <div class="pd-single-statistics-cell pd-single-hazard-statistics-immune" *ngIf="hazard.name.english !== Hazards.DEFOG">
+        <svg class="svg-grey-color"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        {{hazard.immune}}
+      </div>
+      <div class="pd-single-statistics-cell pd-single-hazard-statistics-weaknesses" *ngIf="hazard.name.english === Hazards.STEALTH_ROCK">
+        <svg class="svg-grey-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-4-4h-4v-2h4v-2h-4V9h4V7H9v10h6z"/></svg>
+        {{hazard.weaknesses}}
+      </div>
     </div>
   </div>
 
