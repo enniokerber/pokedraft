@@ -9,33 +9,29 @@
 
   <div class="pd-teambuilder-half pd-teambuilder-main-half">
 
-    <teambar></teambar>
+    <pd-teambar></pd-teambar>
 
     <ng-container *ngIf="display as displayMode">
 
-      <teambuilder-form *ngIf="displayMode.showForm"></teambuilder-form>
+      <pd-teambuilder-form *ngIf="displayMode.showForm"></pd-teambuilder-form>
 
-      <!-- all lists need to be on screen at all times so the list components dont have to be recreated and rendered every time which would cause huge delays -->
+      <!-- all lists need to be on screen at all times so the list components dont have to be recreated and rendered every time which would cause huge delays/performance issues -->
       <div class="pd-teambuilder-list-container">
 
-        <pokemon-list class="pd-teambuilder-list"
-                      [class.pd-teambuilder-list--show]="displayMode.showPokemonList"></pokemon-list>
-
-        <!--
+        <pd-pokemon-list class="pd-teambuilder-list"
+                         [class.pd-teambuilder-list--show]="displayMode.showPokemonList"></pd-pokemon-list>
 
         <pd-item-list class="pd-teambuilder-list"
                       [class.pd-teambuilder-list--show]="displayMode.showItemList"></pd-item-list>
-        -->
-        <moves-list class="pd-teambuilder-list"
-                    [class.pd-teambuilder-list--show]="displayMode.showMoveList"></moves-list>
-        <!--
-        <abilities-list class="pd-teambuilder-list"
-                        [class.pd-teambuilder-list--show]="displayMode.showAbilitiesList"></abilities-list>
+
+        <pd-moves-list class="pd-teambuilder-list"
+                       [class.pd-teambuilder-list--show]="displayMode.showMoveList"></pd-moves-list>
+
+        <pd-abilities-list class="pd-teambuilder-list"
+                        [class.pd-teambuilder-list--show]="displayMode.showAbilitiesList"></pd-abilities-list>
 
         <pd-stats class="pd-teambuilder-list"
                   [class.pd-teambuilder-list--show]="displayMode.showStats"></pd-stats>
-
-        -->
 
       </div>
 
@@ -45,7 +41,7 @@
 
   <div class="pd-teambuilder-half pd-teambuilder-second-half">
 
-    <teambuilder-settings-bar></teambuilder-settings-bar>
+    <pd-teambuilder-settings-bar></pd-teambuilder-settings-bar>
 
     <pd-statistics class="pd-teambuilder-list-container pd-statistics-container"></pd-statistics>
 
@@ -54,8 +50,8 @@
 </ng-template>
 
 <ng-template #loader>
-    <teambuilder-loader
+    <pd-teambuilder-loader
       [value]="loadingProgress"
       [text]="loadingText">
-    </teambuilder-loader>
+    </pd-teambuilder-loader>
 </ng-template>

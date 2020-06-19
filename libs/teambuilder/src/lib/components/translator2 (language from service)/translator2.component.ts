@@ -1,8 +1,7 @@
 import {Component, Input, OnDestroy} from '@angular/core';
-import {createTranslatable, Language, Languages} from "../../models";
-import {Subscription} from "rxjs";
+import {Language, Languages} from "../../models";
+import {Observable, Subscription} from "rxjs";
 import {TeambuilderLanguageService} from "../../services";
-import {StringOrNumber} from "../../models/types";
 
 /*
 This component translates the displayed text by subscribing to the language changes stream in the TeambuilderViewService
@@ -14,15 +13,13 @@ This component translates the displayed text by subscribing to the language chan
 })
 export class Translator2Component implements OnDestroy {
 
-  _content: StringOrNumber;
+  content$: Observable<string>;
 
   _language: Language = Languages.ENGLISH;
 
   _english = '';
 
-  _german = '';
-
-  _french = '';
+  _german;
 
   private _subscription: Subscription;
 
@@ -40,42 +37,25 @@ export class Translator2Component implements OnDestroy {
     }
   }
 
-  @Input() set french(content: string) {
-    this._french = content;
-    if (this.languageIsFrench()) {
-      this.setContent(content);
-    }
-  }
-
   constructor(private tbLanguage: TeambuilderLanguageService) {
     this._subscription = this.tbLanguage.language.changes$
-      .subscribe(language => {
-        this._language = language;
-        this.setContent(
-          this.tbLanguage.translateFromTranslatable(
-            createTranslatable(this._english, this._german, this._french)
-          )
-        );
-      }
-    )
+      .subscribe(language => this._language = language);
   }
 
   ngOnDestroy(): void {
     this._subscription.unsubscribe();
   }
 
-  private setContent(content: StringOrNumber) {
+  private setContent(content?: string) {
     if (content) {
-      this._content = content;
-    } else {
-      this._content = this._english;
+      this.content$ = this.tbLanguage.createTranslatorStream({
+        english: this._english,
+        german: this._german,
+      });
     }
   }
 
   private languageIsEnglish(): boolean { return this._language === Languages.ENGLISH; }
 
   private languageIsGerman(): boolean  { return this._language === Languages.GERMAN; }
-
-  private languageIsFrench(): boolean { return this._language === Languages.FRENCH; }
-
 }

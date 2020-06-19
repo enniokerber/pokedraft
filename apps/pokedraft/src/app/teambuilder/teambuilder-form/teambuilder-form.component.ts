@@ -8,7 +8,7 @@ import {filter, map, switchMap, tap} from "rxjs/operators";
 import {of} from "rxjs";
 
 @Component({
-  selector: 'teambuilder-form',
+  selector: 'pd-teambuilder-form',
   templateUrl: './teambuilder-form.component.html',
   styleUrls: ['./teambuilder-form.component.scss']
 })

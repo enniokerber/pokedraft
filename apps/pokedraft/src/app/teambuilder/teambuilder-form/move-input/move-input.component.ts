@@ -11,7 +11,7 @@ import {
 import {filter} from "rxjs/operators";
 
 @Component({
-  selector: 'move-input',
+  selector: 'pd-move-input',
   templateUrl: './move-input.component.html',
   styleUrls: ['./move-input.component.scss']
 })

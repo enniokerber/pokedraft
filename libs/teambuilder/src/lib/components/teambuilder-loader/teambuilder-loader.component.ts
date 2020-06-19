@@ -1,19 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'teambuilder-loader',
+  selector: 'pd-teambuilder-loader',
   templateUrl: './teambuilder-loader.component.html',
   styleUrls: ['./teambuilder-loader.component.scss']
 })
-export class TeambuilderLoaderComponent implements OnInit {
+export class TeambuilderLoaderComponent {
 
   @Input() value = 0;
 
   @Input() text = 'Loading Pokémon data ...';
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

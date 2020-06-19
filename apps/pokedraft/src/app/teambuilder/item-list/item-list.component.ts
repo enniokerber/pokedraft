@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {
   TeambuilderViewService,
   IItem,
@@ -9,13 +9,14 @@ import {
   ITEM_DIVIDER_PROP,
   TeambuilderLanguageService, TeambuilderListMarkerForDividedEntityCollection, TeambuilderStoreService
 } from "@pokedraft/teambuilder";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'pd-item-list',
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.scss']
 })
-export class ItemListComponent implements OnInit {
+export class ItemListComponent implements AfterViewInit, OnInit {
 
   @ViewChild('itemListContainer') itemListContainerElement: ElementRef;
 
@@ -31,9 +32,10 @@ export class ItemListComponent implements OnInit {
               private tbLanguage: TeambuilderLanguageService,
               private tbStore: TeambuilderStoreService) {
     this.items = new DividedTeambuilderEntityCollection<IItem>(this.tbStore.getItems(), ITEM_DIVIDER_PROP);
-    this.items.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
     this.marker = new TeambuilderListMarkerForDividedEntityCollection<IItem>(this.items);
     this.subscriptions = new SubscriptionContainer(
+      this.tbLanguage.language.changes$
+        .subscribe(_ => this.items.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name', false)),
       this.tbEvents.itemListEvents.search.changes$
         .subscribe(searchString => this.items.filterByString(searchString, 'name', this.tbLanguage.getCurrentLanguageAsProp())),
       this.tbEvents.itemListEvents.down.subscribe(_ => this.marker.inc()),
@@ -47,13 +49,23 @@ export class ItemListComponent implements OnInit {
     this.tbView.displayItemList();
   }
 
+  ngAfterViewInit(): void {
+    this.subscriptions.add(
+      this.tbView.displayMode.changes$
+        .pipe(filter(dm => dm && dm.showItemList === true))
+        .subscribe(_ => this.scrollTop())
+    );
+  }
+
   selectItem(item: IItem) {
     this.tbPokemon.updateSelectedPokemonsItem(item);
   }
 
+  sortItemsByName(): void {
+    this.items.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
+  }
+
   scrollTop() {
-    if (this.itemListContainerElement) {
-      this.itemListContainerElement.nativeElement.scrollTop = 0;
-    }
+    this.itemListContainerElement.nativeElement.scrollTop = 0;
   }
 }

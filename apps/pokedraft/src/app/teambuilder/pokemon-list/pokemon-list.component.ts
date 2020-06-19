@@ -3,8 +3,6 @@ import {Observable} from "rxjs";
 import {
   IPokemon,
   ITier,
-  Language,
-  Languages,
   SORTING_OPTIONS,
   SubscriptionContainer,
   TeambuilderEntityCollection,
@@ -13,10 +11,10 @@ import {
   TeambuilderStoreService,
   TeambuilderViewService
 } from "@pokedraft/teambuilder";
-import {distinctUntilChanged, filter} from "rxjs/operators";
+import {filter} from "rxjs/operators";
 
 @Component({
-  selector: 'pokemon-list',
+  selector: 'pd-pokemon-list',
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss']
 })
@@ -28,13 +26,9 @@ export class PokemonListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   tiers: ITier[];
 
-  language: Language = Languages.ENGLISH;
-
   showTiers$: Observable<boolean>;
 
   sortingOptions = SORTING_OPTIONS;
-
-  GERMAN_LANGUAGE = Languages.GERMAN;
 
   tierPipeTrigger = false;
 
@@ -47,14 +41,10 @@ export class PokemonListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.pokemon = this.tbStore.pokemonlist;
     this.tiers = this.tbStore.tiers;
     this.subscriptions = new SubscriptionContainer(
-      this.tbLanguage.language.changes$.pipe(distinctUntilChanged()).subscribe(
-        (language) => {
-          this.tbStore.sortPokemonIfNotSorted(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
-          this.language = language;
-        }
-      ),
+      this.tbLanguage.language.changes$
+        .subscribe(_ => this.tbStore.pokemonlist.sortIfNotSorted(this.tbLanguage.getCurrentLanguageAsProp(), 'name')),
     );
-    this.showTiers$ = this.tbView.showTiers.changes$.pipe(distinctUntilChanged());
+    this.showTiers$ = this.tbView.showTiers.changes$;
   }
 
   ngOnInit() {
@@ -78,25 +68,20 @@ export class PokemonListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.tbPokemon.addTeampokemon(pokemon);
   }
 
-  sortPokemonlist(sortBy: string, isStat = false): void {
-    this.tbView.showTiers.update(true);
-    this.tbStore.sortPokemon(sortBy, (isStat ? 'stats' : ''));
-    this.sortingSideEffects();
+  sortPokemonByName(deactivateTiers: boolean = false) {
+    this.tbStore.pokemonlist.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
+    this.sortingSideEffects(deactivateTiers);
   }
 
-  sortPokemonlistByStat(stat: string): void {
-    this.sortPokemonlist(stat, true);
+  sortPokemonByStat(stat: string, deactivateTiers: boolean = false) {
+    this.tbStore.pokemonlist.sort(stat, 'stats');
+    this.sortingSideEffects(deactivateTiers);
   }
 
-  sortListAndDeactivateTierSeparation(sortBy: string, event: MouseEvent, isStat = false) {
-    event.preventDefault();
-    this.sortPokemonlist(sortBy, isStat);
-    this.tbView.showTiers.update(false);
-  }
-
-  sortingSideEffects() {
+  sortingSideEffects(deactivateTiers: boolean = false) {
     this.scrollTop();
     this.triggerTierPipe();
+    this.tbView.showTiers.update(!deactivateTiers);
   }
 
   scrollTop() {

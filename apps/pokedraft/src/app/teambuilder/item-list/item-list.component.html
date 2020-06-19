@@ -1,25 +1,28 @@
 <div class="pd-teambuilder-list-row pd-teambuilder-list-header">
 
-  <div class="pd-teambuilder-list-head-cell --tb-item-name-cell --action-cell">
+  <div class="pd-teambuilder-list-head-cell --tb-item-name-cell --action-cell"
+       (click)="sortItemsByName()">
     Item
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-item-desc-cell">
-    <translator2 english="Description" german="Beschreibung"></translator2>
+    <translator3 [source]="{ english: 'Description', german: 'Beschreibung' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-item-fling-basepower"
-       translatableTitle
-       englishTitle="The basepower of the attack Fling, when this item is thrown."
-       germanTitle="Die Stärke der Attacke Schleuder, wenn dieses Item geworfen wird.">
-    <translator2 english="Fling" german="Schleuder"></translator2>
+       [translatableTitle2]="{
+          english: 'The basepower of the attack Fling, when this item is thrown.',
+          german: 'Die Stärke der Attacke Schleuder, wenn dieses Item geworfen wird.'
+       }">
+    <translator3 [source]="{ english: 'Fling', german: 'Schleuder' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-item-natural-gift"
-       translatableTitle
-       englishTitle="If the item is a berry, it determines the basepower and the type of the attack Natural Gift."
-       germanTitle="Wenn das Item eine Beere ist, bestimmt es den Typ und die Stärke der Attacke Beerenkräfte.">
-    <translator2 english="Berry" german="Beere"></translator2>
+       [translatableTitle2]="{
+          english: 'If the item is a berry, it determines the basepower and the type of the attack Natural Gift.',
+          german: 'Wenn das Item eine Beere ist, bestimmt es den Typ und die Stärke der Attacke Beerenkräfte.'
+       }">
+    <translator3 [source]="{ english: 'Berry', german: 'Beere' }"></translator3>
   </div>
 </div>
 
@@ -28,7 +31,7 @@
   <div class="pd-teambuilder-list-sub-container">
     <div class="pd-teambuilder-list-subheading-head">
       <span class="pd-teambuilder-list-subheading-title --subheading-line">
-        <translator2 english="Popular Items" german="Beliebte Items"></translator2>
+        <translator3 [source]="{ english: 'Popular Items', german: 'Beliebte Items' }"></translator3>
       </span>
     </div>
 
@@ -41,7 +44,7 @@
   <div class="pd-teambuilder-list-sub-container">
     <div class="pd-teambuilder-list-subheading-head">
       <span class="pd-teambuilder-list-subheading-title --subheading-line">
-        <translator2 english="Other Items" german="Weitere Items"></translator2>
+        <translator3 [source]="{ english: 'Other Items', german: 'Weitere Items' }"></translator3>
       </span>
     </div>
 

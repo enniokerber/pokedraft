@@ -88,7 +88,7 @@ export class HazardStatisticsCalculator {
   private addToxicSpikesData(fromPokemon: TeambuilderPokemon) {
     const toxicSpikeStatistics = this.hazardStatisticsMap[Hazards.TOXIC_SPIKES];
     if (fromPokemon.getTypes()
-        .some(type => type === PokemonTypes.Poison ||  type === PokemonTypes.Flying || type === PokemonTypes.Steel)
+        .some(type => type === PokemonTypes.Poison || type === PokemonTypes.Flying || type === PokemonTypes.Steel)
           || this.abilityProtectsFromHazards(fromPokemon)) {
       toxicSpikeStatistics.immune++;
     } else {

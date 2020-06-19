@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnDestroy} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, Input, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {TeambuilderLanguageService} from "../../services";
 import {Language, Languages} from "../../models";
@@ -7,19 +7,19 @@ import {Language, Languages} from "../../models";
 @Directive({
   selector: '[translatableTitle]'
 })
-export class TranslatableTitleDirective implements OnDestroy {
+export class TranslatableTitleDirective implements AfterViewInit, OnDestroy {
 
   @Input() set englishTitle(englishTitle: string) {
     this._englishTitle = englishTitle;
     if (this.languageIsEnglish()) {
-      this.setContent(englishTitle);
+      this.renewSource();
     }
   }
 
   @Input() set germanTitle(germanTitle: string) {
     this._germanTitle = germanTitle;
     if (this.languageIsGerman()) {
-      this.setContent(germanTitle);
+      this.renewSource();
     }
   }
 
@@ -27,44 +27,35 @@ export class TranslatableTitleDirective implements OnDestroy {
 
   private _germanTitle: string;
 
-  private _language: Language;
+  private _language: Language = Languages.ENGLISH;
 
-  private subscription: Subscription;
+  private subscription: Subscription = Subscription.EMPTY;
 
   constructor(private elem: ElementRef,
               private tbLanguage: TeambuilderLanguageService) {
-    this._language = Languages.ENGLISH;
-    this.subscription = Subscription.EMPTY;
-    this.subscription = this.tbLanguage.language.changes$.subscribe((language) => {
-      this.translate(language);
-    });
+  }
+
+  ngAfterViewInit(): void {
+    this.renewSource();
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.unsubscribe();
   }
 
-  translate(language: Language) {
-    this._language = language;
-    switch (language) {
-      case Languages.GERMAN:
-        this.setContent(this._germanTitle);
-        break;
-      default:
-        this.setContent(this._englishTitle);
-    }
+  renewSource(): void {
+    this.unsubscribe();
+    this.subscription = this.tbLanguage.createTranslatorStream({
+      english: this._englishTitle,
+      german: this._germanTitle
+    }).subscribe(translatedTitle => this.setContent(translatedTitle));
   }
 
-  setContent(content: string) {
-    if (content) {
-      this.elem.nativeElement.setAttribute('title', content);
-    } else {
-      if (this._englishTitle) {
-        this.setContent(this._englishTitle);
-        return;
-      }
-    }
+  setContent(content: string): void {
+    this.elem.nativeElement.setAttribute('title', content);
   }
+
+  private unsubscribe() { this.subscription.unsubscribe(); }
 
   private languageIsEnglish(): boolean { return this._language === Languages.ENGLISH; }
 

@@ -101,16 +101,16 @@
     </div>
 
     <div class="pd-teambuilder-form-fraction --moves-fraction">
-      <move-input [move]="move.data"
-                  [moveId]="move_nr"
-                  *ngFor="let move of pokemon.moves; index as move_nr">
-      </move-input>
+      <pd-move-input [move]="move.data"
+                     [moveId]="move_nr"
+                     *ngFor="let move of pokemon.moves; index as move_nr">
+      </pd-move-input>
     </div>
 
     <div class="pd-teambuilder-form-fraction --stats-fraction">
 
       <div class="pd-teambuilder-form-stat-container" (click)="openStats()">
-        <stat-overview [stats]="pokemon.stats"></stat-overview>
+        <pd-stat-overview [stats]="pokemon.stats"></pd-stat-overview>
       </div>
 
       <pd-nature-dropdown [pokemon]="pokemon" (natureChange)="pokemon.changeNatureById($event)"></pd-nature-dropdown>

@@ -6,31 +6,32 @@
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-move-props-cell">
-    <translator2 english="Type" german="Typ"></translator2>
+    <translator3 [source]="{ english: 'Type', german: 'Typ' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-move-props-cell"
-       translatableTitle englishTitle="Category" germanTitle="Kategorie">
-    <translator2 english="Cat" german="Kat"></translator2>
+       [translatableTitle2]="{ english: 'Category', german: 'Kategorie' }">
+    <translator3 [source]="{ english: 'Cat', german: 'Kat' }"></translator3>
+  </div>
+
+  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell --action-cell"
+       [translatableTitle2]="{ english: 'Power', german: 'Stärke' }"
+       (click)="sortByBasePower()">
+    <translator3 [source]="{ english: 'Pow', german: 'Strk' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-move-props-cell"
-       translatableTitle englishTitle="Power" germanTitle="Stärke">
-    <translator2 english="Pow" german="Strk"></translator2>
-  </div>
-
-  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell"
-       translatableTitle englishTitle="Accuracy" germanTitle="Genauigkeit">
-    <translator2 english="Acc" german="Gen"></translator2>
+       [translatableTitle2]="{ english: 'Accuracy', german: 'Genauigkeit' }">
+    <translator3 [source]="{ english: 'Acc', german: 'Gen' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-move-props-cell --tb-powerpoints-cell"
-       translatableTitle englishTitle="PowerPoints" germanTitle="Angriffspunkte">
-    <translator2 english="PP" german="AP"></translator2>
+       [translatableTitle2]="{ english: 'PowerPoints', german: 'Angriffspunkte' }">
+    <translator3 [source]="{ english: 'PP', german: 'AP' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-move-desc-cell">
-    <translator2 english="Description" german="Beschreibung"></translator2>
+    <translator3 [source]="{ english: 'Description', german: 'Beschreibung' }"></translator3>
   </div>
 
 </div>
@@ -39,13 +40,18 @@
      *ngIf="loadingError">
   <div class="pd-error-icon pd-error-icon--smaller-margin"></div>
   <span class="pd-error-text">
-    <translator2 english="An error occurred while fetching the Pokémon´s moves." german="Fehler beim Laden der Attacken."></translator2>
+    <translator3 [source]="{
+          english: 'An error occurred while fetching the Pokémon´s moves.',
+          german: 'Fehler beim Laden der Attacken.'
+        }"></translator3>
   </span>
 </div>
 
 <div class="pd-container-row pd-teambuilder-list-container-row pd-teambuilder-list-container-row--for-loader flex-align-center flex-align-top small-margin-top no-margin-bottom"
      *ngIf="loadingMoves">
-  <pd-loader><translator2 english="Load Moves" german="Lade Attacken"></translator2></pd-loader>
+  <pd-loader>
+    <translator3 [source]="{ english: 'Load Moves', german: 'Lade Attacken' }"></translator3>
+  </pd-loader>
 </div>
 
 
@@ -73,10 +79,11 @@
   <div class="pd-teambuilder-list-sub-container pd-teambuilder-list-sub-container--grey-highlight">
     <div class="pd-teambuilder-list-subheading-head">
       <span class="pd-teambuilder-list-subheading-title"
-            translatableTitle
-            englishTitle="These moves are typically not used by the majority of players, but sometimes they can be used for unique strategies."
-            germanTitle="Diese Attacken werden vom Pokémon zwar beherrscht, aber vom Großteil der Spieler eher selten genutzt. Manchmal werden diese Attacken jedoch für einzigartige Strategien verwendet oder werden durch bestimmte Items oder Fähigkeiten spielbar.">
-        <translator2 english="Usually Useless Moves" german="Normalerweise unnütze Attacken"></translator2>
+            [translatableTitle2]="{
+                english: 'These moves are typically not used by the majority of players, but sometimes they can be used for unique strategies.',
+                german: 'Diese Attacken werden vom Pokémon zwar beherrscht, aber vom Großteil der Spieler eher selten genutzt. Manchmal werden diese Attacken jedoch für einzigartige Strategien verwendet oder werden durch bestimmte Items oder Fähigkeiten spielbar.'
+              }">
+        <translator3 [source]="{ english: 'Usually Useless Moves', german: 'Normalerweise unnütze Attacken' }"></translator3>
       </span>
     </div>
 
@@ -92,8 +99,12 @@
      translatableTitle
      englishTitle="Reload Moves"
      germanTitle="Attacken neu laden"
+     [translatableTitle2]="{
+        english: 'Reload Moves',
+        german: 'Attacken neu laden'
+     }"
      *ngIf="!loadingMoves">
-  <img src="assets/icons/download.png" alt="Download Icon">
+  <img src="assets/icons/download.png">
 </div>
 
 

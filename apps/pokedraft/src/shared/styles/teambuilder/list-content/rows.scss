@@ -148,10 +148,6 @@ $icon-size: 68px;
   @include flex-center;
   flex: $icon-size 0 0;
   height: 100%;
-
-  &---align-bottom {
-    align-items: flex-end;
-  }
 }
 
 .pd-teambuilder-list-cell-text {

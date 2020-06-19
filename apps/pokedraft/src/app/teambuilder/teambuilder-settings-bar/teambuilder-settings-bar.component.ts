@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {
   Language,
   LanguageWithLabel,
@@ -9,11 +9,11 @@ import {
 } from "@pokedraft/teambuilder";
 
 @Component({
-  selector: 'teambuilder-settings-bar',
+  selector: 'pd-teambuilder-settings-bar',
   templateUrl: './teambuilder-settings-bar.component.html',
   styleUrls: ['./teambuilder-settings-bar.component.scss']
 })
-export class TeambuilderSettingsBarComponent implements OnInit, OnDestroy {
+export class TeambuilderSettingsBarComponent implements OnDestroy {
 
   languages: LanguageWithLabel[];
 
@@ -25,9 +25,6 @@ export class TeambuilderSettingsBarComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.tbLanguage.language.changes$.subscribe((language) => this.language = language)
     );
-  }
-
-  ngOnInit() {
   }
 
   ngOnDestroy(): void {

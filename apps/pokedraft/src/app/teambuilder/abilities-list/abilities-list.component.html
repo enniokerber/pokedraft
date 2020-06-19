@@ -5,7 +5,7 @@
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-ability-desc-cell">
-    <translator2 english="Description" german="Beschreibung"></translator2>
+    <translator3 [source]="{ english: 'Description', german: 'Beschreibung' }"></translator3>
   </div>
 
 </div>
@@ -19,7 +19,7 @@
         'pd-teambuilder-list-row--marked': index === marker.index
        }"
        (click)="selectAbility(ability)"
-       *ngFor="let ability of abilities._current; index as index">
+       *ngFor="let ability of abilities.current; index as index">
     <div class="pd-teambuilder-list-cell --tb-ability-name-cell flex-align-left">
       <translator3 [source]="ability.name"></translator3>
     </div>

@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {ExtendedStatLabelMap, statIdsArray, Stats, statsExtended} from "@pokedraft/teambuilder";
 
 @Component({
-  selector: 'stat-overview',
+  selector: 'pd-stat-overview',
   templateUrl: './stat-overview.component.html',
   styleUrls: ['./stat-overview.component.scss']
 })

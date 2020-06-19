@@ -44,8 +44,8 @@
 .pd-single-hazard-statistics {
   display: grid;
   grid-template-areas:
-    "label label label  label"
-    "users hits  immune weaknesses";
+    "label label label      label"
+    "users hits  weaknesses immune";
   grid-template-rows: 36px 44px;
   grid-template-columns: repeat(4, 1fr);
   @include take-up-full-space;

@@ -13,15 +13,13 @@ export class TeambuilderStoreService {
   private readonly _abilities: AbilityRecord;
   private readonly _items: ItemRecord;
   private readonly _moves: MovesRecord;
-  private _types: any[];
-  private _tiers: ITier[];
+  private readonly _tiers: ITier[];
 
   constructor() {
     this._pokemonlist = new TeambuilderEntityCollection<IPokemon>(pokedex);
     this._abilities = testAbilities;
     this._items = testItems;
     this._moves = testMovesObject;
-    this._types = [];
     this._tiers = TestTiers;
   }
 
@@ -41,30 +39,8 @@ export class TeambuilderStoreService {
     return this._moves;
   }
 
-  get types(): any[] {
-    return this._types;
-  }
-
-  set types(value: any[]) {
-    this._types = value;
-  }
-
   get tiers(): ITier[] {
     return this._tiers;
-  }
-
-  set tiers(value: ITier[]) {
-    this._tiers = value;
-  }
-
-  sortPokemon(property: string, parentProperty = ''): void {
-    this.pokemonlist.sort(property, parentProperty);
-  }
-
-  sortPokemonIfNotSorted(by: string, parentProperty = ''): void {
-    if (this.pokemonlist.sortColumn !== by) {
-      this.pokemonlist.sort(by, parentProperty);
-    }
   }
 
   getPokemonsAbilities(pokemon: TeambuilderPokemon) {

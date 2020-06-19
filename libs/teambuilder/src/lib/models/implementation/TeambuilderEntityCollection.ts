@@ -2,62 +2,22 @@ import {SortingDirection, SortingDirections} from "../types/SortingDirection";
 
 export class TeambuilderEntityCollection<Entity = any> {
 
-  private _all:      Entity[];
-  private _filtered: Entity[];
-  public  _current:  Entity[];
+  private all:      Entity[];
+  private filtered: Entity[];
+  public  current:  Entity[];
 
-  private _sortingDirection: SortingDirection;
-  private _sortColumn: string;
+  private sortingDirection: SortingDirection;
+  private sortColumn: string;
 
   constructor(entities: Entity[], defaultSortColumn?: string) {
-    this._all = entities;
-    this._filtered = [...entities];
-    this._current = [...entities];
+    this.all = entities;
+    this.filtered = [...entities];
+    this.current = [...entities];
 
-    this._sortingDirection = SortingDirections.ASC;
+    this.sortingDirection = SortingDirections.ASC;
     if (defaultSortColumn) {
       this.sort(defaultSortColumn, '', false);
     }
-  }
-
-  get all(): Entity[] {
-    return this._all;
-  }
-
-  set all(value: Entity[]) {
-    this._all = value;
-  }
-
-  get filtered(): Entity[] {
-    return this._filtered;
-  }
-
-  set filtered(value: Entity[]) {
-    this._filtered = value;
-  }
-
-  get current(): Entity[] {
-    return this._current;
-  }
-
-  set current(value: Entity[]) {
-    this._current = value;
-  }
-
-  get sortingDirection(): SortingDirection {
-    return this._sortingDirection;
-  }
-
-  set sortingDirection(value: SortingDirection) {
-    this._sortingDirection = value;
-  }
-
-  get sortColumn(): string {
-    return this._sortColumn;
-  }
-
-  set sortColumn(value: string) {
-    this._sortColumn = value;
   }
 
   count(): number {
@@ -115,6 +75,14 @@ export class TeambuilderEntityCollection<Entity = any> {
           this.current = this.filtered.sort((a, b) => a[by].localeCompare(b[by]));
         }
       }
+    }
+  }
+
+  sortIfNotSorted(by: string,
+                  parentProperty = '',
+                  toggleSortOrder = true) {
+    if (this.sortColumn !== by) {
+      this.sort(by, parentProperty, toggleSortOrder);
     }
   }
 

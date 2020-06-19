@@ -1,6 +1,7 @@
 <div class="pd-teambuilder-list-row pd-teambuilder-list-header">
 
-  <div class="pd-teambuilder-list-head-cell --tb-name-cell --action-cell">
+  <div class="pd-teambuilder-list-head-cell --tb-name-cell --action-cell"
+       (click)="sortPokemonByName()" (contextmenu)="sortPokemonByName(); false;">
     Name
   </div>
 
@@ -14,43 +15,43 @@
 
   <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Healthpoints', german: 'Kraftpunkte' }"
-       (click)="sortPokemonlistByStat(sortingOptions.HP)"
-       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.HP, $event, true)">
+       (click)="sortPokemonByStat(sortingOptions.HP)"
+       (contextmenu)="sortPokemonByStat(sortingOptions.HP, true); false;">
     <translator3 [source]="{ english: 'HP', german: 'KP' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Attack', german: 'Angriff' }"
-       (click)="sortPokemonlistByStat(sortingOptions.ATK)"
-       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.ATK, $event, true)">
+       (click)="sortPokemonByStat(sortingOptions.ATK)"
+       (contextmenu)="sortPokemonByStat(sortingOptions.ATK, true); false;">
     <translator3 [source]="{ english: 'Atk', german: 'Ang' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Defense', german: 'Verteidigung' }"
-       (click)="sortPokemonlistByStat(sortingOptions.DEF)"
-       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.DEF, $event, true)">
+       (click)="sortPokemonByStat(sortingOptions.DEF)"
+       (contextmenu)="sortPokemonByStat(sortingOptions.DEF, true); false;">
     <translator3 [source]="{ english: 'Def', german: 'Vert' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Special-Attack', german: 'Spezial-Angriff' }"
-       (click)="sortPokemonlistByStat(sortingOptions.SPATK)"
-       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPATK, $event, true)">
+       (click)="sortPokemonByStat(sortingOptions.SPATK)"
+       (contextmenu)="sortPokemonByStat(sortingOptions.SPATK, true); false;">
     <translator3 [source]="{ english: 'SpA', german: 'SpA' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Special-Defense', german: 'Spezial-Verteidigung' }"
-       (click)="sortPokemonlistByStat(sortingOptions.SPDEF)"
-       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPDEF, $event, true)">
+       (click)="sortPokemonByStat(sortingOptions.SPDEF)"
+       (contextmenu)="sortPokemonByStat(sortingOptions.SPDEF, true); false;">
     <translator3 [source]="{ english: 'SpD', german: 'SpV' }"></translator3>
   </div>
 
   <div class="pd-teambuilder-list-head-cell --tb-stat-cell --action-cell"
        [translatableTitle2]="{ english: 'Speed', german: 'Initiative' }"
-       (click)="sortPokemonlistByStat(sortingOptions.SPEED)"
-       (contextmenu)="sortListAndDeactivateTierSeparation(sortingOptions.SPEED, $event, true)">
+       (click)="sortPokemonByStat(sortingOptions.SPEED)"
+       (contextmenu)="sortPokemonByStat(sortingOptions.SPEED, true); false;">
     <translator3 [source]="{ english: 'Spe', german: 'Init' }"></translator3>
   </div>
 
@@ -83,7 +84,7 @@
     </div>
 
     <pokemon-list-row-container
-      [pokemon]="pokemon._current | tierFilter : tier.id : tierPipeTrigger"
+      [pokemon]="pokemon.current | tierFilter : tier.id : tierPipeTrigger"
       (onchoose)="choosePokemon($event)">
     </pokemon-list-row-container>
 
@@ -92,7 +93,7 @@
 
 <ng-template #noTiersList>
   <pokemon-list-row-container
-    [pokemon]="pokemon._current"
+    [pokemon]="pokemon.current"
     (onchoose)="choosePokemon($event)">
   </pokemon-list-row-container>
 </ng-template>

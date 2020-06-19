@@ -15,11 +15,11 @@ but it uses an ITranslatable object for translation wheras Translator2 received 
 })
 export class Translator3Component {
 
+  public content$: Observable<string>;
+
   @Input() set source(translatable: ITranslatable | any) {
     this.content$ = this.tbLanguage.createTranslatorStream(translatable);
   }
-
-  public content$: Observable<string>;
 
   constructor(private tbLanguage: TeambuilderLanguageService) {
     this.content$ = null;

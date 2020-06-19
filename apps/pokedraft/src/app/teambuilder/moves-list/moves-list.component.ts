@@ -10,12 +10,12 @@ import {
   TeambuilderLanguageService,
   TeambuilderListMarkerForDividedEntityCollection,
   TeambuilderStoreService,
-  TeambuilderPokemon, TeambuilderStatisticsService
+  TeambuilderPokemon
 } from "@pokedraft/teambuilder";
 import {debounceTime, distinctUntilChanged, filter} from "rxjs/operators";
 
 @Component({
-  selector: 'moves-list',
+  selector: 'pd-moves-list',
   templateUrl: './moves-list.component.html',
   styleUrls: ['./moves-list.component.scss']
 })
@@ -72,12 +72,12 @@ export class MovesListComponent implements OnDestroy {
     this.tbPokemon.insertMove(move);
   }
 
-  sort(by: string, parentProperty?: string) {
-    this.moves.sort(by, parentProperty);
+  sortByName() {
+    this.moves.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
   }
 
-  sortByName() {
-    this.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
+  sortByBasePower() {
+    this.moves.sort('basePower');
   }
 
   getPokemonsMoves(pokemon: TeambuilderPokemon): IMove[] {

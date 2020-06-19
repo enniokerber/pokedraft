@@ -6,7 +6,7 @@ import {
 import {Observable} from "rxjs";
 
 @Component({
-  selector: 'teambar',
+  selector: 'pd-teambar',
   templateUrl: './teambar.component.html',
   styleUrls: ['./teambar.component.scss']
 })

@@ -11,7 +11,7 @@ import {
 import {debounceTime} from "rxjs/operators";
 
 @Component({
-  selector: 'abilities-list',
+  selector: 'pd-abilities-list',
   templateUrl: './abilities-list.component.html',
   styleUrls: ['./abilities-list.component.scss']
 })
