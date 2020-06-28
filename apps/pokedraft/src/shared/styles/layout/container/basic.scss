@@ -108,6 +108,13 @@
   cursor: pointer;
 }
 
+.pd-container-row-label-text {
+  color: $primary;
+  border: 1px solid $primary;
+  border-radius: $radius;
+  padding: $padding $padding-l;
+}
+
 .pd-container-row-content {
   flex: 1 1;
   height: 100%;

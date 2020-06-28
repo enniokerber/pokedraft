@@ -1,9 +1,9 @@
 import {
   HAZARDS,
+  HAZARDSWITHTRANSLATION,
   Hazards,
   HazardStatistics,
   HazardStatisticsMap,
-  HAZARDSWITHTRANSLATION,
   SingleHazardStatistics
 } from "../api/HazardStatistics";
 import {
@@ -37,9 +37,9 @@ export class HazardStatisticsCalculator {
     this.reset();
     forTeam.forEach(pokemon => {
       this.checkMovesetForHazards(pokemon);
-      this.addStealthRockData(pokemon);
-      this.addSpikesData(pokemon);
-      this.addToxicSpikesData(pokemon);
+      this.updateStealthRockStatistics(pokemon);
+      this.updateSpikesStatistics(pokemon);
+      this.updateToxicSpikesStatistics(pokemon);
       this.addRapidSpinData(pokemon);
     });
     this.statistics = Object.values(this.hazardStatisticsMap);
@@ -55,14 +55,14 @@ export class HazardStatisticsCalculator {
       });
   }
 
-  private addStealthRockData(fromPokemon: TeambuilderPokemon) {
+  private updateStealthRockStatistics(fromPokemon: TeambuilderPokemon) {
     const types: PokemonType[] = fromPokemon.getTypes();
     const stealthRocksStatistics: SingleHazardStatistics = this.hazardStatisticsMap[Hazards.STEALTH_ROCK];
 
     const rockTypeEffectiveness =
       types.reduce((acc, type) => {
         const rockTypeChart = TYPE_CHART[type].def[PokemonTypes.Rock];
-        return rockTypeChart ? rockTypeChart * acc : NEUTRAL;
+        return (rockTypeChart || NEUTRAL) * acc;
       }, 1);
 
     if ((rockTypeEffectiveness === SUPER_EFFECTIVE || rockTypeEffectiveness === FOUR_TIMES_SUPER_EFFECTIVE)
@@ -76,7 +76,7 @@ export class HazardStatisticsCalculator {
       }
   }
 
-  private addSpikesData(fromPokemon: TeambuilderPokemon) {
+  private updateSpikesStatistics(fromPokemon: TeambuilderPokemon) {
     const spikesStatistics = this.hazardStatisticsMap[Hazards.SPIKES];
     if (fromPokemon.getTypes().includes(PokemonTypes.Flying) || this.abilityProtectsFromHazards(fromPokemon)) {
       spikesStatistics.immune++;
@@ -85,7 +85,7 @@ export class HazardStatisticsCalculator {
     }
   }
 
-  private addToxicSpikesData(fromPokemon: TeambuilderPokemon) {
+  private updateToxicSpikesStatistics(fromPokemon: TeambuilderPokemon) {
     const toxicSpikeStatistics = this.hazardStatisticsMap[Hazards.TOXIC_SPIKES];
     if (fromPokemon.getTypes()
         .some(type => type === PokemonTypes.Poison || type === PokemonTypes.Flying || type === PokemonTypes.Steel)

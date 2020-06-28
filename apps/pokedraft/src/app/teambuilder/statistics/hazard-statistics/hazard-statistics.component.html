@@ -15,12 +15,6 @@
   </div>
 </div>
 
-<!--
-     translatableTitle
-     englishTitle="Single Hazard Statistics - Properties from left to right: Users on your team, amount of Pokémon on your team that get hit by this hazard type, weaknesses on your team, immunities against this hazard type on your team."
-     germanTitle="Hazard Statistik - Eigenschaften von links nach rechts: 1. Anzahl Hazard-User deines Teams 2. Anzahl Pokémon deines Teams, die von diesem Hazard-Typ getroffen werden 3. Anzahl Schwächen gegen diesen Hazard-Typ in deinem Team 4. Immunitäten gegen diesen Hazard-Typ in deinem Team."
--->
-
 <div class="pd-statistics pd-hazards-statistics margin-top">
 
   <div class="pd-single-hazards-statistics-wrapper pd-single-hazards-statistics-wrapper--{{hazard.class}}"
@@ -45,11 +39,14 @@
         {{hazard.hits}}
       </div>
       <div class="pd-single-statistics-cell pd-single-hazard-statistics-weaknesses" *ngIf="hazard.name.english === Hazards.STEALTH_ROCK">
-        <svg class="svg-grey-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-4-4h-4v-2h4v-2h-4V9h4V7H9v10h6z"/></svg>
+        <svg class="svg-grey-color"
+             [class.svg-error-color]="hazard.weaknesses >= 3"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-4-4h-4v-2h4v-2h-4V9h4V7H9v10h6z"/></svg>
         {{hazard.weaknesses}}
       </div>
       <div class="pd-single-statistics-cell pd-single-hazard-statistics-immune" *ngIf="hazard.name.english !== Hazards.DEFOG">
         <svg class="svg-grey-color"
+             [class.svg-success-color]="hazard.immune > 0"
              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         {{hazard.immune}}
       </div>

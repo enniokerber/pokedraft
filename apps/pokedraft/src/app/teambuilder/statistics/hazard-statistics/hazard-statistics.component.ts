@@ -7,9 +7,9 @@ import {HazardStatisticsCalculator, TeambuilderStatisticsService, Hazards} from 
 })
 export class HazardStatisticsComponent {
 
-  hazardStatistics: HazardStatisticsCalculator;
+  public hazardStatistics: HazardStatisticsCalculator;
 
-  Hazards = Hazards;
+  public Hazards = Hazards;
 
   constructor(private tbStatistics: TeambuilderStatisticsService) {
     this.hazardStatistics = this.tbStatistics.getHazardStatistics();

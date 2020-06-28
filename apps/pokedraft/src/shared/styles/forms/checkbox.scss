@@ -1,6 +1,6 @@
 @import "../utils";
 
-$checkboxSize: 24px;
+$checkboxSize: 26px;
 
 .pd-checkbox {
   display: none;
@@ -44,8 +44,8 @@ $checkboxSize: 24px;
       &::before {
         content: '';
         position: absolute;
-        top: 3px;
-        left: 4px;
+        top: 0;
+        left: 3px;
         border-right: 3px solid transparent;
         border-bottom: 3px solid transparent;
         transform: rotate(45deg);
@@ -65,8 +65,6 @@ $checkboxSize: 24px;
     }
   }
 }
-
-
 
 @keyframes checkbox-check{
   0%{
@@ -97,10 +95,7 @@ $checkboxSize: 24px;
   font-size: $font-size-s;
   transition: $transition;
   white-space: nowrap;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  @include no-user-select;
 }
 
 

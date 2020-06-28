@@ -3,3 +3,16 @@
 <div class="margin-top"></div>
 
 <pd-hazard-statistics></pd-hazard-statistics>
+
+<div class="margin-top"></div>
+
+<div class="pd-container-row pd-statistics-settings-row flex-align-right flex-align-bottom">
+  <pd-checkbox [(checked)]="tbStatistics.autoUpdate"
+               inputId="pd-statistics-auto-update-checkbox" alignName="top">
+    Auto Update
+  </pd-checkbox>
+  <pd-button class="large-left-space" icon="assets/icons/refresh.png"
+             (leftclick)="calculateStatistics()">
+    <translator2 english="Calculate" german="Berechnen"></translator2>
+  </pd-button>
+</div>

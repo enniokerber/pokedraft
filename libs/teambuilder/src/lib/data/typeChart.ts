@@ -4,6 +4,9 @@ import {IMMUNE, RESISTED, SUPER_EFFECTIVE, TypeChart} from "../models/api/TypeCh
 // it is a plain JavaScript-Object because of its good performance
 
 /*
+
+Type Chart Generator Expression:
+
 export const typeChart: TypeChart = {
   [PokemonTypes.Normal]: {
     atk: {
@@ -73,7 +76,9 @@ export const typeChart: TypeChart = {
       ...resisted(PokemonTypes.Electric, PokemonTypes.Rock, PokemonTypes.Steel)
     },
     def: {
-
+      ...effective(PokemonTypes.Rock, PokemonTypes.Electric, PokemonTypes.Ice),
+      ...resisted(PokemonTypes.Grass, PokemonTypes.Bug, PokemonTypes.Fighting),
+      ...immune(PokemonTypes.Ground)
     }
   },
   [PokemonTypes.Electric]: {
@@ -199,6 +204,8 @@ export const typeChart: TypeChart = {
   },
 };
 
+// Type Chart Helper Functions
+
 export function effective(...types) {
   const chart = { };
   types.forEach(type => chart[type] = SUPER_EFFECTIVE);
@@ -219,4 +226,4 @@ export function immune(...types) {
  */
 
 
-export const TYPE_CHART: TypeChart = {"Normal":{"atk":{"Rock":0.5,"Steel":0.5,"Ghost":0},"def":{"Fighting":2,"Ghost":0}},"Fire":{"atk":{"Grass":2,"Bug":2,"Ice":2,"Steel":2,"Water":0.5,"Fire":0.5,"Rock":0.5,"Dragon":0.5},"def":{"Water":2,"Rock":2,"Ground":2,"Fire":0.5,"Grass":0.5,"Ice":0.5,"Fairy":0.5,"Bug":0.5}},"Water":{"atk":{"Fire":2,"Ground":2,"Rock":2,"Water":0.5,"Grass":0.5,"Dragon":0.5},"def":{"Grass":2,"Electric":2,"Fire":0.5,"Water":0.5,"Ice":0.5}},"Grass":{"atk":{"Water":2,"Ground":2,"Rock":2,"Fire":0.5,"Grass":0.5,"Bug":0.5,"Flying":0.5,"Steel":0.5,"Poison":0.5,"Dragon":0.5},"def":{"Fire":2,"Bug":2,"Flying":2,"Ice":2,"Grass":0.5,"Ground":0.5}},"Bug":{"atk":{"Grass":2,"Dark":2,"Psychic":2,"Fire":0.5,"Flying":0.5,"Fighting":0.5,"Poison":0.5,"Ghost":0.5,"Fairy":0.5},"def":{"Fire":2,"Flying":2,"Rock":2,"Grass":2,"Fighting":2,"Ground":2}},"Poison":{"atk":{"Grass":2,"Fairy":2,"Poison":0.5,"Ground":0.5,"Rock":0.5,"Ghost":0.5,"Steel":0},"def":{"Ground":2,"Psychic":2,"Poison":0.5,"Grass":0.5,"Bug":0.5,"Fighting":0.5,"Fairy":0.5}},"Flying":{"atk":{"Grass":2,"Bug":2,"Fighting":2,"Electric":0.5,"Rock":0.5,"Steel":0.5},"def":{}},"Electric":{"atk":{"Water":2,"Flying":2,"Grass":0.5,"Electric":0.5,"Dragon":0.5,"Ground":0},"def":{"Ground":2,"Electric":0.5,"Flying":0.5,"Steel":0.5}},"Ground":{"atk":{"Fire":2,"Electric":2,"Rock":2,"Poison":2,"Steel":2,"Grass":0.5,"Bug":0.5,"Flying":0},"def":{"Water":2,"Grass":2,"Ice":2,"Rock":0.5,"Poison":0.5,"Electric":0}},"Rock":{"atk":{"Fire":2,"Flying":2,"Bug":2,"Ground":0.5,"Steel":0.5,"Fighting":0.5},"def":{"Water":2,"Grass":2,"Ground":2,"Steel":2,"Fire":0.5,"Flying":0.5,"Normal":0.5,"Poison":0.5}},"Fighting":{"atk":{"Normal":2,"Rock":2,"Steel":2,"Dark":2,"Flying":0.5,"Poison":0.5,"Psychic":0.5,"Fairy":0.5,"Ghost":0},"def":{"Flying":2,"Psychic":2,"Fairy":2,"Bug":0.5,"Rock":0.5,"Dark":0.5}},"Psychic":{"atk":{"Fighting":2,"Poison":2,"Psychic":0.5,"Steel":0.5,"Dark":0},"def":{"Bug":2,"Dark":2,"Ghost":2,"Fighting":0.5,"Psychic":0.5}},"Dark":{"atk":{"Ghost":2,"Psychic":2,"Fighting":0.5,"Dark":0.5,"Fairy":0.5},"def":{"Fighting":2,"Bug":2,"Fairy":2,"Dark":0.5,"Ghost":0.5,"Psychic":0}},"Ghost":{"atk":{"Ghost":2,"Psychic":2,"Dark":0.5,"Normal":0},"def":{"Dark":2,"Ghost":2,"Bug":0.5,"Poison":0.5,"Normal":0,"Fighting":0}},"Ice":{"atk":{"Grass":2,"Flying":2,"Ground":2,"Dragon":2,"Fire":0.5,"Water":0.5,"Ice":0.5,"Steel":0.5},"def":{"Fire":2,"Fighting":2,"Rock":2,"Steel":2,"Ice":0.5}},"Steel":{"atk":{"Rock":2,"Ice":2,"Fairy":2,"Fire":0.5,"Water":0.5,"Steel":0.5},"def":{"Fire":2,"Fighting":2,"Normal":0.5,"Ground":2,"Grass":0.5,"Bug":0.5,"Flying":0.5,"Rock":0.5,"Psychic":0.5,"Steel":0.5,"Ice":0.5,"Dragon":0.5,"Fairy":0.5,"Poison":0}},"Dragon":{"atk":{"Dragon":2,"Steel":0.5,"Fairy":0},"def":{"Dragon":2,"Ice":2,"Fairy":2,"Fire":0.5,"Water":0.5,"Grass":0.5,"Electric":0.5}},"Fairy":{"atk":{"Fighting":2,"Dark":2,"Dragon":2,"Fire":0.5,"Poison":0.5,"Steel":0.5},"def":{"Poison":2,"Steel":2,"Bug":0.5,"Dark":0.5,"Fighting":0.5,"Dragon":0}}};
+export const TYPE_CHART: TypeChart = {"Normal":{"atk":{"Rock":0.5,"Steel":0.5,"Ghost":0},"def":{"Fighting":2,"Ghost":0}},"Fire":{"atk":{"Grass":2,"Bug":2,"Ice":2,"Steel":2,"Water":0.5,"Fire":0.5,"Rock":0.5,"Dragon":0.5},"def":{"Water":2,"Rock":2,"Ground":2,"Fire":0.5,"Grass":0.5,"Ice":0.5,"Fairy":0.5,"Bug":0.5}},"Water":{"atk":{"Fire":2,"Ground":2,"Rock":2,"Water":0.5,"Grass":0.5,"Dragon":0.5},"def":{"Grass":2,"Electric":2,"Fire":0.5,"Water":0.5,"Ice":0.5}},"Grass":{"atk":{"Water":2,"Ground":2,"Rock":2,"Fire":0.5,"Grass":0.5,"Bug":0.5,"Flying":0.5,"Steel":0.5,"Poison":0.5,"Dragon":0.5},"def":{"Fire":2,"Bug":2,"Flying":2,"Ice":2,"Grass":0.5,"Ground":0.5}},"Bug":{"atk":{"Grass":2,"Dark":2,"Psychic":2,"Fire":0.5,"Flying":0.5,"Fighting":0.5,"Poison":0.5,"Ghost":0.5,"Fairy":0.5},"def":{"Fire":2,"Flying":2,"Rock":2,"Grass":2,"Fighting":2,"Ground":2}},"Poison":{"atk":{"Grass":2,"Fairy":2,"Poison":0.5,"Ground":0.5,"Rock":0.5,"Ghost":0.5,"Steel":0},"def":{"Ground":2,"Psychic":2,"Poison":0.5,"Grass":0.5,"Bug":0.5,"Fighting":0.5,"Fairy":0.5}},"Flying":{"atk":{"Grass":2,"Bug":2,"Fighting":2,"Electric":0.5,"Rock":0.5,"Steel":0.5},"def":{"Rock":2,"Electric":2,"Ice":2,"Grass":0.5,"Bug":0.5,"Fighting":0.5,"Ground":0}},"Electric":{"atk":{"Water":2,"Flying":2,"Grass":0.5,"Electric":0.5,"Dragon":0.5,"Ground":0},"def":{"Ground":2,"Electric":0.5,"Flying":0.5,"Steel":0.5}},"Ground":{"atk":{"Fire":2,"Electric":2,"Rock":2,"Poison":2,"Steel":2,"Grass":0.5,"Bug":0.5,"Flying":0},"def":{"Water":2,"Grass":2,"Ice":2,"Rock":0.5,"Poison":0.5,"Electric":0}},"Rock":{"atk":{"Fire":2,"Flying":2,"Bug":2,"Ground":0.5,"Steel":0.5,"Fighting":0.5},"def":{"Water":2,"Grass":2,"Ground":2,"Steel":2,"Fire":0.5,"Flying":0.5,"Normal":0.5,"Poison":0.5}},"Fighting":{"atk":{"Normal":2,"Rock":2,"Steel":2,"Dark":2,"Flying":0.5,"Poison":0.5,"Psychic":0.5,"Fairy":0.5,"Ghost":0},"def":{"Flying":2,"Psychic":2,"Fairy":2,"Bug":0.5,"Rock":0.5,"Dark":0.5}},"Psychic":{"atk":{"Fighting":2,"Poison":2,"Psychic":0.5,"Steel":0.5,"Dark":0},"def":{"Bug":2,"Dark":2,"Ghost":2,"Fighting":0.5,"Psychic":0.5}},"Dark":{"atk":{"Ghost":2,"Psychic":2,"Fighting":0.5,"Dark":0.5,"Fairy":0.5},"def":{"Fighting":2,"Bug":2,"Fairy":2,"Dark":0.5,"Ghost":0.5,"Psychic":0}},"Ghost":{"atk":{"Ghost":2,"Psychic":2,"Dark":0.5,"Normal":0},"def":{"Dark":2,"Ghost":2,"Bug":0.5,"Poison":0.5,"Normal":0,"Fighting":0}},"Ice":{"atk":{"Grass":2,"Flying":2,"Ground":2,"Dragon":2,"Fire":0.5,"Water":0.5,"Ice":0.5,"Steel":0.5},"def":{"Fire":2,"Fighting":2,"Rock":2,"Steel":2,"Ice":0.5}},"Steel":{"atk":{"Rock":2,"Ice":2,"Fairy":2,"Fire":0.5,"Water":0.5,"Steel":0.5},"def":{"Fire":2,"Fighting":2,"Normal":0.5,"Ground":2,"Grass":0.5,"Bug":0.5,"Flying":0.5,"Rock":0.5,"Psychic":0.5,"Steel":0.5,"Ice":0.5,"Dragon":0.5,"Fairy":0.5,"Poison":0}},"Dragon":{"atk":{"Dragon":2,"Steel":0.5,"Fairy":0},"def":{"Dragon":2,"Ice":2,"Fairy":2,"Fire":0.5,"Water":0.5,"Grass":0.5,"Electric":0.5}},"Fairy":{"atk":{"Fighting":2,"Dark":2,"Dragon":2,"Fire":0.5,"Poison":0.5,"Steel":0.5},"def":{"Poison":2,"Steel":2,"Bug":0.5,"Dark":0.5,"Fighting":0.5,"Dragon":0}}};

@@ -10,6 +10,8 @@ import {TeambuilderPokemonService} from "../pokemon/teambuilder-pokemon.service"
 @Injectable()
 export class TeambuilderStatisticsService implements OnDestroy {
 
+  public autoUpdate: boolean;
+
   private team: TeambuilderPokemon[];
 
   public types: TypeStatisticsCalculator;
@@ -19,10 +21,12 @@ export class TeambuilderStatisticsService implements OnDestroy {
   private subscriptions: SubscriptionContainer;
 
   constructor(private tbPokemon: TeambuilderPokemonService) {
+    this.autoUpdate = true;
     this.types = new TypeStatisticsCalculator();
     this.hazards = new HazardStatisticsCalculator();
     this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.team.changes$.subscribe(team => {
+        if (!this.autoUpdatesEnabled()) return;
         this.team = team;
         this.updateAllStatistics();
       }),
@@ -32,6 +36,8 @@ export class TeambuilderStatisticsService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.unsubscribeAll();
   }
+
+  autoUpdatesEnabled(): boolean { return this.autoUpdate; }
 
   getTeam(): TeambuilderPokemon[] {
     return this.team;

@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {TeambuilderStatisticsService} from "@pokedraft/teambuilder";
 
 @Component({
   selector: 'pd-statistics',
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss']
 })
-export class StatisticsComponent implements OnInit {
+export class StatisticsComponent {
 
-  constructor() {
+  constructor(public tbStatistics: TeambuilderStatisticsService) {
   }
 
-  ngOnInit(): void {
-  }
-
+  calculateStatistics() { this.tbStatistics.updateAllStatistics(); }
 }

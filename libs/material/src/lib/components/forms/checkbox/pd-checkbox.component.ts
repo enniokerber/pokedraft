@@ -1,36 +1,43 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'pd-checkbox',
   templateUrl: './pd-checkbox.component.html',
   styleUrls: ['./pd-checkbox.component.scss']
 })
-export class PdCheckboxComponent implements OnInit {
+export class PdCheckboxComponent {
 
-  @Input()
-  checked;
+  @Input() checked: boolean;
 
-  @Input()
-  name;
+  @Input() inputId: string;
 
-  @Input()
-  alignName = '';
+  @Input() alignName: '' | 'top';
 
-  @Input()
-  disabled = false;
+  @Input() disabled: boolean;
 
-  @Output()
-  checkedChange = new EventEmitter();
+  @Output() checkedChange: EventEmitter<boolean>;
 
+  @Output() check: EventEmitter<void>;
 
-  onChange(new_value): void {
-    this.checked = new_value;
-    this.checkedChange.emit(new_value);
+  @Output() uncheck: EventEmitter<void>;
+
+  constructor() {
+    this.checked = false;
+    this.inputId = '';
+    this.alignName = '';
+    this.disabled = false;
+    this.checkedChange = new EventEmitter<boolean>();
+    this.check = new EventEmitter<void>();
+    this.uncheck = new EventEmitter<void>();
   }
 
-  constructor() { }
+  onChange(checked: boolean): void {
+    this.checked = checked;
+    this.checkedChange.emit(checked);
 
-  ngOnInit() {
+    if (checked === true)
+      return this.check.emit();
+    else
+      return this.uncheck.emit();
   }
-
 }
