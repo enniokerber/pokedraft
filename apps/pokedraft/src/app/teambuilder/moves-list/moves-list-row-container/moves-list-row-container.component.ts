@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {IMove} from "@pokedraft/teambuilder";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IMove, TeambuilderPokemonService } from '@pokedraft/teambuilder';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'moves-list-row-container',
@@ -14,10 +16,16 @@ export class MovesListRowContainerComponent {
 
   @Output() choose: EventEmitter<IMove>;
 
-  constructor() {
+  moveset$: Observable<IMove[]>;
+
+  constructor(public tbPokemon: TeambuilderPokemonService) {
     this.moves = [];
     this.markedId = -1;
     this.choose = new EventEmitter<IMove>();
+    this.moveset$ = this.tbPokemon.selectedTeampokemon.changes$
+      .pipe(
+        map(pokemon => pokemon ? pokemon.getMoves() : [])
+      );
   }
 
   chooseMove(move: IMove): void {

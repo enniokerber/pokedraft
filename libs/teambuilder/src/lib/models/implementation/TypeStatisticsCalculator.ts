@@ -76,7 +76,6 @@ export class TypeStatisticsCalculator {
     });
 
     this.statistics = Object.values(this.typeStatisticsMap);
-    console.log(this.statistics);
     this.checkCoverage();
   }
 

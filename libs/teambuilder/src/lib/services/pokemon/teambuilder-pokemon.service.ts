@@ -6,6 +6,7 @@ import {
 import {TeambuilderEventService} from "../event/teambuilder-event.service";
 import {TeambuilderViewService} from "../view/teambuilder-view.service";
 import {distinctUntilChanged} from "rxjs/operators";
+import { MAX_MOVESET_SIZE } from '../../data';
 
 
 @Injectable()
@@ -71,6 +72,7 @@ export class TeambuilderPokemonService implements OnDestroy {
 
   // trigger on team change listeners
   triggerTeamChangeListeners(): void {
+    // as the same value as before is passed again, change detection will detect that and thus not rerender the whole view
     this.team.update(this.team.getValue());
   }
 
@@ -140,7 +142,7 @@ export class TeambuilderPokemonService implements OnDestroy {
 
   insertMove(move: IMove) {
     const currentTeampokemon = this.selectedTeampokemon.getValue();
-    if (!currentTeampokemon.moves.map(container => container.data).includes(move)) {
+    if (!currentTeampokemon.getMoves().includes(move)) {
       this.setCurrentMoveslotData(move);
       this.selectNextMoveslot();
       if (!currentTeampokemon.movesWereFilled() && this.moveSetFull()) {
@@ -152,8 +154,7 @@ export class TeambuilderPokemonService implements OnDestroy {
 
   moveSetFull(): boolean {
     return this.selectedTeampokemon.getValue()
-      .getMoves()
-      .every(isSet => !!isSet); // every move is set
+      .getMoves().length === MAX_MOVESET_SIZE; // every move is set
   }
 
   resetSearchMove() {

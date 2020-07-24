@@ -2,7 +2,7 @@
 
 .pd-teambuilder-list-move-prop-label {
   position: absolute;
-  top: -2px;
+  top: 4px;
   color: #a0a4ac;
   font-size: 0.8em;
 }
@@ -24,7 +24,7 @@
 // CELL
 
 .--tb-move-name-cell {
-  padding-left: $padding;
+  padding-left: $padding * 2;
   width: 22%;
 }
 
@@ -40,7 +40,10 @@
 .--tb-move-props-cell {
   width: 6%;
   font-size: $font-size-s;
-  align-content: flex-end;
+}
+
+.--tb-move-props-with-label-cell {
+  align-items: flex-end;
 }
 
 .--tb-powerpoints-cell {

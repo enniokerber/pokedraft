@@ -1,6 +1,7 @@
 <div class="pd-teambuilder-list-row pd-teambuilder-list-row--selectable"
      [ngClass]="{
-        'pd-teambuilder-list-row--marked': index === markedId
+          'pd-teambuilder-list-row--marked': index === markedId,
+          'pd-teambuilder-list-row--selected': (moveset$ | async).includes(move)
         }"
      (click)="chooseMove(move)"
      *ngFor="let move of moves; index as index">
@@ -19,17 +20,17 @@
     </move-category-image>
   </div>
 
-  <div class="pd-teambuilder-list-cell --tb-move-props-cell">
+  <div class="pd-teambuilder-list-cell --tb-move-props-cell flex-align-bottom">
     <translator2 class="pd-teambuilder-list-move-prop-label" english="Power" german="Stärke"></translator2>
     {{move.basePower}}
   </div>
 
-  <div class="pd-teambuilder-list-cell --tb-move-props-cell">
+  <div class="pd-teambuilder-list-cell --tb-move-props-cell flex-align-bottom">
     <translator2 class="pd-teambuilder-list-move-prop-label" english="Acc" german="Gen."></translator2>
     {{move.accuracy}}
   </div>
 
-  <div class="pd-teambuilder-list-cell --tb-move-props-cell --tb-powerpoints-cell"
+  <div class="pd-teambuilder-list-cell --tb-move-props-cell --tb-powerpoints-cell flex-align-bottom"
        translatableTitle
        englishTitle="A Pokémon can use {{move.name.english}} max. {{move.maxPowerPoints}} times. Base PP are only {{move.powerPoints}}."
        germanTitle="Ein Pokémon kann {{move.name.german}} max. {{move.maxPowerPoints}} Mal einsetzen. Basis AP sind {{move.powerPoints}}.">

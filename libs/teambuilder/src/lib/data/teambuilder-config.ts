@@ -12,3 +12,4 @@ export const MAX_DVS = 31;
 
 export const MAX_LEVEL = 100;
 export const MAX_HAPPINESS = 255;
+export const MAX_MOVESET_SIZE = 4;

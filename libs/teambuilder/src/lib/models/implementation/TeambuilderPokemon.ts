@@ -99,7 +99,7 @@ export class TeambuilderPokemon {
   }
 
   getMoves(): IMove[] {
-    return this.moves.map(mc => mc.getData());
+    return this.moves.map(mc => mc.getData()).filter(m => !!m);
   }
 
   getPossibleMoves(): string[] {
