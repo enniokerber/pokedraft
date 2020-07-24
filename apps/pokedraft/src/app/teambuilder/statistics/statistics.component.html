@@ -6,12 +6,21 @@
 
 <div class="margin-top"></div>
 
+<pd-item-clause-statistics></pd-item-clause-statistics>
+
+<div class="margin-top"></div>
+
 <div class="pd-container-row pd-statistics-settings-row flex-align-right flex-align-bottom">
-  <pd-checkbox [(checked)]="tbStatistics.autoUpdate"
-               inputId="pd-statistics-auto-update-checkbox" alignName="top">
+  <pd-checkbox inputId="pd-statistics-auto-update-checkbox"
+               alignName="top"
+               translatableTitle
+               englishTitle="Every time a Pokémon is added or removed from the team or a Pokémon´s moves change, the statistics will automatically be recalculated. The calculation might cause small latency as this can be an expensive task on low-end devices."
+               germanTitle="Jedes Mal wenn ein Pokémon dem Team hinzugefügt oder aus dem Team entfernt wird oder sich seine Attacken ändern, werden die Statistiken automatisch neu berechnet. Die Berechnung kann bei älteren Geräten zu kurzen Latenzen führen, da das ein aufwändiger Prozess sein kann."
+               [(checked)]="tbStatistics.autoUpdate">
     Auto Update
   </pd-checkbox>
-  <pd-button class="large-left-space" icon="assets/icons/refresh.png"
+  <pd-button class="large-left-space"
+             icon="assets/icons/refresh.png"
              (leftclick)="calculateStatistics()">
     <translator2 english="Calculate" german="Berechnen"></translator2>
   </pd-button>

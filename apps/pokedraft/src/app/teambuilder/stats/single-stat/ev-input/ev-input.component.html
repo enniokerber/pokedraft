@@ -3,8 +3,8 @@
   <input #evInput
          type="number"
          class="pd-number-chooser-display2 pd-number-chooser-display2--input --remove-number-input-appearance"
-         [class.pd-number-chooser-value-maxed]="stat.evs >= max"
+         [class.pd-number-chooser-value-maxed]="stat.evs.value >= max"
          (input)="updateAndValidateEvs(evInput.value);"
-         [value]="stat.evs"/>
+         [value]="stat.evs.value"/>
   <div class="pd-number-chooser-action2 pd-plus2" (click)="incValue()"></div>
 </div>

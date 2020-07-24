@@ -102,7 +102,7 @@ export class Stats {
         if (config.evs) { stat.setEvs(config.evs[statId]) } else stat.setEvs(0);
         if (config.dvs) { stat.setDvs(config.dvs[statId]) } else stat.setDvs(MAX_DVS);
         stat.update();
-      })
+      });
       this.calculateEvSum();
     }
 }

@@ -2,8 +2,14 @@
 <div class="pd-number-chooser2" [class.pd-darker-number-chooser2]="darker">
   <div class="pd-number-chooser-action2 pd-minus2"
        (click)="decValue()" *ngIf="!disabled"> </div>
-  <div class="pd-number-chooser-display2"
-       [class.pd-number-chooser-value-maxed]="(value + extra) >= max"> {{value + extra}} </div>
+
+  <input #inputElement
+         type="number"
+         class="pd-number-chooser-display2 pd-number-chooser-display2--input --remove-number-input-appearance"
+         [class.pd-number-chooser-value-maxed]="value >= max"
+         (input)="emitValue()"
+         [(ngModel)]="value"/>
+
   <div class="pd-number-chooser-action2 pd-plus2"
        (click)="incValue()"
        *ngIf="!disabled"> </div>

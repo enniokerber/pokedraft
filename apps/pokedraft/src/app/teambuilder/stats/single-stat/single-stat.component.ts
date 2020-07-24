@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {Stat} from "@pokedraft/teambuilder";
 
 @Component({
@@ -23,10 +23,6 @@ export class SingleStatComponent {
     if (this.stat.cannotGoHigher()) {
       (this.elem?.nativeElement as HTMLInputElement).value = this.stat.getEvs().toString();
     }
-  }
-
-  calculateStat() {
-    this.stat.update();
   }
 
 }

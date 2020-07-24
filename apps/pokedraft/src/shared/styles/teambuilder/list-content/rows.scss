@@ -9,7 +9,7 @@ $icon-size: 68px;
   max-height: calc(100% - #{$head-row-height});
   padding-top: 20px;
   overflow: auto;
-  scrollbar-width: 0;
+  scrollbar-width: none;
 
   &::-webkit-scrollbar { display: none; }
 }

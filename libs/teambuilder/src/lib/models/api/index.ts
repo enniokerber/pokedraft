@@ -25,3 +25,5 @@ export * from './TypeStatistics';
 
 export * from './HazardStatistics';
 
+export * from './ItemClauseStatistics';
+

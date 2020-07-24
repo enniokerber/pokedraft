@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import {
-  CoverageTypes,
+  CoverageTypes, TeambuilderPokemonService,
   TeambuilderStatisticsService,
   TypeStatisticsCalculator
-} from "@pokedraft/teambuilder";
+} from '@pokedraft/teambuilder';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'pd-type-statistics',
@@ -14,10 +16,15 @@ export class TypeStatisticsComponent {
 
   typeStatistics: TypeStatisticsCalculator;
 
+  teampokemonCount$: Observable<number>;
+
   coverageTypes = CoverageTypes;
 
-  constructor(private tbStatistics: TeambuilderStatisticsService) {
+  constructor(private tbStatistics: TeambuilderStatisticsService,
+              private tbPokemon: TeambuilderPokemonService) {
     this.typeStatistics = this.tbStatistics.getTypeStatistics();
+    this.teampokemonCount$ = this.tbPokemon.team.changes$
+      .pipe(map(team => team.length));
   }
 
   calc() {

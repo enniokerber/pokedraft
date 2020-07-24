@@ -72,7 +72,7 @@
     <moves-list-row-container
       [moves]="moves.firstHalf"
       [markedId]="marker.index"
-      (choose)="insertMove($event); marker.inc();">
+      (choose)="insertMove($event)">
     </moves-list-row-container>
   </div>
 
@@ -90,7 +90,7 @@
     <moves-list-row-container
       [moves]="moves.secondHalf"
       [markedId]="marker.markerForSecondHalf"
-      (choose)="insertMove($event); marker.inc();">
+      (choose)="insertMove($event)">
     </moves-list-row-container>
   </div>
 </div>

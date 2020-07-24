@@ -27,14 +27,11 @@
            max="252"
            step="4"
            (input)="setEvs(evInput.value)"
-           [value]="stat.evs">
+           [value]="stat.evs.value">
   </div>
 
   <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-number-input pd-teambuilder-stat-row-dvs">
-    <pd-number-chooser2 [min]="0"
-                        [max]="31"
-                        (valueChange)="calculateStat()"
-                        [(value)]="stat.dvs"></pd-number-chooser2>
+    <pd-dv-input [stat]="stat"></pd-dv-input>
   </div>
 
   <div class="pd-teambuilder-stat-row-griditem pd-teambuilder-stat-row-value"

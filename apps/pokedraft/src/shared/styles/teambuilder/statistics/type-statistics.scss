@@ -20,7 +20,7 @@
 
   display: grid;
   grid-template-areas:
-    "type    type        type"
+    "topleft type        topright"
     "counter resistances immunities";
   grid-template-rows: 36px 42px;
   grid-template-columns: repeat(3, 1fr);
@@ -45,6 +45,10 @@
 
 .pd-single-type-statistics-type {
   grid-area: type;
+}
+
+.pd-single-type-statistics-exclamation-mark {
+  grid-area: topright;
 }
 
 .pd-single-statistics-cell {

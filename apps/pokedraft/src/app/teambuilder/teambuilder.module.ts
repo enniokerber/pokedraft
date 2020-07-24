@@ -29,6 +29,8 @@ import { EvInputComponent } from './stats/single-stat/ev-input/ev-input.componen
 import { StatisticsComponent } from './statistics/statistics.component';
 import { TypeStatisticsComponent } from './statistics/type-statistics/type-statistics.component';
 import { HazardStatisticsComponent } from './statistics/hazard-statistics/hazard-statistics.component';
+import { DvInputComponent } from './stats/single-stat/dv-input/dv-input.component';
+import { ItemClauseStatisticsComponent } from './statistics/item-clause-statistics/item-clause-statistics.component';
 
 
 @NgModule({
@@ -56,7 +58,9 @@ import { HazardStatisticsComponent } from './statistics/hazard-statistics/hazard
     EvInputComponent,
     StatisticsComponent,
     TypeStatisticsComponent,
-    HazardStatisticsComponent
+    HazardStatisticsComponent,
+    DvInputComponent,
+    ItemClauseStatisticsComponent
   ],
   imports: [
     CommonModule,

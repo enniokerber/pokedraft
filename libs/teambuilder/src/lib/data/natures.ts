@@ -243,3 +243,6 @@ export const natures: INature[] = [
 
 export const DEFAULT_NATURE = natures[0]; // = Bashful Nature
 
+export const POSITIVE_NATURE_VALUE = 1.1;
+export const NEUTRAL_NATURE_VALUE = 1;
+export const NEGATIVE_NATURE_VALUE = .9;

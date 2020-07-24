@@ -45,22 +45,38 @@ export class TypeStatisticsCalculator {
     // clear the current statistics
     this.reset();
 
-    // look at the types of each Pokémon individually
-    team.map(pokemon => pokemon.getTypes())
-      .forEach(([type1, type2]) => {
-        /*
+    team.map(pokemon => {
+
+      const types = pokemon.getTypes();
+      const firstType = types[0];
+      const secondType = types[1];
+
+      /*
           If the Pokémon has 2 Types, effectiveness and resistances should only be counted once.
           Ex: Hatterene (Psychic/Fairy) resists Fighting-Type 4x, because both Psychic and Fairy resist Fighting.
           Therefore, the resistances against Fighting should only be counted as 1 resistance.
           That means, one resistance per type per Pokémon.
-         */
-        if (type1 && type2) {
-          this.addDoubleType(type1, type2);
-        } else {
-          this.addSingleType(type1);
-        }
-      });
+      */
+
+      if (firstType && secondType) {
+        this.addDoubleType(firstType, secondType);
+      } else {
+        this.addSingleType(firstType);
+      }
+
+      /*
+        Take all moves that are set (not null/undefined) and add their types attacking characteristics if it is an attacking move (basepower > 0)
+       */
+      pokemon.getMoves().filter(move => !!move)
+        .forEach(move => {
+          if (move.basePower > 0) {
+            this.addAttackingCharacteristics(move.type);
+          }
+        })
+    });
+
     this.statistics = Object.values(this.typeStatisticsMap);
+    console.log(this.statistics);
     this.checkCoverage();
   }
 
@@ -69,7 +85,6 @@ export class TypeStatisticsCalculator {
     It counts resistances, effectiveness and immunities.
    */
   private addSingleType(type: PokemonType): void {
-    this.addAttackingCharacteristics(type);
     this.addDefendingCharacteristics(type);
   }
 
@@ -91,6 +106,13 @@ export class TypeStatisticsCalculator {
         (this.typeStatisticsMap[attackingType] as SingleTypeStatistics).counters++;
       }
     });
+
+    POKEMON_TYPES.forEach(_type => {
+      const attackingTypeValue = typeDefinition.atk[_type];
+      if (typeof attackingTypeValue === 'undefined' || attackingTypeValue > 0) {
+        this.typeStatisticsMap[_type].hitBy++;
+      }
+    })
   }
 
   /*
@@ -128,12 +150,12 @@ export class TypeStatisticsCalculator {
 
     // determine the type relationships of the first types [ex: Psychic]
     const type1Definition: TypeDefinition = TYPE_CHART[type1]; // [Psychic] type definition
-    let attacking1: string[] = Object.keys(type1Definition.atk); // [Psychic] for ex. is effective against Fighting, so Fighting is in that Array
+    // let attacking1: string[] = Object.keys(type1Definition.atk); // [Psychic] for ex. is effective against Fighting, so Fighting is in that Array
     let defending1: string[] = Object.keys(type1Definition.def); // [Psychic] resists at least Fighting, so Fighting is also in that aways
 
     // determine the type relationships of the second type [ex. Fairy]
     const type2Definition: TypeDefinition = TYPE_CHART[type2];
-    let attacking2: string[] = Object.keys(type2Definition.atk);
+    // let attacking2: string[] = Object.keys(type2Definition.atk);
     let defending2: string[] = Object.keys(type2Definition.def);
 
     /*
@@ -141,9 +163,11 @@ export class TypeStatisticsCalculator {
       ex: for [Psychic/Fairy] attackingIntersect includes Fighting because both Psychic and Fairy are effective against Fighting
       (the types just both need to have a relationship with Fighting type, they are not required to be both effective against it in that case)
      */
+    /*
     const attackingIntersect = attacking1.filter(t1 => attacking2.includes(t1));
     attacking1 = attacking1.filter(t => !attackingIntersect.includes(t));
     attacking2 = attacking2.filter(t => !attackingIntersect.includes(t));
+    */
 
     /*
       Same behaviour applies to the defense.
@@ -157,8 +181,8 @@ export class TypeStatisticsCalculator {
       Ex.: Psychic is effective against Poison, but Fairy not, so the first call:
            this.addAttackingCharacteristics(type1, attacking1) adds the relationship "Psychic effective against Poison" to the statistics.
      */
-    this.addAttackingCharacteristics(type1, attacking1);
-    this.addAttackingCharacteristics(type2, attacking2);
+    // this.addAttackingCharacteristics(type1, attacking1);
+    // this.addAttackingCharacteristics(type2, attacking2);
     this.addDefendingCharacteristics(type1, defending1);
     this.addDefendingCharacteristics(type2, defending2);
 
@@ -167,13 +191,15 @@ export class TypeStatisticsCalculator {
       If the looked at type is effective against only one of the types of the intersection,
       the Pokémon counts as a counter against this type.
      */
+    /*
     attackingIntersect.forEach(attackingType => {
       const attackingTypeValue1 = type1Definition.atk[attackingType];
       const attackingTypeValue2 = type2Definition.atk[attackingType];
       if (attackingTypeValue1 === SUPER_EFFECTIVE || attackingTypeValue2 === SUPER_EFFECTIVE) {
         (this.typeStatisticsMap[attackingType] as SingleTypeStatistics).counters++;
       }
-    })
+    });
+    */
 
     /*
       Look at the type relationships that have to do with resistances and immunities.
@@ -219,9 +245,10 @@ export class TypeStatisticsCalculator {
     POKEMON_TYPES.forEach(type => emptyTypeStatistics[type] = ({
         type,
         counters: 0,
+        hitBy: 0,
         resistances: 0,
         immunities: 0,
-        coverage: 'bad'
+        coverage: CoverageTypes.BAD
       } as SingleTypeStatistics)
     );
     return emptyTypeStatistics as TypeStatisticsMap;

@@ -164,6 +164,7 @@ export class TeambuilderPokemonService implements OnDestroy {
     const currentTeampokemon = this.selectedTeampokemon.getValue();
     currentTeampokemon.moves[this.nextMoveslot.getValue()].setData(null);
     this.selectTeampokemon(currentTeampokemon);
+    this.triggerTeamChangeListeners(); // move was changed, so recalc statistics
   }
 
   // ITEM

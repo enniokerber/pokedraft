@@ -8,3 +8,4 @@ export * from './Container';
 export * from './TeambuilderPokemon';
 export * from './TypeStatisticsCalculator';
 export * from './HazardStatisticsCalculator';
+export * from './ItemClauseStatisticsCalculator';

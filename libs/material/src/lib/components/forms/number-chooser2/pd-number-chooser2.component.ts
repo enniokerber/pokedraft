@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'pd-number-chooser2',
@@ -6,6 +6,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./pd-number-chooser2.component.scss']
 })
 export class PdNumberChooser2Component {
+
+  @ViewChild('inputElement') elem: ElementRef;
 
   @Input()
   value;
@@ -50,6 +52,10 @@ export class PdNumberChooser2Component {
 
   emitValue(): void {
     this.valueChange.emit(this.value);
+  }
+
+  setInputValue(to) {
+    (this.elem?.nativeElement as HTMLInputElement).value = to.toString();
   }
 
   constructor() { }

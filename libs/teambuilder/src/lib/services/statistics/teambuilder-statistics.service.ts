@@ -1,10 +1,10 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {
-  HazardStatisticsCalculator,
+  HazardStatisticsCalculator, ItemClauseStatisticsCalculator,
   SubscriptionContainer,
   TeambuilderPokemon,
   TypeStatisticsCalculator
-} from "../../models";
+} from '../../models';
 import {TeambuilderPokemonService} from "../pokemon/teambuilder-pokemon.service";
 
 @Injectable()
@@ -18,12 +18,15 @@ export class TeambuilderStatisticsService implements OnDestroy {
 
   public hazards: HazardStatisticsCalculator;
 
+  public itemClause: ItemClauseStatisticsCalculator;
+
   private subscriptions: SubscriptionContainer;
 
   constructor(private tbPokemon: TeambuilderPokemonService) {
     this.autoUpdate = true;
     this.types = new TypeStatisticsCalculator();
     this.hazards = new HazardStatisticsCalculator();
+    this.itemClause = new ItemClauseStatisticsCalculator();
     this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.team.changes$.subscribe(team => {
         if (!this.autoUpdatesEnabled()) return;
@@ -51,6 +54,10 @@ export class TeambuilderStatisticsService implements OnDestroy {
     return this.hazards;
   }
 
+  getItemClauseStatistics(): ItemClauseStatisticsCalculator {
+    return this.itemClause;
+  }
+
   calculateTypeStatistics(): void {
     this.types.calculate(this.getTeam());
   }
@@ -59,9 +66,14 @@ export class TeambuilderStatisticsService implements OnDestroy {
     this.hazards.calculate(this.getTeam());
   }
 
+  calculateItemClauseStatistics(): void {
+    this.itemClause.calculate(this.getTeam());
+  }
+
   updateAllStatistics(): void {
     this.calculateTypeStatistics();
     this.calculateHazardStatistics();
+    this.calculateItemClauseStatistics();
   }
 
 }
