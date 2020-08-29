@@ -25,8 +25,16 @@
 
 #pd-teambuilder-title {
   @include flex-center;
+  @include no-user-select;
   width: 100%;
   height: 26px;
   color: $primary;
   font-size: $font-size-m;
+}
+
+.pd-header-button-container {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  display: flex;
 }

@@ -29,6 +29,8 @@ export class TeambuilderEntityCollection<Entity = any> {
     return this.current[index];
   }
 
+  getAll(): Entity[] { return this.all; }
+
   setEntities(entities: Entity[]) {
     this.all = entities;
     this.filtered = [...entities];

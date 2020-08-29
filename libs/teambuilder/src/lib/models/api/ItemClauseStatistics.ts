@@ -13,8 +13,8 @@ export interface SingleItemCountItemSnippet {
 }
 
 export interface SingleItemCountPokemonSnippet {
+  id: string;
   name: ITranslatable;
-  imgSrc: string;
 }
 
 export type ItemClauseStatistics = SingleItemCountStatistics[];

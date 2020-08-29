@@ -27,6 +27,9 @@ $icon-size: 68px;
   &--selectable {
     &:hover {
       cursor: pointer;
+    }
+
+    &:hover {
       background-color: $tbbackground;
     }
 
@@ -55,6 +58,10 @@ $icon-size: 68px;
   &--marked:not(&--selected) {
     border: 1px dashed $primary-light;
     background-color: $grey-lightest;
+
+    &:hover { background-color: $tbbackground; }
+
+    &:active { background-color: $grey-lightest; }
   }
 
   &--scalable {

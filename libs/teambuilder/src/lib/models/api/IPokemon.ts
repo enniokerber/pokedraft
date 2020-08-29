@@ -3,9 +3,8 @@ import {PokemonType} from "../types";
 import {ITranslatable} from "./ITranslatable";
 
 export interface IPokemon {
-
+  id: string;
   name: ITranslatable;
-  imgSrc: string; // Src of the Pokémons icon File in the assets directory
   types: PokemonType[]; // Types of the Pokémon
   abilities: string[];
   stats: IStats;

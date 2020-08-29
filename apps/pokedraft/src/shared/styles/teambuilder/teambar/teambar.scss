@@ -5,12 +5,9 @@ $teambar-item: 125px;
 .pd-teambuilder-teambar, .pd-teambuilder-bar {
   position: relative;
   @include flex-center-vertically;
+  @include pd-teambuilder-container;
   height: 70px;
-  width: 100%;
   padding: 8px;
-  background-color: $white;
-  border-radius: $radius;
-  box-shadow: $tb-box-shadow;
   overflow: visible;
 }
 

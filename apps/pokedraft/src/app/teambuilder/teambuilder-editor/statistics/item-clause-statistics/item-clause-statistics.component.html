@@ -1,0 +1,38 @@
+<div class="pd-teambuilder-list-row pd-teambuilder-list-header side-padding flex-space-between">
+  <div class="pd-teambuilder-list-cell">
+    Item Clause
+  </div>
+  <div class="pd-teambuilder-list-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="36px" height="36px">
+      <path
+        d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+    </svg>
+  </div>
+</div>
+
+<ng-container *ngIf="itemClauseStatistics.itemClauseBroken; then itemClauseBroken else itemClauseValid"></ng-container>
+
+<ng-template #itemClauseBroken>
+
+  <translator2 english="Broken" german="Gebrochen" class="pd-item-clause-statistics-toast pd-item-clause-statistics-toast--error"> </translator2>
+
+  <div class="pd-statistics margin-top">
+
+    <div class="pd-single-item-statistics" *ngFor="let item of itemClauseStatistics.statistics">
+      <div class="pd-single-item-statistics-icon flex-align-center"> <pd-item-icon [item]="item.imgSrc"></pd-item-icon> </div>
+      <div class="pd-single-item-statistics-name"> <translator3 [source]="item.name"></translator3> </div>
+      <div class="pd-single-item-statistics-count"> {{item.count}} </div>
+      <div class="pd-single-item-statistics-holders flex-align-bottom">
+        <pd-pokemon-icon class="pd-single-item-statistics-holders-icon"
+                         [imgSrc]="pokemon.id"
+                         *ngFor="let pokemon of item.holders"></pd-pokemon-icon>
+      </div>
+    </div>
+
+  </div>
+
+</ng-template>
+
+<ng-template #itemClauseValid>
+  <translator2 english="Valid" german="Erfüllt" class="pd-item-clause-statistics-toast pd-item-clause-statistics-toast--good"> Valid </translator2>
+</ng-template>

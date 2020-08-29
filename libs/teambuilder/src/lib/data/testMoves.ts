@@ -1,5 +1,6 @@
 import {IMove} from "../models/api";
 
+/*
 export const testMoves: IMove[] = [
   {
     "name": {
@@ -487,3 +488,4 @@ export const testMoves: IMove[] = [
     }
   },
 ]
+*/

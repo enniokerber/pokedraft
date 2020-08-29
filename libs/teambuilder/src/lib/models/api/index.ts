@@ -27,3 +27,8 @@ export * from './HazardStatistics';
 
 export * from './ItemClauseStatistics';
 
+export * from './ITeambuilderTeam';
+
+export * from './ITeambuilderPokemon';
+
+

@@ -8,25 +8,16 @@ jobs:
   deploy_to_firebase:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup NodeJS
-        uses: actions/checkout@master
-
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - uses: actions/setup-node@master
+      - uses: actions/checkout@master
+      - name: Setup NodeJS an
+        uses: actions/setup-node@master
         with:
           node-version: 12
       - name: Setup CI with NPM
         run: npm ci
-      - name: Build the App
+      - name: Build Angular App
         run: npm run build:ci
-      - name: Deploy the build to Firebase Hosting  
+      - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting

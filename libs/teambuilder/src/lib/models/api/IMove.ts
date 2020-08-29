@@ -9,6 +9,7 @@ export enum MoveCategory {
 }
 
 export interface IMove {
+  id: number;
   name: ITranslatable;
   description: ITranslatable;
   shortDescription: ITranslatable;

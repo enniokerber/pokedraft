@@ -4,7 +4,7 @@ import {PokedraftAuthService} from "../auth/pokedraft-auth.service";
 import {Observable, of} from "rxjs";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
 import {map} from "rxjs/operators";
-import {snapshotChangesToDocsWithId} from "../../../../../../../apps/pokedraft/src/shared/functions/functions";
+import { allWithDocumentId } from '../../../util';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +50,7 @@ export class PokedraftUserService {
              .limit(limit)
       )
         .snapshotChanges()
-        .pipe(map(snapshotChangesToDocsWithId))
+        .pipe(allWithDocumentId) // TODO: test
     } else {
       return of([]);
     }

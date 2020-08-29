@@ -71,3 +71,19 @@
   padding: $padding 0;
 }
 
+@mixin no-scrollbar {
+  &::-webkit-scrollbar { display: none; }
+  scrollbar-width: none;
+}
+
+@mixin auto-scroll {
+  overflow: auto;
+  @include no-scrollbar;
+}
+
+@mixin appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+

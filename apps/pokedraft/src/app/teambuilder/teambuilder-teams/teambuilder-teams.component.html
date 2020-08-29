@@ -1,0 +1,37 @@
+
+<div class="pd-teambuilder-full-scale-container">
+
+  <section class="pd-teambuilder-teams-section">
+
+    <div class="pd-teambuilder-list-row pd-teambuilder-list-header flex-space-between side-padding margin-bottom">
+      <translator2 class="pd-teambuilder-list-cell" english="Your Team" german="Deine Teams"></translator2>
+    </div>
+
+    <div class="pd-container-row flex-align-center large-margin-bottom" *ngIf="usersTeamsLoadingZone.loading$ | async">
+      <pd-loader> Loading Your Teams... </pd-loader>
+    </div>
+
+    <pd-team-preview-container [team]="team"
+                               (edit)="openTeam($event)"
+                               (choose)="selectTeam($event)"
+                               *ngFor="let team of teams$ | async"></pd-team-preview-container>
+
+  </section>
+
+  <section class="pd-teambuilder-teams-section pd-teambuilder-teams-selected-team-section">
+
+    <div class="pd-teambuilder-list-row pd-teambuilder-list-header flex-space-between side-padding margin-bottom">
+      <translator2 class="pd-teambuilder-list-cell" english="Selected Team" german="Ausgewähltes Team"></translator2>
+    </div>
+
+    <div class="pd-container-row large-margin-bottom" *ngIf="currentTeamLoadingZone.loading$ | async">
+      <pd-loader> Loading Team... </pd-loader>
+    </div>
+
+    <pd-team-form-container class="margin-bottom"
+                            [pokemon]="pkmn"
+                            *ngFor="let pkmn of teampokemon$ | async"> </pd-team-form-container>
+
+  </section>
+
+</div>

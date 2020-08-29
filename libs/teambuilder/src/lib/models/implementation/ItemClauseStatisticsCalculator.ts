@@ -1,13 +1,16 @@
-import { IItem, TeambuilderPokemon, TeambuilderPokemonArray } from '@pokedraft/teambuilder';
+import { IItem } from '../api';
 import {
   ItemClauseStatistics, ItemClauseStatisticsMap,
   SingleItemCountItemSnippet, SingleItemCountPokemonSnippet,
   SingleItemCountStatistics
 } from '../api/ItemClauseStatistics';
+import { TeambuilderPokemon, TeambuilderPokemonArray } from './TeambuilderPokemon';
 
 export class ItemClauseStatisticsCalculator {
 
   public statistics: ItemClauseStatistics;
+
+  public itemClauseBroken: boolean;
 
   private itemClauseStatisticsMap: ItemClauseStatisticsMap;
 
@@ -18,6 +21,7 @@ export class ItemClauseStatisticsCalculator {
   public reset(): void {
     this.statistics = [];
     this.itemClauseStatisticsMap = {};
+    this.itemClauseBroken = false;
   }
 
   public calculate(forTeam: TeambuilderPokemonArray) {
@@ -25,7 +29,12 @@ export class ItemClauseStatisticsCalculator {
     forTeam
       .filter(pokemon => !!pokemon.getItem())
       .forEach(pokemon => this.addItem(pokemon));
+    this.statistics = Object.values(this.itemClauseStatisticsMap);
+    this.calculateItemClause();
+  }
 
+  private calculateItemClause() {
+    this.itemClauseBroken = this.statistics.some((item: SingleItemCountStatistics) => item.count > 1);
   }
 
   private addItem(fromPokemon: TeambuilderPokemon) {
@@ -59,8 +68,8 @@ export class ItemClauseStatisticsCalculator {
 
   private createPokemonSnippet(fromPokemon: TeambuilderPokemon): SingleItemCountPokemonSnippet {
     return ({
-      name: fromPokemon.getName(),
-      imgSrc: fromPokemon.imgSrc
+      id: fromPokemon.getId(),
+      name: fromPokemon.getName()
     });
   }
 }

@@ -1,0 +1,36 @@
+@import "../utils/variables/variables";
+@import "../utils/mixins";
+
+@mixin pd-teambuilder-container {
+  padding: 8px;
+  width: 100%;
+  background-color: $white;
+  border-radius: $radius;
+  box-shadow: $tb-box-shadow;
+  @include no-scrollbar;
+}
+
+@mixin clickable {
+  transition: $transition;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:active {
+    transition: 0s;
+    border-color: $primary2;
+    box-shadow: 0 0 4px 0 $primary inset;
+  }
+}
+
+@mixin reverse-clickable($withBorderColor) {
+  cursor: default;
+  &:hover {
+    border-color: $withBorderColor;
+  }
+  &:active {
+    border-color: $withBorderColor;
+    box-shadow: none;
+  }
+}

@@ -19,3 +19,5 @@ export interface StatWithLabel {
   id: string;
   label: ITranslatable;
 }
+
+export type PartialStats = Partial<IStats>;

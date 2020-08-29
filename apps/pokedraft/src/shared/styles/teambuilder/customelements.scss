@@ -14,5 +14,9 @@ pd-pokemon-icon {
   max-height: $pokemon-icon-height;
 }
 
-
+/* Needed for element alignment & element sizes */
+pd-teambuilder-editor, pd-teambuilder-teams {
+  display: flex;
+  @include take-up-full-space;
+}
 

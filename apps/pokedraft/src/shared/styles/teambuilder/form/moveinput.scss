@@ -20,13 +20,16 @@ pd-move-input {
 
   @each $current-type, $current-type-color in $type-color-list {
     &--#{$current-type} {
-      // box-shadow: 0 0 4px 0 $current-type-color inset;
-      border: 1px solid $current-type-color;
+      border-color: $current-type-color;
     }
   }
 
   &--has-move {
     justify-content: space-around;
+  }
+
+  &--disabled {
+    @include reverse-clickable($grey-lighter);
   }
 }
 

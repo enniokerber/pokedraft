@@ -61,7 +61,9 @@ $checkboxSize: 26px;
 
   &:disabled {
     & + .pd-checkbox-trigger > span {
-        background-color: $grey-300;
+      background-color: $grey-lightest;
+      cursor: not-allowed;
+      border-color: $grey-light;
     }
   }
 }

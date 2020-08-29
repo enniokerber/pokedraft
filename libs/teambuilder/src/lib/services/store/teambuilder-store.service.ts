@@ -43,6 +43,11 @@ export class TeambuilderStoreService {
     return this._tiers;
   }
 
+  getPokemonById(id: string): IPokemon {
+    if (!id) return null;
+    return this.pokemonlist.getAll().find(p => p.id === id) || null;
+  }
+
   getPokemonsAbilities(pokemon: TeambuilderPokemon) {
     if (!this.abilities || !pokemon) {
       return [];
@@ -52,6 +57,7 @@ export class TeambuilderStoreService {
   }
 
   getAbilityById(id: string): IAbility {
+    if (!id) return null;
     return this.abilities[id];
   }
 
@@ -60,6 +66,7 @@ export class TeambuilderStoreService {
   }
 
   getItemById(id: string): IItem {
+    if (!id) return null;
     return this.items[id];
   }
 
@@ -67,7 +74,13 @@ export class TeambuilderStoreService {
     return Object.values(this.moves) as IMove[];
   }
 
+  getMovesByIds(ids: string[]): IMove[] {
+    if (!ids || ids.length === 0) return [];
+    return ids.map(id => this.getMoveById(id) || null);
+  }
+
   getMoveById(id: string): IMove {
+    if (!id) return null;
     return this.moves[id];
   }
 }

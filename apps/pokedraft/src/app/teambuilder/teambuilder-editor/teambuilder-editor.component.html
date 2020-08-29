@@ -1,0 +1,40 @@
+
+<div class="pd-teambuilder-half pd-teambuilder-main-half">
+
+  <pd-teambar></pd-teambar>
+
+  <ng-container *ngIf="display as displayMode">
+
+    <pd-teambuilder-form *ngIf="displayMode.showForm"></pd-teambuilder-form>
+
+    <!-- all lists need to be on screen at all times so the list components dont have to be recreated and rendered every time which would cause huge delays/performance issues -->
+    <div class="pd-teambuilder-list-container">
+
+      <pd-pokemon-list class="pd-teambuilder-list"
+                       [class.pd-teambuilder-list--show]="displayMode.showPokemonList"></pd-pokemon-list>
+
+      <pd-item-list class="pd-teambuilder-list"
+                    [class.pd-teambuilder-list--show]="displayMode.showItemList"></pd-item-list>
+
+      <pd-moves-list class="pd-teambuilder-list"
+                     [class.pd-teambuilder-list--show]="displayMode.showMoveList"></pd-moves-list>
+
+      <pd-abilities-list class="pd-teambuilder-list"
+                         [class.pd-teambuilder-list--show]="displayMode.showAbilitiesList"></pd-abilities-list>
+
+      <pd-stats class="pd-teambuilder-list"
+                [class.pd-teambuilder-list--show]="displayMode.showStats"></pd-stats>
+
+    </div>
+
+  </ng-container>
+
+</div>
+
+<div class="pd-teambuilder-half pd-teambuilder-second-half">
+
+  <pd-teambuilder-settings-bar></pd-teambuilder-settings-bar>
+
+  <pd-statistics class="pd-teambuilder-list-container pd-statistics-container"></pd-statistics>
+
+</div>

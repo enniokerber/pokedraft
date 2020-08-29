@@ -1,0 +1,23 @@
+<div class="pd-teambuilder-team-container"
+     (click)="selectTeam()"
+     (dblclick)="editTeam()">
+  <div class="pd-teambuilder-team-container-title">
+
+    <div class="pd-teambuilder-team-container-tier-badge">
+      {{team.tier}}
+    </div>
+
+    {{team.name}}
+  </div>
+
+  <div class="pd-teambuilder-team-container-pokemon">
+    <div class="pd-pokemon-icon-wrapper" *ngFor="let pokemon of team.pokemon">
+      <pd-pokemon-icon class="pd-pokemon-icon-wrapped" [imgSrc]="pokemon"></pd-pokemon-icon>
+    </div>
+  </div>
+</div>
+
+<div class="pd-teambuilder-team-container-actions">
+  <pd-round-button icon="assets/icons/edit.png" (leftclick)="editTeam()"></pd-round-button>
+  <pd-round-button icon="assets/icons/delete.png"></pd-round-button>
+</div>

@@ -11,8 +11,8 @@ import { EVRangingNumber, IRangingNumber, RangingNumber } from './RangingNumber'
 export class Stat {
 
     public value: number;
-    public modifiedValue: number;
     public stage: number;
+    public modifiedValue: number;
     public evs: IRangingNumber;
     public dvs: IRangingNumber;
     public natureValue: number;

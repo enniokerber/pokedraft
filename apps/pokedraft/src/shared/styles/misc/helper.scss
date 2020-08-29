@@ -79,23 +79,27 @@
 }
 
 .side-padding {
-  padding: 0 $padding-m;
+  padding: 0 $padding-m !important;
 }
 
 .margin-top {
-  margin-top: $margin-l;
+  margin-top: $margin-l !important;
 }
 
 .small-margin-top {
-  margin-top: $margin-m;
+  margin-top: $margin-m !important;
+}
+
+.large-margin-bottom {
+  margin-bottom: 30px !important;
 }
 
 .margin-bottom {
-  margin-bottom: $margin-l;
+  margin-bottom: $margin-l !important;
 }
 
 .small-margin-bottom {
-  margin-bottom: $margin-m;
+  margin-bottom: $margin-m !important;
 }
 
 .small-font-size {

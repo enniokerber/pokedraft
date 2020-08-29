@@ -1,0 +1,22 @@
+
+<div class="pd-teambuilder-move-input-container pd-teambuilder-move-input-container--{{_move?.type}} show-tooltip-on-hover"
+     [class.pd-teambuilder-move-input-container--has-move]="_move">
+  <input #moveInput
+         class="pd-teambuilder-move-input"
+         placeholder="- - - Moveslot - - -"
+         (input)="searchMove()"
+         (keydown.arrowdown)="listDown()"
+         (keydown.arrowup)="listUp()"
+         (keydown.enter)="selectMarkedMove()"
+         (focus)="selectMoveSlot()"
+         (click)="openMoveList()"
+         [(ngModel)]="_searchName"/>
+  <ng-container *ngIf="_move">
+    <move-category-image class="pd-teambuilder-move-input--category-image"
+                         [category]="_move.category">
+    </move-category-image>
+    <div class="pd-teambuilder-move-input-tooltip" *ngIf="(_move.description | translate | async) as desc">
+      {{desc}}
+    </div>
+  </ng-container>
+</div>

@@ -1,11 +1,11 @@
-import {IStats} from "./IStats";
+import { IStats, PartialStats } from './IStats';
 import {ITranslatable} from "./ITranslatable";
 import {MAX_EVS_PER_STAT, MAX_EVS_PER_STAT_MINUS_4} from "../../data";
 
 export interface StatConfig {
   name: ITranslatable;
-  evs?: Partial<IStats>;
-  dvs?: Partial<IStats>;
+  evs?: PartialStats;
+  dvs?: PartialStats;
 }
 
 export const statConfigs: StatConfig[] = [

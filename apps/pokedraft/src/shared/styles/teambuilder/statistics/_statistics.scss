@@ -4,7 +4,6 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  overflow: hidden;
 }
 
 .pd-statistics-settings-row {
@@ -13,3 +12,4 @@
 
 @import "type-statistics";
 @import "hazard-statistics";
+@import "item-statistics";

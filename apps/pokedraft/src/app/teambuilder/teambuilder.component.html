@@ -1,4 +1,10 @@
 <section id="pd-teambuilder-header">
+
+  <div class="pd-header-button-container">
+    <pd-button icon="assets/icons/horizontal-array.png" routerLink="teams"> Teams </pd-button>
+    <pd-button class="left-space" icon="assets/icons/build.png" routerLink="editor"> Editor </pd-button>
+  </div>
+
   <div id="pd-teambuilder-logo-container">
     <img id="pd-logo" src="assets/pokedraftlogo.png" alt="Pokédraft">
   </div>
@@ -10,8 +16,10 @@
 
 <main id="pd-teambuilder-content">
 
-  <teambuilder-frame>
-    This is the Pokédraft Teambuilder, an alternative to the classic Showdown Teambuilder.
-  </teambuilder-frame>
+  <div class="pd-teambuilder-frame">
+
+    <router-outlet></router-outlet>
+
+  </div>
 
 </main>

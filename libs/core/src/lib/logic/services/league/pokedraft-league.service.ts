@@ -8,7 +8,6 @@ import {
 import {PokedraftAuthService} from "../../services/auth/pokedraft-auth.service";
 import {BehaviorSubject, Observable, of, Subscription, combineLatest} from "rxjs";
 import {map, shareReplay, switchMap, tap} from "rxjs/operators";
-import * as firebase from 'firebase/app';
 import {PokedraftUserService} from "../user/pokedraft-user.service";
 import {AngularFireFunctions} from "@angular/fire/functions";
 import HttpsCallableResult = firebase.functions.HttpsCallableResult;

@@ -1,0 +1,16 @@
+
+<div class="pd-teambuilder-move-input-container pd-teambuilder-move-input-container--{{move?.type}} show-tooltip-on-hover pd-teambuilder-move-input-container--disabled"
+     [class.pd-teambuilder-move-input-container--has-move]="move">
+  <input class="pd-teambuilder-move-input"
+         placeholder="- - - Moveslot - - -"
+         [value]="move?.name | translate | async"
+         disabled/>
+  <ng-container *ngIf="move">
+    <move-category-image class="pd-teambuilder-move-input--category-image"
+                         [category]="move.category">
+    </move-category-image>
+    <div class="pd-teambuilder-move-input-tooltip" *ngIf="(move.description | translate | async) as desc">
+      {{desc}}
+    </div>
+  </ng-container>
+</div>

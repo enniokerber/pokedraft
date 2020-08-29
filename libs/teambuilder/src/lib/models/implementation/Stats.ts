@@ -1,5 +1,5 @@
 import {HPStat, Stat} from './Stat';
-import {IStats} from '../api/IStats';
+import { IStats, PartialStats } from '../api/IStats';
 import {INatureWithoutStatMetadata} from '../api/INature';
 import {MAX_DVS, MAX_EVS_TOTAL, statIdsArray} from "../../data";
 import {Nature} from "./nature";
@@ -98,11 +98,35 @@ export class Stats {
 
     applyStatConfig(config: StatConfig = this.statConfig): void {
       if (!config) return;
+      this.setEvsAndDvs(config.evs, config.dvs);
+    }
+
+    setEvsAndDvs(evs: PartialStats, dvs: PartialStats): void {
       this.forAllStats((stat: Stat, statId: string) => {
-        if (config.evs) { stat.setEvs(config.evs[statId]) } else stat.setEvs(0);
-        if (config.dvs) { stat.setDvs(config.dvs[statId]) } else stat.setDvs(MAX_DVS);
+        stat.setEvs(evs[statId] ? evs[statId] : 0);
+        stat.setDvs(dvs[statId] ? dvs[statId] : MAX_DVS);
         stat.update();
       });
       this.calculateEvSum();
+    }
+
+    getEvsDatabaseRecord(): PartialStats {
+      const evs = {};
+      this.forAllStats((stat, statId) => {
+        if (stat.evs.getValue() > 0) {
+          evs[statId] = stat.evs.getValue();
+        }
+      });
+      return evs as IStats;
+    }
+
+    getDvsDatabaseRecord(): PartialStats {
+      const dvs = {};
+      this.forAllStats((stat, statId) => {
+        if (stat.dvs.getValue() < 31) {
+          dvs[statId] = stat.dvs.getValue();
+        }
+      });
+      return dvs as IStats;
     }
 }

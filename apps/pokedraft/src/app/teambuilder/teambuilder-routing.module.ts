@@ -2,16 +2,35 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {TeambuilderComponent} from "./teambuilder.component";
 
-
 const routes: Routes = [
   {
     path: '',
     component: TeambuilderComponent,
-    pathMatch: 'full'
+    children: [
+      {
+        path: 'editor',
+        loadChildren: () => import('./teambuilder-editor/teambuilder-editor.module').then(m => m.TeambuilderEditorModule)
+      },
+      {
+        path: 'teams',
+        loadChildren: () => import('./teambuilder-teams/teambuilder-teams.module').then(m => m.TeambuilderTeamsModule)
+      },
+      {
+        path: '',
+        redirectTo: 'editor',
+        pathMatch: 'full'
+      },
+      {
+        path: '*',
+        redirectTo: 'editor',
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path: '*',
-    redirectTo: ''
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 

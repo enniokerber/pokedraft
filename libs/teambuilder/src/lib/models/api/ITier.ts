@@ -7,3 +7,12 @@ export interface ITier {
   nr: number;
   isCommon: boolean;
 }
+
+export enum Tiers {
+  OU = 'OU',
+  UU = 'UU',
+  RU = 'RU',
+  NU = 'NU',
+  PU = 'PU',
+  ALL = 'ALL'
+}
