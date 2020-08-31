@@ -4,3 +4,4 @@ export * from './user';
 
 export * from './PokedraftRewardType';
 export * from './LoadingZone';
+export * from './LoadingState';

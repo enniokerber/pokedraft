@@ -1,6 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
-import { IPokedraftUser } from '@pokedraft/core';
+import { IPokedraftUser, IPokedraftUserSnippet, toUserSnippet } from '../../../models';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import {shareReplay, switchMap, tap} from 'rxjs/operators';
@@ -69,6 +69,11 @@ export class PokedraftAuthService implements OnDestroy {
 
   getCurrentUser(): IPokedraftUser {
     return this.currentUser;
+  }
+
+  getCurrentUserSnippet(): IPokedraftUserSnippet {
+    const user = this.getCurrentUser();
+    return user ? toUserSnippet(user) : null;
   }
 
   login(email: string, password: string): Promise<UserCredential> {

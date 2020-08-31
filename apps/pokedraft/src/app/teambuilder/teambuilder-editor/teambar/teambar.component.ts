@@ -17,7 +17,7 @@ export class TeambarComponent{
   selectedPokemon$: Observable<TeambuilderPokemon>;
 
   constructor(private tbPokemon: TeambuilderPokemonService) {
-    this.team$ = this.tbPokemon.currentTeampokemon.changes$;
+    this.team$ = this.tbPokemon.currentTeampokemon$;
     this.selectedPokemon$ = this.tbPokemon.selectedPokemon.changes$;
   }
 

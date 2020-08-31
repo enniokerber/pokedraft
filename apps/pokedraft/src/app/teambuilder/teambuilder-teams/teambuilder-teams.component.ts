@@ -3,8 +3,8 @@ import {
   ITeambuilderTeamSnippet, TeambuilderApiService,
   TeambuilderPokemonArray, TeambuilderPokemonService
 } from '@pokedraft/teambuilder';
-import { Observable, of, Subject } from 'rxjs';
-import { catchError, distinctUntilChanged, finalize, first, map, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, distinctUntilChanged, filter, finalize, first, map, switchMap, tap } from 'rxjs/operators';
 import { LoadingZone } from '@pokedraft/core';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,9 @@ export class TeambuilderTeamsComponent implements OnInit {
 
   teampokemon$: Observable<TeambuilderPokemonArray>;
 
-  selectTeam$: Subject<string>;
+  selectTeam$: BehaviorSubject<string>;
+
+  selectedTeamId$: Observable<string>;
 
   usersTeamsLoadingZone: LoadingZone;
   currentTeamLoadingZone: LoadingZone;
@@ -27,7 +29,8 @@ export class TeambuilderTeamsComponent implements OnInit {
   constructor(private tbPokemon: TeambuilderPokemonService,
               private tbApi: TeambuilderApiService,
               private router: Router) {
-    this.selectTeam$ = new Subject<string>();
+    this.selectTeam$ = new BehaviorSubject<string>(null);
+    this.selectedTeamId$ = this.selectTeam$.asObservable();
     this.usersTeamsLoadingZone = new LoadingZone();
     this.currentTeamLoadingZone = new LoadingZone();
   }
@@ -37,10 +40,16 @@ export class TeambuilderTeamsComponent implements OnInit {
     this.teams$ = this.tbApi.getFakeTeamPreviews()
       .pipe(
         first(),
+        tap((teams: ITeambuilderTeamSnippet[]) => {
+          if (teams.length > 0) {
+            this.selectTeam(teams[0].id);
+          }
+        }),
         finalize(() => this.usersTeamsLoadingZone.dec()),
       );
     this.teampokemon$ = this.selectTeam$.asObservable()
       .pipe(
+        filter(id => !!id),
         distinctUntilChanged(),
         tap(id => console.log(`Loading Team #${id}`)),
         tap(_ => this.currentTeamLoadingZone.inc()),

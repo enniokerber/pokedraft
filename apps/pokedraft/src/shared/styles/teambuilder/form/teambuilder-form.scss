@@ -39,18 +39,20 @@
   pointer-events: none;
 }
 
-.pd-teambuilder-form-pokemon-sprite-shiny-checkbox {
+.pd-teambuilder-form-shiny-checkbox {
   position: absolute;
   right: 8px;
   @include center-relatively-vertically;
 }
 
-.pd-teambuilder-form-pokemon-sprite-shiny-indicator-icon {
+.pd-teambuilder-form-shiny-indicator {
   position: absolute;
   top: 50%;
-  right: 16px;
+  right: 14px;
   transform: translateY(-25px);
   opacity: .7;
+
+  &--for-checkbox { right: 16px; }
 }
 
 .--indicator-active {

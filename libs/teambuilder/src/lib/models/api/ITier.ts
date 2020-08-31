@@ -14,5 +14,5 @@ export enum Tiers {
   RU = 'RU',
   NU = 'NU',
   PU = 'PU',
-  ALL = 'ALL'
+  UNKNOWN = 'Unknown'
 }

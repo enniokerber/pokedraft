@@ -101,10 +101,19 @@ export class Stats {
       this.setEvsAndDvs(config.evs, config.dvs);
     }
 
-    setEvsAndDvs(evs: PartialStats, dvs: PartialStats): void {
+    setEvsAndDvs(evs: PartialStats = {}, dvs: PartialStats = {}): void {
       this.forAllStats((stat: Stat, statId: string) => {
         stat.setEvs(evs[statId] ? evs[statId] : 0);
         stat.setDvs(dvs[statId] ? dvs[statId] : MAX_DVS);
+        stat.update();
+      });
+      this.calculateEvSum();
+    }
+
+    updateEvsAndDvs(evs: PartialStats = {}, dvs: PartialStats = {}): void {
+      this.forAllStats((stat: Stat, statId: string) => {
+        if (typeof evs[statId] === 'number') stat.setEvs(evs[statId]);
+        if (typeof dvs[statId] === 'number') stat.setDvs(dvs[statId]);
         stat.update();
       });
       this.calculateEvSum();

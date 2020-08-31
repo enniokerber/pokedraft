@@ -20,12 +20,41 @@
     </option>
   </select>
 
-  <pd-round-button class="left-space"
-                   title="Save"
-                   icon="assets/icons/done.png"
-                   (leftclick)="updateTeam()"> </pd-round-button>
+  <ng-container *ngIf="(user$ | async) as user">
 
-  <pd-round-button class="left-space"
-                   title="Import"
-                   icon="assets/icons/download.png" (leftclick)="logTeam()"> </pd-round-button>
+    <pd-button class="left-space"
+               icon="assets/icons/save.png"
+               [disabled]="user.uid !== (team$ | async)?.author?.uid"
+               [loading]="saveRequestState.loading$ | async"
+               (leftclick)="save()"
+               *ngIf="(team$ | async)?.id; else isNewTeam">
+      <translator2 english="Save" german="Speichern"></translator2>
+    </pd-button>
+
+    <ng-template #isNewTeam>
+      <pd-button class="left-space"
+                 icon="assets/icons/save.png"
+                 [loading]="saveRequestState.loading$ | async"
+                 (leftclick)="save()">
+        <translator2 english="Save" german="Speichern"></translator2>
+      </pd-button>
+    </ng-template>
+
+    <div class="pd-success-icon left-space"
+         [@PopUp]
+         *ngIf="(saveRequestState.showResult$ | async) && (saveRequestState.success$ | async)"></div>
+
+    <div class="pd-error-icon left-space"
+         [@PopUp]
+         *ngIf="(saveRequestState.showResult$ | async) && (saveRequestState.error$ | async)"></div>
+
+  </ng-container>
+
+  <!--
+   <pd-button class="left-space"
+             title="Import"
+             icon="assets/icons/download.png">
+    Import
+  </pd-button>
+  -->
 </div>

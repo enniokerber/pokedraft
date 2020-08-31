@@ -10,6 +10,8 @@ export class TeamPreviewContainerComponent {
 
   @Input() team: ITeambuilderTeamSnippet;
 
+  @Input() selected: boolean;
+
   @Output() edit: EventEmitter<string>;
 
   @Output() choose: EventEmitter<string>;

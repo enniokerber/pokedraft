@@ -80,17 +80,17 @@ export class TeambuilderPokemon {
     return this.name;
   }
 
-  setNickname(value: string): void { this.nickname = value; }
+  setNickname(value: string = ''): void { this.nickname = value; }
 
-  setLevel(value: number): void { this.level = value; }
+  setLevel(value: number = MAX_LEVEL): void { this.level = value; }
 
-  setHappiness(value: number): void { this.happiness = value; }
+  setHappiness(value: number = MAX_HAPPINESS): void { this.happiness = value; }
 
-  setGender(value: GenderType): void { this.gender = value; }
+  setGender(value: GenderType = Genders.RANDOM): void { this.gender = value; }
 
   getGender(): GenderType { return this.gender; }
 
-  setShiny(value: boolean): void {
+  setShiny(value: boolean = false): void {
     this.shiny = value;
     this.updateSprite();
   }
@@ -101,7 +101,7 @@ export class TeambuilderPokemon {
     return this.item;
   }
 
-  setItem(item: IItem): void {
+  setItem(item: IItem = null): void {
     this.item = item;
   }
 
@@ -109,7 +109,7 @@ export class TeambuilderPokemon {
     return this.ability;
   }
 
-  setAbility(ability: IAbility): void {
+  setAbility(ability: IAbility = null): void {
     this.ability = ability;
   }
 
@@ -121,7 +121,7 @@ export class TeambuilderPokemon {
     return this.moves.map(mc => mc.getData()).filter(m => !!m);
   }
 
-  setMoves(moves: IMove[]): void {
+  setMoves(moves: IMove[] = []): void {
     if (moves.length > 4) { return console.error('This Pokémon has more than 4 moves which is not allowed.'); }
     moves.forEach((move, index) => {
       this.moves[index].setData(move);
@@ -136,7 +136,7 @@ export class TeambuilderPokemon {
     return this.nature.get().id;
   }
 
-  changeNatureById(id: number): void {
+  changeNatureById(id: number = 0): void {
     this.nature.setById(id);
     this.stats.applyNature();
   }

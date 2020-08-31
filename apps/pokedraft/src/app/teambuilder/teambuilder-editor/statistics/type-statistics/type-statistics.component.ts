@@ -23,7 +23,7 @@ export class TypeStatisticsComponent {
   constructor(private tbStatistics: TeambuilderStatisticsService,
               private tbPokemon: TeambuilderPokemonService) {
     this.typeStatistics = this.tbStatistics.getTypeStatistics();
-    this.teampokemonCount$ = this.tbPokemon.currentTeampokemon.changes$
+    this.teampokemonCount$ = this.tbPokemon.currentTeampokemon$
       .pipe(map(team => team.length));
   }
 

@@ -1,6 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import {
-  SubscriptionContainer,
+  SubscriptionContainer, TeambuilderApiService,
   TeambuilderDisplayMode,
   TeambuilderViewService
 } from '@pokedraft/teambuilder';
@@ -16,7 +16,15 @@ export class TeambuilderEditorComponent implements OnDestroy {
 
   private subscriptions: SubscriptionContainer;
 
-  constructor(public tbViewService: TeambuilderViewService) {
+  @HostListener('document:keydown.control.s', [ '$event' ])
+  save($event: KeyboardEvent): void {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.tbApi.saveTeam();
+  }
+
+  constructor(private tbViewService: TeambuilderViewService,
+              private tbApi: TeambuilderApiService) {
     this.subscriptions = new SubscriptionContainer();
     this.subscriptions.add(
       this.tbViewService.displayMode.changes$.subscribe(display => {

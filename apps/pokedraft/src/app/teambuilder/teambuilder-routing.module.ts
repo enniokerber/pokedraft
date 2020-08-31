@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {TeambuilderComponent} from "./teambuilder.component";
+import { AuthGuard } from '@pokedraft/core';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
       },
       {
         path: 'teams',
-        loadChildren: () => import('./teambuilder-teams/teambuilder-teams.module').then(m => m.TeambuilderTeamsModule)
+        loadChildren: () => import('./teambuilder-teams/teambuilder-teams.module').then(m => m.TeambuilderTeamsModule),
+        canActivate: [AuthGuard]
       },
       {
         path: '',

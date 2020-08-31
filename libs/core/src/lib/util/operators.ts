@@ -9,17 +9,11 @@ export const snapshotChangesToDocsWithId = <T>(changes: DocumentChangeAction<T>[
   })
 );
 
-export const allWithDocumentId = pipe(
-  map(snapshotChangesToDocsWithId)
-);
+export const allWithDocumentId = () => map(snapshotChangesToDocsWithId);
 
-export const extractDocumentData = pipe(
-  map((snapshot: Action<DocumentSnapshot<any>>) => snapshot.payload.data())
-);
+export const extractDocumentData = () => map((snapshot: Action<DocumentSnapshot<any>>) => snapshot.payload.data());
 
-export const extractDocumentDataWithId = pipe(
-  map((snapshot: Action<DocumentSnapshot<any>>) => ({
-    id: snapshot.payload.id,
-    ...snapshot.payload.data()
-  } as any)),
-);
+export const extractDocumentDataWithId = () => map((snapshot: Action<DocumentSnapshot<any>>) => ({
+  id: snapshot.payload.id,
+  ...snapshot.payload.data()
+} as any));

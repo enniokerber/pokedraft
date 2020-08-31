@@ -12,6 +12,7 @@
     </div>
 
     <pd-team-preview-container [team]="team"
+                               [selected]="team.id === (selectedTeamId$ | async)"
                                (edit)="openTeam($event)"
                                (choose)="selectTeam($event)"
                                *ngFor="let team of teams$ | async"></pd-team-preview-container>

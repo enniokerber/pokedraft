@@ -7,15 +7,13 @@ import { Tiers } from './ITier';
 export interface ITeambuilderTeam {
   id?: string;
   author: IPokedraftUserSnippet;
-  name: string;
+  name?: string;
   createdAt: number;
   lastUpdate: number;
   tier: Tiers;
   public?: boolean;
   pokemon: ITeambuilderPokemon[];
 }
-
-export type PartialTeambuilderTeam = Partial<ITeambuilderTeam>;
 
 export interface ITeambuilderTeamSnippet {
   id?: string;

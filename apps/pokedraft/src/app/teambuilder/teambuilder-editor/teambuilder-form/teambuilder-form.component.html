@@ -10,12 +10,12 @@
       </pd-input>
       <div class="pd-teambuilder-form-pokemon-sprite-container">
         <img class="pd-teambuilder-form-pokemon-sprite" [src]="pokemon.sprite" alt="">
-        <img class="pd-teambuilder-form-pokemon-sprite-shiny-indicator-icon"
+        <img class="pd-teambuilder-form-shiny-indicator"
              src="assets/other/shiny.png"
              alt=""
              [class.--indicator-active]="pokemon.shiny">
         <pd-radio-checkbox
-          class="pd-teambuilder-form-pokemon-sprite-shiny-checkbox"
+          class="pd-teambuilder-form-shiny-checkbox"
           title="Shiny?"
           [(checked)]="pokemon.shiny"
           (checkedChange)="pokemon.updateSprite()">

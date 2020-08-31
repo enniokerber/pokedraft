@@ -12,5 +12,4 @@ export class TeambuilderComponent {
   constructor(titleService: Title) {
     titleService.setTitle('Pokédraft - Teambuilder');
   }
-
 }

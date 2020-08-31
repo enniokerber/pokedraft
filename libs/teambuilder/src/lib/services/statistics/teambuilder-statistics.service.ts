@@ -28,7 +28,7 @@ export class TeambuilderStatisticsService implements OnDestroy {
     this.hazards = new HazardStatisticsCalculator();
     this.itemClause = new ItemClauseStatisticsCalculator();
     this.subscriptions = new SubscriptionContainer(
-      this.tbPokemon.currentTeampokemon.changes$.subscribe(team => {
+      this.tbPokemon.currentTeampokemon$.subscribe(team => {
         if (!this.autoUpdatesEnabled()) return;
         this.team = team;
         this.updateAllStatistics();

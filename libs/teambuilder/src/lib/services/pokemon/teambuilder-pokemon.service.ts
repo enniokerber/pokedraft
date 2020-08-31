@@ -9,36 +9,38 @@ import {
   SubscriptionContainer,
   Container,
   ITeambuilderPokemon,
-  Genders,
   ITeambuilderTeam,
-  TeambuilderPokemonArray
+  TeambuilderPokemonArray,
+  TeambuilderTeam
 } from '../../models';
 import {TeambuilderEventService} from "../event/teambuilder-event.service";
 import {TeambuilderViewService} from "../view/teambuilder-view.service";
 import { TeambuilderStoreService } from '../store/teambuilder-store.service';
-import {distinctUntilChanged} from "rxjs/operators";
-import { MAX_HAPPINESS, MAX_LEVEL } from '../../data';
+import { distinctUntilChanged, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { PokedraftAuthService } from '@pokedraft/core';
 
 
 @Injectable()
 export class TeambuilderPokemonService implements OnDestroy {
 
-  public teamId: string;
-  private readonly _currentTeampokemon: BehaviorSubjectStream<TeambuilderPokemon[]>;
-  private readonly _selectedPokemon: BehaviorSubjectStream<TeambuilderPokemon>;
-  private readonly _nextMoveslot: BehaviorSubjectStream<number>;
+  team: BehaviorSubjectStream<TeambuilderTeam>;
+  currentTeampokemon$: Observable<TeambuilderPokemon[]>;
+  selectedPokemon: BehaviorSubjectStream<TeambuilderPokemon>;
+  nextMoveslot: BehaviorSubjectStream<number>;
 
-  private readonly _subscriptions: SubscriptionContainer;
+  private readonly subscriptions: SubscriptionContainer;
 
   constructor(private tbEvents: TeambuilderEventService,
               private tbView: TeambuilderViewService,
-              private tbStore: TeambuilderStoreService) {
-    this.teamId = '';
-    this._currentTeampokemon = new BehaviorSubjectStream<TeambuilderPokemon[]>([]);
-    this._selectedPokemon = new BehaviorSubjectStream<TeambuilderPokemon>(null);
-    this._nextMoveslot = new BehaviorSubjectStream<number>(-1);
-    this._subscriptions = new SubscriptionContainer(
-      this._selectedPokemon.changes$
+              private tbStore: TeambuilderStoreService,
+              private auth: PokedraftAuthService) {
+    this.team = new BehaviorSubjectStream<TeambuilderTeam>(this.newTeam());
+    this.currentTeampokemon$ = this.team.changes$.pipe(map(team => team?.getPokemon() || []));
+    this.selectedPokemon = new BehaviorSubjectStream<TeambuilderPokemon>(null);
+    this.nextMoveslot = new BehaviorSubjectStream<number>(-1);
+    this.subscriptions = new SubscriptionContainer(
+      this.selectedPokemon.changes$
         .pipe(distinctUntilChanged())
         .subscribe(pokemon => {
           if (!pokemon) {
@@ -49,34 +51,38 @@ export class TeambuilderPokemonService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._subscriptions.unsubscribeAll();
+    this.subscriptions.unsubscribeAll();
   }
 
-  get currentTeampokemon(): BehaviorSubjectStream<TeambuilderPokemon[]> {
-    return this._currentTeampokemon;
+  private newTeam(): TeambuilderTeam {
+    const currentUser = this.auth.getCurrentUserSnippet();
+    return TeambuilderTeam.forUser(currentUser);
   }
 
-  get selectedPokemon(): BehaviorSubjectStream<TeambuilderPokemon> {
-    return this._selectedPokemon;
-  }
+  getTeamId(): string { return this.team.getValue().getId(); }
 
-  get nextMoveslot(): BehaviorSubjectStream<number> {
-    return this._nextMoveslot;
-  }
+  setTeamId(id: string): void { this.team.getValue().setId(id); }
 
-  getTeamId(): string { return this.teamId; }
+  getTeam(): TeambuilderTeam { return this.team.getValue(); }
 
-  setTeamId(id: string): void {this.teamId = id; }
-
-  setTeam(team: ITeambuilderTeam): void {
-    if (!team) return;
-    this.setTeamId(team.id);
-    const pokemon: TeambuilderPokemonArray = team.pokemon.map((p: ITeambuilderPokemon, index: number) => this.createTeambuilderPokemonFromDBRecord(p, index)) || [];
-    this.currentTeampokemon.update(pokemon);
+  setTeam(record: ITeambuilderTeam): void {
+    if (!record) return;
+    const team = TeambuilderTeam.fromDatabaseRecord(record);
+    const pokemon: TeambuilderPokemonArray = record.pokemon.map((p: ITeambuilderPokemon, index: number) => this.createTeambuilderPokemonFromDBRecord(p, index)) || [];
+    team.setPokemon(pokemon);
+    this.team.update(team);
     if (pokemon.length > 0) {
       this.selectTeampokemon(pokemon[0]);
       this.tbView.displayItemList();
     }
+  }
+
+  getCurrentTeampokemon(): TeambuilderPokemon[] { return this.team.getValue().getPokemon(); }
+
+  updateCurrentTeampokemon(pokemon: TeambuilderPokemon[]) {
+    const team = this.team.getValue();
+    team.setPokemon(pokemon);
+    this.notifyTeamChangeListeners();
   }
 
   selectTeampokemon(pokemon: TeambuilderPokemon) {
@@ -84,37 +90,36 @@ export class TeambuilderPokemonService implements OnDestroy {
   }
 
   getNextId(): number {
-    return this.currentTeampokemon.getValue().length;
+    return this.getCurrentTeampokemon().length;
   }
 
   addTeampokemon(fromInterface: IPokemon) {
-    const team = this.currentTeampokemon.getValue();
+    const team = this.getCurrentTeampokemon();
     if (team.length < 6) {
       const nextId = this.getNextId();
       const pokemon = new TeambuilderPokemon(fromInterface, nextId);
       team.push(pokemon);
-      this.triggerTeamChangeListeners(); // notifies listeners on the updated team, so for ex: statistics are recalculated
+      this.notifyTeamChangeListeners(); // notifies listeners on the updated team, so for ex: statistics are recalculated
       this.selectTeampokemon(pokemon);
       this.tbView.displayItemList();
     }
   }
 
-  // trigger on team change listeners
-  triggerTeamChangeListeners(): void {
+  notifyTeamChangeListeners(): void {
     // as the same value as before is passed again, change detection will detect that and thus not rerender the whole view
-    this.currentTeampokemon.update(this.currentTeampokemon.getValue());
+    this.team.update(this.team.getValue());
   }
 
   deleteTeampokemon(id: number): void {
-    this.currentTeampokemon.update(
-      this.currentTeampokemon.getValue()
+    this.updateCurrentTeampokemon(
+      this.getCurrentTeampokemon()
         .filter(pokemon => pokemon.getTeambuilderId() !== id)
         .map((pokemon, index) => {
           pokemon.setTeambuilderId(index);
           return pokemon;
         })
     );
-    const team = this.currentTeampokemon.getValue();
+    const team = this.getCurrentTeampokemon();
     const selectedTeamPokemon = this.selectedPokemon.getValue();
     if (selectedTeamPokemon !== null && selectedTeamPokemon.getTeambuilderId() === id) {
       const count = team.length;
@@ -165,7 +170,7 @@ export class TeambuilderPokemonService implements OnDestroy {
       const selectedMoveslot = this.nextMoveslot.getValue();
       currentTeampokemon.moves[selectedMoveslot].setData(move);
       this.selectTeampokemon(currentTeampokemon);
-      this.triggerTeamChangeListeners(); // notifies listeners on the updated team, so for ex: statistics are recalculated
+      this.notifyTeamChangeListeners(); // notifies listeners on the updated team, so for ex: statistics are recalculated
     }
   }
 
@@ -189,7 +194,7 @@ export class TeambuilderPokemonService implements OnDestroy {
     const currentTeampokemon = this.selectedPokemon.getValue();
     currentTeampokemon.moves[this.nextMoveslot.getValue()].setData(null);
     this.selectTeampokemon(currentTeampokemon);
-    this.triggerTeamChangeListeners(); // move was changed, so recalc statistics
+    this.notifyTeamChangeListeners(); // move was changed, so recalc statistics
   }
 
   // ITEM
@@ -199,7 +204,7 @@ export class TeambuilderPokemonService implements OnDestroy {
     if (currentTeampokemon.item !== item) {
       currentTeampokemon.setItem(item);
       this.selectTeampokemon(currentTeampokemon);
-      this.triggerTeamChangeListeners();
+      this.notifyTeamChangeListeners();
       this.tbView.displayAbilitiesList();
     }
   }
@@ -212,29 +217,29 @@ export class TeambuilderPokemonService implements OnDestroy {
       currentTeampokemon.setAbility(ability);
       this.selectTeampokemon(currentTeampokemon);
       this.tbView.displayMoveList();
-      this.triggerTeamChangeListeners();
+      this.notifyTeamChangeListeners();
       this.selectNextEmptyMoveslot();
     }
   }
 
   // MANAGE
-  getTeamAsDatabaseRecord(): ITeambuilderPokemon[] {
-    return this.currentTeampokemon.getValue().map(pokemon => pokemon.toDatabaseRecord());
+  getTeampokemonAsDatabaseRecords(): ITeambuilderPokemon[] {
+    return this.getCurrentTeampokemon().map(pokemon => pokemon.toDatabaseRecord());
   }
 
   createTeambuilderPokemonFromDBRecord(record: ITeambuilderPokemon, teambuilderId?: number): TeambuilderPokemon {
     const tbPokemon = new TeambuilderPokemon(this.tbStore.getPokemonById(record.id), teambuilderId);
-    tbPokemon.setNickname(record.nickname || '');
-    tbPokemon.setLevel(record.level || MAX_LEVEL);
-    tbPokemon.setHappiness(record.happiness || MAX_HAPPINESS);
-    tbPokemon.setGender(record.gender || Genders.RANDOM);
-    tbPokemon.setShiny(typeof record.shiny === 'undefined' ? false : record.shiny);
-    tbPokemon.changeNatureById(record.nature || 0);
-    tbPokemon.setItem(this.tbStore.getItemById(record.item) || null);
-    tbPokemon.setAbility(this.tbStore.getAbilityById(record.ability) || null);
-    tbPokemon.setMoves(this.tbStore.getMovesByIds(record.moves) || []);
+    tbPokemon.setNickname(record.nickname);
+    tbPokemon.setLevel(record.level);
+    tbPokemon.setHappiness(record.happiness);
+    tbPokemon.setGender(record.gender);
+    tbPokemon.setShiny(record.shiny);
+    tbPokemon.changeNatureById(record.nature);
+    tbPokemon.setItem(this.tbStore.getItemById(record.item));
+    tbPokemon.setAbility(this.tbStore.getAbilityById(record.ability));
+    tbPokemon.setMoves(this.tbStore.getMovesByIds(record.moves));
     if (tbPokemon.moveSetFull()) { tbPokemon.markMovesFilled(); }
-    tbPokemon.stats.setEvsAndDvs(record.evs || {}, record.dvs || {});
+    tbPokemon.stats.setEvsAndDvs(record.evs, record.dvs);
     return tbPokemon;
   }
 }

@@ -1,0 +1,63 @@
+@import "../../utils";
+
+.pd-single-item-statistics {
+  @include flex-center-vertically;
+  width: 100%;
+  height: 40px;
+  margin-bottom: $margin-m;
+  border-radius: $radius;
+  border: 1px solid $grey-300;
+  background-color: $grey-100;
+}
+
+.pd-single-item-statistics-icon {
+  flex: 0 0 40px;
+  text-align: center;
+}
+
+.pd-single-item-statistics-name {
+  flex: 0 0 120px;
+  color: $grey;
+}
+
+.pd-single-item-statistics-count {
+  flex: 0 0 40px;
+  color: $grey;
+}
+
+.pd-single-item-statistics-holders {
+  display: flex;
+  flex: 1 1 200px;
+  height: 100%;
+}
+
+.pd-single-item-statistics-holders-icon {
+  max-width: 40px;
+}
+
+.pd-item-clause-statistics-toast {
+  @include flex-center;
+  flex: 350px 1 0;
+  width: 100%;
+  height: 32px;
+  font-size: $font-size-s;
+  margin: $margin-m 0;
+  border-radius: $radius;
+  border: 1px solid $grey-400;
+  background-color: $grey-200;
+  color: $grey-400;
+
+  &--good {
+    border-color: $green-2;
+    background-color: $green-transparent;
+    color: $green-2;
+  }
+
+  &--error {
+    border-color: $red-3;
+    background-color: $red-disabled;
+    color: $red-1;
+  }
+}
+
+

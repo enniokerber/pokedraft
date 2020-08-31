@@ -37,7 +37,7 @@
     <select
       id="pd-statconfig-dropdown"
       name="nature"
-      class="pd-select pd-select--small"
+      class="pd-select pd-select--small width-fit-content"
       (change)="stats.applyStatConfig()"
       [(ngModel)]="stats.statConfig">
       <option [ngValue]="statConfig" *ngFor="let statConfig of statConfigs">

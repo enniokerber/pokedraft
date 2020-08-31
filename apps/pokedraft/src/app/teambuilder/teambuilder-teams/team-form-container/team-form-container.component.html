@@ -6,11 +6,11 @@
     </pd-input>
     <div class="pd-teambuilder-form-pokemon-sprite-container">
       <img class="pd-teambuilder-form-pokemon-sprite" [src]="pokemon.sprite" alt="">
-      <img class="pd-teambuilder-form-pokemon-sprite-shiny-indicator-icon"
+      <img class="pd-teambuilder-form-shiny-indicator pd-teambuilder-form-shiny-indicator--for-checkbox"
            src="assets/other/shiny.png"
            alt=""
            [class.--indicator-active]="pokemon.shiny">
-      <div class="pd-teambuilder-form-pokemon-sprite-shiny-checkbox">
+      <div class="pd-teambuilder-form-shiny-checkbox">
         <pd-checkbox title="Shiny?"
                      [checked]="pokemon.shiny"
                      disabled>

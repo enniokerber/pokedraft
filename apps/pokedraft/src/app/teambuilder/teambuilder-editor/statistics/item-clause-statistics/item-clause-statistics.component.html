@@ -20,7 +20,7 @@
 
     <div class="pd-single-item-statistics" *ngFor="let item of itemClauseStatistics.statistics">
       <div class="pd-single-item-statistics-icon flex-align-center"> <pd-item-icon [item]="item.imgSrc"></pd-item-icon> </div>
-      <div class="pd-single-item-statistics-name"> <translator3 [source]="item.name"></translator3> </div>
+      <div class="pd-single-item-statistics-name"> {{item.name | translate | async}} </div>
       <div class="pd-single-item-statistics-count"> {{item.count}} </div>
       <div class="pd-single-item-statistics-holders flex-align-bottom">
         <pd-pokemon-icon class="pd-single-item-statistics-holders-icon"

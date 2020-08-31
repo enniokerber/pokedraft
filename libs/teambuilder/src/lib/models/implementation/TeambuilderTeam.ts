@@ -13,14 +13,33 @@ export class TeambuilderTeam {
   public: boolean;
   pokemon: TeambuilderPokemonArray;
 
-  constructor(record: ITeambuilderTeam) {
-    this.id = record.id;
-    this.author = record.author;
-    this.name = record.name;
-    this.createdAt = record.createdAt;
-    this.tier = record.tier;
-    this.public = typeof record.public === 'undefined' ? false : record.public;
+  constructor() {
+    this.id = null;
+    this.author = null;
+    this.name = 'Nice Team';
+    this.createdAt = null;
+    this.lastUpdate = null;
+    this.tier = Tiers.UNKNOWN;
+    this.public = true;
     this.pokemon = [];
+  }
+
+  static forUser(user: IPokedraftUserSnippet): TeambuilderTeam {
+    const team = new TeambuilderTeam();
+    team.setAuthor(user);
+    return team;
+  }
+
+  static fromDatabaseRecord(record: ITeambuilderTeam): TeambuilderTeam {
+    const team = new TeambuilderTeam();
+    team.id = record.id;
+    team.author = record.author;
+    team.name = record.name;
+    team.createdAt = record.createdAt;
+    team.lastUpdate = record.lastUpdate;
+    team.tier = record.tier;
+    team.public = typeof record.public === 'undefined' ? false : record.public;
+    return team;
   }
 
   getPokemon(): TeambuilderPokemonArray { return this.pokemon; }
@@ -31,4 +50,14 @@ export class TeambuilderTeam {
 
   getId(): string { return this.id; }
 
+  setId(id: string): void { this.id = id; }
+
+  setAuthor(author: IPokedraftUserSnippet): void {
+    this.author = author;
+  }
+
+  setLastUpdate(value: number): void {
+    this.lastUpdate = Date.now();
+    if (this.createdAt === null) { this.createdAt = this.lastUpdate; }
+  }
 }

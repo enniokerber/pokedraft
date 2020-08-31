@@ -50,7 +50,7 @@ export class PokedraftUserService {
              .limit(limit)
       )
         .snapshotChanges()
-        .pipe(allWithDocumentId) // TODO: test
+        .pipe(allWithDocumentId())
     } else {
       return of([]);
     }
