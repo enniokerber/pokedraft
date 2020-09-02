@@ -60,7 +60,7 @@ export class PokemonListComponent implements OnDestroy, AfterViewInit {
   }
 
   choosePokemon(pokemon: IPokemon): void {
-    this.tbPokemon.addTeampokemon(pokemon);
+    this.tbPokemon.addOrReplacePokemon(pokemon);
   }
 
   sortPokemonByName(deactivateTiers: boolean = false) {

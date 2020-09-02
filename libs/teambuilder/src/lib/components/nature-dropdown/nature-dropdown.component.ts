@@ -19,11 +19,14 @@ export class NatureDropdownComponent {
     if (pokemon) {
       this.selectedNatureId = pokemon.getNatureId();
     }
+    this._pokemon = pokemon;
   };
 
   @Input() disabled: any;
 
   @Output() natureChange: EventEmitter<number>;
+
+  _pokemon: TeambuilderPokemon;
 
   selectedNatureId: number;
 
@@ -37,7 +40,8 @@ export class NatureDropdownComponent {
     this.disabled = false;
   }
 
-  changeNature(id: number) {
+  changeNature(id: number): void {
+    this._pokemon.changeNatureById(id);
     this.natureChange.emit(id);
   }
 

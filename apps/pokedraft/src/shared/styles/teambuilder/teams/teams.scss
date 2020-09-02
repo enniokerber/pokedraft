@@ -29,8 +29,12 @@
     box-shadow: $floating-shadow;
   }
 
-  &:active:not(&--selected) {
+  &:active {
     transition: 0s;
+    border-color: $primary2;
+  }
+
+  &:active:not(&--selected) {
     border-color: $primary-light;
     background-color: $grey-100;
   }
@@ -41,7 +45,6 @@
     border-color: $white;
     box-shadow: $floating-shadow;
     margin-left: $margin-m;
-    cursor: default;
 
     .pd-teambuilder-team-container-title {
       color: $white;

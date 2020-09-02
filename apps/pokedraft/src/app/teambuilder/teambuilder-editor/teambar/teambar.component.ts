@@ -24,13 +24,13 @@ export class TeambarComponent{
   selectPokemon(pokemon: TeambuilderPokemon): void {
     const currentPokemon = this.tbPokemon.selectedPokemon.getValue();
     if (currentPokemon === null || pokemon.teambuilderPokemonId !== currentPokemon.teambuilderPokemonId) {
-      this.tbPokemon.selectTeampokemon(pokemon);
+      this.tbPokemon.selectPokemon(pokemon);
     }
   }
 
   createPokemon(): void {
     if (this.tbPokemon.selectedPokemon.getValue() !== null) {
-      this.tbPokemon.selectTeampokemon(null);
+      this.tbPokemon.selectPokemon(null);
     }
   }
 

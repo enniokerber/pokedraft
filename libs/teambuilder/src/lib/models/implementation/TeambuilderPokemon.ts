@@ -22,6 +22,7 @@ export class TeambuilderPokemon {
   nature: Nature;
   stats: Stats;
   gender: GenderType;
+  requiredGender: GenderType;
 
   shiny: boolean;
   sprite: string;
@@ -49,7 +50,8 @@ export class TeambuilderPokemon {
     this.happiness = MAX_HAPPINESS;
     this.nature = new Nature();
     this.stats = new Stats(pokemon.stats, this.nature);
-    this.gender = Genders.RANDOM;
+    this.gender = pokemon.requiredGender || Genders.RANDOM;
+    this.requiredGender = pokemon.requiredGender;
     this.shiny = false;
     this.item = null;
     this.ability = null;
@@ -68,12 +70,12 @@ export class TeambuilderPokemon {
     return this.teambuilderPokemonId;
   }
 
-  getId(): string {
-    return this.id;
-  }
-
   setTeambuilderId(value: number): void {
     this.teambuilderPokemonId = value;
+  }
+
+  getId(): string {
+    return this.id;
   }
 
   getName(): ITranslatable {
@@ -89,6 +91,10 @@ export class TeambuilderPokemon {
   setGender(value: GenderType = Genders.RANDOM): void { this.gender = value; }
 
   getGender(): GenderType { return this.gender; }
+
+  getRequiredGender(): GenderType { return this.requiredGender; }
+
+  requiresGender(): boolean { return !!this.requiredGender; }
 
   setShiny(value: boolean = false): void {
     this.shiny = value;

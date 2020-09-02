@@ -16,7 +16,7 @@ import {
 import {TeambuilderEventService} from "../event/teambuilder-event.service";
 import {TeambuilderViewService} from "../view/teambuilder-view.service";
 import { TeambuilderStoreService } from '../store/teambuilder-store.service';
-import { distinctUntilChanged, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { PokedraftAuthService } from '@pokedraft/core';
 
@@ -41,11 +41,11 @@ export class TeambuilderPokemonService implements OnDestroy {
     this.nextMoveslot = new BehaviorSubjectStream<number>(-1);
     this.subscriptions = new SubscriptionContainer(
       this.selectedPokemon.changes$
-        .pipe(distinctUntilChanged())
         .subscribe(pokemon => {
           if (!pokemon) {
             this.tbView.displayRawPokemonList();
           }
+          this.notifyTeamChangeListeners(); // used to recalculate statistics for ex.
         })
     );
   }
@@ -61,19 +61,18 @@ export class TeambuilderPokemonService implements OnDestroy {
 
   getTeamId(): string { return this.team.getValue().getId(); }
 
-  setTeamId(id: string): void { this.team.getValue().setId(id); }
-
   getTeam(): TeambuilderTeam { return this.team.getValue(); }
 
   setTeam(record: ITeambuilderTeam): void {
     if (!record) return;
-    const team = TeambuilderTeam.fromDatabaseRecord(record);
-    const pokemon: TeambuilderPokemonArray = record.pokemon.map((p: ITeambuilderPokemon, index: number) => this.createTeambuilderPokemonFromDBRecord(p, index)) || [];
-    team.setPokemon(pokemon);
+    const team = TeambuilderTeam.fromDatabaseRecord(record); // team is empty (no pokemon)
+    const pokemon: TeambuilderPokemonArray = record.pokemon
+      .map((p: ITeambuilderPokemon, index: number) => this.createTeambuilderPokemonFromDBRecord(p, index))
+      .filter(p => !!p)|| [];
+    team.setPokemon(pokemon); // manually fill the pokemon
     this.team.update(team);
     if (pokemon.length > 0) {
-      this.selectTeampokemon(pokemon[0]);
-      this.tbView.displayItemList();
+      this.selectPokemon(pokemon[0]);
     }
   }
 
@@ -85,7 +84,14 @@ export class TeambuilderPokemonService implements OnDestroy {
     this.notifyTeamChangeListeners();
   }
 
-  selectTeampokemon(pokemon: TeambuilderPokemon) {
+  selectPokemon(pokemon: TeambuilderPokemon) {
+    this.selectedPokemon.update(pokemon);
+    if (pokemon) {
+      this.tbView.displayItemList();
+    }
+  }
+
+  updateSelectedPokemon(pokemon: TeambuilderPokemon) {
     this.selectedPokemon.update(pokemon);
   }
 
@@ -93,15 +99,34 @@ export class TeambuilderPokemonService implements OnDestroy {
     return this.getCurrentTeampokemon().length;
   }
 
-  addTeampokemon(fromInterface: IPokemon) {
+  addPokemon(fromInterface: IPokemon) {
     const team = this.getCurrentTeampokemon();
     if (team.length < 6) {
       const nextId = this.getNextId();
       const pokemon = new TeambuilderPokemon(fromInterface, nextId);
       team.push(pokemon);
-      this.notifyTeamChangeListeners(); // notifies listeners on the updated team, so for ex: statistics are recalculated
-      this.selectTeampokemon(pokemon);
-      this.tbView.displayItemList();
+      this.selectPokemon(pokemon);
+    }
+  }
+
+  overwriteSelectedPokemon(fromInterface: IPokemon): void {
+    const selectedPokemon = this.selectedPokemon.getValue();
+    if (selectedPokemon !== null) {
+      const teambuilderId = selectedPokemon.getTeambuilderId();
+      if (typeof teambuilderId !== 'number') throw new Error('Pokémon has no valid Teambuilder-ID');
+      const pokemon = new TeambuilderPokemon(fromInterface, teambuilderId);
+      const team = this.team.getValue();
+      if (team.replacePokemon(teambuilderId, pokemon)) {
+        this.selectPokemon(pokemon);
+      }
+    }
+  }
+
+  addOrReplacePokemon(fromInterface: IPokemon): void {
+    if (this.selectedPokemon.getValue() === null) {
+      this.addPokemon(fromInterface);
+    } else {
+      this.overwriteSelectedPokemon(fromInterface);
     }
   }
 
@@ -124,11 +149,11 @@ export class TeambuilderPokemonService implements OnDestroy {
     if (selectedTeamPokemon !== null && selectedTeamPokemon.getTeambuilderId() === id) {
       const count = team.length;
       if (count > id) {
-        this.selectTeampokemon(team[id]);
+        this.selectPokemon(team[id]);
       } else if (count > 0) {
-        this.selectTeampokemon(team[count - 1]);
+        this.selectPokemon(team[count - 1]);
       } else {
-        this.selectTeampokemon(null);
+        this.selectPokemon(null);
       }
     }
   }
@@ -169,8 +194,7 @@ export class TeambuilderPokemonService implements OnDestroy {
       const currentTeampokemon = this.selectedPokemon.getValue();
       const selectedMoveslot = this.nextMoveslot.getValue();
       currentTeampokemon.moves[selectedMoveslot].setData(move);
-      this.selectTeampokemon(currentTeampokemon);
-      this.notifyTeamChangeListeners(); // notifies listeners on the updated team, so for ex: statistics are recalculated
+      this.updateSelectedPokemon(currentTeampokemon);
     }
   }
 
@@ -193,8 +217,7 @@ export class TeambuilderPokemonService implements OnDestroy {
   deselectFocusedMove() {
     const currentTeampokemon = this.selectedPokemon.getValue();
     currentTeampokemon.moves[this.nextMoveslot.getValue()].setData(null);
-    this.selectTeampokemon(currentTeampokemon);
-    this.notifyTeamChangeListeners(); // move was changed, so recalc statistics
+    this.updateSelectedPokemon(currentTeampokemon);
   }
 
   // ITEM
@@ -203,8 +226,7 @@ export class TeambuilderPokemonService implements OnDestroy {
     const currentTeampokemon = this.selectedPokemon.getValue();
     if (currentTeampokemon.item !== item) {
       currentTeampokemon.setItem(item);
-      this.selectTeampokemon(currentTeampokemon);
-      this.notifyTeamChangeListeners();
+      this.updateSelectedPokemon(currentTeampokemon);
       this.tbView.displayAbilitiesList();
     }
   }
@@ -215,9 +237,8 @@ export class TeambuilderPokemonService implements OnDestroy {
     const currentTeampokemon = this.selectedPokemon.getValue();
     if (currentTeampokemon.ability !== ability) {
       currentTeampokemon.setAbility(ability);
-      this.selectTeampokemon(currentTeampokemon);
+      this.updateSelectedPokemon(currentTeampokemon);
       this.tbView.displayMoveList();
-      this.notifyTeamChangeListeners();
       this.selectNextEmptyMoveslot();
     }
   }
@@ -228,7 +249,9 @@ export class TeambuilderPokemonService implements OnDestroy {
   }
 
   createTeambuilderPokemonFromDBRecord(record: ITeambuilderPokemon, teambuilderId?: number): TeambuilderPokemon {
-    const tbPokemon = new TeambuilderPokemon(this.tbStore.getPokemonById(record.id), teambuilderId);
+    const pokemonSchema = this.tbStore.getPokemonById(record.id);
+    if (!pokemonSchema) return null;
+    const tbPokemon = new TeambuilderPokemon(pokemonSchema, teambuilderId);
     tbPokemon.setNickname(record.nickname);
     tbPokemon.setLevel(record.level);
     tbPokemon.setHappiness(record.happiness);

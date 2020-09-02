@@ -16,7 +16,7 @@ export class TeambuilderStoreService {
   private readonly _tiers: ITier[];
 
   constructor() {
-    this._pokemonlist = new TeambuilderEntityCollection<IPokemon>(pokedex);
+    this._pokemonlist = new TeambuilderEntityCollection<IPokemon>(pokedex as IPokemon[]);
     this._abilities = testAbilities;
     this._items = testItems;
     this._moves = testMovesObject;

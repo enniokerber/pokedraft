@@ -27,6 +27,7 @@ import { HazardStatisticsComponent } from './statistics/hazard-statistics/hazard
 import { DvInputComponent } from './stats/single-stat/dv-input/dv-input.component';
 import { ItemClauseStatisticsComponent } from './statistics/item-clause-statistics/item-clause-statistics.component';
 import { TeambuilderEditorComponent } from './teambuilder-editor.component';
+import { GenderInputComponent } from './teambuilder-form/gender-input/gender-input.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { TeambuilderEditorComponent } from './teambuilder-editor.component';
     HazardStatisticsComponent,
     DvInputComponent,
     ItemClauseStatisticsComponent,
-    TeambuilderEditorComponent
+    TeambuilderEditorComponent,
+    GenderInputComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-  gendersWithLabels,
-  IGender, SubscriptionContainer, TeambuilderLanguageService,
+  SubscriptionContainer, TeambuilderLanguageService,
   TeambuilderPokemon, TeambuilderPokemonService, TeambuilderViewService,
 } from "@pokedraft/teambuilder";
 import {filter, map, switchMap, tap} from "rxjs/operators";
@@ -18,8 +17,6 @@ export class TeambuilderFormComponent implements OnInit, OnDestroy {
 
   searchPokemon = '';
   currentPokemonString = '';
-
-  genders: IGender[] = gendersWithLabels;
 
   private subscriptions: SubscriptionContainer;
 

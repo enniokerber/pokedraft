@@ -1,6 +1,6 @@
 import { IPokedraftUserSnippet } from '@pokedraft/core';
 import { ITeambuilderTeam, Tiers } from '../api';
-import { TeambuilderPokemonArray } from './TeambuilderPokemon';
+import { TeambuilderPokemon, TeambuilderPokemonArray } from './TeambuilderPokemon';
 
 export class TeambuilderTeam {
 
@@ -56,8 +56,19 @@ export class TeambuilderTeam {
     this.author = author;
   }
 
-  setLastUpdate(value: number): void {
+  setLastUpdate(): void {
     this.lastUpdate = Date.now();
     if (this.createdAt === null) { this.createdAt = this.lastUpdate; }
+  }
+
+  replacePokemon(atIndex: number, newPokemon: TeambuilderPokemon): boolean {
+    const count = this.getPokemon().length;
+    if (atIndex >= 0 && atIndex < count) {
+      const pokemon = this.getPokemon();
+      newPokemon.setTeambuilderId(atIndex);
+      pokemon[atIndex] = newPokemon;
+      return true;
+    }
+    return false;
   }
 }

@@ -53,15 +53,7 @@
             <translator2 english="Gender" german="Geschl."></translator2>
           </label>
           <div class="pd-teambuilder-form-general-settings-fraction-content">
-            <select class="pd-teambuilder-form-small-input --tb-select-box"
-                    id="gender-input"
-                    name="Pokémon Gender"
-                    [(ngModel)]="pokemon.gender">
-              <option [value]="gender.id"
-                      *ngFor="let gender of genders">
-                <translator3 [source]="gender.label"></translator3>
-              </option>
-            </select>
+            <pd-gender-input id="gender-input" [pokemon]="pokemon"></pd-gender-input>
           </div>
         </div>
         <div class="pd-teambuilder-form-general-settings-fraction">
@@ -113,7 +105,7 @@
         <pd-stat-overview [stats]="pokemon.stats"></pd-stat-overview>
       </div>
 
-      <pd-nature-dropdown [pokemon]="pokemon" (natureChange)="pokemon.changeNatureById($event)"></pd-nature-dropdown>
+      <pd-nature-dropdown [pokemon]="pokemon"></pd-nature-dropdown>
     </div>
   </ng-container>
 

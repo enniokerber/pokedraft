@@ -222,6 +222,12 @@
   transition: 0s;
 }
 
-.width-fit-content { width: fit-content !important;}
+.width-fit-content {
+  width: fit-content !important;
+
+  @-moz-document url-prefix() {
+    width: -moz-fit-content;
+  }
+}
 
 .display-none { display: none; }

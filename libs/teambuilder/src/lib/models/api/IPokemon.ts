@@ -1,5 +1,5 @@
 import {IStats} from './IStats';
-import {PokemonType} from "../types";
+import { GenderType, PokemonType } from '../types';
 import {ITranslatable} from "./ITranslatable";
 
 export interface IPokemon {
@@ -13,7 +13,7 @@ export interface IPokemon {
   moves: string[];
   form?: string;
   originalSpecies?: string;
-  requiredGender?: string;
+  requiredGender?: GenderType;
   requiredItem?: string;
 
 }

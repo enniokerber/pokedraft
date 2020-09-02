@@ -70,7 +70,7 @@ export class TeambuilderApiService {
       createdAt: date
     }).then(doc => {
       team.setId(doc.id);
-      team.setLastUpdate(date);
+      team.setLastUpdate();
     }).catch(() => console.error('Failed to persist the new team.'));
   }
 
@@ -87,7 +87,7 @@ export class TeambuilderApiService {
       pokemon,
       lastUpdate
     }).then(() => {
-      team.setLastUpdate(lastUpdate);
+      team.setLastUpdate();
     });
   }
 
