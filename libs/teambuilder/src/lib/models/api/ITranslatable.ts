@@ -1,5 +1,3 @@
-import {ILongShort} from "@pokedraft/core";
-
 export interface ITranslatable {
   english: string;
   german?: string;
@@ -16,13 +14,6 @@ export function emptyTranslatable(): ITranslatable {
     english: '',
     german: '',
     french: ''
-  })
-}
-
-export function emptyLongShortTranslatable(): ILongShort<ITranslatable> {
-  return ({
-    long: emptyTranslatable(),
-    short: emptyTranslatable()
   })
 }
 

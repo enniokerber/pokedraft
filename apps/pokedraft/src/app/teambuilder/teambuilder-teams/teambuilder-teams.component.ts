@@ -51,12 +51,10 @@ export class TeambuilderTeamsComponent implements OnInit {
       .pipe(
         filter(id => !!id),
         distinctUntilChanged(),
-        tap(id => console.log(`Loading Team #${id}`)),
         tap(_ => this.currentTeamLoadingZone.inc()),
         switchMap(id => this.tbApi.getTeam(id)
           .pipe(
             first(),
-            tap(team => console.log(team)),
             map(team => team ? team.pokemon.map(pokemon => this.tbPokemon.createTeambuilderPokemonFromDBRecord(pokemon)) : null),
             catchError(() => {
               return of([]);

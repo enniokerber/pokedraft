@@ -1,0 +1,26 @@
+
+<div class="pd-teambuilder-list-row pd-teambuilder-list-header flex-space-between side-padding small-margin-bottom">
+  <div class="pd-teambuilder-list-cell">
+    Import & Export Teams
+  </div>
+</div>
+
+<div class="pd-teambuilder-navigation-bar small-margin-bottom">
+  <div class="pd-teambuilder-navigation-item"
+       [class.pd-teambuilder-navigation-item--active]="option === (selectedExportType | async)"
+       (click)="selectedExportType.next(option)"
+       *ngFor="let option of exportOptions">
+    {{option}}
+  </div>
+</div>
+
+<div class="pd-container-row small-margin-bottom">
+  <pd-round-button icon="assets/icons/refresh.png" (leftclick)="refresh()"></pd-round-button>
+  <pd-round-button class="left-space" icon="assets/icons/save.png" (leftclick)="import()"></pd-round-button>
+  <pd-round-button class="left-space"
+                   icon="assets/icons/clear.png"
+                   red="true"
+                   (leftclick)="close()"></pd-round-button>
+</div>
+
+<pd-textarea height="calc(100% - 151px)" [(value)]="text"></pd-textarea>

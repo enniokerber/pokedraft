@@ -7,7 +7,7 @@ import {
   SubscriptionContainer,
   TeambuilderLanguageService,
   TeambuilderPokemonService,
-  TeambuilderApiService, TeambuilderTeam
+  TeambuilderApiService, TeambuilderTeam, TeambuilderViewService
 } from '@pokedraft/teambuilder';
 import { IPokedraftUser, LoadingState, PokedraftAuthService } from '@pokedraft/core';
 import { PopUpAnimation } from '@pokedraft/material';
@@ -35,6 +35,7 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
 
   constructor(private tbLanguage: TeambuilderLanguageService,
               private tbPokemon: TeambuilderPokemonService,
+              private tbView: TeambuilderViewService,
               private tbApi: TeambuilderApiService,
               private auth: PokedraftAuthService) {
     this.languages = LanguagesWithLabels;
@@ -56,5 +57,9 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
 
   save(): void {
     this.tbApi.saveTeam();
+  }
+
+  openImport() {
+    this.tbView.displayImport();
   }
 }

@@ -1,5 +1,6 @@
 import {INature, INatureWithoutStatMetadata} from '../api/INature';
 import {DEFAULT_NATURE, natures} from "../../data/natures";
+import {ITranslatable} from "../api";
 
 export class Nature {
 
@@ -12,6 +13,8 @@ export class Nature {
   get(): INature {
     return this.data;
   }
+
+  getName(): ITranslatable { return this.data.name; }
 
   getWithoutStatMetaData(): INatureWithoutStatMetadata {
     const data = this.get();

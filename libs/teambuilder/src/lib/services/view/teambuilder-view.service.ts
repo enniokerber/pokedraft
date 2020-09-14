@@ -12,7 +12,7 @@ export class TeambuilderViewService {
   private readonly _showTiers: BehaviorSubjectStream<boolean>;
 
   constructor() {
-    this._displayMode = new BehaviorSubjectStream<TeambuilderDisplayMode>(new DisplayModeBuilder().displayPokemonList().get());
+    this._displayMode = new BehaviorSubjectStream<TeambuilderDisplayMode>(new DisplayModeBuilder().displayPokemonList().build());
     this._showTiers = new BehaviorSubjectStream<boolean>(true)
   }
 
@@ -32,19 +32,19 @@ export class TeambuilderViewService {
     this.changeDisplayMode(
       DisplayModeBuilder.buildFormView()
         .displayMoveList()
-        .get()
+        .build()
     )
   }
 
   displayRawPokemonList() {
-    this.changeDisplayMode(new DisplayModeBuilder().displayPokemonList().get())
+    this.changeDisplayMode(new DisplayModeBuilder().displayPokemonList().build())
   }
 
   displayPokemonList() {
     this.changeDisplayMode(
       DisplayModeBuilder.buildFormView()
         .displayPokemonList()
-        .get()
+        .build()
     )
   }
 
@@ -52,7 +52,7 @@ export class TeambuilderViewService {
     this.changeDisplayMode(
       DisplayModeBuilder.buildFormView()
         .displayItemList()
-        .get()
+        .build()
     )
   }
 
@@ -60,7 +60,7 @@ export class TeambuilderViewService {
     this.changeDisplayMode(
       DisplayModeBuilder.buildFormView()
         .displayAbilitiesList()
-        .get()
+        .build()
     )
   }
 
@@ -68,7 +68,25 @@ export class TeambuilderViewService {
     this.changeDisplayMode(
       DisplayModeBuilder.buildFormView()
         .displayStats()
-        .get()
+        .build()
     )
+  }
+
+  displayStatistics() {
+    this.changeDisplayMode(
+      DisplayModeBuilder
+        .fromExistingDisplayMode(this.displayMode.getValue())
+        .displayStatistics()
+        .build()
+    );
+  }
+
+  displayImport() {
+    this.changeDisplayMode(
+      DisplayModeBuilder
+        .fromExistingDisplayMode(this.displayMode.getValue())
+        .displayImport()
+        .build()
+    );
   }
 }

@@ -47,9 +47,9 @@ export class LoadingState {
   }
   hide() { this.showResult.next(false); }
 
-  loadFromPromise<T>(reqFn: () => Promise<T>): Promise<T> {
+  loadFromPromise<T>(loadingFn: () => Promise<T>): Promise<T> {
     this.startLoading();
-    return reqFn()
+    return loadingFn()
       .then(result => {
         this.wasSuccessful();
         return result;

@@ -1,0 +1,35 @@
+@import "../../utils";
+
+.pd-teambuilder-navigation-bar {
+  display: flex;
+  width: 100%;
+  height: 40px;
+}
+
+.pd-teambuilder-navigation-item {
+  @include flex-center;
+  height: 100%;
+  padding: $padding-s $padding;
+  border: 1px solid $primary-light;
+  border-radius: $radius;
+  color: $primary-light;
+
+  &:not(:first-child) {
+    margin-left: $margin-m;
+  }
+
+  &:hover:not(&--active) {
+    cursor: pointer;
+  }
+
+  &:active:not(&--active) {
+    border-color: $primary3;
+    color: $primary3;
+  }
+
+  &--active {
+    background-color: $primary2;
+    border-color: $primary2;
+    color: $white;
+  }
+}

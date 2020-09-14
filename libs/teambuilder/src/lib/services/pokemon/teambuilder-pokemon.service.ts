@@ -16,6 +16,7 @@ import {
 import {TeambuilderEventService} from "../event/teambuilder-event.service";
 import {TeambuilderViewService} from "../view/teambuilder-view.service";
 import { TeambuilderStoreService } from '../store/teambuilder-store.service';
+import {TeambuilderLanguageService} from "../language/teambuilder-language.service";
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { PokedraftAuthService } from '@pokedraft/core';
@@ -34,6 +35,7 @@ export class TeambuilderPokemonService implements OnDestroy {
   constructor(private tbEvents: TeambuilderEventService,
               private tbView: TeambuilderViewService,
               private tbStore: TeambuilderStoreService,
+              private tbLang: TeambuilderLanguageService,
               private auth: PokedraftAuthService) {
     this.team = new BehaviorSubjectStream<TeambuilderTeam>(this.newTeam());
     this.currentTeampokemon$ = this.team.changes$.pipe(map(team => team?.getPokemon() || []));
@@ -66,21 +68,23 @@ export class TeambuilderPokemonService implements OnDestroy {
   setTeam(record: ITeambuilderTeam): void {
     if (!record) return;
     const team = TeambuilderTeam.fromDatabaseRecord(record); // team is empty (no pokemon)
-    const pokemon: TeambuilderPokemonArray = record.pokemon
-      .map((p: ITeambuilderPokemon, index: number) => this.createTeambuilderPokemonFromDBRecord(p, index))
-      .filter(p => !!p)|| [];
+    const pokemon: TeambuilderPokemonArray = this.mapToTeambuilderPokemon(record.pokemon)
+                    .filter(p => !!p)|| [];
     team.setPokemon(pokemon); // manually fill the pokemon
-    this.team.update(team);
     if (pokemon.length > 0) {
       this.selectPokemon(pokemon[0]);
     }
+    this.team.update(team);
   }
 
   getCurrentTeampokemon(): TeambuilderPokemon[] { return this.team.getValue().getPokemon(); }
 
-  updateCurrentTeampokemon(pokemon: TeambuilderPokemon[]) {
+  setCurrentTeampokemon(pokemon: TeambuilderPokemon[]) {
     const team = this.team.getValue();
     team.setPokemon(pokemon);
+    if (pokemon.length > 0) {
+      this.selectPokemon(pokemon[0]);
+    }
     this.notifyTeamChangeListeners();
   }
 
@@ -136,7 +140,7 @@ export class TeambuilderPokemonService implements OnDestroy {
   }
 
   deleteTeampokemon(id: number): void {
-    this.updateCurrentTeampokemon(
+    this.setCurrentTeampokemon(
       this.getCurrentTeampokemon()
         .filter(pokemon => pokemon.getTeambuilderId() !== id)
         .map((pokemon, index) => {
@@ -243,11 +247,6 @@ export class TeambuilderPokemonService implements OnDestroy {
     }
   }
 
-  // MANAGE
-  getTeampokemonAsDatabaseRecords(): ITeambuilderPokemon[] {
-    return this.getCurrentTeampokemon().map(pokemon => pokemon.toDatabaseRecord());
-  }
-
   createTeambuilderPokemonFromDBRecord(record: ITeambuilderPokemon, teambuilderId?: number): TeambuilderPokemon {
     const pokemonSchema = this.tbStore.getPokemonById(record.id);
     if (!pokemonSchema) return null;
@@ -264,5 +263,27 @@ export class TeambuilderPokemonService implements OnDestroy {
     if (tbPokemon.moveSetFull()) { tbPokemon.markMovesFilled(); }
     tbPokemon.stats.setEvsAndDvs(record.evs, record.dvs);
     return tbPokemon;
+  }
+
+  mapToTeambuilderPokemon(pokemon: ITeambuilderPokemon[]): TeambuilderPokemonArray {
+    return pokemon.map((p: ITeambuilderPokemon, index: number) => this.createTeambuilderPokemonFromDBRecord(p, index));
+  }
+
+  importTeamFromShowdown(showdownData: string): void {
+
+  }
+
+  importTeamFromJSON(data: string): boolean {
+    try {
+      const parsedTeampokemon: ITeambuilderPokemon[] = JSON.parse(data);
+      this.setCurrentTeampokemon(this.mapToTeambuilderPokemon(parsedTeampokemon));
+    } catch (e) {
+      alert(this.tbLang.translateFromTranslatable({
+        english: 'Syntax Error: Your provided JSON is not correct. Parsing failed.',
+        german: 'Syntaxfehler: Das bereitgestellte JSON ist fehlerhaft. Das Parsen schlug fehl.'
+      }));
+      return false;
+    }
+    return true;
   }
 }

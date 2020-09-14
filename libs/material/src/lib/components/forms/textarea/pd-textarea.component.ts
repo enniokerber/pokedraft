@@ -31,7 +31,9 @@ export class PdTextareaComponent implements OnInit, AfterViewInit, ControlValueA
 
   @Input() type = 'text';
 
-  @Input() maxlength = 500;
+  @Input() height = '200px';
+
+  @Input() maxlength = 2000;
 
   @Input() disabled: boolean;
 

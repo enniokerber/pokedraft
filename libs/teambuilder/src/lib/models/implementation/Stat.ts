@@ -54,7 +54,7 @@ export class Stat {
     }
 
     setEvs(evs: number) {
-      if (!evs) { this.evs.setValue(0); return; }
+      if (!evs) { return this.evs.setValue(0); }
       this.evs.setValue(evs);
     }
 
@@ -77,7 +77,7 @@ export class Stat {
     }
 
     setDvs(dvs: number): void {
-      if (!dvs) { this.dvs.setValue(MAX_DVS); return; }
+      if (!(typeof dvs === 'number')) { return this.dvs.setValue(MAX_DVS); }
       this.dvs.setValue(dvs);
     }
 

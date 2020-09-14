@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TeambuilderEditorRoutingModule } from './teambuilder-editor-routing.module';
 import { TeambuilderCoreModule } from '@pokedraft/teambuilder';
-import { PokedraftButtonsModule, PokedraftFormsModule, PokedraftUtilsModule } from '@pokedraft/material';
+import { PokedraftComponentsModule } from '@pokedraft/material';
 import { FormsModule } from '@angular/forms';
 import { AbilitiesListComponent } from './abilities-list/abilities-list.component';
 import { MovesListComponent } from './moves-list/moves-list.component';
@@ -28,6 +28,7 @@ import { DvInputComponent } from './stats/single-stat/dv-input/dv-input.componen
 import { ItemClauseStatisticsComponent } from './statistics/item-clause-statistics/item-clause-statistics.component';
 import { TeambuilderEditorComponent } from './teambuilder-editor.component';
 import { GenderInputComponent } from './teambuilder-form/gender-input/gender-input.component';
+import { TeamImportComponent } from './team-import/team-import.component';
 
 
 @NgModule({
@@ -54,16 +55,15 @@ import { GenderInputComponent } from './teambuilder-form/gender-input/gender-inp
     DvInputComponent,
     ItemClauseStatisticsComponent,
     TeambuilderEditorComponent,
-    GenderInputComponent
+    GenderInputComponent,
+    TeamImportComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     TeambuilderEditorRoutingModule,
     TeambuilderCoreModule.forChild(),
-    PokedraftFormsModule,
-    PokedraftUtilsModule,
-    PokedraftButtonsModule
+    PokedraftComponentsModule
   ]
 })
 export class TeambuilderEditorModule { }

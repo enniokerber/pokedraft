@@ -4,6 +4,7 @@ import { IAbility, IItem, IMove, IPokemon, ITeambuilderPokemon, ITranslatable } 
 import {Genders, GenderType, PokemonType} from "../types";
 import {Container, generateContainer} from "./Container";
 import { DEFAULT_NATURE, MAX_HAPPINESS, MAX_LEVEL, MAX_MOVESET_SIZE } from '../../data';
+import {ShowdownStringBuilder} from "./ShowdownStringBuilder";
 
 export type TeambuilderPokemonArray = TeambuilderPokemon[];
 
@@ -142,6 +143,8 @@ export class TeambuilderPokemon {
     return this.nature.get().id;
   }
 
+  getNature(): Nature { return this.nature; }
+
   changeNatureById(id: number = 0): void {
     this.nature.setById(id);
     this.stats.applyNature();
@@ -195,6 +198,11 @@ export class TeambuilderPokemon {
     if (Object.keys(pokemon.evs).length === 0) { delete pokemon.evs; }
     if (Object.keys(pokemon.dvs).length === 0) { delete pokemon.dvs; }
     return pokemon;
+  }
+
+  toShowdownString(): string {
+    const sdStringBuilder = ShowdownStringBuilder.forPokemon(this);
+    return sdStringBuilder.getString();
   }
 }
 

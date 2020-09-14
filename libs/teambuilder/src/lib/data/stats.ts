@@ -1,4 +1,4 @@
-import {StatMetadata, StatWithLabel} from "../models/api";
+import {ExtendedStatLabelMap, StatMetadata, StatWithLabel} from "../models/api";
 
 export const statIds = {
     HP: 'hp',
@@ -17,15 +17,6 @@ export const statIdsArray = [
   statIds.SPDEF,
   statIds.SPEED
 ]
-
-export interface ExtendedStatLabelMap {
-  hp: StatMetadata,
-  atk: StatMetadata,
-  def: StatMetadata,
-  spatk: StatMetadata,
-  spdef: StatMetadata,
-  speed: StatMetadata
-}
 
 export const statsExtended: ExtendedStatLabelMap = {
   hp: {
@@ -95,6 +86,11 @@ export const statsExtended: ExtendedStatLabelMap = {
     }
   },
 };
+
+export function getStatMetadata(statId: string): StatMetadata {
+  if (!statIdsArray.includes(statId)) return null;
+  return statsExtended[statId];
+}
 
 export const natureStats: StatWithLabel[] = [
   {

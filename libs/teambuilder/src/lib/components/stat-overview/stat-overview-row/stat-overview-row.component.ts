@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Stat} from "../../../models";
+import {COMPARE_STAT_VALUE} from "../../../data";
 
 @Component({
   selector: 'pd-stat-overview-row',
@@ -9,6 +10,8 @@ import {Stat} from "../../../models";
 export class StatOverviewRowComponent {
 
   @Input() stat: Stat;
+
+  COMPARE_STAT_VALUE: number = COMPARE_STAT_VALUE;
 
   constructor() { }
 

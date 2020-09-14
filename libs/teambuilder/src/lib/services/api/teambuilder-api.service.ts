@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   allWithDocumentId,
-  extractDocumentDataWithId,
+  withDocumentId,
   IPokedraftUserSnippet, LoadingState,
   PokedraftAuthService
 } from '@pokedraft/core';
@@ -46,7 +46,7 @@ export class TeambuilderApiService {
       .snapshotChanges()
       .pipe(
         first(),
-        extractDocumentDataWithId(),
+        withDocumentId(),
         catchError(() => of(null))
       );
   }
@@ -57,21 +57,18 @@ export class TeambuilderApiService {
       return Promise.reject();
     }
     const author: IPokedraftUserSnippet = this.auth.getCurrentUserSnippet();
+    if (!author) {
+      console.error('Auth-Service did not return an authenticated user, thus no team author is provided. The team therefore cannot be saved.')
+      Promise.reject();
+    }
     const team = this.tbPokemon.getTeam();
-    const pokemon = this.tbPokemon.getTeampokemonAsDatabaseRecords();
-    const date = Date.now();
-    return this.afs.collection<ITeambuilderTeam>(`teams`).add({
-      author,
-      name: team.name,
-      tier: team.tier,
-      public: team.public,
-      pokemon,
-      lastUpdate: date,
-      createdAt: date
-    }).then(doc => {
-      team.setId(doc.id);
-      team.setLastUpdate();
-    }).catch(() => console.error('Failed to persist the new team.'));
+    team.setAuthor(author);
+    return this.afs.collection<ITeambuilderTeam>(`teams`)
+      .add(team.asDatabaseRecord())
+      .then(doc => {
+        team.setId(doc.id);
+        team.setLastUpdate();
+      }).catch(() => console.error('Failed to persist the new team.'));
   }
 
   private updateCurrentTeam(): Promise<void> {
@@ -81,14 +78,11 @@ export class TeambuilderApiService {
       return Promise.reject();
     }
     const team = this.tbPokemon.getTeam();
-    const pokemon = this.tbPokemon.getTeampokemonAsDatabaseRecords();
-    const lastUpdate = Date.now();
-    return this.afs.doc<ITeambuilderTeam>(`teams/${id}`).update({
-      pokemon,
-      lastUpdate
-    }).then(() => {
-      team.setLastUpdate();
-    });
+    return this.afs.doc<ITeambuilderTeam>(`teams/${id}`)
+      .update(team.asUpdateDatabaseRecord())
+      .then(() => {
+        team.setLastUpdate();
+      });
   }
 
   saveTeam(): Promise<void> {

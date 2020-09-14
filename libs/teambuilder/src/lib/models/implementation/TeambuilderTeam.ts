@@ -52,6 +52,8 @@ export class TeambuilderTeam {
 
   setId(id: string): void { this.id = id; }
 
+  isPublic(): boolean { return this.public; }
+
   setAuthor(author: IPokedraftUserSnippet): void {
     this.author = author;
   }
@@ -70,5 +72,39 @@ export class TeambuilderTeam {
       return true;
     }
     return false;
+  }
+
+  asDatabaseRecord(): ITeambuilderTeam {
+    const { author, name, tier, pokemon } = this;
+    const isPublic = this.isPublic();
+    const date = Date.now();
+    return ({
+      author,
+      name,
+      tier,
+      public: isPublic,
+      pokemon: pokemon.map(p => p.toDatabaseRecord()),
+      lastUpdate: date,
+      createdAt: date
+    });
+  }
+
+  asUpdateDatabaseRecord(): Partial<ITeambuilderTeam> {
+    const { name, tier, pokemon } = this;
+    const isPublic = this.isPublic();
+    const date = Date.now();
+    return ({
+      name,
+      tier,
+      public: isPublic,
+      pokemon: pokemon.map(p => p.toDatabaseRecord()),
+      lastUpdate: date
+    });
+  }
+
+  toShowdownString(): string {
+    return this.getPokemon()
+      .map(pokemon => pokemon.toShowdownString())
+      .reduce((nextVal, result) => nextVal.concat(result), '');
   }
 }

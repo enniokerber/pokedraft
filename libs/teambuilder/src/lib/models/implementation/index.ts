@@ -6,6 +6,7 @@ export * from './TeambuilderEntityCollection';
 export * from './DividedTeambuilderEntityCollection';
 export * from './Container';
 export * from './TeambuilderPokemon';
+export * from './ShowdownStringBuilder';
 export * from './TeambuilderTeam';
 export * from './TypeStatisticsCalculator';
 export * from './HazardStatisticsCalculator';

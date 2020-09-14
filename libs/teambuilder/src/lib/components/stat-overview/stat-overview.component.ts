@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {ExtendedStatLabelMap, statIdsArray, statsExtended} from "../../data";
-import { Stats } from '../../models';
+import {statIdsArray, statsExtended} from "../../data";
+import {ExtendedStatLabelMap, Stats} from '../../models';
 
 @Component({
   selector: 'pd-stat-overview',

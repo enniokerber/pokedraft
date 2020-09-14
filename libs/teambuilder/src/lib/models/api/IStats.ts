@@ -1,13 +1,15 @@
 import {ITranslatable} from "./ITranslatable";
 
-export interface IStats {
-  hp: number;
-  atk: number;
-  def: number;
-  spatk: number;
-  spdef: number;
-  speed: number;
+export interface StatsObject<T> {
+  hp: T;
+  atk: T;
+  def: T;
+  spatk: T;
+  spdef: T;
+  speed: T;
 }
+
+export type IStats = StatsObject<number>;
 
 export interface StatMetadata {
   statId: string;
@@ -19,5 +21,7 @@ export interface StatWithLabel {
   id: string;
   label: ITranslatable;
 }
+
+export type ExtendedStatLabelMap = StatsObject<StatMetadata>;
 
 export type PartialStats = Partial<IStats>;
