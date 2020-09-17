@@ -6,7 +6,6 @@ import {
   TeambuilderTeam, TeambuilderViewService
 } from "@pokedraft/teambuilder";
 import {map, switchMap} from "rxjs/operators";
-import {Router} from "@angular/router";
 
 enum EXPORT_OPTIONS {
   Showdown = 'Showdown',
@@ -70,10 +69,9 @@ export class TeamImportComponent {
 
   import() {
     switch (this.selectedExportType.getValue()) {
-      case EXPORT_OPTIONS.Showdown:
-      case EXPORT_OPTIONS.Pokedraft: if (this.tbPokemon.importTeamFromJSON(this.text)) this.close();
+      case EXPORT_OPTIONS.Showdown: if (this.tbPokemon.importTeamFromShowdown(this.text)) this.close(); break;
+      case EXPORT_OPTIONS.Pokedraft: if (this.tbPokemon.importTeamFromJSON(this.text)) this.close(); break;
     }
-
   }
 
   close() {

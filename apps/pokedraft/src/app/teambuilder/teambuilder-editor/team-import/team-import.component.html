@@ -15,12 +15,29 @@
 </div>
 
 <div class="pd-container-row small-margin-bottom">
-  <pd-round-button icon="assets/icons/refresh.png" (leftclick)="refresh()"></pd-round-button>
-  <pd-round-button class="left-space" icon="assets/icons/save.png" (leftclick)="import()"></pd-round-button>
+  <pd-round-button icon="assets/icons/refresh.png"
+                   translatableTitle
+                   englishTitle="Regenerate"
+                   germanTitle="Erneut generieren"
+                   (leftclick)="refresh()"></pd-round-button>
+  <pd-round-button class="left-space"
+                   icon="assets/icons/save.png"
+                   translatableTitle
+                   englishTitle="Import - This will overwrite your teams Pokémon with the provided data."
+                   germanTitle="Importieren - Das überschreibt deine aktuellen Pokémon anhand der Textdaten."
+                   (leftclick)="import()"></pd-round-button>
   <pd-round-button class="left-space"
                    icon="assets/icons/clear.png"
                    red="true"
+                   translatableTitle
+                   englishTitle="Close"
+                   germanTitle="Schließen"
                    (leftclick)="close()"></pd-round-button>
 </div>
 
-<pd-textarea height="calc(100% - 151px)" [(value)]="text"></pd-textarea>
+<pd-textarea height="calc(100% - 151px)"
+             (keydown.control.enter)="import()"
+             [autofocus]="true"
+             [(value)]="text">
+  <translator2 english="Data" german="Daten"></translator2>
+</pd-textarea>

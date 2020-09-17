@@ -243,6 +243,10 @@ export const natures: INature[] = [
 
 export const DEFAULT_NATURE = natures[0]; // = Bashful Nature
 
+export function getNatureByName(name: string): INature {
+  return natures.find(nature => nature.name.english === name) || DEFAULT_NATURE;
+}
+
 export const POSITIVE_NATURE_VALUE = 1.1;
 export const NEUTRAL_NATURE_VALUE = 1;
 export const NEGATIVE_NATURE_VALUE = .9;

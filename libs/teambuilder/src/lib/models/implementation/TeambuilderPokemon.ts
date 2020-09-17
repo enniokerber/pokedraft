@@ -83,9 +83,15 @@ export class TeambuilderPokemon {
     return this.name;
   }
 
+  getNickname(): string { return this.nickname; }
+
   setNickname(value: string = ''): void { this.nickname = value; }
 
+  getLevel(): number { return this.level; }
+
   setLevel(value: number = MAX_LEVEL): void { this.level = value; }
+
+  getHappiness(): number { return this.happiness; }
 
   setHappiness(value: number = MAX_HAPPINESS): void { this.happiness = value; }
 

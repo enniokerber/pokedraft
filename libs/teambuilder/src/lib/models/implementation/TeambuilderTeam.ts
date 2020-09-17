@@ -105,6 +105,6 @@ export class TeambuilderTeam {
   toShowdownString(): string {
     return this.getPokemon()
       .map(pokemon => pokemon.toShowdownString())
-      .reduce((nextVal, result) => nextVal.concat(result), '');
+      .reduce((nextVal, result) => nextVal.concat(result + '\n'), '');
   }
 }

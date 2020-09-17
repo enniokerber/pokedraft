@@ -19,7 +19,7 @@ export const statIdsArray = [
 ]
 
 export const statsExtended: ExtendedStatLabelMap = {
-  hp: {
+  [statIds.HP]: {
     statId: statIds.HP,
     name: {
       english: 'Healthpoints',
@@ -30,7 +30,7 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'KP'
     }
   },
-  atk: {
+  [statIds.ATK]: {
     statId: statIds.ATK,
     name: {
       english: 'Attack',
@@ -41,7 +41,7 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'Ang'
     }
   },
-  def: {
+  [statIds.DEF]: {
     statId: statIds.DEF,
     name: {
       english: 'Defense',
@@ -52,7 +52,7 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'Vert'
     }
   },
-  spatk: {
+  [statIds.SPATK]: {
     statId: statIds.SPATK,
     name: {
       english: 'Special Attack',
@@ -63,7 +63,7 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'SpA'
     }
   },
-  spdef: {
+  [statIds.SPDEF]: {
     statId: statIds.SPDEF,
     name: {
       english: 'Special Defense',
@@ -74,7 +74,7 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'SpV'
     }
   },
-  speed: {
+  [statIds.SPEED]: {
     statId: statIds.SPEED,
     name: {
       english: 'Speed',
@@ -85,11 +85,15 @@ export const statsExtended: ExtendedStatLabelMap = {
       german: 'Init'
     }
   },
-};
+} as unknown as ExtendedStatLabelMap;
 
 export function getStatMetadata(statId: string): StatMetadata {
   if (!statIdsArray.includes(statId)) return null;
   return statsExtended[statId];
+}
+
+export function getStatMetadataByAbbr(statAbbrEnglish: string): StatMetadata {
+  return Object.values(statsExtended).find(stat => stat.abbr.english === statAbbrEnglish);
 }
 
 export const natureStats: StatWithLabel[] = [

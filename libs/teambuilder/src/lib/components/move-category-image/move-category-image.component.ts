@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MoveCategory} from "../../models";
 
 @Component({
@@ -6,7 +6,7 @@ import {MoveCategory} from "../../models";
   templateUrl: './move-category-image.component.html',
   styleUrls: ['./move-category-image.component.scss']
 })
-export class MoveCategoryImageComponent implements OnInit {
+export class MoveCategoryImageComponent {
 
   _category: string = MoveCategory.STATUS;
 
@@ -15,8 +15,5 @@ export class MoveCategoryImageComponent implements OnInit {
   }
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

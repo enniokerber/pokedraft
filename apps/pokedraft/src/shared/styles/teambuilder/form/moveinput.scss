@@ -20,12 +20,18 @@ pd-move-input {
 
   @each $current-type, $current-type-color in $type-color-list {
     &--#{$current-type} {
-      border-color: $current-type-color;
+      background-color: $current-type-color;
     }
   }
 
   &--has-move {
+    border: none;
     justify-content: space-around;
+
+    .pd-teambuilder-move-input {
+      color: $white;
+      text-shadow: 0 0 3px $black;
+    }
   }
 
   &--disabled {
@@ -38,8 +44,10 @@ pd-move-input {
   height: 80%;
   border: none;
   color: $grey;
+  text-shadow: none;
   background-color: transparent;
   outline: none;
+  font-size: .92em;
   padding: 3px 0 0 8px;
 
   &::placeholder {

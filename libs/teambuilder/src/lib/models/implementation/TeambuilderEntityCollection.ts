@@ -88,6 +88,7 @@ export class TeambuilderEntityCollection<Entity = any> {
     }
   }
 
+  /* To make this work with translatable names, all names must be provided in every language. */
   filterByString(searchStr: string, propLevel1: string, propLevel2?: string) {
 
     if (searchStr === '') {
@@ -98,10 +99,10 @@ export class TeambuilderEntityCollection<Entity = any> {
 
     const lowerCaseSearchString = searchStr.toLowerCase();
 
-    let filterFn = (entity: Entity) => (entity[propLevel1] as string).toLowerCase().includes(lowerCaseSearchString);
+    let filterFn = (entity: Entity) => (entity[propLevel1] || '' as string).toLowerCase().includes(lowerCaseSearchString);
 
     if (propLevel2) {
-      filterFn = (entity: Entity) => (entity[propLevel1][propLevel2] as string).toLowerCase().includes(lowerCaseSearchString);
+      filterFn = (entity: Entity) => (entity[propLevel1][propLevel2] || '' as string).toLowerCase().includes(lowerCaseSearchString);
     }
 
     this.filtered = this.all.filter(filterFn);

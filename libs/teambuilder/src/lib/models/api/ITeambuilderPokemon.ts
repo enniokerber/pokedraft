@@ -1,4 +1,4 @@
-import { PartialStats } from './';
+import { PartialStats } from './IStats';
 import { GenderType } from '../types';
 
 export interface ITeambuilderPokemon {

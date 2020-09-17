@@ -1,7 +1,8 @@
 <select class="pd-teambuilder-form-small-input --tb-select-box"
         id="gender-input"
         name="Pokémon Gender"
-        [(ngModel)]="_pokemon.gender" (change)="changeGender()">
+        [(ngModel)]="_pokemon.gender"
+        (change)="changeGender()">
   <option [value]="gender.id"
           *ngFor="let gender of genders">
     <translator3 [source]="gender.label"></translator3>

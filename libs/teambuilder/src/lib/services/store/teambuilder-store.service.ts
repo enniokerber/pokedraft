@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  AbilityRecord, IAbility, IItem, IMove,
-  IPokemon, ItemRecord, ITier, MovesRecord,
+  AbilityRecord, GenderType, IAbility, IItem, IMove,
+  IPokemon, ITeambuilderPokemon, ItemRecord, ITier, MovesRecord, ShowdownPokemon, ShowdownStringEvaluator,
   TeambuilderEntityCollection, TeambuilderPokemon
 } from "../../models";
-import {pokedex, testAbilities, testItems, testMovesObject, TestTiers} from "../../data";
+import {getNatureByName, pokedex, testAbilities, testItems, testMovesObject, TestTiers} from "../../data";
 
 @Injectable()
 export class TeambuilderStoreService {
@@ -48,6 +48,15 @@ export class TeambuilderStoreService {
     return this.pokemonlist.getAll().find(p => p.id === id) || null;
   }
 
+  getPokemonByName(name: string): IPokemon {
+    if (!name) return null;
+    return this.pokemonlist.getAll().find(p => p.name.english === name);
+  }
+
+  getAbilities(): IAbility[] {
+    return Object.values(this.abilities);
+  }
+
   getPokemonsAbilities(pokemon: TeambuilderPokemon) {
     if (!this.abilities || !pokemon) {
       return [];
@@ -61,6 +70,11 @@ export class TeambuilderStoreService {
     return this.abilities[id];
   }
 
+  getAbilityByName(name: string): IAbility {
+    if (!name) return null;
+    return this.getAbilities().find(ability => ability.name.english === name);
+  }
+
   getItems(): IItem[] {
     return Object.values(this.items) as IItem[];
   }
@@ -68,6 +82,11 @@ export class TeambuilderStoreService {
   getItemById(id: string): IItem {
     if (!id) return null;
     return this.items[id];
+  }
+
+  getItemByName(name: string): IItem {
+    if (!name) return null;
+    return this.getItems().find(item => item.name.english === name) || null;
   }
 
   getMoves(): IMove[] {
@@ -82,5 +101,35 @@ export class TeambuilderStoreService {
   getMoveById(id: string): IMove {
     if (!id) return null;
     return this.moves[id];
+  }
+
+  getMoveByName(name: string): IMove {
+    if (!name) return null;
+    return this.getMoves().find(move => move.name.english === name) || null;
+  }
+
+  mapShowdownDataToJSON(data: ShowdownPokemon): ITeambuilderPokemon {
+    const id = this.getPokemonByName(data.name)?.id;
+    if (!id) { return null }
+    const nickname = data.nickname;
+    const item = this.getItemByName(data.item)?.id.toString();
+    const ability = this.getAbilityByName(data.ability)?.id.toString();
+    const gender = data.gender as GenderType;
+    const shiny = data.shiny;
+    const level = data.level;
+    const happiness = data.happiness;
+    const evs = data.evs;
+    const dvs = data.ivs;
+    const nature = getNatureByName(data.nature)?.id;
+    const moves = data.moves.map(move => this.getMoveByName(move)?.id.toString()).filter(m => !!m);
+    return ({ id, nickname, item, ability, gender, shiny, level, happiness, evs, dvs, nature, moves });
+  }
+
+  mapShowdownTeamToPokedraftTeamRecord(showdownData: string): ITeambuilderPokemon[] {
+    return showdownData.split('\n\n')
+      .filter(pkmn => !!pkmn.trim())
+      .map(pkmnString => ShowdownStringEvaluator.evaluate(pkmnString))
+      .map((sdPokemonData: ShowdownPokemon) => this.mapShowdownDataToJSON(sdPokemonData))
+      .filter(p => !!p);
   }
 }

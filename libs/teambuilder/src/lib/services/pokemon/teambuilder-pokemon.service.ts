@@ -69,7 +69,7 @@ export class TeambuilderPokemonService implements OnDestroy {
     if (!record) return;
     const team = TeambuilderTeam.fromDatabaseRecord(record); // team is empty (no pokemon)
     const pokemon: TeambuilderPokemonArray = this.mapToTeambuilderPokemon(record.pokemon)
-                    .filter(p => !!p)|| [];
+                    .filter(p => !!p) || [];
     team.setPokemon(pokemon); // manually fill the pokemon
     if (pokemon.length > 0) {
       this.selectPokemon(pokemon[0]);
@@ -254,7 +254,7 @@ export class TeambuilderPokemonService implements OnDestroy {
     tbPokemon.setNickname(record.nickname);
     tbPokemon.setLevel(record.level);
     tbPokemon.setHappiness(record.happiness);
-    tbPokemon.setGender(record.gender);
+    if (!tbPokemon.requiresGender()) { tbPokemon.setGender(record.gender); }
     tbPokemon.setShiny(record.shiny);
     tbPokemon.changeNatureById(record.nature);
     tbPokemon.setItem(this.tbStore.getItemById(record.item));
@@ -269,8 +269,11 @@ export class TeambuilderPokemonService implements OnDestroy {
     return pokemon.map((p: ITeambuilderPokemon, index: number) => this.createTeambuilderPokemonFromDBRecord(p, index));
   }
 
-  importTeamFromShowdown(showdownData: string): void {
-
+  importTeamFromShowdown(showdownData: string): boolean {
+    const pokemonData: ITeambuilderPokemon[] = this.tbStore.mapShowdownTeamToPokedraftTeamRecord(showdownData);
+    const teambuilderPokemon: TeambuilderPokemonArray = this.mapToTeambuilderPokemon(pokemonData);
+    this.setCurrentTeampokemon(teambuilderPokemon);
+    return false;
   }
 
   importTeamFromJSON(data: string): boolean {

@@ -31,7 +31,7 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
 
   saveRequestState: LoadingState;
 
-  subscriptions: SubscriptionContainer = new SubscriptionContainer();
+  subscriptions: SubscriptionContainer;
 
   constructor(private tbLanguage: TeambuilderLanguageService,
               private tbPokemon: TeambuilderPokemonService,
@@ -39,7 +39,7 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
               private tbApi: TeambuilderApiService,
               private auth: PokedraftAuthService) {
     this.languages = LanguagesWithLabels;
-    this.subscriptions.add(
+    this.subscriptions = new SubscriptionContainer(
       this.tbLanguage.language.changes$.subscribe(language => this.language = language)
     );
     this.team$ = this.tbPokemon.team.changes$;
@@ -51,7 +51,7 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
     this.subscriptions.unsubscribeAll();
   }
 
-  updateLanguage() {
+  updateLanguage(): void {
     this.tbLanguage.changeLanguage(this.language);
   }
 
@@ -59,7 +59,7 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
     this.tbApi.saveTeam();
   }
 
-  openImport() {
+  openImport(): void {
     this.tbView.displayImport();
   }
 }

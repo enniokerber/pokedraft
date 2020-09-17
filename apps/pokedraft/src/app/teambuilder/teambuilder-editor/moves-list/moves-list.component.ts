@@ -53,9 +53,9 @@ export class MovesListComponent implements OnDestroy {
         }),
       this.tbEvents.moveListEvents.search.changesNotEmpty$
         .pipe(debounceTime(250))
-        .subscribe(move => this.moves.filterByString(move, this.tbLanguage.getCurrentLanguageAsProp())),
+        .subscribe(move => this.moves.filterByString(move, 'name', this.tbLanguage.getCurrentLanguageAsProp())),
       this.tbEvents.moveListEvents.search.reset$
-        .subscribe(_ => this.moves.filterByString('', this.tbLanguage.getCurrentLanguageAsProp())), // empty string resets it
+        .subscribe(_ => this.moves.filterByString('', 'name', this.tbLanguage.getCurrentLanguageAsProp())), // empty string resets it
       this.tbEvents.moveListEvents.up.subscribe(_ => this.marker.dec()),
       this.tbEvents.moveListEvents.down.subscribe(_ => this.marker.inc()),
       this.tbEvents.moveListEvents.selectMarked.subscribe(_ => {

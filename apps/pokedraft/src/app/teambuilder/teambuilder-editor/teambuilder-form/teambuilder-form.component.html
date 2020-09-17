@@ -38,11 +38,13 @@
           <div class="pd-teambuilder-form-general-settings-fraction-content">
             <input class="pd-teambuilder-form-small-input --remove-number-input-appearance"
                    id="level"
-                   name="Pokémon Level"
+                   name="Level"
                    type="number"
                    translatableTitle
                    englishTitle="Level of the Pokémon. Ranges from 1 - 100."
                    germanTitle="Level des Pokémon. Bewegt sich zwischen 1 und 100."
+                   min="1"
+                   max="100"
                    maxlength="3"
                    [(ngModel)]="pokemon.level">
           </div>
@@ -64,12 +66,15 @@
           <div class="pd-teambuilder-form-general-settings-fraction-content">
             <input class="pd-teambuilder-form-small-input --remove-number-input-appearance"
                    id="happiness"
-                   value="255"
+                   name="Happiness"
                    type="number"
                    translatableTitle
                    englishTitle="Happiness of the Pokémon. Ranges from 1 - 255. Certain Pokémon evolve when reaching a certain level of happiness. The higher the stronger is the Return-Attack. The lower the stronger is the Frustration-Attack."
                    germanTitle="Der Freundschaftswert des Pokémon. Bewegt sich zwischen 1 und 255. Manche Pokémon entwickeln sich, wenn sie ein bestimmtes Level an Freundschaft erreichen. Je höher der Wert, desto stärker ist die Attacke Rückkehr. Je niedriger, desto stärker ist die Attacke Frustration."
-                   maxlength="3">
+                   min="0"
+                   max="255"
+                   maxlength="3"
+                   [(ngModel)]="pokemon.happiness">
           </div>
         </div>
       </div>
