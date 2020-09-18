@@ -19,7 +19,7 @@ export class TeambuilderTeam {
     this.name = 'Nice Team';
     this.createdAt = null;
     this.lastUpdate = null;
-    this.tier = Tiers.UNKNOWN;
+    this.tier = Tiers.UBER;
     this.public = true;
     this.pokemon = [];
   }

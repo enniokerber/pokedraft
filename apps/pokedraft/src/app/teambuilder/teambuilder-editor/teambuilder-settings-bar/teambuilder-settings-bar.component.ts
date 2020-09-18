@@ -7,7 +7,7 @@ import {
   SubscriptionContainer,
   TeambuilderLanguageService,
   TeambuilderPokemonService,
-  TeambuilderApiService, TeambuilderTeam, TeambuilderViewService
+  TeambuilderApiService, TeambuilderTeam, TeambuilderViewService, ITier, testTiers
 } from '@pokedraft/teambuilder';
 import { IPokedraftUser, LoadingState, PokedraftAuthService } from '@pokedraft/core';
 import { PopUpAnimation } from '@pokedraft/material';
@@ -25,7 +25,9 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
 
   language: Language = Languages.ENGLISH;
 
-  team$: Observable<TeambuilderTeam>;
+  tiers: ITier[];
+
+  team: TeambuilderTeam;
 
   user$: Observable<IPokedraftUser>;
 
@@ -39,10 +41,12 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
               private tbApi: TeambuilderApiService,
               private auth: PokedraftAuthService) {
     this.languages = LanguagesWithLabels;
+    this.tiers = testTiers;
+    this.team = null;
     this.subscriptions = new SubscriptionContainer(
-      this.tbLanguage.language.changes$.subscribe(language => this.language = language)
+      this.tbLanguage.language.changes$.subscribe(language => this.language = language),
+      this.tbPokemon.team.changes$.subscribe(team => this.team = team)
     );
-    this.team$ = this.tbPokemon.team.changes$;
     this.user$ = this.auth.user$;
     this.saveRequestState = this.tbApi.saveRequestState;
   }

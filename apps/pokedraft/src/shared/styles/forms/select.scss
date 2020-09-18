@@ -1,5 +1,17 @@
 @import "../utils";
 
+.pd-select-wrapper {
+  position: relative;
+}
+
+.pd-select-label {
+  position: absolute;
+  top: -15px;
+  @include center-relatively-horizontally;
+  font-size: $font-size-xs;
+  color: $grey;
+}
+
 .pd-select {
   width: 100%;
   height: $text-input-height;

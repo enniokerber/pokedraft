@@ -1,7 +1,7 @@
 import {ITier} from "../models/api";
 
 
-export const TestTiers: ITier[] = [
+export const testTiers: ITier[] = [
   {
     'id': 'AG',
     'name': 'Anything Goes',

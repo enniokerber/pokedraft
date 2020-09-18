@@ -1,34 +1,40 @@
-<select
-  name="nature"
-  class="pd-select pd-select--small --tb-form-nature-select"
-  translatableTitle
-  englishTitle="Natures affect your Pokémons stats by increasing one of them by 10% but lowering another one by the same amount."
-  germanTitle="Wesen beeinflussen die Statuswerte deines Pokémon. Die meisten Wesen erhöhen einen Wert um 10% und senken dafür einen anderen um 10%."
-  [disabled]="disabled"
-  [(ngModel)]="selectedNatureId"
-  (change)="changeNature(selectedNatureId)">
-  <optgroup label="Neutral">
-    <option
-      [ngValue]="nature.id"
-      [selected]="selectedNatureId && selectedNatureId === nature.id"
-      *ngFor="let nature of neutralNatures">
-      {{nature.name | translate | async}}
-    </option>
-  </optgroup>
-  <optgroup label=""
-            translateAttribute="label"
-            [source]="stat.label"
-            format="? +"
-            *ngFor="let stat of stats">
-    <ng-container
-      *ngFor="let nature of statAffectingNatures">
-      <option [ngValue]="nature.id"
-              [selected]="selectedNatureId && selectedNatureId === nature.id"
-              *ngIf="nature.increases?.statId === stat.id">
-        <translator2
-          english="{{nature.name.english}} [+{{nature.increases.abbr.english}}, -{{nature.decreases.abbr.english}}]"
-          german="{{nature.name.german}} [+{{nature.increases.abbr.german}}, -{{nature.decreases.abbr.german}}]"></translator2>
+<div class="pd-select-wrapper">
+  <label class="pd-select-label" for="nature-select">
+    <translator2 english="Nature" german="Wesen"> </translator2>
+  </label>
+  <select
+    id="nature-select"
+    name="nature"
+    class="pd-select pd-select--small --tb-form-nature-select"
+    translatableTitle
+    englishTitle="Natures affect your Pokémons stats by increasing one of them by 10% but lowering another one by the same amount."
+    germanTitle="Wesen beeinflussen die Statuswerte deines Pokémon. Die meisten Wesen erhöhen einen Wert um 10% und senken dafür einen anderen um 10%."
+    [disabled]="disabled"
+    [(ngModel)]="selectedNatureId"
+    (change)="changeNature(selectedNatureId)">
+    <optgroup label="Neutral">
+      <option
+        [ngValue]="nature.id"
+        [selected]="selectedNatureId && selectedNatureId === nature.id"
+        *ngFor="let nature of neutralNatures">
+        {{nature.name | translate | async}}
       </option>
-    </ng-container>
-  </optgroup>
-</select>
+    </optgroup>
+    <optgroup label=""
+              translateAttribute="label"
+              [source]="stat.label"
+              format="? +"
+              *ngFor="let stat of stats">
+      <ng-container
+        *ngFor="let nature of statAffectingNatures">
+        <option [ngValue]="nature.id"
+                [selected]="selectedNatureId && selectedNatureId === nature.id"
+                *ngIf="nature.increases?.statId === stat.id">
+          <translator2
+            english="{{nature.name.english}} [+{{nature.increases.abbr.english}}, -{{nature.decreases.abbr.english}}]"
+            german="{{nature.name.german}} [+{{nature.increases.abbr.german}}, -{{nature.decreases.abbr.german}}]"></translator2>
+        </option>
+      </ng-container>
+    </optgroup>
+  </select>
+</div>
