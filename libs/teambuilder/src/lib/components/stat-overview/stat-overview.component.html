@@ -1,4 +1,4 @@
 
 <pd-stat-overview-row [stat]="stats[statId]" *ngFor="let statId of statsIds">
-  <translator3 [source]="statLabels[statId].abbr"></translator3>
+  {{statLabels[statId].abbr | translate | async}}
 </pd-stat-overview-row>

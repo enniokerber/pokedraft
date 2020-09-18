@@ -16,7 +16,7 @@
         <div class="pd-teambuilder-teambar-item-half pd-teambuilder-teambar-item-half--name-half">
           <ng-container *ngIf="pokemon.nickname; else noNickname"> {{pokemon.nickname}} </ng-container>
           <ng-template #noNickname>
-            <translator3 [source]="pokemon.name"></translator3>
+            {{pokemon.name | translate | async}}
           </ng-template>
         </div>
       </div>

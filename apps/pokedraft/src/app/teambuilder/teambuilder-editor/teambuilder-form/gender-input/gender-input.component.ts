@@ -30,6 +30,6 @@ export class GenderInputComponent {
   }
 
   changeGender(): void {
-    this.genderChange.emit(this.pokemon.getGender());
+    this.genderChange.emit(this._pokemon.getGender());
   }
 }

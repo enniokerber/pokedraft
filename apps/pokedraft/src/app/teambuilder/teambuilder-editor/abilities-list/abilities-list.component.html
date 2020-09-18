@@ -21,10 +21,10 @@
        (click)="selectAbility(ability)"
        *ngFor="let ability of abilities.current; index as index">
     <div class="pd-teambuilder-list-cell --tb-ability-name-cell flex-align-left">
-      <translator3 [source]="ability.name"></translator3>
+      {{ability.name | translate | async}}
     </div>
     <div class="pd-teambuilder-list-cell --tb-desc-cell --tb-ability-desc-cell flex-align-left">
-      <translator3 [source]="ability.shortDescription"></translator3>
+      {{ability.shortDescription | translate | async}}
     </div>
   </div>
 

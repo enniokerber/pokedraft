@@ -8,18 +8,20 @@ import {
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ITeambuilderTeam, ITeambuilderTeamSnippet } from '../../models';
 import { Observable, of } from 'rxjs';
-import { catchError, first, map, switchMap } from 'rxjs/operators';
+import { catchError, first, map, switchMap, tap } from 'rxjs/operators';
 import { TeambuilderPokemonService } from '../pokemon/teambuilder-pokemon.service';
 
 @Injectable()
 export class TeambuilderApiService {
 
   saveRequestState: LoadingState;
+  deleteRequestState: LoadingState;
 
   constructor(private auth: PokedraftAuthService,
               private afs: AngularFirestore,
               private tbPokemon: TeambuilderPokemonService) {
     this.saveRequestState = new LoadingState();
+    this.deleteRequestState = new LoadingState();
   }
 
   getFakeTeamPreviews(): Observable<ITeambuilderTeamSnippet[]> {
@@ -58,7 +60,7 @@ export class TeambuilderApiService {
     }
     const author: IPokedraftUserSnippet = this.auth.getCurrentUserSnippet();
     if (!author) {
-      console.error('Auth-Service did not return an authenticated user, thus no team author is provided. The team therefore cannot be saved.')
+      console.error('Auth-Service did not return an authenticated user, thus no team author is provided. The team therefore cannot be saved.');
       Promise.reject();
     }
     const team = this.tbPokemon.getTeam();
@@ -91,6 +93,18 @@ export class TeambuilderApiService {
     } else {
       return this.saveRequestState.loadFromPromise(() => this.persistTeam());
     }
+  }
+
+  deleteTeam(id: string): Promise<void> {
+    return this.deleteRequestState.loadFromPromise(() =>
+      this.afs.doc(`teams/${id}`).delete()
+        .then(() => {
+          if (this.tbPokemon.getTeamId() === id) {
+            console.log('Reset Team');
+            this.tbPokemon.clearTeam();
+          }
+        })
+    );
   }
 
 }

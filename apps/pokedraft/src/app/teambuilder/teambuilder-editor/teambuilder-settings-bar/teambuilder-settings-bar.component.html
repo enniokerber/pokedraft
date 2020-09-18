@@ -16,7 +16,7 @@
     <option
       [value]="language.value"
       *ngFor="let language of languages">
-      <translator3 [source]="language.label"></translator3>
+      {{language.label | translate | async}}
     </option>
   </select>
 

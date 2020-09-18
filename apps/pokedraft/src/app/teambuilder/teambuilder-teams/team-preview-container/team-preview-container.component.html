@@ -1,24 +1,46 @@
-<div class="pd-teambuilder-team-container"
-     [class.pd-teambuilder-team-container--selected]="selected"
-     (click)="selectTeam()"
-     (dblclick)="editTeam()">
-  <div class="pd-teambuilder-team-container-title">
+<ng-container *ngIf="!deleting; else aboutToBeDeleted">
+  <div class="pd-teambuilder-team-container"
+       [class.pd-teambuilder-team-container--selected]="selected"
+       (click)="selectTeam()"
+       (dblclick)="editTeam()">
+    <div class="pd-teambuilder-team-container-title">
 
-    <div class="pd-teambuilder-team-container-tier-badge" title="Tier">
-      {{team.tier}}
+      <div class="pd-teambuilder-team-container-tier-badge" title="Tier">
+        {{team.tier}}
+      </div>
+
+      {{team.name}}
     </div>
 
-    {{team.name}}
-  </div>
-
-  <div class="pd-teambuilder-team-container-pokemon">
-    <div class="pd-pokemon-icon-wrapper" *ngFor="let pokemon of team.pokemon">
-      <pd-pokemon-icon class="pd-pokemon-icon-wrapped" [imgSrc]="pokemon"></pd-pokemon-icon>
+    <div class="pd-teambuilder-team-container-pokemon">
+      <div class="pd-pokemon-icon-wrapper" *ngFor="let pokemon of team.pokemon">
+        <pd-pokemon-icon class="pd-pokemon-icon-wrapped" [imgSrc]="pokemon"></pd-pokemon-icon>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="pd-teambuilder-team-container-actions">
-  <pd-round-button icon="assets/icons/edit.png" (leftclick)="editTeam()"></pd-round-button>
-  <pd-round-button icon="assets/icons/delete.png"></pd-round-button>
-</div>
+  <div class="pd-teambuilder-team-container-actions">
+    <pd-round-button icon="assets/icons/edit.png" (leftclick)="editTeam()"></pd-round-button>
+    <pd-round-button icon="assets/icons/delete.png" (leftclick)="deleteTeam()"></pd-round-button>
+  </div>
+</ng-container>
+
+<ng-template #aboutToBeDeleted>
+
+  <div class="pd-teambuilder-team-container">
+
+    <div class="pd-teambuilder-team-container-title">
+      <ng-container *ngIf="(deletionCounter$ | async) as deletionCounter; else deletingTeam">
+        <b>Deleting Team "{{team.name}}" in {{deletionCounter}} seconds ...</b>
+      </ng-container>
+      <ng-template #deletingTeam>
+        <b><i>Deleting Team ...</i></b>
+      </ng-template>
+    </div>
+
+    <div class="pd-teambuilder-team-container-pokemon">
+      <pd-round-button icon="assets/icons/clear.png" red="true" (leftclick)="stopDelete()"></pd-round-button>
+    </div>
+  </div>
+
+</ng-template>

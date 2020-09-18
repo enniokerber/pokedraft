@@ -77,6 +77,11 @@ export class TeambuilderPokemonService implements OnDestroy {
     this.team.update(team);
   }
 
+  clearTeam(): void {
+    this.team.update(this.newTeam());
+    this.selectPokemon(null);
+  }
+
   getCurrentTeampokemon(): TeambuilderPokemon[] { return this.team.getValue().getPokemon(); }
 
   setCurrentTeampokemon(pokemon: TeambuilderPokemon[]) {

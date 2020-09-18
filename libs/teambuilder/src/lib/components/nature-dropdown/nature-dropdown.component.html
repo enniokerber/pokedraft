@@ -12,7 +12,7 @@
       [ngValue]="nature.id"
       [selected]="selectedNatureId && selectedNatureId === nature.id"
       *ngFor="let nature of neutralNatures">
-      <translator3 [source]="nature.name"></translator3>
+      {{nature.name | translate | async}}
     </option>
   </optgroup>
   <optgroup label=""

@@ -66,7 +66,6 @@ export class TeambuilderStoreService {
   }
 
   getAbilityById(id: string): IAbility {
-    if (!id) return null;
     return this.abilities[id];
   }
 
@@ -80,7 +79,6 @@ export class TeambuilderStoreService {
   }
 
   getItemById(id: string): IItem {
-    if (!id) return null;
     return this.items[id];
   }
 
@@ -99,7 +97,6 @@ export class TeambuilderStoreService {
   }
 
   getMoveById(id: string): IMove {
-    if (!id) return null;
     return this.moves[id];
   }
 

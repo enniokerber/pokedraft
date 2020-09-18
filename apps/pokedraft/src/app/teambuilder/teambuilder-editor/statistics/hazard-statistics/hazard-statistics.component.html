@@ -27,7 +27,7 @@
       <svg class="pd-single-hazard-statistics-icon" *ngSwitchDefault xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36px" height="36px"><path d="M3 4l9 16 9-16H3zm3.38 2h11.25L12 16 6.38 6z"/></svg>
 
       <div class="pd-single-hazard-statistics-label grid-place-center">
-        <translator3 [source]="hazard.name"></translator3>
+        {{hazard.name | translate | async}}
       </div>
 
       <div class="pd-single-statistics-cell pd-single-hazard-statistics-users">
