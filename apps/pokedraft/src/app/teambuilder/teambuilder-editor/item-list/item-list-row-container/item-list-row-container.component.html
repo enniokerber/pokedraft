@@ -12,12 +12,12 @@
     </div>
 
     <div class="pd-teambuilder-list-cell-text">
-      <translator3 [source]="item.name"></translator3>
+      {{item.name | translate | async}}
     </div>
   </div>
 
   <div class="pd-teambuilder-list-cell --tb-desc-cell --tb-item-desc-cell flex-align-left">
-      <translator3 [source]="item.description"></translator3>
+      {{item.description | translate | async}}
   </div>
 
   <div class="pd-teambuilder-list-cell pd-teambuilder-list-prop-cell --tb-item-fling-basepower">

@@ -4,7 +4,7 @@ import {
   IPokemon, ITeambuilderPokemon, ItemRecord, ITier, MovesRecord, ShowdownPokemon, ShowdownStringEvaluator,
   TeambuilderEntityCollection, TeambuilderPokemon
 } from "../../models";
-import {getNatureByName, pokedex, testAbilities, testItems, testMovesObject, TestTiers} from "../../data";
+import {getNatureByName, pokedex, testAbilities, testItems, testMovesObject, testTiers} from "../../data";
 
 @Injectable()
 export class TeambuilderStoreService {
@@ -20,7 +20,7 @@ export class TeambuilderStoreService {
     this._abilities = testAbilities;
     this._items = testItems;
     this._moves = testMovesObject;
-    this._tiers = TestTiers;
+    this._tiers = testTiers;
   }
 
   get pokemonlist(): TeambuilderEntityCollection<IPokemon> {
@@ -66,7 +66,6 @@ export class TeambuilderStoreService {
   }
 
   getAbilityById(id: string): IAbility {
-    if (!id) return null;
     return this.abilities[id];
   }
 
@@ -80,7 +79,6 @@ export class TeambuilderStoreService {
   }
 
   getItemById(id: string): IItem {
-    if (!id) return null;
     return this.items[id];
   }
 
@@ -99,7 +97,6 @@ export class TeambuilderStoreService {
   }
 
   getMoveById(id: string): IMove {
-    if (!id) return null;
     return this.moves[id];
   }
 

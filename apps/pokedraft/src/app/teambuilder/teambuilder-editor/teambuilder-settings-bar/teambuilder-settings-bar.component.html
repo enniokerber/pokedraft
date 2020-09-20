@@ -1,39 +1,16 @@
 <div class="pd-teambuilder-bar">
 
-  <div class="pd-teambuilder-circle-stroke-button pd-teambuilder-circle-svg-button no-margin-left">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="26"
-         height="26"
-         viewBox="0 0 20 20"
-         class="pd-teambuilder-colored-svg">
-      <path d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/>
-    </svg>
-  </div>
-
-  <select class="pd-select pd-select--small --language-select left-space"
-          (change)="updateLanguage()"
-          [(ngModel)]="language">
-    <option
-      [value]="language.value"
-      *ngFor="let language of languages">
-      <translator3 [source]="language.label"></translator3>
-    </option>
-  </select>
-
   <ng-container *ngIf="(user$ | async) as user">
-
-    <pd-button class="left-space"
-               icon="assets/icons/save.png"
-               [disabled]="user.uid !== (team$ | async)?.author?.uid"
+    <pd-button icon="assets/icons/save.png"
+               [disabled]="user.uid !== team.author?.uid"
                [loading]="saveRequestState.loading$ | async"
                (leftclick)="save()"
-               *ngIf="(team$ | async)?.id; else isNewTeam">
+               *ngIf="team?.id; else isNewTeam">
       <translator2 english="Save" german="Speichern"></translator2>
     </pd-button>
 
     <ng-template #isNewTeam>
-      <pd-button class="left-space"
-                 icon="assets/icons/save.png"
+      <pd-button  icon="assets/icons/save.png"
                  [loading]="saveRequestState.loading$ | async"
                  (leftclick)="save()">
         <translator2 english="Save" german="Speichern"></translator2>
@@ -50,9 +27,50 @@
 
   </ng-container>
 
-  <pd-button class="left-space"
+  <pd-button [class.left-space]="(user$ | async)"
              icon="assets/icons/download.png"
              (leftclick)="openImport()">
     Import / Export
   </pd-button>
+
+  <div class="pd-select-wrapper left-space">
+    <label class="pd-select-label"
+           for="tier-select"> Tier </label>
+    <select id="tier-select"
+            class="pd-select pd-select--small --language-select"
+            title="Tier"
+            [(ngModel)]="team.tier">
+      <option [value]="tier.id"
+              [title]="tier.name"
+              *ngFor="let tier of tiers"> {{tier.id}} </option>
+    </select>
+  </div>
+
+  <div class="pd-teambuilder-circle-stroke-button pd-teambuilder-circle-svg-button left-space">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="26"
+         height="26"
+         viewBox="0 0 20 20"
+         class="pd-teambuilder-colored-svg">
+      <path d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/>
+    </svg>
+  </div>
+
+  <div class="pd-select-wrapper left-space">
+    <label class="pd-select-label"
+           for="language-select">
+      <translator2 english="Language" german="Sprache"></translator2>
+    </label>
+    <select id="language-select"
+            class="pd-select pd-select--small --language-select"
+            (change)="updateLanguage()"
+            [(ngModel)]="language">
+      <option
+        [value]="language.value"
+        *ngFor="let language of languages">
+        {{language.label | translate | async}}
+      </option>
+    </select>
+  </div>
+
 </div>

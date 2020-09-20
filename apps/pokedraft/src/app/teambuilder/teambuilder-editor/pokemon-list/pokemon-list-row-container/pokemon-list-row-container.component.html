@@ -13,7 +13,7 @@
     </div>
 
     <div class="pd-teambuilder-list-cell-text">
-      <translator3 [source]="pkmn.name"></translator3>
+      {{pkmn.name | translate | async}}
     </div>
 
   </div>

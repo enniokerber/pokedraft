@@ -16,7 +16,7 @@ export const statIdsArray = [
   statIds.SPATK,
   statIds.SPDEF,
   statIds.SPEED
-]
+];
 
 export const statsExtended: ExtendedStatLabelMap = {
   [statIds.HP]: {

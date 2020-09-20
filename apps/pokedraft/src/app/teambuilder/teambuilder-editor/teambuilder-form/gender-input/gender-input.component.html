@@ -5,6 +5,6 @@
         (change)="changeGender()">
   <option [value]="gender.id"
           *ngFor="let gender of genders">
-    <translator3 [source]="gender.label"></translator3>
+    {{gender.label | translate | async}}
   </option>
 </select>

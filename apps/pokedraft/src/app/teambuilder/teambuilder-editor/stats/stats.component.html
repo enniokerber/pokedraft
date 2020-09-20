@@ -41,7 +41,7 @@
       (change)="stats.applyStatConfig()"
       [(ngModel)]="stats.statConfig">
       <option [ngValue]="statConfig" *ngFor="let statConfig of statConfigs">
-        <translator3 [source]="statConfig.name"></translator3>
+        {{statConfig.name | translate | async}}
       </option>
     </select>
   </div>
@@ -50,7 +50,7 @@
 
     <pd-single-stat [stat]="stats[statId]"
                     *ngFor="let statId of statIds">
-      <translator3 [source]="statLabels[statId].abbr"></translator3>
+      {{statLabels[statId].abbr | translate | async}}
     </pd-single-stat>
 
     <div class="pd-container-row flex-align-center small-margin-top no-margin-bottom">

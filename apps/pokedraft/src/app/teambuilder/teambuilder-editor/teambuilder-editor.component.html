@@ -3,7 +3,7 @@
 
   <pd-teambar></pd-teambar>
 
-  <ng-container *ngIf="display as displayMode">
+  <ng-container *ngIf="(display$ | async) as displayMode">
 
     <pd-teambuilder-form *ngIf="displayMode.showForm"></pd-teambuilder-form>
 
@@ -35,7 +35,7 @@
 
   <pd-teambuilder-settings-bar></pd-teambuilder-settings-bar>
 
-  <ng-container *ngIf="display as displayMode">
+  <ng-container *ngIf="(display$ | async) as displayMode">
     <pd-statistics class="pd-teambuilder-list-container pd-statistics-container"
                    *ngIf="displayMode.showStatistics"></pd-statistics>
     <pd-team-import class="pd-teambuilder-list-container pd-statistics-container"

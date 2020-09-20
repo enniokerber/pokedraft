@@ -7,14 +7,19 @@
       <translator2 class="pd-teambuilder-list-cell" english="Your Team" german="Deine Teams"></translator2>
     </div>
 
-    <div class="pd-container-row flex-align-center large-margin-bottom" *ngIf="usersTeamsLoadingZone.loading$ | async">
+    <div class="pd-container-row flex-align-center large-margin-bottom" *ngIf="!(teams$ | async)">
       <pd-loader> Loading Your Teams... </pd-loader>
+    </div>
+
+    <div class="pd-container-row flex-align-center large-margin-bottom" *ngIf="(teams$ | async)?.length === 0">
+      You have no teams atm
     </div>
 
     <pd-team-preview-container [team]="team"
                                [selected]="team.id === (selectedTeamId$ | async)"
                                (edit)="openTeam($event)"
                                (choose)="selectTeam($event)"
+                               (delete)="deleteTeam($event)"
                                *ngFor="let team of teams$ | async"></pd-team-preview-container>
 
   </section>

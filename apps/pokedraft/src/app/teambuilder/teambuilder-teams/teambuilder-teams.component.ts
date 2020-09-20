@@ -4,7 +4,17 @@ import {
   TeambuilderPokemonArray, TeambuilderPokemonService
 } from '@pokedraft/teambuilder';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { catchError, distinctUntilChanged, filter, finalize, first, map, switchMap, tap } from 'rxjs/operators';
+import {
+  catchError,
+  distinctUntilChanged,
+  filter,
+  finalize,
+  first,
+  map,
+  shareReplay,
+  switchMap,
+  tap
+} from 'rxjs/operators';
 import { LoadingZone } from '@pokedraft/core';
 import { Router } from '@angular/router';
 
@@ -39,13 +49,12 @@ export class TeambuilderTeamsComponent implements OnInit {
     this.usersTeamsLoadingZone.inc();
     this.teams$ = this.tbApi.getFakeTeamPreviews()
       .pipe(
-        first(),
         tap((teams: ITeambuilderTeamSnippet[]) => {
           if (teams.length > 0) {
             this.selectTeam(teams[0].id);
           }
         }),
-        finalize(() => this.usersTeamsLoadingZone.dec()),
+        shareReplay(),
       );
     this.teampokemon$ = this.selectTeam$.asObservable()
       .pipe(
@@ -56,9 +65,7 @@ export class TeambuilderTeamsComponent implements OnInit {
           .pipe(
             first(),
             map(team => team ? team.pokemon.map(pokemon => this.tbPokemon.createTeambuilderPokemonFromDBRecord(pokemon)) : null),
-            catchError(() => {
-              return of([]);
-            }),
+            catchError(() => of([])),
             finalize(() => this.currentTeamLoadingZone.dec())
           )
         )
@@ -66,6 +73,8 @@ export class TeambuilderTeamsComponent implements OnInit {
   }
 
   selectTeam(id: string): void { this.selectTeam$.next(id); }
+
+  deleteTeam(id: string): void { this.tbApi.deleteTeam(id); }
 
   openTeam(id: string): void { this.router.navigateByUrl(`teambuilder/editor/${id}`); }
 

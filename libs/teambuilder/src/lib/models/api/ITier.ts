@@ -9,6 +9,8 @@ export interface ITier {
 }
 
 export enum Tiers {
+  AG = 'AG',
+  UBER = 'Uber',
   OU = 'OU',
   UU = 'UU',
   RU = 'RU',

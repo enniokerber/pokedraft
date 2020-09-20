@@ -10,8 +10,6 @@ export class DividedTeambuilderEntityCollection<Entity = any> extends Teambuilde
 
   constructor(entities: Entity[], dividerProp: string, defaultSortColumn?: string) {
     super(entities, defaultSortColumn);
-    this.firstHalf = [];
-    this.secondHalf = [];
     this._dividerProp = dividerProp;
     this.divide();
   }
@@ -33,7 +31,8 @@ export class DividedTeambuilderEntityCollection<Entity = any> extends Teambuilde
   }
 
   divide() {
-    this.firstHalf = this.current.filter(entity => !!entity[this.dividerProp]);
-    this.secondHalf = this.current.filter(entity => !entity[this.dividerProp]);
+    this.firstHalf = [];
+    this.secondHalf = [];
+    this.current.forEach(entity => !!entity[this.dividerProp] ? this.firstHalf.push(entity) : this.secondHalf.push(entity));
   }
 }

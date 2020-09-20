@@ -7,7 +7,7 @@
      *ngFor="let move of moves; index as index">
 
   <div class="pd-teambuilder-list-cell --tb-move-name-cell flex-align-left">
-    <translator3 [source]="move.name"></translator3>
+    {{move.name | translate | async}}
   </div>
 
   <div class="pd-teambuilder-list-cell --tb-move-props-cell">
@@ -39,9 +39,11 @@
   </div>
 
   <div class="pd-teambuilder-list-cell --tb-move-desc-cell flex-align-left">
-    <translator3 [source]="move.shortDescription" *ngIf="move.shortDescription.english; else longDesc"></translator3>
+    <ng-container *ngIf="move.shortDescription.english; else longDesc">
+      {{move.shortDescription | translate | async}}
+    </ng-container>
     <ng-template #longDesc>
-      <translator3 [source]="move.description"></translator3>
+      {{move.description | translate | async}}
     </ng-template>
   </div>
 

@@ -4,6 +4,8 @@ import {
   TeambuilderDisplayMode,
   TeambuilderViewService
 } from '@pokedraft/teambuilder';
+import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'pd-teambuilder-editor',
@@ -12,7 +14,7 @@ import {
 })
 export class TeambuilderEditorComponent implements OnDestroy {
 
-  public display: TeambuilderDisplayMode;
+  public display$: Observable<TeambuilderDisplayMode>;
 
   private subscriptions: SubscriptionContainer;
 
@@ -26,11 +28,7 @@ export class TeambuilderEditorComponent implements OnDestroy {
   constructor(private tbViewService: TeambuilderViewService,
               private tbApi: TeambuilderApiService) {
     this.subscriptions = new SubscriptionContainer();
-    this.subscriptions.add(
-      this.tbViewService.displayMode.changes$.subscribe(display => {
-        this.display = display;
-      })
-    );
+    this.display$ = this.tbViewService.displayMode.changes$.pipe(shareReplay());
   }
 
   ngOnDestroy() {

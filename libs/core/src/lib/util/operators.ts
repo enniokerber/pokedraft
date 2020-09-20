@@ -8,7 +8,7 @@ export const allWithDocumentId = () => map(
 
 export const extractDocumentData = () => map((snapshot: Action<DocumentSnapshot<any>>) => snapshot.payload.data());
 
-export const withDocumentId = () => map((snapshot: Action<DocumentSnapshot<any>>) => ({
-  id: snapshot.payload.id,
-  ...snapshot.payload.data()
-} as any));
+export const withDocumentId = <T>() => map((snapshot: Action<DocumentSnapshot<T>>) => {
+  const data = snapshot.payload.data();
+  return data ? ({ id: snapshot.payload.id, ...snapshot.payload.data() } as T) : null;
+});

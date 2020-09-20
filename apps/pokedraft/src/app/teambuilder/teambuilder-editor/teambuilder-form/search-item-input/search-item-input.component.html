@@ -13,6 +13,6 @@
   </pd-input>
 
   <div class="pd-teambuilder-move-input-tooltip" *ngIf="currentItem">
-    <translator3 [source]="currentItem.description"></translator3>
+    {{currentItem.description | translate | async}}
   </div>
 </div>
