@@ -112,7 +112,7 @@ export class Stat {
         return (this.stage === 0);
     }
 
-    update(level: number = 100): void {
+    update(level: number = this.allStats.getLevel()): void {
         const factor1 = Math.floor((2 * this.base + this.dvs.getValue() + Math.floor(this.evs.getValue() / 4)) * level / 100 + 5);
         this.setValue(Math.floor(factor1 * this.natureValue));
     }

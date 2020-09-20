@@ -89,7 +89,10 @@ export class TeambuilderPokemon {
 
   getLevel(): number { return this.level; }
 
-  setLevel(value: number = MAX_LEVEL): void { this.level = value; }
+  setLevel(value: number = MAX_LEVEL): void {
+    this.level = value;
+    this.stats.update(value);
+  }
 
   getHappiness(): number { return this.happiness; }
 

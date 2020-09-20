@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {
   SubscriptionContainer, TeambuilderLanguageService,
   TeambuilderPokemon, TeambuilderPokemonService, TeambuilderViewService,
@@ -11,7 +11,7 @@ import {of} from "rxjs";
   templateUrl: './teambuilder-form.component.html',
   styleUrls: ['./teambuilder-form.component.scss']
 })
-export class TeambuilderFormComponent implements OnInit, OnDestroy {
+export class TeambuilderFormComponent implements OnDestroy {
 
   pokemon: TeambuilderPokemon;
 
@@ -43,11 +43,15 @@ export class TeambuilderFormComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit() {
-  }
-
   ngOnDestroy() {
     this.subscriptions.unsubscribeAll();
+  }
+
+  setLevel(to: string): void {
+    const asNumber = Number(to);
+    if (typeof asNumber === 'number' && !Number.isNaN(asNumber) && asNumber > 0 && asNumber <= 100) {
+      this.pokemon.setLevel(asNumber)
+    }
   }
 
   resetName() {
