@@ -16,17 +16,19 @@
 
   <div class="pd-teambuilder-list-head-cell --tb-move-props-cell --action-cell"
        [translatableTitle2]="{ english: 'Power', german: 'Stärke' }"
-       (click)="sortByBasePower()">
+       (click)="moves.sort('basePower')">
     <translator3 [source]="{ english: 'Pow', german: 'Strk' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell"
-       [translatableTitle2]="{ english: 'Accuracy', german: 'Genauigkeit' }">
+  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell --action-cell"
+       [translatableTitle2]="{ english: 'Accuracy', german: 'Genauigkeit' }"
+       (click)="moves.sort('accuracy')">
     <translator3 [source]="{ english: 'Acc', german: 'Gen' }"></translator3>
   </div>
 
-  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell --tb-powerpoints-cell"
-       [translatableTitle2]="{ english: 'PowerPoints', german: 'Angriffspunkte' }">
+  <div class="pd-teambuilder-list-head-cell --tb-move-props-cell --tb-powerpoints-cell --action-cell"
+       [translatableTitle2]="{ english: 'PowerPoints', german: 'Angriffspunkte' }"
+       (click)="moves.sort('powerPoints')">
     <translator3 [source]="{ english: 'PP', german: 'AP' }"></translator3>
   </div>
 
@@ -104,7 +106,7 @@
         german: 'Attacken neu laden'
      }"
      *ngIf="!loadingMoves">
-  <img src="assets/icons/download.png">
+  <img src="assets/icons/download.png" alt="">
 </div>
 
 

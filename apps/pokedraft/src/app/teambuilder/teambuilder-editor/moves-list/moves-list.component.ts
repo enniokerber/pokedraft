@@ -77,10 +77,6 @@ export class MovesListComponent implements OnDestroy {
     this.moves.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
   }
 
-  sortByBasePower() {
-    this.moves.sort('basePower');
-  }
-
   getPokemonsMoves(pokemon: TeambuilderPokemon): IMove[] {
     return pokemon.getPossibleMoves()
       .map(moveId => this.tbStore.getMoveById(moveId))
