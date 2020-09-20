@@ -12,6 +12,7 @@ import {
 import { IPokedraftUser, LoadingState, PokedraftAuthService } from '@pokedraft/core';
 import { PopUpAnimation } from '@pokedraft/material';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pd-teambuilder-settings-bar',
@@ -39,7 +40,8 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
               private tbPokemon: TeambuilderPokemonService,
               private tbView: TeambuilderViewService,
               private tbApi: TeambuilderApiService,
-              private auth: PokedraftAuthService) {
+              private auth: PokedraftAuthService,
+              private router: Router) {
     this.languages = LanguagesWithLabels;
     this.tiers = testTiers;
     this.team = null;
@@ -57,6 +59,11 @@ export class TeambuilderSettingsBarComponent implements OnDestroy {
 
   updateLanguage(): void {
     this.tbLanguage.changeLanguage(this.language);
+  }
+
+  newTeam(): void {
+    this.tbPokemon.clearTeam();
+    this.router.navigateByUrl('teambuilder/editor');
   }
 
   save(): void {

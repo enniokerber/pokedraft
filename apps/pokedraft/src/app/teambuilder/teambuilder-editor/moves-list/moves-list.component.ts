@@ -48,7 +48,7 @@ export class MovesListComponent implements OnDestroy {
         .subscribe(pokemon => {
           this.scrollTop();
           this.moves.setEntities(this.getPokemonsMoves(pokemon));
-          this.moves.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name', false);
+          this.sortMovesByName();
           this.marker.reset();
         }),
       this.tbEvents.moveListEvents.search.changesNotEmpty$
@@ -73,8 +73,8 @@ export class MovesListComponent implements OnDestroy {
     this.tbPokemon.insertMove(move);
   }
 
-  sortByName() {
-    this.moves.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name');
+  sortMovesByName(toggleSortOrder: boolean = true) {
+    this.moves.sort(this.tbLanguage.getCurrentLanguageAsProp(), 'name', toggleSortOrder);
   }
 
   getPokemonsMoves(pokemon: TeambuilderPokemon): IMove[] {
