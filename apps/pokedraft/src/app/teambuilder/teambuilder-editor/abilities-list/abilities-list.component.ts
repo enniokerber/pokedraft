@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {
   IAbility,
   SubscriptionContainer,
@@ -15,7 +15,7 @@ import {debounceTime} from "rxjs/operators";
   templateUrl: './abilities-list.component.html',
   styleUrls: ['./abilities-list.component.scss']
 })
-export class AbilitiesListComponent implements OnInit, OnDestroy {
+export class AbilitiesListComponent implements OnDestroy {
 
   abilities: TeambuilderEntityCollection<IAbility>;
 
@@ -53,9 +53,6 @@ export class AbilitiesListComponent implements OnInit, OnDestroy {
         _ => this.tbPokemon.updateSelectedPokemonsAbility(this.marker.getMarkedEntity())
       )
     );
-  }
-
-  ngOnInit() {
   }
 
   ngOnDestroy(): void {

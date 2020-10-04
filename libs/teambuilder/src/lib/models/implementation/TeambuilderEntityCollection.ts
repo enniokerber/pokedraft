@@ -2,8 +2,8 @@ import {SortingDirection, SortingDirections} from "../types/SortingDirection";
 
 export class TeambuilderEntityCollection<Entity = any> {
 
-  private all:      Entity[];
-  private filtered: Entity[];
+  public  all:      Entity[];
+  public  filtered: Entity[];
   public  current:  Entity[];
 
   private sortingDirection: SortingDirection;
@@ -23,6 +23,8 @@ export class TeambuilderEntityCollection<Entity = any> {
   count(): number {
     return this.current.length;
   }
+
+  isEmpty(): boolean { return this.getAll().length === 0; }
 
   getByIndex(index: number): Entity {
     if (this.count() === 0 || index > this.count() - 1) return null;

@@ -64,10 +64,17 @@
 
 </div>
 
-<div class="pd-teambuilder-list-content" #pokemonListContainer>
-  <div *ngIf="(showTiers$ | async); then tierSeparatedList else noTiersList"></div>
+<div class="pd-container-row flex-align-center margin-top" *ngIf="pokemonLoadingState.loading$ | async">
+  <pd-loader>
+    <translator2 english="Loading Pokémon ..." german="Lade Pokémon ..."></translator2>
+  </pd-loader>
 </div>
 
+<div class="pd-teambuilder-list-content"
+     #pokemonListContainer
+     *ngIf="pokemon.all.length > 0">
+  <div *ngIf="(showTiers$ | async); then tierSeparatedList else noTiersList"></div>
+</div>
 
 <ng-template #tierSeparatedList>
   <div class="pd-teambuilder-list-sub-container"
@@ -97,3 +104,11 @@
     (onchoose)="choosePokemon($event)">
   </pokemon-list-row-container>
 </ng-template>
+
+<div class="pd-teambuilder-list-reload-button"
+     [translatableTitle2]="{
+        english: 'Reload Pokémon',
+        german: 'Pokémon neu laden'
+     }" (click)="loadPokemon()">
+  <img src="assets/icons/download.png" alt="">
+</div>

@@ -25,6 +25,7 @@
                 maxlength="15"
                 [(value)]="searchPokemon"
                 (click)="openPokemonList()"
+                (valueChange)="searchPokemonByName($event)"
                 (onblur)="resetName()">
         Pokémon
       </pd-input>

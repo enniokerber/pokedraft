@@ -1,8 +1,8 @@
 import {Component, OnDestroy} from '@angular/core';
 import {
-  SubscriptionContainer, TeambuilderLanguageService,
-  TeambuilderPokemon, TeambuilderPokemonService, TeambuilderViewService,
-} from "@pokedraft/teambuilder";
+  SubscriptionContainer, TeambuilderEventService, TeambuilderLanguageService,
+  TeambuilderPokemon, TeambuilderPokemonService, TeambuilderViewService
+} from '@pokedraft/teambuilder';
 import {filter, map, switchMap, tap} from "rxjs/operators";
 import {of} from "rxjs";
 
@@ -22,7 +22,8 @@ export class TeambuilderFormComponent implements OnDestroy {
 
   constructor(private tbPokemon: TeambuilderPokemonService,
               private tbView: TeambuilderViewService,
-              private tbLanguage: TeambuilderLanguageService) {
+              private tbLanguage: TeambuilderLanguageService,
+              private tbEvents: TeambuilderEventService) {
     this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.selectedPokemon.changes$
         .pipe(
@@ -56,6 +57,10 @@ export class TeambuilderFormComponent implements OnDestroy {
 
   resetName() {
     this.searchPokemon = this.currentPokemonString;
+  }
+
+  searchPokemonByName(pokemon: string): void {
+    this.tbEvents.pokemonListEvents.search.update(pokemon);
   }
 
   openPokemonList() {

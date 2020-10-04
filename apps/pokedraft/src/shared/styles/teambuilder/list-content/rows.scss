@@ -264,6 +264,7 @@ $reload-button-size: 26px;
   opacity: .75;
   transition: $transition;
   cursor: pointer;
+  outline: none;
   @include flex-center;
 
   &:hover {

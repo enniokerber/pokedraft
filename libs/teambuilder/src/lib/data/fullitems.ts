@@ -1,5144 +1,5144 @@
-{
+export const fullitems = {
   "1": {
     "id": 1,
-    "name": {
+      "name": {
       "english": "Master Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "The best Ball with the ultimate performance. It will catch any wild Pokemon.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "master-ball.png"
   },
   "2": {
     "id": 2,
-    "name": {
+      "name": {
       "english": "Ultra Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "An ultra-performance Ball that provides a higher catch rate than a Great Ball.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ultra-ball.png"
   },
   "3": {
     "id": 3,
-    "name": {
+      "name": {
       "english": "Great Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A high-performance Ball that provides a higher catch rate than a Poke Ball.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "great-ball.png"
   },
   "4": {
     "id": 4,
-    "name": {
+      "name": {
       "english": "Poke Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A device for catching wild Pokemon. It is designed as a capsule system.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "poke-ball.png"
   },
   "5": {
     "id": 5,
-    "name": {
+      "name": {
       "english": "Safari Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A special Poke Ball that is used only in the Safari Zone and Great Marsh.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "safari-ball.png"
   },
   "6": {
     "id": 6,
-    "name": {
+      "name": {
       "english": "Net Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that works especially well on Water- and Bug-type Pokemon.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "net-ball.png"
   },
   "7": {
     "id": 7,
-    "name": {
+      "name": {
       "english": "Dive Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that works especially well on Pokemon that live underwater.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dive-ball.png"
   },
   "8": {
     "id": 8,
-    "name": {
+      "name": {
       "english": "Nest Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that works especially well on weaker Pokemon in the wild.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "nest-ball.png"
   },
   "9": {
     "id": 9,
-    "name": {
+      "name": {
       "english": "Repeat Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that works well on Pokemon species that were previously caught.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "repeat-ball.png"
   },
   "10": {
     "id": 10,
-    "name": {
+      "name": {
       "english": "Timer Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that becomes better the more turns there are in a battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "timer-ball.png"
   },
   "11": {
     "id": 11,
-    "name": {
+      "name": {
       "english": "Luxury Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A comfortable Poke Ball that makes a caught wild Pokemon quickly grow friendly.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "luxury-ball.png"
   },
   "12": {
     "id": 12,
-    "name": {
+      "name": {
       "english": "Premier Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A rare Poke Ball that has been crafted to commemorate an event.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "premier-ball.png"
   },
   "13": {
     "id": 13,
-    "name": {
+      "name": {
       "english": "Dusk Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that makes it easier to catch wild Pokemon at night or in caves.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dusk-ball.png"
   },
   "14": {
     "id": 14,
-    "name": {
+      "name": {
       "english": "Heal Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A remedial Poke Ball that restores the caught Pokemon's HP and status problem.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "heal-ball.png"
   },
   "15": {
     "id": 15,
-    "name": {
+      "name": {
       "english": "Quick Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that provides a better catch rate at the start of a wild encounter.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "quick-ball.png"
   },
   "16": {
     "id": 16,
-    "name": {
+      "name": {
       "english": "Cherish Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A rare Poke Ball that has been crafted to commemorate an occasion.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "cherish-ball.png"
   },
   "34": {
     "id": 34,
-    "name": {
+      "name": {
       "english": "Energy Powder",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores 60 HP to one Pokemon.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "energy-powder.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "43": {
     "id": 43,
-    "name": {
+      "name": {
       "english": "Berry Juice",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores 20 HP when at 1/2 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "berry-juice.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "80": {
     "id": 80,
-    "name": {
+      "name": {
       "english": "Sun Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves certain Pokémon when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sun-stone.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "81": {
     "id": 81,
-    "name": {
+      "name": {
       "english": "Moon Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves certain Pokémon when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "moon-stone.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "82": {
     "id": 82,
-    "name": {
+      "name": {
       "english": "Fire Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves certain Pokémon when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fire-stone.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "83": {
     "id": 83,
-    "name": {
+      "name": {
       "english": "Thunder Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves certain Pokémon when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "thunder-stone.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "84": {
     "id": 84,
-    "name": {
+      "name": {
       "english": "Water Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves certain Pokémon when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "water-stone.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "85": {
     "id": 85,
-    "name": {
+      "name": {
       "english": "Leaf Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves certain Pokémon when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "leaf-stone.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "99": {
     "id": 99,
-    "name": {
+      "name": {
       "english": "Root Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Lileep.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "root-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "100": {
     "id": 100,
-    "name": {
+      "name": {
       "english": "Claw Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Anorith.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "claw-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "101": {
     "id": 101,
-    "name": {
+      "name": {
       "english": "Helix Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Omanyte.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "helix-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "102": {
     "id": 102,
-    "name": {
+      "name": {
       "english": "Dome Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Kabuto.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dome-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "103": {
     "id": 103,
-    "name": {
+      "name": {
       "english": "Old Amber",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Aerodactyl.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "old-amber.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "104": {
     "id": 104,
-    "name": {
+      "name": {
       "english": "Armor Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Shieldon.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "armor-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "105": {
     "id": 105,
-    "name": {
+      "name": {
       "english": "Skull Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Cranidos.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "skull-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "106": {
     "id": 106,
-    "name": {
+      "name": {
       "english": "Rare Bone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "No competitive use other than when used with Fling.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rare-bone.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "107": {
     "id": 107,
-    "name": {
+      "name": {
       "english": "Shiny Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Togetic into Togekiss, Roselia into Roserade, Minccino into Cinccino, and Floette into Florges when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "shiny-stone.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "108": {
     "id": 108,
-    "name": {
+      "name": {
       "english": "Dusk Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Murkrow into Honchkrow, Misdreavus into Mismagius, Lampent into Chandelure, and Doublade into Aegislash when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dusk-stone.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "109": {
     "id": 109,
-    "name": {
+      "name": {
       "english": "Dawn Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves male Kirlia into Gallade and female Snorunt into Froslass when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dawn-stone.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "110": {
     "id": 110,
-    "name": {
+      "name": {
       "english": "Oval Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Happiny into Chansey when held and leveled up during the day.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "oval-stone.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "112": {
     "id": 112,
-    "name": {
+      "name": {
       "english": "Griseous Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "griseous-orb.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "116": {
     "id": 116,
-    "name": {
+      "name": {
       "english": "Douse Drive",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Techno Blast is Water type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "douse-drive.png"
   },
   "117": {
     "id": 117,
-    "name": {
+      "name": {
       "english": "Shock Drive",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Techno Blast is Electric type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "shock-drive.png"
   },
   "118": {
     "id": 118,
-    "name": {
+      "name": {
       "english": "Burn Drive",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Techno Blast is Fire type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "burn-drive.png"
   },
   "119": {
     "id": 119,
-    "name": {
+      "name": {
       "english": "Chill Drive",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Techno Blast is Ice type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "chill-drive.png"
   },
   "135": {
     "id": 135,
-    "name": {
+      "name": {
       "english": "Adamant Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "adamant-orb.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "136": {
     "id": 136,
-    "name": {
+      "name": {
       "english": "Lustrous Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lustrous-orb.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "159": {
     "id": 159,
-    "name": {
+      "name": {
       "english": "Figy Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores 33% max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "figy-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Bug"
+          "type": "Bug"
       }
     },
     "popular": true
   },
   "160": {
     "id": 160,
-    "name": {
+      "name": {
       "english": "Wiki Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores 33% max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "wiki-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Rock"
+          "type": "Rock"
       }
     },
     "popular": true
   },
   "161": {
     "id": 161,
-    "name": {
+      "name": {
       "english": "Mago Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores 33% max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mago-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Ghost"
+          "type": "Ghost"
       }
     },
     "popular": true
   },
   "162": {
     "id": 162,
-    "name": {
+      "name": {
       "english": "Aguav Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores 33% max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "aguav-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Dragon"
+          "type": "Dragon"
       }
     },
     "popular": true
   },
   "163": {
     "id": 163,
-    "name": {
+      "name": {
       "english": "Iapapa Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores 33% max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "iapapa-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Dark"
+          "type": "Dark"
       }
     },
     "popular": true
   },
   "164": {
     "id": 164,
-    "name": {
+      "name": {
       "english": "Razz Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "razz-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Steel"
+          "type": "Steel"
       }
     }
   },
   "165": {
     "id": 165,
-    "name": {
+      "name": {
       "english": "Bluk Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "bluk-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Fire"
+          "type": "Fire"
       }
     }
   },
   "166": {
     "id": 166,
-    "name": {
+      "name": {
       "english": "Nanab Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "nanab-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Water"
+          "type": "Water"
       }
     }
   },
   "167": {
     "id": 167,
-    "name": {
+      "name": {
       "english": "Wepear Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "wepear-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Electric"
+          "type": "Electric"
       }
     }
   },
   "168": {
     "id": 168,
-    "name": {
+      "name": {
       "english": "Pinap Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "pinap-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Grass"
+          "type": "Grass"
       }
     }
   },
   "169": {
     "id": 169,
-    "name": {
+      "name": {
       "english": "Pomeg Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "pomeg-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Ice"
+          "type": "Ice"
       }
     }
   },
   "170": {
     "id": 170,
-    "name": {
+      "name": {
       "english": "Kelpsy Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "kelpsy-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Fighting"
+          "type": "Fighting"
       }
     }
   },
   "171": {
     "id": 171,
-    "name": {
+      "name": {
       "english": "Qualot Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "qualot-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Poison"
+          "type": "Poison"
       }
     }
   },
   "172": {
     "id": 172,
-    "name": {
+      "name": {
       "english": "Hondew Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "hondew-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Ground"
+          "type": "Ground"
       }
     }
   },
   "173": {
     "id": 173,
-    "name": {
+      "name": {
       "english": "Grepa Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "grepa-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Flying"
+          "type": "Flying"
       }
     }
   },
   "174": {
     "id": 174,
-    "name": {
+      "name": {
       "english": "Tamato Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "tamato-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Psychic"
+          "type": "Psychic"
       }
     }
   },
   "175": {
     "id": 175,
-    "name": {
+      "name": {
       "english": "Cornn Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "cornn-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Bug"
+          "type": "Bug"
       }
     }
   },
   "176": {
     "id": 176,
-    "name": {
+      "name": {
       "english": "Magost Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "magost-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Rock"
+          "type": "Rock"
       }
     }
   },
   "177": {
     "id": 177,
-    "name": {
+      "name": {
       "english": "Rabuta Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rabuta-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Ghost"
+          "type": "Ghost"
       }
     }
   },
   "178": {
     "id": 178,
-    "name": {
+      "name": {
       "english": "Nomel Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "nomel-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Dragon"
+          "type": "Dragon"
       }
     }
   },
   "179": {
     "id": 179,
-    "name": {
+      "name": {
       "english": "Spelon Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "spelon-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Dark"
+          "type": "Dark"
       }
     }
   },
   "180": {
     "id": 180,
-    "name": {
+      "name": {
       "english": "Pamtre Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "pamtre-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 90,
-        "type": "Steel"
+          "type": "Steel"
       }
     }
   },
   "181": {
     "id": 181,
-    "name": {
+      "name": {
       "english": "Watmel Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "watmel-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Fire"
+          "type": "Fire"
       }
     }
   },
   "182": {
     "id": 182,
-    "name": {
+      "name": {
       "english": "Durin Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "durin-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Water"
+          "type": "Water"
       }
     }
   },
   "183": {
     "id": 183,
-    "name": {
+      "name": {
       "english": "Belue Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "belue-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Electric"
+          "type": "Electric"
       }
     }
   },
   "184": {
     "id": 184,
-    "name": {
+      "name": {
       "english": "Occa Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Fire-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "occa-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Fire"
+          "type": "Fire"
       }
     }
   },
   "185": {
     "id": 185,
-    "name": {
+      "name": {
       "english": "Passho Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Water-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "passho-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Water"
+          "type": "Water"
       }
     }
   },
   "186": {
     "id": 186,
-    "name": {
+      "name": {
       "english": "Wacan Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Electric-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "wacan-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Electric"
+          "type": "Electric"
       }
     }
   },
   "187": {
     "id": 187,
-    "name": {
+      "name": {
       "english": "Rindo Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Grass-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rindo-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Grass"
+          "type": "Grass"
       }
     }
   },
   "188": {
     "id": 188,
-    "name": {
+      "name": {
       "english": "Yache Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Ice-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "yache-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Ice"
+          "type": "Ice"
       }
     }
   },
   "189": {
     "id": 189,
-    "name": {
+      "name": {
       "english": "Chople Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Fighting-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "chople-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Fighting"
+          "type": "Fighting"
       }
     }
   },
   "190": {
     "id": 190,
-    "name": {
+      "name": {
       "english": "Kebia Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Poison-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "kebia-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Poison"
+          "type": "Poison"
       }
     }
   },
   "191": {
     "id": 191,
-    "name": {
+      "name": {
       "english": "Shuca Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Ground-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "shuca-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Ground"
+          "type": "Ground"
       }
     }
   },
   "192": {
     "id": 192,
-    "name": {
+      "name": {
       "english": "Coba Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Flying-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "coba-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Flying"
+          "type": "Flying"
       }
     }
   },
   "193": {
     "id": 193,
-    "name": {
+      "name": {
       "english": "Payapa Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Psychic-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "payapa-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Psychic"
+          "type": "Psychic"
       }
     }
   },
   "194": {
     "id": 194,
-    "name": {
+      "name": {
       "english": "Tanga Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Bug-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "tanga-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Bug"
+          "type": "Bug"
       }
     }
   },
   "195": {
     "id": 195,
-    "name": {
+      "name": {
       "english": "Charti Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Rock-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "charti-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Rock"
+          "type": "Rock"
       }
     }
   },
   "196": {
     "id": 196,
-    "name": {
+      "name": {
       "english": "Kasib Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Ghost-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "kasib-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Ghost"
+          "type": "Ghost"
       }
     }
   },
   "197": {
     "id": 197,
-    "name": {
+      "name": {
       "english": "Haban Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Dragon-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "haban-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Dragon"
+          "type": "Dragon"
       }
     }
   },
   "198": {
     "id": 198,
-    "name": {
+      "name": {
       "english": "Colbur Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Dark-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "colbur-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Dark"
+          "type": "Dark"
       }
     }
   },
   "199": {
     "id": 199,
-    "name": {
+      "name": {
       "english": "Babiri Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Steel-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "babiri-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Steel"
+          "type": "Steel"
       }
     }
   },
   "200": {
     "id": 200,
-    "name": {
+      "name": {
       "english": "Chilan Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a Normal-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "chilan-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Normal"
+          "type": "Normal"
       }
     }
   },
   "201": {
     "id": 201,
-    "name": {
+      "name": {
       "english": "Liechi Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Attack by 1 stage when at 1/4 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "liechi-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Grass"
+          "type": "Grass"
       }
     }
   },
   "202": {
     "id": 202,
-    "name": {
+      "name": {
       "english": "Ganlon Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Defense by 1 stage when at 1/4 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ganlon-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Ice"
+          "type": "Ice"
       }
     }
   },
   "203": {
     "id": 203,
-    "name": {
+      "name": {
       "english": "Salac Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Speed by 1 stage when at 1/4 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "salac-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Fighting"
+          "type": "Fighting"
       }
     }
   },
   "204": {
     "id": 204,
-    "name": {
+      "name": {
       "english": "Petaya Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Sp. Atk by 1 stage when at 1/4 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "petaya-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Poison"
+          "type": "Poison"
       }
     }
   },
   "205": {
     "id": 205,
-    "name": {
+      "name": {
       "english": "Apicot Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "apicot-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Ground"
+          "type": "Ground"
       }
     }
   },
   "206": {
     "id": 206,
-    "name": {
+      "name": {
       "english": "Lansat Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder gains the Focus Energy effect when at 1/4 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lansat-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Flying"
+          "type": "Flying"
       }
     }
   },
   "207": {
     "id": 207,
-    "name": {
+      "name": {
       "english": "Starf Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "starf-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Psychic"
+          "type": "Psychic"
       }
     }
   },
   "208": {
     "id": 208,
-    "name": {
+      "name": {
       "english": "Enigma Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores 1/4 max HP after holder is hit by a supereffective move. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "enigma-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Bug"
+          "type": "Bug"
       }
     }
   },
   "209": {
     "id": 209,
-    "name": {
+      "name": {
       "english": "Micle Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's next move has 1.2x accuracy when at 1/4 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "micle-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Rock"
+          "type": "Rock"
       }
     }
   },
   "210": {
     "id": 210,
-    "name": {
+      "name": {
       "english": "Custap Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder moves first in its priority bracket when at 1/4 max HP or less. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "custap-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Ghost"
+          "type": "Ghost"
       }
     }
   },
   "211": {
     "id": 211,
-    "name": {
+      "name": {
       "english": "Jaboca Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder is hit by a physical move, attacker loses 1/8 of its max HP. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "jaboca-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Dragon"
+          "type": "Dragon"
       }
     }
   },
   "212": {
     "id": 212,
-    "name": {
+      "name": {
       "english": "Rowap Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder is hit by a special move, attacker loses 1/8 of its max HP. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rowap-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Dark"
+          "type": "Dark"
       }
     }
   },
   "213": {
     "id": 213,
-    "name": {
+      "name": {
       "english": "Bright Powder",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "The accuracy of attacks against the holder is 0.9x.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "bright-powder.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "214": {
     "id": 214,
-    "name": {
+      "name": {
       "english": "White Herb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Restores all lowered stat stages to 0 when one is less than 0. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "white-herb.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "215": {
     "id": 215,
-    "name": {
+      "name": {
       "english": "Macho Brace",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "macho-brace.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "217": {
     "id": 217,
-    "name": {
+      "name": {
       "english": "Quick Claw",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Each turn, holder has a 20% chance to move first in its priority bracket.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "quick-claw.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "219": {
     "id": 219,
-    "name": {
+      "name": {
       "english": "Mental Herb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mental-herb.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "220": {
     "id": 220,
-    "name": {
+      "name": {
       "english": "Choice Band",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Attack is 1.5x, but it can only select the first move it executes.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "choice-band.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "221": {
     "id": 221,
-    "name": {
+      "name": {
       "english": "King's Rock",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's attacks without a chance to flinch gain a 10% chance to flinch. Evolves Poliwhirl into Politoed and Slowpoke into Slowking when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "kings-rock.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "222": {
     "id": 222,
-    "name": {
+      "name": {
       "english": "SilverPowder",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Bug-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "silverpowder.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "225": {
     "id": 225,
-    "name": {
+      "name": {
       "english": "Soul Dew",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "soul-dew.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "226": {
     "id": 226,
-    "name": {
+      "name": {
       "english": "Deep Sea Tooth",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "deep-sea-tooth.png",
-    "flingBasePower": 90
+      "flingBasePower": 90
   },
   "227": {
     "id": 227,
-    "name": {
+      "name": {
       "english": "Deep Sea Scale",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Clamperl, its Sp. Def is doubled. Evolves Clamperl into Gorebyss when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "deep-sea-scale.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "230": {
     "id": 230,
-    "name": {
+      "name": {
       "english": "Focus Band",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder has a 10% chance to survive an attack that would KO it with 1 HP.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "focus-band.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "232": {
     "id": 232,
-    "name": {
+      "name": {
       "english": "Scope Lens",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's critical hit ratio is raised by 1 stage.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "scope-lens.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "233": {
     "id": 233,
-    "name": {
+      "name": {
       "english": "Metal Coat",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Steel-type attacks have 1.2x power. Evolves Onix into Steelix and Scyther into Scizor when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "metal-coat.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "234": {
     "id": 234,
-    "name": {
+      "name": {
       "english": "Leftovers",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "At the end of every turn, holder restores 1/16 of its max HP.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "leftovers.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "236": {
     "id": 236,
-    "name": {
+      "name": {
       "english": "Light Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Pikachu, its Attack and Sp. Atk are doubled.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "light-ball.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "237": {
     "id": 237,
-    "name": {
+      "name": {
       "english": "Soft Sand",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Ground-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "soft-sand.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "238": {
     "id": 238,
-    "name": {
+      "name": {
       "english": "Hard Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Rock-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "hard-stone.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "239": {
     "id": 239,
-    "name": {
+      "name": {
       "english": "Miracle Seed",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Grass-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "miracle-seed.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "240": {
     "id": 240,
-    "name": {
+      "name": {
       "english": "Black Glasses",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Dark-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "black-glasses.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "241": {
     "id": 241,
-    "name": {
+      "name": {
       "english": "Black Belt",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Fighting-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "black-belt.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "242": {
     "id": 242,
-    "name": {
+      "name": {
       "english": "Magnet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Electric-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "magnet.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "243": {
     "id": 243,
-    "name": {
+      "name": {
       "english": "Mystic Water",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Water-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mystic-water.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "244": {
     "id": 244,
-    "name": {
+      "name": {
       "english": "Sharp Beak",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Flying-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sharp-beak.png",
-    "flingBasePower": 50
+      "flingBasePower": 50
   },
   "245": {
     "id": 245,
-    "name": {
+      "name": {
       "english": "Poison Barb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Poison-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "poison-barb.png",
-    "flingBasePower": 70
+      "flingBasePower": 70
   },
   "246": {
     "id": 246,
-    "name": {
+      "name": {
       "english": "Never-Melt Ice",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Ice-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "never-melt-ice.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "247": {
     "id": 247,
-    "name": {
+      "name": {
       "english": "Spell Tag",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Ghost-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "spell-tag.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "248": {
     "id": 248,
-    "name": {
+      "name": {
       "english": "Twisted Spoon",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Psychic-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "twisted-spoon.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "249": {
     "id": 249,
-    "name": {
+      "name": {
       "english": "Charcoal",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Fire-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "charcoal.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "250": {
     "id": 250,
-    "name": {
+      "name": {
       "english": "Dragon Scale",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Seadra into Kingdra when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dragon-scale.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "252": {
     "id": 252,
-    "name": {
+      "name": {
       "english": "Up-Grade",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Porygon into Porygon2 when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "up-grade.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "253": {
     "id": 253,
-    "name": {
+      "name": {
       "english": "Shell Bell",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "shell-bell.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "254": {
     "id": 254,
-    "name": {
+      "name": {
       "english": "Sea Incense",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Water-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sea-incense.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "255": {
     "id": 255,
-    "name": {
+      "name": {
       "english": "Lax Incense",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "The accuracy of attacks against the holder is 0.9x.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lax-incense.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "256": {
     "id": 256,
-    "name": {
+      "name": {
       "english": "Lucky Punch",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Chansey, its critical hit ratio is raised by 2 stages.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lucky-punch.png",
-    "flingBasePower": 40
+      "flingBasePower": 40
   },
   "257": {
     "id": 257,
-    "name": {
+      "name": {
       "english": "Metal Powder",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Ditto that hasn't Transformed, its Defense is doubled.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "metal-powder.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "258": {
     "id": 258,
-    "name": {
+      "name": {
       "english": "Thick Club",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Cubone or a Marowak, its Attack is doubled.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "thick-club.png",
-    "flingBasePower": 90
+      "flingBasePower": 90
   },
   "259": {
     "id": 259,
-    "name": {
+      "name": {
       "english": "Stick",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Farfetch’d, its critical hit ratio is raised by 2 stages.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "stick.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "265": {
     "id": 265,
-    "name": {
+      "name": {
       "english": "Wide Lens",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "The accuracy of attacks by the holder is 1.1x.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "wide-lens.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "266": {
     "id": 266,
-    "name": {
+      "name": {
       "english": "Muscle Band",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's physical attacks have 1.1x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "muscle-band.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "267": {
     "id": 267,
-    "name": {
+      "name": {
       "english": "Wise Glasses",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's special attacks have 1.1x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "wise-glasses.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "268": {
     "id": 268,
-    "name": {
+      "name": {
       "english": "Expert Belt",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's attacks that are super effective against the target do 1.2x damage.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "expert-belt.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "269": {
     "id": 269,
-    "name": {
+      "name": {
       "english": "Light Clay",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "light-clay.png",
-    "flingBasePower": 30,
-    "popular":  true
+      "flingBasePower": 30,
+      "popular":  true
   },
   "270": {
     "id": 270,
-    "name": {
+      "name": {
       "english": "Life Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "life-orb.png",
-    "flingBasePower": 30,
-    "popular": true
+      "flingBasePower": 30,
+      "popular": true
   },
   "271": {
     "id": 271,
-    "name": {
+      "name": {
       "english": "Power Herb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's two-turn moves complete in one turn (except Sky Drop). Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "power-herb.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "272": {
     "id": 272,
-    "name": {
+      "name": {
       "english": "Toxic Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "At the end of every turn, this item attempts to badly poison the holder.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "toxic-orb.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "273": {
     "id": 273,
-    "name": {
+      "name": {
       "english": "Flame Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "At the end of every turn, this item attempts to burn the holder.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "flame-orb.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "274": {
     "id": 274,
-    "name": {
+      "name": {
       "english": "Quick Powder",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Ditto that hasn't Transformed, its Speed is doubled.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "quick-powder.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "275": {
     "id": 275,
-    "name": {
+      "name": {
       "english": "Focus Sash",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "focus-sash.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "276": {
     "id": 276,
-    "name": {
+      "name": {
       "english": "Zoom Lens",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "The accuracy of attacks by the holder is 1.2x if it moves after its target.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "zoom-lens.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "277": {
     "id": 277,
-    "name": {
+      "name": {
       "english": "Metronome",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "metronome.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "278": {
     "id": 278,
-    "name": {
+      "name": {
       "english": "Iron Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "iron-ball.png",
-    "flingBasePower": 130
+      "flingBasePower": 130
   },
   "279": {
     "id": 279,
-    "name": {
+      "name": {
       "english": "Lagging Tail",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder moves last in its priority bracket.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lagging-tail.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "280": {
     "id": 280,
-    "name": {
+      "name": {
       "english": "Destiny Knot",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder becomes infatuated, the other Pokemon also becomes infatuated.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "destiny-knot.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "281": {
     "id": 281,
-    "name": {
+      "name": {
       "english": "Black Sludge",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Each turn, if holder is a Poison type, restores 1/16 max HP; loses 1/8 if not.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "black-sludge.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "282": {
     "id": 282,
-    "name": {
+      "name": {
       "english": "Icy Rock",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's use of Hail lasts 8 turns instead of 5.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "icy-rock.png",
-    "flingBasePower": 40
+      "flingBasePower": 40
   },
   "283": {
     "id": 283,
-    "name": {
+      "name": {
       "english": "Smooth Rock",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's use of Sandstorm lasts 8 turns instead of 5.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "smooth-rock.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "284": {
     "id": 284,
-    "name": {
+      "name": {
       "english": "Heat Rock",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's use of Sunny Day lasts 8 turns instead of 5.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "heat-rock.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "285": {
     "id": 285,
-    "name": {
+      "name": {
       "english": "Damp Rock",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's use of Rain Dance lasts 8 turns instead of 5.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "damp-rock.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "286": {
     "id": 286,
-    "name": {
+      "name": {
       "english": "Grip Claw",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's partial-trapping moves always last 7 turns.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "grip-claw.png",
-    "flingBasePower": 90
+      "flingBasePower": 90
   },
   "287": {
     "id": 287,
-    "name": {
+      "name": {
       "english": "Choice Scarf",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Speed is 1.5x, but it can only select the first move it executes.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "choice-scarf.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "288": {
     "id": 288,
-    "name": {
+      "name": {
       "english": "Sticky Barb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Each turn, holder loses 1/8 max HP. An attacker making contact can receive it.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sticky-barb.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "289": {
     "id": 289,
-    "name": {
+      "name": {
       "english": "Power Bracer",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "power-bracer.png",
-    "flingBasePower": 70
+      "flingBasePower": 70
   },
   "290": {
     "id": 290,
-    "name": {
+      "name": {
       "english": "Power Belt",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "power-belt.png",
-    "flingBasePower": 70
+      "flingBasePower": 70
   },
   "291": {
     "id": 291,
-    "name": {
+      "name": {
       "english": "Power Lens",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "power-lens.png",
-    "flingBasePower": 70
+      "flingBasePower": 70
   },
   "292": {
     "id": 292,
-    "name": {
+      "name": {
       "english": "Power Band",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "power-band.png",
-    "flingBasePower": 70
+      "flingBasePower": 70
   },
   "293": {
     "id": 293,
-    "name": {
+      "name": {
       "english": "Power Anklet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "power-anklet.png",
-    "flingBasePower": 70
+      "flingBasePower": 70
   },
   "294": {
     "id": 294,
-    "name": {
+      "name": {
       "english": "Power Weight",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "power-weight.png",
-    "flingBasePower": 70
+      "flingBasePower": 70
   },
   "295": {
     "id": 295,
-    "name": {
+      "name": {
       "english": "Shed Shell",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder may switch out even when trapped by another Pokemon, or by Ingrain.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "shed-shell.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "296": {
     "id": 296,
-    "name": {
+      "name": {
       "english": "Big Root",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "big-root.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "297": {
     "id": 297,
-    "name": {
+      "name": {
       "english": "Choice Specs",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Sp. Atk is 1.5x, but it can only select the first move it executes.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "choice-specs.png",
-    "flingBasePower": 10,
-    "popular": true
+      "flingBasePower": 10,
+      "popular": true
   },
   "298": {
     "id": 298,
-    "name": {
+      "name": {
       "english": "Flame Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Fire-type attacks have 1.2x power. Judgment is Fire type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "flame-plate.png"
   },
   "299": {
     "id": 299,
-    "name": {
+      "name": {
       "english": "Splash Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Water-type attacks have 1.2x power. Judgment is Water type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "splash-plate.png"
   },
   "300": {
     "id": 300,
-    "name": {
+      "name": {
       "english": "Zap Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Electric-type attacks have 1.2x power. Judgment is Electric type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "zap-plate.png"
   },
   "301": {
     "id": 301,
-    "name": {
+      "name": {
       "english": "Meadow Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Grass-type attacks have 1.2x power. Judgment is Grass type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "meadow-plate.png"
   },
   "302": {
     "id": 302,
-    "name": {
+      "name": {
       "english": "Icicle Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Ice-type attacks have 1.2x power. Judgment is Ice type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "icicle-plate.png"
   },
   "303": {
     "id": 303,
-    "name": {
+      "name": {
       "english": "Fist Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Fighting-type attacks have 1.2x power. Judgment is Fighting type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fist-plate.png"
   },
   "304": {
     "id": 304,
-    "name": {
+      "name": {
       "english": "Toxic Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Poison-type attacks have 1.2x power. Judgment is Poison type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "toxic-plate.png"
   },
   "305": {
     "id": 305,
-    "name": {
+      "name": {
       "english": "Earth Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Ground-type attacks have 1.2x power. Judgment is Ground type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "earth-plate.png"
   },
   "306": {
     "id": 306,
-    "name": {
+      "name": {
       "english": "Sky Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Flying-type attacks have 1.2x power. Judgment is Flying type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sky-plate.png"
   },
   "307": {
     "id": 307,
-    "name": {
+      "name": {
       "english": "Mind Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Psychic-type attacks have 1.2x power. Judgment is Psychic type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mind-plate.png"
   },
   "308": {
     "id": 308,
-    "name": {
+      "name": {
       "english": "Insect Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Bug-type attacks have 1.2x power. Judgment is Bug type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "insect-plate.png"
   },
   "309": {
     "id": 309,
-    "name": {
+      "name": {
       "english": "Stone Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Rock-type attacks have 1.2x power. Judgment is Rock type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "stone-plate.png"
   },
   "310": {
     "id": 310,
-    "name": {
+      "name": {
       "english": "Spooky Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Ghost-type attacks have 1.2x power. Judgment is Ghost type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "spooky-plate.png"
   },
   "311": {
     "id": 311,
-    "name": {
+      "name": {
       "english": "Draco Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Dragon-type attacks have 1.2x power. Judgment is Dragon type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "draco-plate.png"
   },
   "312": {
     "id": 312,
-    "name": {
+      "name": {
       "english": "Dread Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Dark-type attacks have 1.2x power. Judgment is Dark type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dread-plate.png"
   },
   "313": {
     "id": 313,
-    "name": {
+      "name": {
       "english": "Iron Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Steel-type attacks have 1.2x power. Judgment is Steel type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "iron-plate.png"
   },
   "314": {
     "id": 314,
-    "name": {
+      "name": {
       "english": "Odd Incense",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Psychic-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "odd-incense.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "315": {
     "id": 315,
-    "name": {
+      "name": {
       "english": "Rock Incense",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Rock-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rock-incense.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "316": {
     "id": 316,
-    "name": {
+      "name": {
       "english": "Full Incense",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder moves last in its priority bracket.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "full-incense.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "317": {
     "id": 317,
-    "name": {
+      "name": {
       "english": "Wave Incense",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Water-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "wave-incense.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "318": {
     "id": 318,
-    "name": {
+      "name": {
       "english": "Rose Incense",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Grass-type attacks have 1.2x power.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rose-incense.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "321": {
     "id": 321,
-    "name": {
+      "name": {
       "english": "Protector",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Rhydon into Rhyperior when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "protector.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "322": {
     "id": 322,
-    "name": {
+      "name": {
       "english": "Electirizer",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Electabuzz into Electivire when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "electirizer.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "323": {
     "id": 323,
-    "name": {
+      "name": {
       "english": "Magmarizer",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Magmar into Magmortar when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "magmarizer.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "324": {
     "id": 324,
-    "name": {
+      "name": {
       "english": "Dubious Disc",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Porygon2 into Porygon-Z when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dubious-disc.png",
-    "flingBasePower": 50
+      "flingBasePower": 50
   },
   "325": {
     "id": 325,
-    "name": {
+      "name": {
       "english": "Reaper Cloth",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Dusclops into Dusknoir when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "reaper-cloth.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "326": {
     "id": 326,
-    "name": {
+      "name": {
       "english": "Razor Claw",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's critical hit ratio is raised by 1 stage. Evolves Sneasel into Weavile when held and leveled up during the night.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "razor-claw.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "327": {
     "id": 327,
-    "name": {
+      "name": {
       "english": "Razor Fang",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's attacks without a chance to flinch gain a 10% chance to flinch. Evolves Gligar into Gliscor when held and leveled up during the night.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "razor-fang.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "492": {
     "id": 492,
-    "name": {
+      "name": {
       "english": "Fast Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that makes it easier to catch Pokemon which are quick to run away.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fast-ball.png"
   },
   "493": {
     "id": 493,
-    "name": {
+      "name": {
       "english": "Level Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball for catching Pokemon that are a lower level than your own.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "level-ball.png"
   },
   "494": {
     "id": 494,
-    "name": {
+      "name": {
       "english": "Lure Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball for catching Pokemon hooked by a Rod when fishing.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lure-ball.png"
   },
   "495": {
     "id": 495,
-    "name": {
+      "name": {
       "english": "Heavy Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball for catching very heavy Pokemon.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "heavy-ball.png"
   },
   "496": {
     "id": 496,
-    "name": {
+      "name": {
       "english": "Love Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Poke Ball for catching Pokemon that are the opposite gender of your Pokemon.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "love-ball.png"
   },
   "497": {
     "id": 497,
-    "name": {
+      "name": {
       "english": "Friend Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that makes caught Pokemon more friendly.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "friend-ball.png"
   },
   "498": {
     "id": 498,
-    "name": {
+      "name": {
       "english": "Moon Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball for catching Pokemon that evolve using the Moon Stone.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "moon-ball.png"
   },
   "499": {
     "id": 499,
-    "name": {
+      "name": {
       "english": "Sport Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A special Poke Ball for the Bug-Catching Contest.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sport-ball.png"
   },
   "500": {
     "id": 500,
-    "name": {
+      "name": {
       "english": "Park Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A special Poke Ball for the Pal Park.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "park-ball.png"
   },
   "534": {
     "id": 534,
-    "name": {
+      "name": {
       "english": "Red Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Groudon, this item triggers its Primal Reversion in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "red-orb.png"
   },
   "535": {
     "id": 535,
-    "name": {
+      "name": {
       "english": "Blue Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Kyogre, this item triggers its Primal Reversion in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "blue-orb.png"
   },
   "537": {
     "id": 537,
-    "name": {
+      "name": {
       "english": "Prism Scale",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Feebas into Milotic when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "prism-scale.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "538": {
     "id": 538,
-    "name": {
+      "name": {
       "english": "Eviolite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder's species can evolve, its Defense and Sp. Def are 1.5x.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "eviolite.png",
-    "flingBasePower": 40,
-    "popular": true
+      "flingBasePower": 40,
+      "popular": true
   },
   "539": {
     "id": 539,
-    "name": {
+      "name": {
       "english": "Float Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's weight is halved.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "float-stone.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "540": {
     "id": 540,
-    "name": {
+      "name": {
       "english": "Rocky Helmet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder is hit by a contact move, the attacker loses 1/6 of its max HP.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rocky-helmet.png",
-    "flingBasePower": 60,
-    "popular": true
+      "flingBasePower": 60,
+      "popular": true
   },
   "541": {
     "id": 541,
-    "name": {
+      "name": {
       "english": "Air Balloon",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder is immune to Ground-type attacks. Pops when holder is hit.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "air-balloon.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "542": {
     "id": 542,
-    "name": {
+      "name": {
       "english": "Red Card",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder survives a hit, attacker is forced to switch to a random ally. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "red-card.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "543": {
     "id": 543,
-    "name": {
+      "name": {
       "english": "Ring Target",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "The holder's type immunities granted solely by its typing are negated.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ring-target.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "544": {
     "id": 544,
-    "name": {
+      "name": {
       "english": "Binding Band",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "binding-band.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "545": {
     "id": 545,
-    "name": {
+      "name": {
       "english": "Absorb Bulb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Sp. Atk by 1 stage if hit by a Water-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "absorb-bulb.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "546": {
     "id": 546,
-    "name": {
+      "name": {
       "english": "Cell Battery",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Attack by 1 if hit by an Electric-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "cell-battery.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "547": {
     "id": 547,
-    "name": {
+      "name": {
       "english": "Eject Button",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder survives a hit, it immediately switches out to a chosen ally. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "eject-button.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "548": {
     "id": 548,
-    "name": {
+      "name": {
       "english": "Fire Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Fire-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fire-gem.png"
   },
   "549": {
     "id": 549,
-    "name": {
+      "name": {
       "english": "Water Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Water-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "water-gem.png"
   },
   "550": {
     "id": 550,
-    "name": {
+      "name": {
       "english": "Electric Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Electric-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "electric-gem.png"
   },
   "551": {
     "id": 551,
-    "name": {
+      "name": {
       "english": "Grass Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Grass-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "grass-gem.png"
   },
   "552": {
     "id": 552,
-    "name": {
+      "name": {
       "english": "Ice Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Ice-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ice-gem.png"
   },
   "553": {
     "id": 553,
-    "name": {
+      "name": {
       "english": "Fighting Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Fighting-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fighting-gem.png"
   },
   "554": {
     "id": 554,
-    "name": {
+      "name": {
       "english": "Poison Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Poison-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "poison-gem.png"
   },
   "555": {
     "id": 555,
-    "name": {
+      "name": {
       "english": "Ground Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Ground-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ground-gem.png"
   },
   "556": {
     "id": 556,
-    "name": {
+      "name": {
       "english": "Flying Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Flying-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "flying-gem.png"
   },
   "557": {
     "id": 557,
-    "name": {
+      "name": {
       "english": "Psychic Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Psychic-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "psychic-gem.png"
   },
   "558": {
     "id": 558,
-    "name": {
+      "name": {
       "english": "Bug Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Bug-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "bug-gem.png"
   },
   "559": {
     "id": 559,
-    "name": {
+      "name": {
       "english": "Rock Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Rock-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rock-gem.png"
   },
   "560": {
     "id": 560,
-    "name": {
+      "name": {
       "english": "Ghost Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Ghost-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ghost-gem.png"
   },
   "561": {
     "id": 561,
-    "name": {
+      "name": {
       "english": "Dragon Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Dragon-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dragon-gem.png"
   },
   "562": {
     "id": 562,
-    "name": {
+      "name": {
       "english": "Dark Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Dark-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dark-gem.png"
   },
   "563": {
     "id": 563,
-    "name": {
+      "name": {
       "english": "Steel Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Steel-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "steel-gem.png"
   },
   "564": {
     "id": 564,
-    "name": {
+      "name": {
       "english": "Normal Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Normal-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "normal-gem.png"
   },
   "572": {
     "id": 572,
-    "name": {
+      "name": {
       "english": "Cover Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Tirtouga.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "cover-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "573": {
     "id": 573,
-    "name": {
+      "name": {
       "english": "Plume Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Archen.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "plume-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "576": {
     "id": 576,
-    "name": {
+      "name": {
       "english": "Dream Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dream-ball.png"
   },
   "639": {
     "id": 639,
-    "name": {
+      "name": {
       "english": "Weakness Policy",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "weakness-policy.png",
-    "flingBasePower": 80,
-    "popular": true
+      "flingBasePower": 80,
+      "popular": true
   },
   "640": {
     "id": 640,
-    "name": {
+      "name": {
       "english": "Assault Vest",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Sp. Def is 1.5x, but it can only select damaging moves.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "assault-vest.png",
-    "flingBasePower": 80,
-    "popular": true
+      "flingBasePower": 80,
+      "popular": true
   },
   "644": {
     "id": 644,
-    "name": {
+      "name": {
       "english": "Pixie Plate",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Fairy-type attacks have 1.2x power. Judgment is Fairy type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "pixie-plate.png"
   },
   "646": {
     "id": 646,
-    "name": {
+      "name": {
       "english": "Whipped Dream",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Swirlix into Slurpuff when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "whipped-dream.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "647": {
     "id": 647,
-    "name": {
+      "name": {
       "english": "Sachet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Spritzee into Aromatisse when traded.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sachet.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "648": {
     "id": 648,
-    "name": {
+      "name": {
       "english": "Luminous Moss",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Sp. Def by 1 stage if hit by a Water-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "luminous-moss.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "649": {
     "id": 649,
-    "name": {
+      "name": {
       "english": "Snowball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Attack by 1 if hit by an Ice-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "snowball.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "650": {
     "id": 650,
-    "name": {
+      "name": {
       "english": "Safety Goggles",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder is immune to powder moves and damage from Sandstorm or Hail.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "safety-goggles.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "656": {
     "id": 656,
-    "name": {
+      "name": {
       "english": "Gengarite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Gengar, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "gengarite.png"
   },
   "657": {
     "id": 657,
-    "name": {
+      "name": {
       "english": "Gardevoirite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Gardevoir, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "gardevoirite.png"
   },
   "658": {
     "id": 658,
-    "name": {
+      "name": {
       "english": "Ampharosite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Ampharos, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ampharosite.png"
   },
   "659": {
     "id": 659,
-    "name": {
+      "name": {
       "english": "Venusaurite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Venusaur, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "venusaurite.png"
   },
   "660": {
     "id": 660,
-    "name": {
+      "name": {
       "english": "Charizardite X",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Charizard, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "charizardite-x.png"
   },
   "661": {
     "id": 661,
-    "name": {
+      "name": {
       "english": "Blastoisinite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Blastoise, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "blastoisinite.png"
   },
   "662": {
     "id": 662,
-    "name": {
+      "name": {
       "english": "Mewtwonite X",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Mewtwo, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mewtwonite-x.png"
   },
   "663": {
     "id": 663,
-    "name": {
+      "name": {
       "english": "Mewtwonite Y",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Mewtwo, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mewtwonite-y.png"
   },
   "664": {
     "id": 664,
-    "name": {
+      "name": {
       "english": "Blazikenite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Blaziken, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "blazikenite.png"
   },
   "665": {
     "id": 665,
-    "name": {
+      "name": {
       "english": "Medichamite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Medicham, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "medichamite.png"
   },
   "666": {
     "id": 666,
-    "name": {
+      "name": {
       "english": "Houndoominite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Houndoom, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "houndoominite.png"
   },
   "667": {
     "id": 667,
-    "name": {
+      "name": {
       "english": "Aggronite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Aggron, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "aggronite.png"
   },
   "668": {
     "id": 668,
-    "name": {
+      "name": {
       "english": "Banettite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Banette, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "banettite.png"
   },
   "669": {
     "id": 669,
-    "name": {
+      "name": {
       "english": "Tyranitarite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Tyranitar, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "tyranitarite.png"
   },
   "670": {
     "id": 670,
-    "name": {
+      "name": {
       "english": "Scizorite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Scizor, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "scizorite.png"
   },
   "671": {
     "id": 671,
-    "name": {
+      "name": {
       "english": "Pinsirite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Pinsir, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "pinsirite.png"
   },
   "672": {
     "id": 672,
-    "name": {
+      "name": {
       "english": "Aerodactylite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Aerodactyl, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "aerodactylite.png"
   },
   "673": {
     "id": 673,
-    "name": {
+      "name": {
       "english": "Lucarionite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Lucario, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lucarionite.png"
   },
   "674": {
     "id": 674,
-    "name": {
+      "name": {
       "english": "Abomasite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Abomasnow, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "abomasite.png"
   },
   "675": {
     "id": 675,
-    "name": {
+      "name": {
       "english": "Kangaskhanite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Kangaskhan, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "kangaskhanite.png"
   },
   "676": {
     "id": 676,
-    "name": {
+      "name": {
       "english": "Gyaradosite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Gyarados, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "gyaradosite.png"
   },
   "677": {
     "id": 677,
-    "name": {
+      "name": {
       "english": "Absolite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Absol, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "absolite.png"
   },
   "678": {
     "id": 678,
-    "name": {
+      "name": {
       "english": "Charizardite Y",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Charizard, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "charizardite-y.png"
   },
   "679": {
     "id": 679,
-    "name": {
+      "name": {
       "english": "Alakazite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Alakazam, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "alakazite.png"
   },
   "680": {
     "id": 680,
-    "name": {
+      "name": {
       "english": "Heracronite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Heracross, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "heracronite.png"
   },
   "681": {
     "id": 681,
-    "name": {
+      "name": {
       "english": "Mawilite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Mawile, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mawilite.png"
   },
   "682": {
     "id": 682,
-    "name": {
+      "name": {
       "english": "Manectite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Manectric, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "manectite.png"
   },
   "683": {
     "id": 683,
-    "name": {
+      "name": {
       "english": "Garchompite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Garchomp, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "garchompite.png"
   },
   "684": {
     "id": 684,
-    "name": {
+      "name": {
       "english": "Latiasite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Latias, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "latiasite.png"
   },
   "685": {
     "id": 685,
-    "name": {
+      "name": {
       "english": "Latiosite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Latios, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "latiosite.png"
   },
   "686": {
     "id": 686,
-    "name": {
+      "name": {
       "english": "Roseli Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Halves damage taken from a supereffective Fairy-type attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "roseli-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 80,
-        "type": "Fairy"
+          "type": "Fairy"
       }
     }
   },
   "687": {
     "id": 687,
-    "name": {
+      "name": {
       "english": "Kee Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Defense by 1 stage after it is hit by a physical attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "kee-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Fairy"
+          "type": "Fairy"
       }
     }
   },
   "688": {
     "id": 688,
-    "name": {
+      "name": {
       "english": "Maranga Berry",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Sp. Def by 1 stage after it is hit by a special attack. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "maranga-berry.png",
-    "berry": {
+      "berry": {
       "naturalGift": {
         "basePower": 100,
-        "type": "Dark"
+          "type": "Dark"
       }
     }
   },
   "710": {
     "id": 710,
-    "name": {
+      "name": {
       "english": "Jaw Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Tyrunt.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "jaw-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "711": {
     "id": 711,
-    "name": {
+      "name": {
       "english": "Sail Fossil",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can be revived into Amaura.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sail-fossil.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "715": {
     "id": 715,
-    "name": {
+      "name": {
       "english": "Fairy Gem",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's first successful Fairy-type attack will have 1.3x power. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fairy-gem.png"
   },
   "752": {
     "id": 752,
-    "name": {
+      "name": {
       "english": "Swampertite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Swampert, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "swampertite.png"
   },
   "753": {
     "id": 753,
-    "name": {
+      "name": {
       "english": "Sceptilite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Sceptile, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sceptilite.png"
   },
   "754": {
     "id": 754,
-    "name": {
+      "name": {
       "english": "Sablenite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Sableye, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sablenite.png"
   },
   "755": {
     "id": 755,
-    "name": {
+      "name": {
       "english": "Altarianite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Altaria, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "altarianite.png"
   },
   "756": {
     "id": 756,
-    "name": {
+      "name": {
       "english": "Galladite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Gallade, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "galladite.png"
   },
   "757": {
     "id": 757,
-    "name": {
+      "name": {
       "english": "Audinite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Audino, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "audinite.png"
   },
   "758": {
     "id": 758,
-    "name": {
+      "name": {
       "english": "Metagrossite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Metagross, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "metagrossite.png"
   },
   "759": {
     "id": 759,
-    "name": {
+      "name": {
       "english": "Sharpedonite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Sharpedo, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sharpedonite.png"
   },
   "760": {
     "id": 760,
-    "name": {
+      "name": {
       "english": "Slowbronite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Slowbro, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "slowbronite.png"
   },
   "761": {
     "id": 761,
-    "name": {
+      "name": {
       "english": "Steelixite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Steelix, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "steelixite.png"
   },
   "762": {
     "id": 762,
-    "name": {
+      "name": {
       "english": "Pidgeotite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Pidgeot, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "pidgeotite.png"
   },
   "763": {
     "id": 763,
-    "name": {
+      "name": {
       "english": "Glalitite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Glalie, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "glalitite.png"
   },
   "764": {
     "id": 764,
-    "name": {
+      "name": {
       "english": "Diancite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Diancie, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "diancite.png"
   },
   "767": {
     "id": 767,
-    "name": {
+      "name": {
       "english": "Cameruptite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Camerupt, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "cameruptite.png"
   },
   "768": {
     "id": 768,
-    "name": {
+      "name": {
       "english": "Lopunnite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Lopunny, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lopunnite.png"
   },
   "769": {
     "id": 769,
-    "name": {
+      "name": {
       "english": "Salamencite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Salamence, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "salamencite.png"
   },
   "770": {
     "id": 770,
-    "name": {
+      "name": {
       "english": "Beedrillite",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Beedrill, this item allows it to Mega Evolve in battle.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "beedrillite.png"
   },
   "776": {
     "id": 776,
-    "name": {
+      "name": {
       "english": "Normalium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Normal move, this item allows it to use a Normal Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "normalium-z.png"
   },
   "777": {
     "id": 777,
-    "name": {
+      "name": {
       "english": "Firium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Fire move, this item allows it to use a Fire Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "firium-z.png"
   },
   "778": {
     "id": 778,
-    "name": {
+      "name": {
       "english": "Waterium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Water move, this item allows it to use a Water Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "waterium-z.png"
   },
   "779": {
     "id": 779,
-    "name": {
+      "name": {
       "english": "Electrium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has an Electric move, this item allows it to use an Electric Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "electrium-z.png"
   },
   "780": {
     "id": 780,
-    "name": {
+      "name": {
       "english": "Grassium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Grass move, this item allows it to use a Grass Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "grassium-z.png"
   },
   "781": {
     "id": 781,
-    "name": {
+      "name": {
       "english": "Icium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has an Ice move, this item allows it to use an Ice Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "icium-z.png"
   },
   "782": {
     "id": 782,
-    "name": {
+      "name": {
       "english": "Fightinium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Fighting move, this item allows it to use a Fighting Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fightinium-z.png"
   },
   "783": {
     "id": 783,
-    "name": {
+      "name": {
       "english": "Poisonium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Poison move, this item allows it to use a Poison Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "poisonium-z.png"
   },
   "784": {
     "id": 784,
-    "name": {
+      "name": {
       "english": "Groundium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Ground move, this item allows it to use a Ground Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "groundium-z.png"
   },
   "785": {
     "id": 785,
-    "name": {
+      "name": {
       "english": "Flyinium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Flying move, this item allows it to use a Flying Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "flyinium-z.png"
   },
   "786": {
     "id": 786,
-    "name": {
+      "name": {
       "english": "Psychium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Psychic move, this item allows it to use a Psychic Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "psychium-z.png"
   },
   "787": {
     "id": 787,
-    "name": {
+      "name": {
       "english": "Buginium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Bug move, this item allows it to use a Bug Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "buginium-z.png"
   },
   "788": {
     "id": 788,
-    "name": {
+      "name": {
       "english": "Rockium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Rock move, this item allows it to use a Rock Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rockium-z.png"
   },
   "789": {
     "id": 789,
-    "name": {
+      "name": {
       "english": "Ghostium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Ghost move, this item allows it to use a Ghost Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ghostium-z.png"
   },
   "790": {
     "id": 790,
-    "name": {
+      "name": {
       "english": "Dragonium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Dragon move, this item allows it to use a Dragon Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dragonium-z.png"
   },
   "791": {
     "id": 791,
-    "name": {
+      "name": {
       "english": "Darkinium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Dark move, this item allows it to use a Dark Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "darkinium-z.png"
   },
   "792": {
     "id": 792,
-    "name": {
+      "name": {
       "english": "Steelium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Steel move, this item allows it to use a Steel Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "steelium-z.png"
   },
   "793": {
     "id": 793,
-    "name": {
+      "name": {
       "english": "Fairium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If holder has a Fairy move, this item allows it to use a Fairy Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fairium-z.png"
   },
   "794": {
     "id": 794,
-    "name": {
+      "name": {
       "english": "Pikanium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Pikachu with Volt Tackle, it can use Catastropika.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "pikanium-z.png"
   },
   "795": {
     "id": 795,
-    "name": {
+      "name": {
       "english": "Bottle Cap",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Used for Hyper Training. One of a Pokemon's stats is calculated with an IV of 31.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "bottle-cap.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "796": {
     "id": 796,
-    "name": {
+      "name": {
       "english": "Gold Bottle Cap",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Used for Hyper Training. All of a Pokemon's stats are calculated with an IV of 31.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "gold-bottle-cap.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "798": {
     "id": 798,
-    "name": {
+      "name": {
       "english": "Decidium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Decidueye with Spirit Shackle, it can use Sinister Arrow Raid.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "decidium-z.png"
   },
   "799": {
     "id": 799,
-    "name": {
+      "name": {
       "english": "Incinium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Incineroar with Darkest Lariat, it can use Malicious Moonsault.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "incinium-z.png"
   },
   "800": {
     "id": 800,
-    "name": {
+      "name": {
       "english": "Primarium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Primarina with Sparkling Aria, it can use Oceanic Operetta.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "primarium-z.png"
   },
   "801": {
     "id": 801,
-    "name": {
+      "name": {
       "english": "Tapunium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Tapu with Nature's Madness, it can use Guardian of Alola.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "tapunium-z.png"
   },
   "802": {
     "id": 802,
-    "name": {
+      "name": {
       "english": "Marshadium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by Marshadow with Spectral Thief, it can use Soul-Stealing 7-Star Strike.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "marshadium-z.png"
   },
   "803": {
     "id": 803,
-    "name": {
+      "name": {
       "english": "Aloraichium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Alolan Raichu with Thunderbolt, it can use Stoked Sparksurfer.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "aloraichium-z.png"
   },
   "804": {
     "id": 804,
-    "name": {
+      "name": {
       "english": "Snorlium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Snorlax with Giga Impact, it can use Pulverizing Pancake.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "snorlium-z.png"
   },
   "805": {
     "id": 805,
-    "name": {
+      "name": {
       "english": "Eevium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by an Eevee with Last Resort, it can use Extreme Evoboost.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "eevium-z.png"
   },
   "806": {
     "id": 806,
-    "name": {
+      "name": {
       "english": "Mewnium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Mew with Psychic, it can use Genesis Supernova.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mewnium-z.png"
   },
   "836": {
     "id": 836,
-    "name": {
+      "name": {
       "english": "Pikashunium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by cap Pikachu with Thunderbolt, it can use 10,000,000 Volt Thunderbolt.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "pikashunium-z.png"
   },
   "846": {
     "id": 846,
-    "name": {
+      "name": {
       "english": "Adrenaline Orb",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Speed by 1 stage if it gets affected by Intimidate. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "adrenaline-orb.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "849": {
     "id": 849,
-    "name": {
+      "name": {
       "english": "Ice Stone",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Alolan Sandshrew into Alolan Sandslash, Alolan Vulpix into Alolan Ninetales, Eevee into Glaceon, and Galarian Darumaka into Galarian Darmanitan when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ice-stone.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "851": {
     "id": 851,
-    "name": {
+      "name": {
       "english": "Beast Ball",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "A special Poke Ball designed to catch Ultra Beasts.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "beast-ball.png"
   },
   "879": {
     "id": 879,
-    "name": {
+      "name": {
       "english": "Terrain Extender",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's use of Electric/Grassy/Misty/Psychic Terrain lasts 8 turns instead of 5.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "terrain-extender.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "880": {
     "id": 880,
-    "name": {
+      "name": {
       "english": "Protective Pads",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's moves are protected from adverse contact effects, except Pickpocket.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "protective-pads.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "881": {
     "id": 881,
-    "name": {
+      "name": {
       "english": "Electric Seed",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If the terrain is Electric Terrain, raises holder's Defense by 1 stage. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "electric-seed.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "882": {
     "id": 882,
-    "name": {
+      "name": {
       "english": "Psychic Seed",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If the terrain is Psychic Terrain, raises holder's Sp. Def by 1 stage. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "psychic-seed.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "883": {
     "id": 883,
-    "name": {
+      "name": {
       "english": "Misty Seed",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If the terrain is Misty Terrain, raises holder's Sp. Def by 1 stage. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "misty-seed.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "884": {
     "id": 884,
-    "name": {
+      "name": {
       "english": "Grassy Seed",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If the terrain is Grassy Terrain, raises holder's Defense by 1 stage. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "grassy-seed.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "904": {
     "id": 904,
-    "name": {
+      "name": {
       "english": "Fighting Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Fighting type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fighting-memory.png"
   },
   "905": {
     "id": 905,
-    "name": {
+      "name": {
       "english": "Flying Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Flying type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "flying-memory.png"
   },
   "906": {
     "id": 906,
-    "name": {
+      "name": {
       "english": "Poison Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Poison type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "poison-memory.png"
   },
   "907": {
     "id": 907,
-    "name": {
+      "name": {
       "english": "Ground Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Ground type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ground-memory.png"
   },
   "908": {
     "id": 908,
-    "name": {
+      "name": {
       "english": "Rock Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Rock type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rock-memory.png"
   },
   "909": {
     "id": 909,
-    "name": {
+      "name": {
       "english": "Bug Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Bug type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "bug-memory.png"
   },
   "910": {
     "id": 910,
-    "name": {
+      "name": {
       "english": "Ghost Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Ghost type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ghost-memory.png"
   },
   "911": {
     "id": 911,
-    "name": {
+      "name": {
       "english": "Steel Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Steel type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "steel-memory.png"
   },
   "912": {
     "id": 912,
-    "name": {
+      "name": {
       "english": "Fire Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Fire type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fire-memory.png"
   },
   "913": {
     "id": 913,
-    "name": {
+      "name": {
       "english": "Water Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Water type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "water-memory.png"
   },
   "914": {
     "id": 914,
-    "name": {
+      "name": {
       "english": "Grass Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Grass type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "grass-memory.png"
   },
   "915": {
     "id": 915,
-    "name": {
+      "name": {
       "english": "Electric Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Electric type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "electric-memory.png"
   },
   "916": {
     "id": 916,
-    "name": {
+      "name": {
       "english": "Psychic Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Psychic type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "psychic-memory.png"
   },
   "917": {
     "id": 917,
-    "name": {
+      "name": {
       "english": "Ice Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Ice type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ice-memory.png"
   },
   "918": {
     "id": 918,
-    "name": {
+      "name": {
       "english": "Dragon Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Dragon type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dragon-memory.png"
   },
   "919": {
     "id": 919,
-    "name": {
+      "name": {
       "english": "Dark Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Dark type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "dark-memory.png"
   },
   "920": {
     "id": 920,
-    "name": {
+      "name": {
       "english": "Fairy Memory",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Holder's Multi-Attack is Fairy type.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fairy-memory.png"
   },
   "921": {
     "id": 921,
-    "name": {
+      "name": {
       "english": "Solganium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use a special Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "solganium-z.png"
   },
   "922": {
     "id": 922,
-    "name": {
+      "name": {
       "english": "Lunalium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Lunala or Dawn Wings Necrozma with Moongeist Beam can use a special Z-Move.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lunalium-z.png"
   },
   "923": {
     "id": 923,
-    "name": {
+      "name": {
       "english": "Ultranecrozium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Dusk Mane/Dawn Wings Necrozma: Ultra Burst, then Z-Move w/ Photon Geyser.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ultranecrozium-z.png"
   },
   "924": {
     "id": 924,
-    "name": {
+      "name": {
       "english": "Mimikium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Mimikyu with Play Rough, it can use Let's Snuggle Forever.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "mimikium-z.png"
   },
   "925": {
     "id": 925,
-    "name": {
+      "name": {
       "english": "Lycanium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Lycanroc forme with Stone Edge, it can use Splintered Stormshards.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "lycanium-z.png"
   },
   "926": {
     "id": 926,
-    "name": {
+      "name": {
       "english": "Kommonium Z",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Kommo-o with Clanging Scales, it can use Clangorous Soulblaze.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "kommonium-z.png"
   },
   "1103": {
     "id": 1103,
-    "name": {
+      "name": {
       "english": "Rusted Sword",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Zacian, this item changes its forme to Crowned Sword.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rusted-sword.png"
   },
   "1104": {
     "id": 1104,
-    "name": {
+      "name": {
       "english": "Rusted Shield",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If held by a Zamazenta, this item changes its forme to Crowned Shield.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "rusted-shield.png"
   },
   "1105": {
     "id": 1105,
-    "name": {
+      "name": {
       "english": "Fossilized Bird",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can revive into Arctovish with Fossilized Fish or Arctozolt with Fossilized Dino.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fossilized-bird.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "1106": {
     "id": 1106,
-    "name": {
+      "name": {
       "english": "Fossilized Fish",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can revive into Dracovish with Fossilized Drake or Arctovish with Fossilized Bird.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fossilized-fish.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "1107": {
     "id": 1107,
-    "name": {
+      "name": {
       "english": "Fossilized Drake",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can revive into Dracozolt with Fossilized Dino or Dracovish with Fossilized Fish.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fossilized-drake.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "1108": {
     "id": 1108,
-    "name": {
+      "name": {
       "english": "Fossilized Dino",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Can revive into Dracozolt with Fossilized Drake or Arctozolt with Fossilized Bird.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "fossilized-dino.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "1109": {
     "id": 1109,
-    "name": {
+      "name": {
       "english": "Strawberry Sweet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Milcery into Alcremie when held and spun around.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "strawberry-sweet.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "1110": {
     "id": 1110,
-    "name": {
+      "name": {
       "english": "Love Sweet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Milcery into Alcremie when held and spun around.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "love-sweet.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "1111": {
     "id": 1111,
-    "name": {
+      "name": {
       "english": "Berry Sweet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Milcery into Alcremie when held and spun around.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "berry-sweet.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "1112": {
     "id": 1112,
-    "name": {
+      "name": {
       "english": "Clover Sweet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Milcery into Alcremie when held and spun around.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "clover-sweet.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "1113": {
     "id": 1113,
-    "name": {
+      "name": {
       "english": "Flower Sweet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Milcery into Alcremie when held and spun around.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "flower-sweet.png",
-    "flingBasePower": 0
+      "flingBasePower": 0
   },
   "1114": {
     "id": 1114,
-    "name": {
+      "name": {
       "english": "Star Sweet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Milcery into Alcremie when held and spun around.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "star-sweet.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "1115": {
     "id": 1115,
-    "name": {
+      "name": {
       "english": "Ribbon Sweet",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Milcery into Alcremie when held and spun around.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "ribbon-sweet.png",
-    "flingBasePower": 10
+      "flingBasePower": 10
   },
   "1116": {
     "id": 1116,
-    "name": {
+      "name": {
       "english": "Sweet Apple",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Applin into Appletun when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "sweet-apple.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "1117": {
     "id": 1117,
-    "name": {
+      "name": {
       "english": "Tart Apple",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Applin into Flapple when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "tart-apple.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "1118": {
     "id": 1118,
-    "name": {
+      "name": {
       "english": "Throat Spray",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Raises holder's Special Attack by 1 stage after it uses a sound move. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "throat-spray.png",
-    "flingBasePower": 30
+      "flingBasePower": 30
   },
   "1119": {
     "id": 1119,
-    "name": {
+      "name": {
       "english": "Eject Pack",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If the holder's stat stages are lowered, it switches to a chosen ally. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "eject-pack.png",
-    "flingBasePower": 50
+      "flingBasePower": 50
   },
   "1120": {
     "id": 1120,
-    "name": {
+      "name": {
       "english": "Heavy-Duty Boots",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "When switching in, the holder is unaffected by hazards on its side of the field.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "heavy-duty-boots.png",
-    "flingBasePower": 80,
-    "popular": true
+      "flingBasePower": 80,
+      "popular": true
   },
   "1121": {
     "id": 1121,
-    "name": {
+      "name": {
       "english": "Blunder Policy",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If the holder misses due to accuracy, its Speed is raised by 2 stages. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "blunder-policy.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "1122": {
     "id": 1122,
-    "name": {
+      "name": {
       "english": "Room Service",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "If Trick Room is active, the holder's Speed is lowered by 1 stage. Single use.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "room-service.png",
-    "flingBasePower": 100
+      "flingBasePower": 100
   },
   "1123": {
     "id": 1123,
-    "name": {
+      "name": {
       "english": "Utility Umbrella",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "The holder ignores rain- and sun-based effects. Damage and accuracy calculations from attacks used by the holder are affected by rain and sun, but not attacks used against the holder.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "utility-umbrella.png",
-    "flingBasePower": 60
+      "flingBasePower": 60
   },
   "1253": {
     "id": 1253,
-    "name": {
+      "name": {
       "english": "Cracked Pot",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Sinistea into Polteageist when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "cracked-pot.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   },
   "1254": {
     "id": 1254,
-    "name": {
+      "name": {
       "english": "Chipped Pot",
-      "german": ""
+        "german": ""
     },
     "description": {
       "english": "Evolves Sinistea-Antique into Polteageist-Antique when used.",
-      "german": ""
+        "german": ""
     },
     "imgSrc": "chipped-pot.png",
-    "flingBasePower": 80
+      "flingBasePower": 80
   }
-}
+};

@@ -1,4 +1,5 @@
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, finalize, tap } from 'rxjs/operators';
 
 export class LoadingState {
 
@@ -62,5 +63,14 @@ export class LoadingState {
         this.stopLoading();
         this.show();
       });
+  }
+
+  loadFromObservable<T>(obs: Observable<T>): Observable<T> {
+    this.startLoading();
+    return obs.pipe(
+      tap(result => !!result ? this.wasSuccessful() : this.hasError()),
+      catchError(() => { this.hasError(); return of(null); }),
+      finalize(() => this.stopLoading())
+    );
   }
 }

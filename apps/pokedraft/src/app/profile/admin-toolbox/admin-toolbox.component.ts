@@ -11,17 +11,39 @@ export class AdminToolboxComponent implements OnInit {
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
-    /*
-    const pokedex = POKEDEX;
-    this.afs.doc(`static-data/pokedex`).update(
+   //  this.setPokedex(fullpokedex);
+   //  this.setItems(fullitems);
+   //  this.setAbilities(testAbilities);
+  }
+
+  setPokedex(pokedex) {
+    this.afs.doc(`static-data/pokedex`).set(
       { pokemon: pokedex }
-    ).then(() => console.log('Updated Pokedex'))
-      .catch(() => console.error('Update Failed'));
-    */
-    this.afs.doc('static-data/pokedex').get()
-      .subscribe(snap => {
-        console.log(snap.data().pokemon)
-      });
+    ).then(() => console.log('Updated pokedex'))
+     .then(() => this.afs.doc('static-data/pokedex').get()
+        .subscribe(snap => {
+          console.log(snap.data().pokemon)
+        }))
+     .catch(err => console.error('Update Failed', err));
+  }
+
+  setItems(items) {
+    this.afs.doc(`static-data/items`).set({ items })
+      .then(() => console.log('Updated items'))
+      .then(() => this.afs.doc('static-data/items').get()
+        .subscribe(snap => {
+          console.log(snap.data().items)
+        }))
+      .catch(err => console.error('Item Update Failed', err));
+  }
+
+  setAbilities(abilities) {
+    this.afs.doc(`static-data/abilities`).set({ abilities })
+      .then(() => console.log('Updated abilities'))
+      .then(() => this.afs.doc('static-data/abilities').get()
+        .subscribe(snap => console.log(snap.data().abilities))
+      )
+      .catch(err => console.error('Abilities update failed', err))
   }
 
 }

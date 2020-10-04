@@ -4,14 +4,15 @@ import {
   IPokemon,
   ITier,
   SORTING_OPTIONS,
-  SubscriptionContainer,
-  TeambuilderEntityCollection,
+  SubscriptionContainer, TeambuilderApiService,
+  TeambuilderEntityCollection, TeambuilderEventService,
   TeambuilderLanguageService,
   TeambuilderPokemonService,
   TeambuilderStoreService,
   TeambuilderViewService
-} from "@pokedraft/teambuilder";
-import {filter} from "rxjs/operators";
+} from '@pokedraft/teambuilder';
+import { debounce, debounceTime, filter } from 'rxjs/operators';
+import { LoadingState } from '@pokedraft/core';
 
 @Component({
   selector: 'pd-pokemon-list',
@@ -21,6 +22,8 @@ import {filter} from "rxjs/operators";
 export class PokemonListComponent implements OnDestroy, AfterViewInit {
 
   @ViewChild('pokemonListContainer') pokemonListContainerElement: ElementRef;
+
+  pokemonLoadingState: LoadingState;
 
   pokemon: TeambuilderEntityCollection<IPokemon>;
 
@@ -37,12 +40,16 @@ export class PokemonListComponent implements OnDestroy, AfterViewInit {
   constructor(private tbStore: TeambuilderStoreService,
               private tbPokemon: TeambuilderPokemonService,
               private tbView: TeambuilderViewService,
-              private tbLanguage: TeambuilderLanguageService) {
+              private tbLanguage: TeambuilderLanguageService,
+              private tbEvents: TeambuilderEventService,
+              private tbApi: TeambuilderApiService) {
+    this.pokemonLoadingState = new LoadingState();
     this.pokemon = this.tbStore.pokemonlist;
     this.tiers = this.tbStore.tiers;
     this.subscriptions = new SubscriptionContainer(
       this.tbLanguage.language.changes$
         .subscribe(_ => this.tbStore.pokemonlist.sortIfNotSorted(this.tbLanguage.getCurrentLanguageAsProp(), 'name')),
+      this.tbEvents.pokemonListEvents.search.changes$.pipe(debounceTime(250)).subscribe(pokemon => this.pokemon.filterByString(pokemon, 'name', this.tbLanguage.getCurrentLanguageAsProp()))
     );
     this.showTiers$ = this.tbView.showTiers.changes$;
   }
@@ -57,6 +64,14 @@ export class PokemonListComponent implements OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.subscriptions.unsubscribeAll();
+  }
+
+  loadPokemon(): void {
+    this.pokemonLoadingState
+      .loadFromObservable(this.tbApi.getPokemon())
+      .subscribe(pokemon => {
+        this.pokemon.setEntities(pokemon);
+      });
   }
 
   choosePokemon(pokemon: IPokemon): void {
@@ -80,7 +95,9 @@ export class PokemonListComponent implements OnDestroy, AfterViewInit {
   }
 
   scrollTop() {
-    this.pokemonListContainerElement.nativeElement.scrollTop = 0;
+    if (this.pokemonListContainerElement) {
+      this.pokemonListContainerElement.nativeElement.scrollTop = 0;
+    }
   }
 
   triggerTierPipe() {

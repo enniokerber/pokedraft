@@ -61,7 +61,8 @@
   </div>
 
   <div class="pd-side-navbar-link">
-    <a routerLink="../teambuilder"> Teambuilder </a>
+    <a (click)="navigateToTeambuilder()"> Teambuilder </a>
+    <pd-loader *ngIf="navigatingToTeambuilder"></pd-loader>
   </div>
 
   <div class="pd-side-navbar-link">

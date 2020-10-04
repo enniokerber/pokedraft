@@ -12,6 +12,7 @@ import {
   TeambuilderStatisticsService
 } from "./services";
 import { TeamResolver } from './guards';
+import { EntityResolver } from './guards/entity-resolver/EntityResolver';
 
 @NgModule({
   exports: [
@@ -33,7 +34,8 @@ export class TeambuilderCoreModule {
         TeambuilderApiService,
         TeambuilderEventService,
         TeambuilderStatisticsService,
-        TeamResolver
+        TeamResolver,
+        EntityResolver
       ],
     });
   }

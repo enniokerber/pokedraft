@@ -236,7 +236,9 @@ export class TeambuilderPokemonService implements OnDestroy {
     if (currentTeampokemon.item !== item) {
       currentTeampokemon.setItem(item);
       this.updateSelectedPokemon(currentTeampokemon);
-      this.tbView.displayAbilitiesList();
+      if (item !== null) {
+        this.tbView.displayAbilitiesList();
+      }
     }
   }
 
@@ -247,8 +249,10 @@ export class TeambuilderPokemonService implements OnDestroy {
     if (currentTeampokemon.ability !== ability) {
       currentTeampokemon.setAbility(ability);
       this.updateSelectedPokemon(currentTeampokemon);
-      this.tbView.displayMoveList();
-      this.selectNextEmptyMoveslot();
+      if (ability !== null) {
+        this.tbView.displayMoveList();
+        this.selectNextEmptyMoveslot();
+      }
     }
   }
 

@@ -4,25 +4,15 @@ import {TeambuilderListEvents} from "../../models/misc";
 @Injectable()
 export class TeambuilderEventService {
 
-  private readonly _moveListEvents: TeambuilderListEvents;
-  private readonly _itemListEvents: TeambuilderListEvents;
-  private readonly _abilityListEvents: TeambuilderListEvents;
+  public readonly moveListEvents: TeambuilderListEvents;
+  public readonly itemListEvents: TeambuilderListEvents;
+  public readonly abilityListEvents: TeambuilderListEvents;
+  public readonly pokemonListEvents: TeambuilderListEvents;
 
   constructor() {
-    this._moveListEvents = new TeambuilderListEvents();
-    this._itemListEvents = new TeambuilderListEvents();
-    this._abilityListEvents = new TeambuilderListEvents();
-  }
-
-  get moveListEvents(): TeambuilderListEvents {
-    return this._moveListEvents;
-  }
-
-  get itemListEvents(): TeambuilderListEvents {
-    return this._itemListEvents;
-  }
-
-  get abilityListEvents(): TeambuilderListEvents {
-    return this._abilityListEvents;
+    this.moveListEvents = new TeambuilderListEvents();
+    this.itemListEvents = new TeambuilderListEvents();
+    this.abilityListEvents = new TeambuilderListEvents();
+    this.pokemonListEvents = new TeambuilderListEvents();
   }
 }

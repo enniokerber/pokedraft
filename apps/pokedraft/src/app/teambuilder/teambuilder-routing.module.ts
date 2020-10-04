@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {TeambuilderComponent} from "./teambuilder.component";
 import { AuthGuard } from '@pokedraft/core';
+import { EntityResolver } from '@pokedraft/teambuilder';
 
 const routes: Routes = [
   {
@@ -10,7 +11,11 @@ const routes: Routes = [
     children: [
       {
         path: 'editor',
-        loadChildren: () => import('./teambuilder-editor/teambuilder-editor.module').then(m => m.TeambuilderEditorModule)
+        loadChildren: () => import('./teambuilder-editor/teambuilder-editor.module').then(m => m.TeambuilderEditorModule),
+        data: { preload: false },
+        resolve: {
+          entities: EntityResolver
+        }
       },
       {
         path: 'teams',

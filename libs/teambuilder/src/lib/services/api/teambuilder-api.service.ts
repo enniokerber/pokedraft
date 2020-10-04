@@ -3,10 +3,10 @@ import {
   allWithDocumentId,
   withDocumentId,
   IPokedraftUserSnippet, LoadingState,
-  PokedraftAuthService
+  PokedraftAuthService, extractDataFromSnapshot
 } from '@pokedraft/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ITeambuilderTeam, ITeambuilderTeamSnippet } from '../../models';
+import { IAbility, IItem, IPokemon, ITeambuilderTeam, ITeambuilderTeamSnippet } from '../../models';
 import { Observable, of } from 'rxjs';
 import { catchError, first, map, switchMap, tap } from 'rxjs/operators';
 import { TeambuilderPokemonService } from '../pokemon/teambuilder-pokemon.service';
@@ -22,6 +22,36 @@ export class TeambuilderApiService {
               private tbPokemon: TeambuilderPokemonService) {
     this.saveRequestState = new LoadingState();
     this.deleteRequestState = new LoadingState();
+  }
+
+  getPokemon(): Observable<IPokemon[]> {
+    return this.afs.doc<IPokemon[]>('static-data/pokedex')
+      .get()
+      .pipe(
+        catchError(err => of([])),
+        extractDataFromSnapshot('pokemon'),
+        tap(pokemon => console.log('Loaded Pokémon: ', pokemon))
+      );
+  }
+
+  getItems(): Observable<IItem[]> {
+    return this.afs.doc('static-data/items')
+      .get()
+      .pipe(
+        catchError(err => of({ items: {} })),
+        extractDataFromSnapshot('items'),
+        tap(items => console.log('Loaded Items: ', items))
+      );
+  }
+
+  getAbilities(): Observable<IAbility[]> {
+    return this.afs.doc('static-data/abilities')
+      .get()
+      .pipe(
+        catchError(err => of([])),
+        extractDataFromSnapshot('abilities'),
+        tap(abilities => console.log('Loaded Abilities: ', abilities))
+      );
   }
 
   getFakeTeamPreviews(): Observable<ITeambuilderTeamSnippet[]> {

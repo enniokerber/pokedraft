@@ -4,44 +4,28 @@ import {
   IPokemon, ITeambuilderPokemon, ItemRecord, ITier, MovesRecord, ShowdownPokemon, ShowdownStringEvaluator,
   TeambuilderEntityCollection, TeambuilderPokemon
 } from "../../models";
-import {getNatureByName, pokedex, testAbilities, testItems, testMovesObject, testTiers} from "../../data";
+import {getNatureByName, testMovesObject, testTiers} from "../../data";
 
 @Injectable()
 export class TeambuilderStoreService {
 
-  private readonly _pokemonlist: TeambuilderEntityCollection<IPokemon>;
-  private readonly _abilities: AbilityRecord;
-  private readonly _items: ItemRecord;
-  private readonly _moves: MovesRecord;
-  private readonly _tiers: ITier[];
+  pokemonlist: TeambuilderEntityCollection<IPokemon>;
+  abilities: AbilityRecord;
+  items: ItemRecord;
+  moves: MovesRecord;
+  tiers: ITier[];
 
   constructor() {
-    this._pokemonlist = new TeambuilderEntityCollection<IPokemon>(pokedex as IPokemon[]);
-    this._abilities = testAbilities;
-    this._items = testItems;
-    this._moves = testMovesObject;
-    this._tiers = testTiers;
+    this.pokemonlist = new TeambuilderEntityCollection<IPokemon>([]);
+    this.abilities = {};
+    this.items = {};
+    this.moves = testMovesObject;
+    this.tiers = testTiers;
   }
 
-  get pokemonlist(): TeambuilderEntityCollection<IPokemon> {
-    return this._pokemonlist;
-  }
+  setItems(items: ItemRecord) { this.items = items; }
 
-  get abilities(): AbilityRecord {
-    return this._abilities;
-  }
-
-  get items(): ItemRecord {
-    return this._items;
-  }
-
-  get moves(): MovesRecord {
-    return this._moves;
-  }
-
-  get tiers(): ITier[] {
-    return this._tiers;
-  }
+  setAbilities(abilities: AbilityRecord) { this.abilities = abilities; }
 
   getPokemonById(id: string): IPokemon {
     if (!id) return null;

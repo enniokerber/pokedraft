@@ -9,7 +9,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class TeambuilderComponent {
 
-  constructor(titleService: Title) {
-    titleService.setTitle('Pokédraft - Teambuilder');
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Pokédraft - Teambuilder');
   }
 }

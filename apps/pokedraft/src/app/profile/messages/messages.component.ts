@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {shareReplay} from "rxjs/operators";
 import {IPokedraftMessage, PokedraftUserService} from "@pokedraft/core";
 import {Observable} from "rxjs";
@@ -8,15 +8,12 @@ import {Observable} from "rxjs";
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.scss']
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent {
 
   messages$: Observable<IPokedraftMessage[]>;
 
   constructor(private user: PokedraftUserService) {
     this.messages$ = this.user.getMessages(20).pipe(shareReplay());
-  }
-
-  ngOnInit(): void {
   }
 
 }

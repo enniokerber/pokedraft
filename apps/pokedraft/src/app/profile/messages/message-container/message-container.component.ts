@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {IPokedraftMessage} from "@pokedraft/core";
 
 @Component({
@@ -6,15 +6,12 @@ import {IPokedraftMessage} from "@pokedraft/core";
   templateUrl: './message-container.component.html',
   styleUrls: ['./message-container.component.scss']
 })
-export class MessageContainerComponent implements OnInit {
+export class MessageContainerComponent {
 
   @Input() message: IPokedraftMessage;
 
   constructor() {
     this.message = null;
-  }
-
-  ngOnInit(): void {
   }
 
   get isLeagueInvitation(): boolean { return typeof this.message.league !== 'undefined'; }
