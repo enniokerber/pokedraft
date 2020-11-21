@@ -37,6 +37,11 @@
   transform: translate(-70%, -50%);
   max-height: 120px;
   pointer-events: none;
+  z-index: 5;
+}
+
+.pd-teambuilder-form-pokemon-sprite-loader {
+  z-index: 1;
 }
 
 .pd-teambuilder-form-shiny-checkbox {

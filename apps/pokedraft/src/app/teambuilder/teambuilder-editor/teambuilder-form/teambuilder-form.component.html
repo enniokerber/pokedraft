@@ -9,7 +9,14 @@
         <translator2 english="Nickname" german="Spitzname"></translator2>
       </pd-input>
       <div class="pd-teambuilder-form-pokemon-sprite-container">
-        <img class="pd-teambuilder-form-pokemon-sprite" [src]="pokemon.sprite" alt="">
+
+
+        <img class="pd-teambuilder-form-pokemon-sprite" alt=""
+             [src]="pokemon.sprite"
+             (load)="loadingSprite = false"
+             (error)="loadingSprite = false">
+        <pd-loader class="center-relatively" *ngIf="loadingSprite && pokemon?.sprite"></pd-loader>
+
         <img class="pd-teambuilder-form-shiny-indicator"
              src="assets/other/shiny.png"
              alt=""

@@ -28,7 +28,7 @@ export class TeambuilderApiService {
     return this.afs.doc<IPokemon[]>('static-data/pokedex')
       .get()
       .pipe(
-        catchError(err => of([])),
+        catchError(err => of({ pokemon: [] })),
         extractDataFromSnapshot('pokemon'),
         tap(pokemon => console.log('Loaded Pokémon: ', pokemon))
       );
@@ -48,7 +48,7 @@ export class TeambuilderApiService {
     return this.afs.doc('static-data/abilities')
       .get()
       .pipe(
-        catchError(err => of([])),
+        catchError(err => of({ abilities: {} })),
         extractDataFromSnapshot('abilities'),
         tap(abilities => console.log('Loaded Abilities: ', abilities))
       );
@@ -85,7 +85,7 @@ export class TeambuilderApiService {
 
   private persistTeam(): Promise<void> {
     if (this.tbPokemon.getTeamId()) {
-      console.error('This league seems to already be persisted in the database. I will not persist it again.');
+      console.error('This team seems to already be persisted in the database. I will not persist it again.');
       return Promise.reject();
     }
     const author: IPokedraftUserSnippet = this.auth.getCurrentUserSnippet();
@@ -97,8 +97,8 @@ export class TeambuilderApiService {
     team.setAuthor(author);
     return this.afs.collection<ITeambuilderTeam>(`teams`)
       .add(team.asDatabaseRecord())
-      .then(doc => {
-        team.setId(doc.id);
+      .then(({ id }) => {
+        team.setId(id);
         team.setLastUpdate();
       }).catch(() => console.error('Failed to persist the new team.'));
   }

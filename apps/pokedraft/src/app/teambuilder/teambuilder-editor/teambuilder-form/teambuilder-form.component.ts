@@ -13,6 +13,8 @@ import {of} from "rxjs";
 })
 export class TeambuilderFormComponent implements OnDestroy {
 
+  loadingSprite: boolean;
+
   pokemon: TeambuilderPokemon;
 
   searchPokemon = '';
@@ -24,11 +26,16 @@ export class TeambuilderFormComponent implements OnDestroy {
               private tbView: TeambuilderViewService,
               private tbLanguage: TeambuilderLanguageService,
               private tbEvents: TeambuilderEventService) {
+    this.searchPokemon = this.currentPokemonString = '';
+    this.loadingSprite = false;
     this.subscriptions = new SubscriptionContainer(
       this.tbPokemon.selectedPokemon.changes$
         .pipe(
           filter(pokemon => pokemon !== null),
-          tap(selectedPokemon => this.pokemon = selectedPokemon),
+          tap(selectedPokemon => {
+            this.pokemon = selectedPokemon;
+            this.loadingSprite = true;
+          }),
           map(pokemon => pokemon.getName()),
           switchMap(name => {
             if (name) {
