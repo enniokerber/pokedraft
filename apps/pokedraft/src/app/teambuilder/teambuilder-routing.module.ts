@@ -17,7 +17,6 @@ const routes: Routes = [
       {
         path: 'editor',
         loadChildren: () => import('./teambuilder-editor/teambuilder-editor.module').then(m => m.TeambuilderEditorModule),
-        data: { preload: false },
         resolve: {
           entities: EntityResolver
         }
@@ -25,7 +24,10 @@ const routes: Routes = [
       {
         path: 'teams',
         loadChildren: () => import('./teambuilder-teams/teambuilder-teams.module').then(m => m.TeambuilderTeamsModule),
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        resolve: {
+          entities: EntityResolver
+        }
       },
       {
         path: '',

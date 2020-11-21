@@ -10,8 +10,11 @@ export class TeamFormContainerComponent {
 
   @Input() pokemon: TeambuilderPokemon;
 
+  loadingSprite: boolean;
+
   constructor() {
     this.pokemon = null;
+    this.loadingSprite = true;
   }
 
 }

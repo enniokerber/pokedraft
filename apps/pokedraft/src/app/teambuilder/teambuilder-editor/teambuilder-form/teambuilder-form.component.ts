@@ -33,8 +33,10 @@ export class TeambuilderFormComponent implements OnDestroy {
         .pipe(
           filter(pokemon => pokemon !== null),
           tap(selectedPokemon => {
+            if (this.pokemon !== selectedPokemon) {
+              this.loadingSprite = true;
+            }
             this.pokemon = selectedPokemon;
-            this.loadingSprite = true;
           }),
           map(pokemon => pokemon.getName()),
           switchMap(name => {
@@ -45,8 +47,7 @@ export class TeambuilderFormComponent implements OnDestroy {
             }
           })
         ).subscribe(nameString => {
-        this.searchPokemon = nameString;
-        this.currentPokemonString = nameString;
+        this.searchPokemon = this.currentPokemonString = nameString;
       }),
     );
   }
@@ -58,7 +59,7 @@ export class TeambuilderFormComponent implements OnDestroy {
   setLevel(to: string): void {
     const asNumber = Number(to);
     if (typeof asNumber === 'number' && !Number.isNaN(asNumber) && asNumber > 0 && asNumber <= 100) {
-      this.pokemon.setLevel(asNumber)
+      this.pokemon.setLevel(asNumber);
     }
   }
 

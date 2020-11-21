@@ -1,114 +1,126 @@
 <form class="pd-teambuilder-form-container pd-teambuilder-form-container--not-functional">
 
-  <div class="pd-teambuilder-form-fraction --pokemon-fraction">
-    <pd-input size="small" maxlength="12" [value]="pokemon.nickname" disabled>
-      <translator2 english="Nickname" german="Spitzname"></translator2>
-    </pd-input>
-    <div class="pd-teambuilder-form-pokemon-sprite-container">
-      <img class="pd-teambuilder-form-pokemon-sprite" [src]="pokemon.sprite" alt="">
-      <img class="pd-teambuilder-form-shiny-indicator pd-teambuilder-form-shiny-indicator--for-checkbox"
-           src="assets/other/shiny.png"
-           alt=""
-           [class.--indicator-active]="pokemon.shiny">
-      <div class="pd-teambuilder-form-shiny-checkbox">
-        <pd-checkbox title="Shiny?"
-                     [checked]="pokemon.shiny"
-                     disabled>
-        </pd-checkbox>
-      </div>
-    </div>
-    <pd-input size="small"
-              maxlength="15"
-              [value]="pokemon.name | translate | async" disabled>
-      Pokémon
-    </pd-input>
-  </div>
-
-
-
-
-
-  <div class="pd-teambuilder-form-fraction --meta-data-fraction">
-
-    <div class="pd-teambuilder-form-general-settings-container">
-      <div class="pd-teambuilder-form-general-settings-fraction">
-        <label class="pd-teambuilder-form-general-settings-fraction-title" for="level"> Level </label>
-        <div class="pd-teambuilder-form-general-settings-fraction-content">
-          <input class="pd-teambuilder-form-small-input --remove-number-input-appearance"
-                 id="level"
-                 name="Pokémon Level"
-                 type="number"
-                 maxlength="3"
-                 [value]="pokemon.level"
-                 disabled>
-        </div>
-      </div>
-      <div class="pd-teambuilder-form-general-settings-fraction">
-        <label class="pd-teambuilder-form-general-settings-fraction-title"
-               for="gender-input">
-          <translator2 english="Gender" german="Geschl."></translator2>
-        </label>
-        <div class="pd-teambuilder-form-general-settings-fraction-content">
-          <input class="pd-teambuilder-form-small-input --remove-number-input-appearance"
-                 id="gender-input"
-                 name="Pokémon Gender"
-                 [value]="pokemon.gender | genderToLabel | translate | async"
-                 disabled>
-        </div>
-      </div>
-      <div class="pd-teambuilder-form-general-settings-fraction">
-        <label class="pd-teambuilder-form-general-settings-fraction-title"
-               for="happiness">
-          <translator2 english="Happiness" german="Freundsch."></translator2>
-        </label>
-        <div class="pd-teambuilder-form-general-settings-fraction-content">
-          <input class="pd-teambuilder-form-small-input --remove-number-input-appearance"
-                 id="happiness"
-                 type="number"
-                 maxlength="3"
-                 [value]="pokemon.happiness"
-                 disabled>
-        </div>
-      </div>
-    </div>
-
-    <div class="pd-teambuilder-form-meta-main">
-      <pd-item-icon class="pd-teambuilder-form-item-icon"
-                    [item]="imgSrc"
-                    *ngIf="pokemon.item?.imgSrc as imgSrc"></pd-item-icon>
-      <div class="pd-teambuilder-form-types">
-        <pokemon-type-image [type]="type" *ngFor="let type of pokemon.types"></pokemon-type-image>
-      </div>
-    </div>
-
-    <div class="pd-teambuilder-form-item-and-ability">
-
-      <pd-input size="small" [value]="pokemon.item?.name | translate | async" disabled>
-        Item
+  <ng-container *ngIf="pokemon; else noPokemon">
+    <div class="pd-teambuilder-form-fraction --pokemon-fraction">
+      <pd-input size="small" maxlength="12" [value]="pokemon.nickname" disabled>
+        <translator2 english="Nickname" german="Spitzname"></translator2>
       </pd-input>
+      <div class="pd-teambuilder-form-pokemon-sprite-container">
 
-      <pd-input class="left-space"
-                size="small"
-                [value]="pokemon.ability?.name | translate | async" disabled>
-        <translator2 english="Ability" german="Fähigkeit"></translator2>
+        <img class="pd-teambuilder-form-pokemon-sprite"
+             alt=""
+             [src]="pokemon.sprite"
+             (load)="loadingSprite = false"
+             (error)="loadingSprite = false">
+        <pd-loader class="center-relatively" *ngIf="loadingSprite && pokemon.sprite"></pd-loader>
+
+        <img class="pd-teambuilder-form-shiny-indicator pd-teambuilder-form-shiny-indicator--for-checkbox"
+             src="assets/other/shiny.png"
+             alt=""
+             [class.--indicator-active]="pokemon.shiny">
+
+        <div class="pd-teambuilder-form-shiny-checkbox">
+          <pd-checkbox title="Shiny?"
+                       [checked]="pokemon.shiny"
+                       disabled>
+          </pd-checkbox>
+        </div>
+      </div>
+      <pd-input size="small"
+                maxlength="15"
+                [value]="pokemon.name | translate | async" disabled>
+        Pokémon
       </pd-input>
     </div>
 
-  </div>
+    <div class="pd-teambuilder-form-fraction --meta-data-fraction">
 
+      <div class="pd-teambuilder-form-general-settings-container">
+        <div class="pd-teambuilder-form-general-settings-fraction">
+          <label class="pd-teambuilder-form-general-settings-fraction-title" for="level"> Level </label>
+          <div class="pd-teambuilder-form-general-settings-fraction-content">
+            <input class="pd-teambuilder-form-small-input --remove-number-input-appearance"
+                   id="level"
+                   name="Pokémon Level"
+                   type="number"
+                   maxlength="3"
+                   [value]="pokemon.level"
+                   disabled>
+          </div>
+        </div>
+        <div class="pd-teambuilder-form-general-settings-fraction">
+          <label class="pd-teambuilder-form-general-settings-fraction-title"
+                 for="gender-input">
+            <translator2 english="Gender" german="Geschl."></translator2>
+          </label>
+          <div class="pd-teambuilder-form-general-settings-fraction-content">
+            <input class="pd-teambuilder-form-small-input --remove-number-input-appearance"
+                   id="gender-input"
+                   name="Pokémon Gender"
+                   [value]="pokemon.gender | genderToLabel | translate | async"
+                   disabled>
+          </div>
+        </div>
+        <div class="pd-teambuilder-form-general-settings-fraction">
+          <label class="pd-teambuilder-form-general-settings-fraction-title"
+                 for="happiness">
+            <translator2 english="Happiness" german="Freundsch."></translator2>
+          </label>
+          <div class="pd-teambuilder-form-general-settings-fraction-content">
+            <input class="pd-teambuilder-form-small-input --remove-number-input-appearance"
+                   id="happiness"
+                   type="number"
+                   maxlength="3"
+                   [value]="pokemon.happiness"
+                   disabled>
+          </div>
+        </div>
+      </div>
 
+      <div class="pd-teambuilder-form-meta-main">
+        <pd-item-icon class="pd-teambuilder-form-item-icon"
+                      [item]="imgSrc"
+                      *ngIf="pokemon.item?.imgSrc as imgSrc"></pd-item-icon>
+        <div class="pd-teambuilder-form-types">
+          <pokemon-type-image [type]="type" *ngFor="let type of pokemon.types"></pokemon-type-image>
+        </div>
+      </div>
 
-  <div class="pd-teambuilder-form-fraction --moves-fraction">
-    <pd-move-input-dummy [move]="move.data" *ngFor="let move of pokemon.moves"></pd-move-input-dummy>
-  </div>
+      <div class="pd-teambuilder-form-item-and-ability">
 
-  <div class="pd-teambuilder-form-fraction --stats-fraction">
+        <pd-input size="small" [value]="pokemon.item?.name | translate | async" disabled>
+          Item
+        </pd-input>
 
-    <div class="pd-teambuilder-form-stat-container pd-teambuilder-form-stat-container--disabled">
-      <pd-stat-overview [stats]="pokemon.stats"></pd-stat-overview>
+        <pd-input class="left-space"
+                  size="small"
+                  [value]="pokemon.ability?.name | translate | async" disabled>
+          <translator2 english="Ability" german="Fähigkeit"></translator2>
+        </pd-input>
+      </div>
+
     </div>
 
-    <pd-nature-dropdown [pokemon]="pokemon" disabled></pd-nature-dropdown>
-  </div>
+    <div class="pd-teambuilder-form-fraction --moves-fraction">
+      <pd-move-input-dummy [move]="move.data" *ngFor="let move of pokemon.moves"></pd-move-input-dummy>
+    </div>
+
+    <div class="pd-teambuilder-form-fraction --stats-fraction">
+
+      <div class="pd-teambuilder-form-stat-container pd-teambuilder-form-stat-container--disabled">
+        <pd-stat-overview [stats]="pokemon.stats"></pd-stat-overview>
+      </div>
+
+      <pd-nature-dropdown [pokemon]="pokemon" disabled></pd-nature-dropdown>
+    </div>
+  </ng-container>
+
+  <ng-template #noPokemon>
+    <span class="pd-error-icon"></span>
+    <span class="pd-text left-space">
+      The teambuilder has no information about this Pokémon.
+      Probably its [id] did not match any database record or Pokédraft has not loaded this Pokémons data before the request.
+    </span>
+  </ng-template>
 
 </form>
