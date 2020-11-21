@@ -5,10 +5,12 @@ import { TeambuilderRoutingModule } from './teambuilder-routing.module';
 import { TeambuilderCoreModule } from '@pokedraft/teambuilder';
 import { PokedraftButtonsModule, PokedraftFormsModule, PokedraftUtilsModule } from '@pokedraft/material';
 import { TeambuilderComponent } from './teambuilder.component';
+import { TeambuilderGateComponent } from './teambuilder-gate/teambuilder-gate.component';
 
 @NgModule({
   declarations: [
-    TeambuilderComponent
+    TeambuilderComponent,
+    TeambuilderGateComponent
   ],
   imports: [
     CommonModule,

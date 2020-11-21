@@ -3,12 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import {TeambuilderComponent} from "./teambuilder.component";
 import { AuthGuard } from '@pokedraft/core';
 import { EntityResolver } from '@pokedraft/teambuilder';
+import { TeambuilderGateComponent } from './teambuilder-gate/teambuilder-gate.component';
 
 const routes: Routes = [
   {
     path: '',
     component: TeambuilderComponent,
     children: [
+      {
+        path: 'gate',
+        component: TeambuilderGateComponent
+      },
       {
         path: 'editor',
         loadChildren: () => import('./teambuilder-editor/teambuilder-editor.module').then(m => m.TeambuilderEditorModule),
@@ -24,12 +29,12 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'editor',
+        redirectTo: 'gate',
         pathMatch: 'full'
       },
       {
         path: '*',
-        redirectTo: 'editor',
+        redirectTo: 'gate',
         pathMatch: 'full'
       }
     ]

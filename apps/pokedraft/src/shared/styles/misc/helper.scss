@@ -28,6 +28,13 @@
   margin-left: $margin-xl;
 }
 
+.right-space {
+  margin-right: $margin-m;
+}
+
+.large-right-space {
+  margin-right: $margin-xl;
+}
 
 .flex-align-left {
   justify-content: flex-start !important;
@@ -60,6 +67,11 @@
 .center-relatively {
   position: absolute;
   @include center-relatively;
+}
+
+.center-relatively-horizontally {
+  position: absolute;
+  @include center-relatively-horizontally;
 }
 
 .grid-align-left {

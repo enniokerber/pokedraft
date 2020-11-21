@@ -73,6 +73,13 @@ pd-loader {
   }
 }
 
+.pd-loader-box {
+  background-color: $white;
+  border-radius: $radius;
+  box-shadow: $floating-shadow;
+  padding: 16px 50px;
+}
+
 .pd-loader-text {
   position: absolute;
   left: 50%;

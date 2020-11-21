@@ -1,0 +1,10 @@
+
+<div class="pd-loader-box center-relatively-horizontally"
+     [translatableTitle2]="{
+        'english': 'Please wait a few seconds, while the teambuilder is being initialized. In contrast to Showdown, where all of its data can be found directly in source code, Pokédraft needs to fetch all of the data including Pokémon, items, abilities, moves and so on from an external database. This might take a few seconds depending on your internet connection and hardware (it has to load and parse a few MB).',
+        'german': 'Bitte hab einen Moment Geduld, während der Teambuilder initialisiert wird. Im Gegensatz zu Showdown, wo alle benötigten Daten direkt im Quellcode hinterlegt sind, lädt Pokédraft all seine Daten wie Pokémon, Items, Fähigkeiten, etc. von einer externen Datenbank. Das kann abhängig von deiner Internetverbindung und deiner Hardware ein paar Sekunden in Anspruch nehmen (es müssen ein paar Megabyte an Daten geladen und verarbeitet werden).'
+     }">
+  <pd-loader *ngIf="openingEditor">
+    <translator2 english="Preparing Teambuilder..." german="Teambuilder vorbereiten..."></translator2>
+  </pd-loader>
+</div>
