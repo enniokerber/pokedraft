@@ -105,7 +105,15 @@
   </pokemon-list-row-container>
 </ng-template>
 
-<div class="pd-teambuilder-list-reload-button"
+<div class="pd-teambuilder-list-reload-button-left"
+     [translatableTitle2]="{
+        english: 'Reset filter',
+        german: 'Filter zurücksetzen'
+     }" (click)="resetFilters()">
+  <img src="assets/icons/filter.png" alt="">
+</div>
+
+<div class="pd-teambuilder-list-reload-button-right"
      [translatableTitle2]="{
         english: 'Reload Pokémon',
         german: 'Pokémon neu laden'

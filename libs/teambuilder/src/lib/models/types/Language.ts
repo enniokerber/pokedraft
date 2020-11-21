@@ -35,3 +35,5 @@ export const LanguagesWithLabels: LanguageWithLabel[] = [
     value: Languages.GERMAN
   }
 ];
+
+export const LANGUAGE_COOKIE = 'pd-language';

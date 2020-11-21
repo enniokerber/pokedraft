@@ -11,7 +11,7 @@ import {
   TeambuilderStoreService,
   TeambuilderViewService
 } from '@pokedraft/teambuilder';
-import { debounce, debounceTime, filter } from 'rxjs/operators';
+import { debounceTime, filter } from 'rxjs/operators';
 import { LoadingState } from '@pokedraft/core';
 
 @Component({
@@ -57,7 +57,7 @@ export class PokemonListComponent implements OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     this.subscriptions.add(
       this.tbView.displayMode.changes$
-        .pipe(filter(dm => dm && dm.showPokemonList === true))
+        .pipe(filter(dm => dm?.showPokemonList === true))
         .subscribe(_ => this.scrollTop()),
     );
   }
@@ -86,6 +86,10 @@ export class PokemonListComponent implements OnDestroy, AfterViewInit {
   sortPokemonByStat(stat: string, deactivateTiers: boolean = false) {
     this.tbStore.pokemonlist.sort(stat, 'stats');
     this.sortingSideEffects(deactivateTiers);
+  }
+
+  resetFilters(): void {
+    this.tbEvents.pokemonListEvents.search.update('');
   }
 
   sortingSideEffects(deactivateTiers: boolean = false) {

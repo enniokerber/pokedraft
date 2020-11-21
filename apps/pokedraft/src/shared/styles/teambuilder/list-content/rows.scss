@@ -254,11 +254,10 @@ $reload-button-size: 26px;
 
 .pd-teambuilder-list-reload-button {
   position: absolute;
-  right: 0;
   bottom: 0;
   width: $reload-button-size;
   height: $reload-button-size;
-  border-radius: $radius 0 $radius 0;
+  border-radius: $radius;
   background-color: $primary;
   color: $white;
   opacity: .75;
@@ -275,3 +274,17 @@ $reload-button-size: 26px;
     background-color: $primary2;
   }
 }
+
+.pd-teambuilder-list-reload-button-left {
+  @extend .pd-teambuilder-list-reload-button;
+  left: 0;
+  border-radius: 0 $radius 0 $radius;
+}
+
+
+.pd-teambuilder-list-reload-button-right {
+  @extend .pd-teambuilder-list-reload-button;
+  right: 0;
+  border-radius: $radius 0 $radius 0;
+}
+
