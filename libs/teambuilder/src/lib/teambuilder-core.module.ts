@@ -9,8 +9,8 @@ import {
   TeambuilderViewService,
   TeambuilderEventService,
   TeambuilderStoreService,
-  TeambuilderStatisticsService
-} from "./services";
+  TeambuilderStatisticsService, TeambuilderLoggingService
+} from './services';
 import { TeamResolver } from './guards';
 import { EntityResolver } from './guards/entity-resolver/EntityResolver';
 
@@ -34,6 +34,7 @@ export class TeambuilderCoreModule {
         TeambuilderApiService,
         TeambuilderEventService,
         TeambuilderStatisticsService,
+        TeambuilderLoggingService,
         TeamResolver,
         EntityResolver
       ],

@@ -8,3 +8,7 @@
     <translator2 english="Preparing Teambuilder..." german="Teambuilder vorbereiten..."></translator2>
   </pd-loader>
 </div>
+
+<ul *ngFor="let entry of log$ | async">
+  <li class="pd-achievement-name"> {{entry.message}} </li>
+</ul>

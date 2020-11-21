@@ -11,3 +11,5 @@ export * from './event/teambuilder-event.service';
 export * from './store/teambuilder-store.service';
 
 export * from './statistics/teambuilder-statistics.service';
+
+export * from './logging/teambuilder-logging.service';

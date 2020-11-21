@@ -9,6 +9,7 @@
   border: 1px solid $grey-lighter;
   @include flex-center-vertically;
   margin-bottom: $margin-m;
+  background-color: $white;
 }
 
 .pd-achievement-name {

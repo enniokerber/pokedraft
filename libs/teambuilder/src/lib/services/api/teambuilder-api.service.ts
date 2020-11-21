@@ -3,13 +3,14 @@ import {
   allWithDocumentId,
   withDocumentId,
   IPokedraftUserSnippet, LoadingState,
-  PokedraftAuthService, extractDataFromSnapshot
+  PokedraftAuthService, extractDataFromSnapshot, PokedraftLogger
 } from '@pokedraft/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IAbility, IItem, IPokemon, ITeambuilderTeam, ITeambuilderTeamSnippet } from '../../models';
 import { Observable, of } from 'rxjs';
 import { catchError, first, map, switchMap, tap } from 'rxjs/operators';
 import { TeambuilderPokemonService } from '../pokemon/teambuilder-pokemon.service';
+import { TeambuilderLoggingService } from '../logging/teambuilder-logging.service';
 
 @Injectable()
 export class TeambuilderApiService {
@@ -17,40 +18,56 @@ export class TeambuilderApiService {
   saveRequestState: LoadingState;
   deleteRequestState: LoadingState;
 
+  logger: PokedraftLogger;
+
   constructor(private auth: PokedraftAuthService,
               private afs: AngularFirestore,
-              private tbPokemon: TeambuilderPokemonService) {
+              private tbPokemon: TeambuilderPokemonService,
+              tbLogger: TeambuilderLoggingService) {
     this.saveRequestState = new LoadingState();
     this.deleteRequestState = new LoadingState();
+    this.logger = tbLogger.getLogger();
   }
 
   getPokemon(): Observable<IPokemon[]> {
+    this.logger.info('loading Pokémon ...');
     return this.afs.doc<IPokemon[]>('static-data/pokedex')
       .get()
       .pipe(
-        catchError(err => of({ pokemon: [] })),
+        catchError(err => {
+          this.logger.error('failed to load Pokémon');
+          return of({ pokemon: [] });
+        }),
         extractDataFromSnapshot('pokemon'),
-        tap(pokemon => console.log('Loaded Pokémon: ', pokemon))
+        tap(_ => this.logger.ok('successfully fetched Pokémon'))
       );
   }
 
   getItems(): Observable<IItem[]> {
+    this.logger.info('loading items ...');
     return this.afs.doc('static-data/items')
       .get()
       .pipe(
-        catchError(err => of({ items: {} })),
+        catchError(err => {
+          this.logger.error('failed to load items');
+          return of({ items: {} });
+        }),
         extractDataFromSnapshot('items'),
-        tap(items => console.log('Loaded Items: ', items))
+        tap(_ => this.logger.ok('successfully fetched items'))
       );
   }
 
   getAbilities(): Observable<IAbility[]> {
+    this.logger.info('loading abilites ...');
     return this.afs.doc('static-data/abilities')
       .get()
       .pipe(
-        catchError(err => of({ abilities: {} })),
+        catchError(err => {
+          this.logger.error('failed to load abilities');
+          return of({ abilities: {} });
+        }),
         extractDataFromSnapshot('abilities'),
-        tap(abilities => console.log('Loaded Abilities: ', abilities))
+        tap(_ => this.logger.ok('successfully fetched abilities'))
       );
   }
 
@@ -74,12 +91,17 @@ export class TeambuilderApiService {
   }
 
   getTeam(id: string): Observable<ITeambuilderTeam> {
+    this.logger.info(`loading team ${id} ...`);
     return this.afs.doc(`teams/${id}`)
       .snapshotChanges()
       .pipe(
         first(),
         withDocumentId(),
-        catchError(() => of(null))
+        catchError(() => {
+          this.logger.error(`failed to load team ${id}`);
+          return of(null);
+        }),
+        tap(_ => this.logger.info(`successfully fetched team ${id}`))
       );
   }
 
