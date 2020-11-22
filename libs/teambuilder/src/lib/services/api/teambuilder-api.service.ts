@@ -30,7 +30,7 @@ export class TeambuilderApiService {
   }
 
   getPokemon(): Observable<IPokemon[]> {
-    this.logger.info('loading Pokémon ...');
+    this.logger.request('loading Pokémon ...');
     return this.afs.doc<IPokemon[]>('static-data/pokedex')
       .get()
       .pipe(
@@ -44,7 +44,7 @@ export class TeambuilderApiService {
   }
 
   getItems(): Observable<IItem[]> {
-    this.logger.info('loading items ...');
+    this.logger.request('loading items ...');
     return this.afs.doc('static-data/items')
       .get()
       .pipe(
@@ -58,7 +58,7 @@ export class TeambuilderApiService {
   }
 
   getAbilities(): Observable<IAbility[]> {
-    this.logger.info('loading abilites ...');
+    this.logger.request('loading abilites ...');
     return this.afs.doc('static-data/abilities')
       .get()
       .pipe(
@@ -91,7 +91,7 @@ export class TeambuilderApiService {
   }
 
   getTeam(id: string): Observable<ITeambuilderTeam> {
-    this.logger.info(`loading team ${id} ...`);
+    this.logger.request(`loading team ${id} ...`);
     return this.afs.doc(`teams/${id}`)
       .snapshotChanges()
       .pipe(

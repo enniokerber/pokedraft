@@ -17,8 +17,8 @@ export class TeambuilderFormComponent implements OnDestroy {
 
   pokemon: TeambuilderPokemon;
 
-  searchPokemon = '';
-  currentPokemonString = '';
+  searchPokemon: string;
+  currentPokemonString: string;
 
   private subscriptions: SubscriptionContainer;
 
@@ -33,7 +33,7 @@ export class TeambuilderFormComponent implements OnDestroy {
         .pipe(
           filter(pokemon => pokemon !== null),
           tap(selectedPokemon => {
-            if (this.pokemon !== selectedPokemon) {
+            if (this.pokemon?.sprite !== selectedPokemon?.sprite) {
               this.loadingSprite = true;
             }
             this.pokemon = selectedPokemon;

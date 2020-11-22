@@ -17,14 +17,14 @@ export class ButtonComponent {
 
   @Input() loading: boolean;
 
-  @Output() leftclick: EventEmitter<{}>;
+  @Output() leftclick: EventEmitter<void>;
 
-  @Output() rightclick: EventEmitter<{}>;
+  @Output() rightclick: EventEmitter<void>;
 
   constructor() {
     this.title = '';
-    this.leftclick = new EventEmitter<{}>();
-    this.rightclick = new EventEmitter<{}>();
+    this.leftclick = new EventEmitter<void>();
+    this.rightclick = new EventEmitter<void>();
   }
 
   emitLeftClick(): void {

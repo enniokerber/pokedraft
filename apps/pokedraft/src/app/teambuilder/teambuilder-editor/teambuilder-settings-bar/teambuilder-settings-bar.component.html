@@ -6,14 +6,20 @@
                [loading]="saveRequestState.loading$ | async"
                (leftclick)="save()"
                *ngIf="team?.id; else isNewTeam">
-      <translator2 english="Save" german="Speichern"></translator2>
+      <translator3 [source]="{
+          'english': 'Save',
+          'german': 'Speichern'
+        }"></translator3>
     </pd-button>
 
     <ng-template #isNewTeam>
       <pd-button  icon="assets/icons/save.png"
                  [loading]="saveRequestState.loading$ | async"
                  (leftclick)="save()">
-        <translator2 english="Save" german="Speichern"></translator2>
+        <translator3 [source]="{
+          'english': 'Save',
+          'german': 'Speichern'
+        }"></translator3>
       </pd-button>
     </ng-template>
 
