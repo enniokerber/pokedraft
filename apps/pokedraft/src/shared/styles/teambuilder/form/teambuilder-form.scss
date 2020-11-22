@@ -40,8 +40,8 @@
   z-index: 5;
 }
 
-.pd-teambuilder-form-pokemon-sprite-loader {
-  z-index: 1;
+.pd-teambuilder-form-pokemon-input {
+  z-index: 10;
 }
 
 .pd-teambuilder-form-shiny-checkbox {
@@ -167,6 +167,13 @@
   position: absolute;
   bottom: 10px;
   left: 0;
+}
+
+.pd-teambuilder-form-item-natural-gift {
+  position: absolute;
+  left: 36px;
+  bottom: 6px;
+  opacity: .66;
 }
 
 .pd-teambuilder-form-types {

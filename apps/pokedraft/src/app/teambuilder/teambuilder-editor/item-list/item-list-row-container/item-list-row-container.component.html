@@ -30,12 +30,7 @@
   </div>
 
   <div class="pd-teambuilder-list-cell pd-teambuilder-list-prop-cell --tb-item-natural-gift" *ngIf="item.berry?.naturalGift as naturalGift">
-      <span class="pd-teambuilder-list-prop-label">
-        <translator2 english="Natural Gift" german="Beerenkräfte"></translator2>
-      </span>
-    {{naturalGift.basePower}}
-    <pokemon-type-image class="pd-item-natural-gift-type-icon"
-                        [type]="naturalGift.type"></pokemon-type-image>
+      <pd-natural-gift [naturalGift]="naturalGift"></pd-natural-gift>
   </div>
 
 </div>

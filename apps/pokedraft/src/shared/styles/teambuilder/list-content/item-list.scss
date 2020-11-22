@@ -22,8 +22,17 @@ $item-desc: 52.5%;
   width: 12.5%;
 }
 
+.pd-natural-gift {
+  position: relative;
+  width: 80px;
+  height: 34px;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 10px;
+}
+
 .pd-item-natural-gift-type-icon {
-  margin-left: $margin;
+  margin: 0 0 3px $margin;
   max-height: 18px;
 }
 

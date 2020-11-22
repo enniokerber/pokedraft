@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { TeambuilderDirectivesModule } from '../directives/teambuilder-directives.module';
 import { MoveInputDummyComponent } from './move-input-dummy/move-input-dummy.component';
 import { TeambuilderPipesModule } from '../pipes/teambuilder-pipes.module';
+import { NaturalGiftComponent } from './natural-gift/natural-gift.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TeambuilderPipesModule } from '../pipes/teambuilder-pipes.module';
     NatureDropdownComponent,
     StatOverviewComponent,
     StatOverviewRowComponent,
-    MoveInputDummyComponent
+    MoveInputDummyComponent,
+    NaturalGiftComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { TeambuilderPipesModule } from '../pipes/teambuilder-pipes.module';
     NatureDropdownComponent,
     StatOverviewComponent,
     StatOverviewRowComponent,
-    MoveInputDummyComponent
+    MoveInputDummyComponent,
+    NaturalGiftComponent
   ]
 })
 export class TeambuilderComponentsModule {

@@ -28,7 +28,8 @@
           (checkedChange)="pokemon.updateSprite()">
         </pd-radio-checkbox>
       </div>
-      <pd-input size="small"
+      <pd-input class="pd-teambuilder-form-pokemon-input"
+                size="small"
                 maxlength="15"
                 [(value)]="searchPokemon"
                 (click)="openPokemonList()"
@@ -91,8 +92,17 @@
 
       <div class="pd-teambuilder-form-meta-main">
 
-        <pd-item-icon class="pd-teambuilder-form-item-icon" [item]="imgSrc"
-                      *ngIf="pokemon.item?.imgSrc as imgSrc"></pd-item-icon>
+        <ng-container *ngIf="pokemon.item as item">
+
+          <pd-item-icon class="pd-teambuilder-form-item-icon"
+                        [item]="imgSrc"
+                        *ngIf="item.imgSrc as imgSrc"></pd-item-icon>
+
+          <pd-natural-gift class="pd-teambuilder-form-item-natural-gift"
+                           [naturalGift]="naturalGift"
+                           *ngIf="item.berry?.naturalGift as naturalGift"></pd-natural-gift>
+
+        </ng-container>
 
         <div class="pd-teambuilder-form-types">
           <pokemon-type-image [type]="type" *ngFor="let type of pokemon.types"></pokemon-type-image>

@@ -30,7 +30,6 @@ import { TeambuilderEditorComponent } from './teambuilder-editor.component';
 import { GenderInputComponent } from './teambuilder-form/gender-input/gender-input.component';
 import { TeamImportComponent } from './team-import/team-import.component';
 
-
 @NgModule({
   declarations: [
     AbilitiesListComponent,
