@@ -1,17 +1,20 @@
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { LogEntry, LogEntryPrefix } from './LogEntry';
 import { scan, tap } from 'rxjs/operators';
-import { PokedraftLogger } from './PokedraftLogger';
+import {LogChanges, LogEntryStream, PokedraftLogger} from './PokedraftLogger';
 
 export class ReactiveLogger implements PokedraftLogger {
 
   private readonly logger: Subject<LogEntry>;
 
-  log$: Observable<LogEntry[]>;
+  fullLog$: LogChanges;
+
+  log$: LogEntryStream;
 
   constructor() {
     this.logger = new Subject<LogEntry>();
-    this.log$ = this.logger.asObservable()
+    this.log$ = this.logger.asObservable();
+    this.fullLog$ = this.log$
       .pipe(
         tap(entry => console.log(`[Pokédraft] ${entry.message}`)),
         scan((currentLog: LogEntry[], next: LogEntry) => {

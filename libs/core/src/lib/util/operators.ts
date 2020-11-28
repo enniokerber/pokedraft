@@ -1,6 +1,5 @@
-import { Action, DocumentChangeAction, DocumentData, DocumentSnapshot } from '@angular/fire/firestore';
+import { Action, DocumentChangeAction, DocumentSnapshot } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
-import { IPokemon } from '@pokedraft/teambuilder';
 
 export const allWithDocumentId = () => map(
   <T>(changes: DocumentChangeAction<T>[]) =>

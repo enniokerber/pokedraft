@@ -1,11 +1,15 @@
 import { Observable } from 'rxjs';
 import { LogEntry } from './LogEntry';
 
-export type LoggingStream = Observable<LogEntry[]>;
+export type LogChanges = Observable<LogEntry[]>;
+
+export type LogEntryStream = Observable<LogEntry>;
 
 export interface PokedraftLogger {
 
-  log$: LoggingStream;
+  log$: LogEntryStream;
+
+  fullLog$: LogChanges;
 
   info(message: string): void;
 

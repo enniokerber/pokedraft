@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoggingStream, PokedraftLogger, ReactiveLogger } from '@pokedraft/core';
+import { LogChanges, PokedraftLogger, ReactiveLogger } from '@pokedraft/core';
 
 @Injectable()
 export class TeambuilderLoggingService {
@@ -12,6 +12,6 @@ export class TeambuilderLoggingService {
 
   getLogger(): PokedraftLogger { return this.logger; }
 
-  getLoggingStream(): LoggingStream { return this.logger.log$; }
+  getLoggingStream(): LogChanges { return this.logger.fullLog$; }
 
 }

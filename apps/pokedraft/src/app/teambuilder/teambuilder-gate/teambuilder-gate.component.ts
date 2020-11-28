@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TeambuilderLoggingService } from '@pokedraft/teambuilder';
-import { LoggingStream } from '@pokedraft/core';
+import { LogChanges } from '@pokedraft/core';
 
 @Component({
   selector: 'pd-teambuilder-gate',
@@ -12,7 +12,7 @@ export class TeambuilderGateComponent implements OnInit {
 
   openingEditor: boolean;
 
-  log$: LoggingStream;
+  log$: LogChanges;
 
   constructor(private router: Router,
               tbLogger: TeambuilderLoggingService) {
