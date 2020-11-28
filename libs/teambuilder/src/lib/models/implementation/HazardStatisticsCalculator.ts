@@ -43,6 +43,7 @@ export class HazardStatisticsCalculator {
       this.addRapidSpinData(pokemon);
     });
     this.statistics = Object.values(this.hazardStatisticsMap);
+    delete this.hazardStatisticsMap;
   }
 
   private checkMovesetForHazards(pokemon: TeambuilderPokemon) {

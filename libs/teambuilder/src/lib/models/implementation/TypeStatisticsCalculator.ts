@@ -47,9 +47,7 @@ export class TypeStatisticsCalculator {
 
     team.map(pokemon => {
 
-      const types = pokemon.getTypes();
-      const firstType = types[0];
-      const secondType = types[1];
+      const [ firstType, secondType ] = pokemon.getTypes();
 
       /*
           If the Pokémon has 2 Types, effectiveness and resistances should only be counted once.
@@ -77,6 +75,7 @@ export class TypeStatisticsCalculator {
 
     this.statistics = Object.values(this.typeStatisticsMap);
     this.checkCoverage();
+    delete this.typeStatisticsMap;
   }
 
   /*

@@ -31,6 +31,7 @@ export class ItemClauseStatisticsCalculator {
       .forEach(pokemon => this.addItem(pokemon));
     this.statistics = Object.values(this.itemClauseStatisticsMap);
     this.calculateItemClause();
+    delete this.itemClauseStatisticsMap;
   }
 
   private calculateItemClause() {
