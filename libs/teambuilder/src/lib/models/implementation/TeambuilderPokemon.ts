@@ -113,6 +113,10 @@ export class TeambuilderPokemon {
 
   getTypes(): PokemonType[] { return this.types; }
 
+  hasType(...types: PokemonType[]): boolean {
+    return this.getTypes().some(type => types.includes(type));
+  }
+
   getItem(): IItem {
     return this.item;
   }
@@ -127,6 +131,13 @@ export class TeambuilderPokemon {
 
   setAbility(ability: IAbility = null): void {
     this.ability = ability;
+  }
+
+  /* Checks whether the english name of the Pokémon´s ability matches any given name */
+  hasAbility(...abilityNames: string[]): boolean {
+    const currentAbility = this.getAbility()?.name.english;
+    if (!currentAbility) return false;
+    return abilityNames.some(ability => currentAbility === ability);
   }
 
   getPossibleAbilities(): string[] {

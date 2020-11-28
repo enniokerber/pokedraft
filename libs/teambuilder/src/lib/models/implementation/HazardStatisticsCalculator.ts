@@ -79,7 +79,7 @@ export class HazardStatisticsCalculator {
 
   private updateSpikesStatistics(fromPokemon: TeambuilderPokemon) {
     const spikesStatistics = this.hazardStatisticsMap[Hazards.SPIKES];
-    if (fromPokemon.getTypes().includes(PokemonTypes.Flying) || this.abilityProtectsFromHazards(fromPokemon)) {
+    if (this.pokemonLevitates(fromPokemon) || this.abilityProtectsFromHazards(fromPokemon)) {
       spikesStatistics.immune++;
     } else {
       spikesStatistics.hits++;
@@ -88,9 +88,9 @@ export class HazardStatisticsCalculator {
 
   private updateToxicSpikesStatistics(fromPokemon: TeambuilderPokemon) {
     const toxicSpikeStatistics = this.hazardStatisticsMap[Hazards.TOXIC_SPIKES];
-    if (fromPokemon.getTypes()
-        .some(type => type === PokemonTypes.Poison || type === PokemonTypes.Flying || type === PokemonTypes.Steel)
-          || this.abilityProtectsFromHazards(fromPokemon)) {
+
+    if (this.pokemonLevitates(fromPokemon) || fromPokemon.hasType(PokemonTypes.Poison, PokemonTypes.Steel)
+        || this.abilityProtectsFromHazards(fromPokemon)) {
       toxicSpikeStatistics.immune++;
     } else {
       toxicSpikeStatistics.hits++;
@@ -107,7 +107,11 @@ export class HazardStatisticsCalculator {
   }
 
   private abilityProtectsFromHazards(pokemon: TeambuilderPokemon): boolean {
-    return pokemon.getAbility()?.name.english === Abilities.MAGIC_GUARD;
+    return pokemon.hasAbility(Abilities.MAGIC_GUARD);
+  }
+
+  private pokemonLevitates(pokemon: TeambuilderPokemon): boolean {
+    return pokemon.hasAbility(Abilities.LEVITATE) || pokemon.hasType(PokemonTypes.Flying);
   }
 
   private emptyHazardStatisticsMap(): HazardStatisticsMap {
