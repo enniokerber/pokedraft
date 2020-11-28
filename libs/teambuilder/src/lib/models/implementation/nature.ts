@@ -1,5 +1,5 @@
 import {INature, INatureWithoutStatMetadata} from '../api/INature';
-import {DEFAULT_NATURE, natures} from "../../data/natures";
+import {DEFAULT_NATURE, getNatureById} from "../../data/natures";
 import {ITranslatable} from "../api";
 
 export class Nature {
@@ -34,6 +34,6 @@ export class Nature {
   }
 
   setById(id: number) {
-    this.set(natures[id]);
+    this.set(getNatureById(id));
   }
 }

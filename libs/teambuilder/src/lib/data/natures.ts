@@ -237,11 +237,15 @@ export const neutralNatures: INature[] = [
 ];
 
 export const natures: INature[] = [
-  ...neutralNatures,
   ...statAffectingNatures,
+  ...neutralNatures,
 ];
 
-export const DEFAULT_NATURE = natures[0]; // = Bashful Nature
+export const DEFAULT_NATURE = natures[21]; // = Bashful Nature
+
+export function getNatureById(searchId: number): INature {
+  return natures.find(({ id }) => id === searchId);
+}
 
 export function getNatureByName(name: string): INature {
   return natures.find(nature => nature.name.english === name) || DEFAULT_NATURE;

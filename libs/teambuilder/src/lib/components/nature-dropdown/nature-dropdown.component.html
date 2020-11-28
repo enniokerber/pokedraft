@@ -12,14 +12,6 @@
     [disabled]="disabled"
     [(ngModel)]="selectedNatureId"
     (change)="changeNature(selectedNatureId)">
-    <optgroup label="Neutral">
-      <option
-        [ngValue]="nature.id"
-        [selected]="selectedNatureId && selectedNatureId === nature.id"
-        *ngFor="let nature of neutralNatures">
-        {{nature.name | translate | async}}
-      </option>
-    </optgroup>
     <optgroup label=""
               translateAttribute="label"
               [source]="stat.label"
@@ -35,6 +27,14 @@
             german="{{nature.name.german}} [+{{nature.increases.abbr.german}}, -{{nature.decreases.abbr.german}}]"></translator2>
         </option>
       </ng-container>
+    </optgroup>
+    <optgroup label="Neutral">
+      <option
+        [ngValue]="nature.id"
+        [selected]="selectedNatureId && selectedNatureId === nature.id"
+        *ngFor="let nature of neutralNatures">
+        {{nature.name | translate | async}}
+      </option>
     </optgroup>
   </select>
 </div>
